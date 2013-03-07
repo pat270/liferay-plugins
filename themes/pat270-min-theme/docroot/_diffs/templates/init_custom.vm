@@ -1,0 +1,3 @@
+#set ($selected = "selected")
+#set ($myCommunityPublicURL =  $themeDisplay.getPathFriendlyURLPublic() + "/$user.getScreenName()/home")
+#set ($myCommunityPrivateURL = $themeDisplay.getPathFriendlyURLPrivateUser() + "/$user.getScreenName()/home")

@@ -7,11 +7,11 @@
 		#foreach ($nav_item in $nav_items)
 			#if ($nav_item.isSelected())
 				#if ($velocityCount == 1 && $nav_item.hasChildren())
-					<li aria-selected="true" class="selected first hasChildren">
+					<li aria-selected="true" class="$selected first hasChildren">
 				#elseif ($velocityCount == 1)
-					<li aria-selected="true" class="selected first">
+					<li aria-selected="true" class="$selected first">
 				#else
-					<li aria-selected="true" class="selected">
+					<li aria-selected="true" class="$selected">
 				#end
 			#else
 				#if ($velocityCount == 1 && $nav_item.hasChildren())
@@ -29,9 +29,9 @@
 						#foreach ($nav_child in $nav_item.getChildren())
 							#if ($nav_child.isSelected())
 								#if ($velocityHasNext)
-									<li aria-selected="true" class="selected">
+									<li aria-selected="true" class="$selected">
 								#else
-									<li aria-selected="true" class="selected last_item">
+									<li aria-selected="true" class="$selected last_item">
 								#end
 							#else
 								#if ($velocityHasNext)
