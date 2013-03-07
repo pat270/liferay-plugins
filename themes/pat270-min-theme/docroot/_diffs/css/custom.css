@@ -4,7 +4,7 @@
 
 /* ---------- Base styles ---------- */
 
-html, body {
+body, html {
 	background: #21221B;
 	font-size: 11px;
 }
@@ -59,11 +59,8 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
 }
 
 input[type="text"], input[type="password"], textarea, .textarea, .aui-field-input-text {
-	background-image: none;
-	background-repeat: no-repeat;
-	background: #FFF;
-	border: 1px solid;
-	border-color: #EAEAEA;
+	background: #FFF url(none) no-repeat;
+	border: 1px solid #EAEAEA;
 	font: 1em Arial, Helvetica, Verdana, sans-serif;
 	padding: 5px;	
 	height: 21px;
@@ -150,7 +147,7 @@ input[value="New Message"] {
 
 /* ------- layout styles -------- */
 
-#WrapperForBg {
+#WrapperForBG {
 	background: #FFF;
 	margin-top: 0;
 	min-height: 100%;
@@ -159,8 +156,8 @@ input[value="New Message"] {
 .default-layout-setting {
 	margin-left: auto;
 	margin-right: auto;
-	min-width: 960px;
 	max-width: 980px;
+	min-width: 960px;
 	padding: 0 3em;
 }
 
@@ -192,7 +189,6 @@ input[value="New Message"] {
 	margin: 15px 0 0 20px;
 	padding: 7px 17px 7px 40px;
 	position: relative;
-	text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .private-page .site-title .site-name:after {
@@ -231,6 +227,7 @@ input[value="New Message"] {
 	height: 100%;
 	overflow: hidden;
 	width: 100%;
+	
 	img { 
 		height: auto; 
 		width: 100%; 
@@ -1146,6 +1143,10 @@ input[type="text"], input[type="password"], textarea, .textarea, .aui-field-inpu
 
 #navigation .child-menu li.last_item a {
 	@include border-radius(0 0 4px 4px);
+}
+
+.site-title .site-name {
+	@include text-shadow(1px 1px #3c3c3c);
 }
 
 .portlet {
