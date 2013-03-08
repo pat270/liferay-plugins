@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE look-and-feel PUBLIC "-//Liferay//DTD Look and Feel 6.1.0//EN" "http://www.liferay.com/dtd/liferay-look-and-feel_6_1_0.dtd">
+
+<look-and-feel>
+	<compatibility>
+		<version>6.2.0+</version>
+	</compatibility>
+	<theme id="pat270-min" name="Minimal Theme">
+		<settings>
+			<setting configurable="true" key="Number_of_Footer_Columns" type="text"></setting>
+			<setting configurable="true" key="Footer_Column_1_Article_ID" type="text"></setting>
+			<setting configurable="true" key="Footer_Column_2_Article_ID" type="text"></setting>
+			<setting configurable="true" key="Footer_Column_3_Article_ID" type="text"></setting>
+			<setting configurable="true" key="Footer_Column_4_Article_ID" type="text"></setting>
+		</settings>
+	</theme>
+</look-and-feel>

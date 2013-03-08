@@ -1,0 +1,24 @@
+<footer id="footer" class="default-layout-setting ltr" role="contentinfo">
+	#if ($footer-cols == 2)
+		#parse ("$full_templates_path/footer_2_col.vm")
+
+	#elseif ($footer-cols == 3)
+		#parse ("$full_templates_path/footer_3_col.vm")
+
+	#elseif ($footer-cols == 4)
+		#parse ("$full_templates_path/footer_4_col.vm")
+
+	#else
+		<div class="aui-w100">
+			<div class="content">
+				#if ($footer-col-1)
+					$footer-col-1
+				#end
+			</div>
+		</div>
+	#end
+
+	<p class="powered-by">
+		#language ("powered-by") <a href="http://www.liferay.com" rel="external">Liferay</a>
+	</p>
+</footer>

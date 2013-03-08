@@ -1,0 +1,31 @@
+<div class="aui-w25 aui-column">
+	<div class="content">
+		#if ($footer-col-1)
+			$footer-col-1
+		#end
+	</div>
+</div>
+
+<div class="aui-w25 aui-column">
+	<div class="content">
+		#if ($footer-col-2)
+			$footer-col-2
+		#end
+	</div>
+</div>
+
+<div class="aui-w25 aui-column">
+	<div class="content">
+		#if ($footer-col-3)
+			$footer-col-3
+		#end
+	</div>
+</div>
+
+<div class="aui-w25 aui-column-last">
+	<div class="content">
+		#if ($footer-col-4)
+			$footer-col-4
+		#end
+	</div>
+</div>
