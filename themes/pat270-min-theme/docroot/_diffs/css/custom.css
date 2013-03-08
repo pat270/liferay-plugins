@@ -40,7 +40,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
 	color: #FFF;
 	cursor: pointer;
 	font-size: 1.2em;
-	font-weight: 700;
+	font-weight: bold;
 	overflow: visible;
 	padding: 10px 15px;
 	width: auto;
@@ -135,12 +135,19 @@ input[value="New Message"] {
 	background: #000;
 	color: #FFF;
 	margin: 0 auto;
-	text-align: right;
+	padding-top: 3em;
+	text-align: left;
 	min-height: 100px;
 
-	p {
-		margin: 0 -2em 0 0;
-		padding: 10px;
+	.content {
+		padding-right: 4em;
+	}
+
+	.powered-by {
+		clear: both;
+		margin: 0em -2em 0 0;
+		padding: 3em 10px 10px;
+		text-align: right;
 	}
 }
 
@@ -209,7 +216,7 @@ input[value="New Message"] {
 }
 
 #sign-in {
-	font-weight: 300;
+	font-weight: normal;
 	padding: 5px 5px 5px 25px;
 }
 
@@ -375,7 +382,7 @@ input[value="New Message"] {
 		h1 {
 			color: #333;
 			font-size: 1.4em;
-			font-weight: 300;
+			font-weight: normal;
 			margin: 0 0 0.6em 0;
 			padding: 0;
 		}
@@ -404,7 +411,7 @@ input[value="New Message"] {
 	border-bottom: 1px dotted #D2D2D2;
 	float: none;
 	font-size: 1.6em;
-	font-weight: 700;
+	font-weight: bold;
 	margin-bottom: 0.7em;
 	min-width: 50%;
 	padding: 5px 0;
@@ -542,14 +549,14 @@ input[value="New Message"] {
 #portlet_31 h1.portlet-title {
 	border-bottom: 1px dotted #999;
 	font-size: 2.5em;
-	font-weight: 300;
+	font-weight: normal;
 	margin-bottom: 1em;
 	padding-bottom: 0.5em;
 }
 
 #portlet_31 input[type="submit"] {
 	font-size: 1.2em;
-	font-weight: 300;
+	font-weight: normal;
 	padding: 10px 25px;
 }
 
@@ -612,7 +619,7 @@ input[value="New Message"] {
 
 	a { 
 		color: #000;
-		font-weight: 300;
+		font-weight: normal;
 		text-decoration: none; 
 
 		&:hover {
@@ -718,7 +725,7 @@ input[value="New Message"] {
 .taglib-social-activities .day-separator {
 	border-bottom-color: #CCC;
 	border: 0;
-	font-weight: 700;
+	font-weight: bold;
 	font-size: 1.3em;
 }
 
@@ -836,7 +843,7 @@ input[value="New Message"] {
 		padding: 0.2em 0em;
 
 		a {
-			font-weight: 100;
+			font-weight: normal;
 			text-decoration: none;
 
 			&:hover {
@@ -868,7 +875,7 @@ input[value="New Message"] {
 	}
 
 	a {
-		font-weight: 100;
+		font-weight: normal;
 		margin: 0.2em 0;
 		text-decoration: none;
 
@@ -1203,7 +1210,7 @@ input[type="text"], input[type="password"], textarea, .textarea, .aui-field-inpu
 
 .blog-agg-display-as-list {
 	.portlet-title-text { 
-		font-weight: 100; 
+		font-weight: normal; 
 	}
 
 	.entry-content {
@@ -1336,6 +1343,7 @@ input[type="text"], input[type="password"], textarea, .textarea, .aui-field-inpu
 }
 
 /* -------- Portlet Alloy UI Carousel Theme Style -------- */
+
 .aui-carousel {
 	overflow: hidden;
 

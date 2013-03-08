@@ -20,11 +20,9 @@ $theme.include($body_top_include)
 	#dockbar()
 #end
 
-<div id="WrapperForBg" class="default-layout-setting">
-	
+<div id="WrapperForBG" class="default-layout-setting">	
 		<div id="very_top_menu">
 			<ul>
-
 			#if ($is_signed_in)
 				<li><a href="$home_url">$home_text</a></li>
 				<li><a href="$myCommunityPublicURL">$user_name Public</a></li>
@@ -33,16 +31,13 @@ $theme.include($body_top_include)
 			#else
 				<li><a href="$sign_in_url" id="sign-in" rel="nofollow">$sign_in_text</a></li>
 			#end
-
 			</ul>
 		</div>
 
 		<div id="welcomeMessage">
-
 			#if ($is_signed_in)
 				<p>$user_greeting</p>
-			#end
-			
+			#end			
 		</div>
 
 	<div id="wrapper">
@@ -71,7 +66,6 @@ $theme.include($body_top_include)
 		</header>
 
 		<div id="content">
-
 			<nav class="site-breadcrumbs" id="breadcrumbs">
 				<h1>
 					<span>#language ("breadcrumbs")</span>
@@ -89,20 +83,13 @@ $theme.include($body_top_include)
 
 				$theme.wrapPortlet("portlet.vm", $content_include)
 			#end
-
 		</div>
-
 	</div>
 
 	$theme.include($body_bottom_include)
-
 </div>
 
-<footer id="footer" class="default-layout-setting" role="contentinfo">
-	<p class="powered-by">
-		#language ("powered-by") <a href="http://www.liferay.com" rel="external">Liferay</a>
-	</p>
-</footer>
+#parse ("$full_templates_path/footer.vm")
 
 </body>
 

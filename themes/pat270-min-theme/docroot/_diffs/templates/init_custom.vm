@@ -1,3 +1,31 @@
 #set ($selected = "selected")
 #set ($myCommunityPublicURL =  $themeDisplay.getPathFriendlyURLPublic() + "/$user.getScreenName()/home")
 #set ($myCommunityPrivateURL = $themeDisplay.getPathFriendlyURLPrivateUser() + "/$user.getScreenName()/home")
+
+## -------- FOOTER --------- ##
+
+#set ($footer-cols = $themeDisplay.getThemeSetting('Number_of_Footer_Columns'))
+
+#if ($theme_settings.Footer_Column_1_Article_ID)
+	#set ($footer-col-1 = $journalContentUtil.getContent($group_id, $theme_settings.Footer_Column_1_Article_ID, null, "$locale", $theme_display))
+#else
+	#set ($footer-col-1 = $journalContentUtil.getContent($group_id, "CONTENT UNAVAILABLE", null, "$locale", $theme_display))
+#end
+
+#if ($theme_settings.Footer_Column_2_Article_ID)
+	#set ($footer-col-2 = $journalContentUtil.getContent($group_id, $theme_settings.Footer_Column_2_Article_ID, null, "$locale", $theme_display))
+#else
+	#set ($footer-col-2 = $journalContentUtil.getContent($group_id, "CONTENT UNAVAILABLE", null, "$locale", $theme_display))
+#end
+
+#if ($theme_settings.Footer_Column_3_Article_ID)
+	#set ($footer-col-3 = $journalContentUtil.getContent($group_id, $theme_settings.Footer_Column_3_Article_ID, null, "$locale", $theme_display))
+#else
+	#set ($footer-col-3 = $journalContentUtil.getContent($group_id, "CONTENT UNAVAILABLE", null, "$locale", $theme_display))
+#end
+
+#if ($theme_settings.Footer_Column_4_Article_ID)
+	#set ($footer-col-4 = $journalContentUtil.getContent($group_id, $theme_settings.Footer_Column_4_Article_ID, null, "$locale", $theme_display))
+#else
+	#set ($footer-col-4 = $journalContentUtil.getContent($group_id, "CONTENT UNAVAILABLE", null, "$locale", $theme_display))
+#end
