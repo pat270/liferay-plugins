@@ -4,5 +4,5 @@
 <project name="pat270-classic-theme" basedir="." default="deploy">
 	<import file="../build-common-theme.xml" />
 
-	<property name="theme.parent" value="_styled" />
+	<property name="theme.parent" value="classic" />
 </project>
