@@ -6,7 +6,9 @@
 
 <head>
 	<title>$the_title - $company_name</title>
+
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
 	$theme.include($top_head_include)
 </head>
 
@@ -23,7 +25,7 @@ $theme.include($body_top_include)
 <div id="wrapper">
 	<header id="banner" role="banner">
 		<div id="heading" class="desktop-margins">
-			<div class="menu-toggle is-tablet-portrait">
+			<div class="is-tablet-portrait menu-toggle">
 				<a href="#1">=</a>
 			</div>
 

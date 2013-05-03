@@ -9,11 +9,11 @@ $primary-text-color: #676767;
 $default-link-color: #456FAE;
 
 $primary-button-color: #18C3B5;
-$primary-button-hover-color: #49A099;
+$primary-button-color-hover: #49A099;
 $secondary-button-color: #5C6074;
-$secondary-button-hover-color: #474A59;
+$secondary-button-color-hover: #474A59;
 $tertiary-button-color: #9A9A9A;
-$tertiary-button-hover-color: #676767;
+$tertiary-button-color-hover: #676767;
 
 $primary-tab-color: #18C3B5;
 $secondary-tab-color: #EEE;
@@ -29,12 +29,12 @@ $normal: 300;
 $bold: 500;
 $bolder: 700;
 
-$desktop-nav-hover-color: #456FAE;
-$desktop-nav-highlight-color: #18C3B5;
+$desktop-nav-color-hover: #456FAE;
+$desktop-nav-color-highlight: #18C3B5;
 
-$fast-transition: 0.1s;
-$normal-transition: 0.5s;
-$slow-transition: 2.0s;
+$transition-fast: 0.1s;
+$transition-normal: 0.5s;
+$transition-slow: 2.0s;
 
 /* -------- AUI Overrides -------- */
 
@@ -162,7 +162,7 @@ input {
 	background: #E2E2E2;
 	border: 0;
 	color: #676767;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: $font-stack;
 	font-size: 1.5em;
 	font-weight: 300;
 	@include text-shadow(none);
@@ -281,7 +281,7 @@ body.portal-popup {
 
 	input[type="submit"] {
 		@include box-shadow(none);
-		background: $desktop-nav-highlight-color;
+		background: $desktop-nav-color-highlight;
 		font-size: 1.3em;
 		margin-bottom: 5px;
 		padding: 6px 23px;
@@ -290,7 +290,7 @@ body.portal-popup {
 	textarea {
 		color: $primary-text-color;
 		font-weight: $normal;
-		font-size: .9em;
+		font-size: 0.9em;
 	}
 }
 
@@ -335,7 +335,7 @@ body {
 }
 
 #wrapper {
-	font: 100 1.6em 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
+	font: 100 1.6em $font-stack;
 }
 
 /* -------- Form Style Overrides -------- */
@@ -498,7 +498,7 @@ h1.portlet-title {
 
 	p {
 		color: #656565;
-		font-family: 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
+		font-family: $font-stack;
 		font-weight: 300;
 	}
 
@@ -787,7 +787,7 @@ h1.portlet-title {
 			padding: 6px 13px;
 
 			&:hover, &:focus {
-				background: $primary-button-hover-color;
+				background: $primary-button-color-hover;
 			}
 		}
 
@@ -818,7 +818,7 @@ h1.portlet-title {
 		padding: 4px 5px;
 
 		&:hover, &:focus {
-			background: $secondary-button-hover-color;
+			background: $secondary-button-color-hover;
 		}
 	}
 
@@ -829,7 +829,7 @@ h1.portlet-title {
 		padding: 6px 20px;
 
 		&:hover, &:focus {
-			background: $primary-button-hover-color;
+			background: $primary-button-color-hover;
 		}
 	}
 }
@@ -958,7 +958,7 @@ input[type="button"], input[type="submit"] {
 	padding: 6px 18px;
 
 	&:hover, &:focus {
-		background: $primary-button-hover-color;
+		background: $primary-button-color-hover;
 		color: #FFF;
 	}
 }
@@ -972,11 +972,11 @@ input[value="Checkout"] {
 	}
 }
 
-input[value="Permissions"], input[value="New Message"] {
+input[value="New Message"], input[value="Permissions"] {
 	background: $secondary-button-color;
 
 	&:hover, &:focus {
-		background: $secondary-button-hover-color;
+		background: $secondary-button-color-hover;
 		color: #FFF;
 	}
 }
@@ -1031,7 +1031,7 @@ input[value="Cancel"], input[value="Delete"], input[value="Reset"] {
 	}
 }
 
-/* Asset Publisher List Titles - display asset publisher titles as list 
+/* Asset Publisher List Titles - display asset publisher titles as list
 ** wrench > configuration > setup > display settings
 ** display template: full content, number of items to display: 4
 ** uncheck all show and enable settings
@@ -1955,10 +1955,10 @@ body.portal-popup {
 	@include translate(0, -200px);
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;
-	-webkit-transition: all $normal-transition ease-in-out;
-	-moz-transition: all $normal-transition ease-in-out;
-	-o-transition: all $normal-transition ease-in-out;
-	transition: all $normal-transition ease-in-out;
+	-webkit-transition: all $transition-normal ease-in-out;
+	-moz-transition: all $transition-normal ease-in-out;
+	-o-transition: all $transition-normal ease-in-out;
+	transition: all $transition-normal ease-in-out;
 
 	a {
 		@include text-shadow(none);
@@ -1990,10 +1990,10 @@ body.portal-popup {
 .add-content-menu {
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;
-	-webkit-transition: all $normal-transition ease-in-out;
-	-moz-transition: all $normal-transition ease-in-out;
-	-o-transition: all $normal-transition ease-in-out;
-	transition: all $normal-transition ease-in-out;
+	-webkit-transition: all $transition-normal ease-in-out;
+	-moz-transition: all $transition-normal ease-in-out;
+	-o-transition: all $transition-normal ease-in-out;
+	transition: all $transition-normal ease-in-out;
 }
 }
 
@@ -2044,7 +2044,7 @@ body.portal-popup {
 			@include border-radius(4px);
 
 			&:hover {
-				background: $tertiary-button-hover-color;
+				background: $tertiary-button-color-hover;
 			}
 			img.icon {
 				display: none;
@@ -2212,8 +2212,8 @@ body.portal-popup {
 
 	/* -------- Configuration Popup -------- */
 
-	body.portal-popup .portlet-body .config-nav-toggle { 
-		display: none; 
+	body.portal-popup .portlet-body .config-nav-toggle {
+		display: none;
 	}
 
 	/* -------- Tablet Portrait through Landscape Extras -------- */
@@ -2537,22 +2537,22 @@ body.portal-popup {
 		@include translate(0, 0);
 	}
 
-	.normal-transition {
+	.transition-normal {
 		-webkit-backface-visibility: hidden;
 		-webkit-perspective: 1000;
-		-webkit-transition: all $normal-transition ease-in-out;
-		-moz-transition: all $normal-transition ease-in-out;
-		-o-transition: all $normal-transition ease-in-out;
-		transition: all $normal-transition ease-in-out;
+		-webkit-transition: all $transition-normal ease-in-out;
+		-moz-transition: all $transition-normal ease-in-out;
+		-o-transition: all $transition-normal ease-in-out;
+		transition: all $transition-normal ease-in-out;
 	}
 
 	.transition {
 		-webkit-backface-visibility: hidden;
 		-webkit-perspective: 1000;
-		-webkit-transition: all $fast-transition ease-in-out;
-		-moz-transition: all $fast-transition ease-in-out;
-		-o-transition: all $fast-transition ease-in-out;
-		transition: all $fast-transition ease-in-out;
+		-webkit-transition: all $transition-fast ease-in-out;
+		-moz-transition: all $transition-fast ease-in-out;
+		-o-transition: all $transition-fast ease-in-out;
+		transition: all $transition-fast ease-in-out;
 	}
 }
 
@@ -2669,7 +2669,7 @@ body.portal-popup {
 
 				&:hover {
 					a {
-						color: $desktop-nav-hover-color;
+						color: $desktop-nav-color-hover;
 					}
 
 					a.has-dropdown {
@@ -2688,7 +2688,7 @@ body.portal-popup {
 							padding: 10px 10px 17px;
 
 							&:hover, &:hover {
-								color: $desktop-nav-hover-color;
+								color: $desktop-nav-color-hover;
 								outline: 0;
 							}
 						}
@@ -2705,7 +2705,7 @@ body.portal-popup {
 					text-decoration: none;
 
 					&:hover, &:focus {
-						color: $desktop-nav-hover-color;
+						color: $desktop-nav-color-hover;
 						outline: 0;
 					}
 				}
@@ -2713,13 +2713,13 @@ body.portal-popup {
 
 			li.selected {
 				a span {
-					background: $desktop-nav-highlight-color;
+					background: $desktop-nav-color-highlight;
 					color: #FFF;
 					padding: 6px 20px;
 				}
 
 				ul li.selected a {
-					background: $desktop-nav-highlight-color;
+					background: $desktop-nav-color-highlight;
 					color: #FFF;
 					padding: 6px 20px;
 
@@ -2744,8 +2744,8 @@ body.portal-popup {
 		display: none;
 	}
 
-	body.portal-popup .portlet-body .config-nav-toggle { 
-		display: none; 
+	body.portal-popup .portlet-body .config-nav-toggle {
+		display: none;
 	}
 
 	/* -------- Desktop Extras ------- */
@@ -2760,10 +2760,9 @@ body.portal-popup {
 		ul li:hover .menu-wrapper {
 			-webkit-backface-visibility: hidden;
 			-webkit-perspective: 1000;
-			-webkit-transition: all $fast-transition ease-in-out;
-			-moz-transition: all $fast-transition ease-in-out;
-			-o-transition: all $fast-transition ease-in-out;
-			transition: all $fast-transition ease-in-out;
+			@include transition-property(all);
+			@include transition-duration($transition-fast);
+			@include transition-timing-function(ease-in-out);
 		}
 
 		li.selected {

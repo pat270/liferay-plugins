@@ -6,15 +6,15 @@
 	<ul>
 		#foreach ($nav_item in $nav_items)
 			#if ($velocityCount == 1)
-				#set ($firstClass = "first")
+				#set ($first_class = "first")
 			#else
-				#set ($firstClass = "")
+				#set ($first_class = "")
 			#end
 
 			#if (!$velocityHasNext)
-				#set ($lastClass = "last")
+				#set ($last_class = "last")
 			#else
-				#set ($lastClass = "")
+				#set ($last_class = "")
 			#end
 
 			#if ($nav_item.isSelected())
@@ -23,10 +23,11 @@
 				<li>
 			#end
 				#if ($nav_item.hasChildren())
-					<a class="has-dropdown $firstClass $lastClass" href="$nav_item.getURL()" $nav_item.getTarget()><span>$nav_item.icon() $nav_item.getName()</span></a>
-					<span><a href="#1" class="tablet-link"></a></span>
+					<a class="$first_class has-dropdown $last_class" href="$nav_item.getURL()" $nav_item.getTarget()><span>$nav_item.icon() $nav_item.getName()</span></a>
+
+					<span><a class="tablet-link" href="#1"></a></span>
 				#else
-					<a class="$firstClass $lastClass" href="$nav_item.getURL()" $nav_item.getTarget()><span>$nav_item.icon() $nav_item.getName()</span></a>
+					<a class="$first_class $last_class" href="$nav_item.getURL()" $nav_item.getTarget()><span>$nav_item.icon() $nav_item.getName()</span></a>
 				#end
 
 				#if ($nav_item.hasChildren())
@@ -51,5 +52,6 @@
 	<div id="searchBar">
 		$theme.journalContentSearch()
 	</div>
+
 	<div class="aui-helper-clearfix"></div>
 </nav>
