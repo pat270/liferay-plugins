@@ -43,6 +43,7 @@ import java.util.Set;
  */
 public abstract class BaseNodeExporter implements NodeExporter {
 
+	@Override
 	public void exportNode(Node node, Element element, String namespace) {
 		Element nodeElement = createNodeElement(element, namespace);
 
@@ -96,7 +97,9 @@ public abstract class BaseNodeExporter implements NodeExporter {
 
 		Element childElement = element.addElement(elementName);
 
-		childElement.addText(text);
+		if (Validator.isNotNull(text)) {
+			childElement.addText(text);
+		}
 	}
 
 	protected abstract Element createNodeElement(
@@ -275,6 +278,9 @@ public abstract class BaseNodeExporter implements NodeExporter {
 				addTextElement(
 					recipientsElement, "address",
 					addressRecipient.getAddress());
+			}
+			else if (recipientType.equals(RecipientType.ASSIGNEES)) {
+				addTextElement(recipientsElement, "assignees", null);
 			}
 			else if (recipientType.equals(RecipientType.ROLE)) {
 				if (rolesElement == null) {

@@ -36,6 +36,7 @@ import java.util.List;
 	rollbackFor = {Exception.class})
 public class DefaultGraphWalker extends BaseKaleoBean implements GraphWalker {
 
+	@Override
 	public void follow(
 			KaleoNode sourceKaleoNode, KaleoNode targetKaleoNode,
 			List<PathElement> remainingPathElements,
@@ -58,10 +59,13 @@ public class DefaultGraphWalker extends BaseKaleoBean implements GraphWalker {
 			NodeExecutor nodeExecutor = NodeExecutorFactory.getNodeExecutor(
 				targetKaleoNode.getType());
 
-			nodeExecutor.enter(targetKaleoNode, executionContext);
+			boolean performExecute = nodeExecutor.enter(
+				targetKaleoNode, executionContext);
 
-			nodeExecutor.execute(
-				targetKaleoNode, executionContext, remainingPathElements);
+			if (performExecute) {
+				nodeExecutor.execute(
+					targetKaleoNode, executionContext, remainingPathElements);
+			}
 		}
 
 		ExecutionUtil.checkKaleoInstanceComplete(executionContext);

@@ -14,6 +14,7 @@
 
 package com.liferay.portal.workflow.kaleo.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -25,8 +26,8 @@ import java.util.Map;
  * This class is a wrapper for {@link KaleoTaskInstanceToken}.
  * </p>
  *
- * @author    Brian Wing Shun Chan
- * @see       KaleoTaskInstanceToken
+ * @author Brian Wing Shun Chan
+ * @see KaleoTaskInstanceToken
  * @generated
  */
 public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
@@ -36,14 +37,17 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 		_kaleoTaskInstanceToken = kaleoTaskInstanceToken;
 	}
 
+	@Override
 	public Class<?> getModelClass() {
 		return KaleoTaskInstanceToken.class;
 	}
 
+	@Override
 	public String getModelClassName() {
 		return KaleoTaskInstanceToken.class.getName();
 	}
 
+	@Override
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
@@ -70,6 +74,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 		return attributes;
 	}
 
+	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
 		Long kaleoTaskInstanceTokenId = (Long)attributes.get(
 				"kaleoTaskInstanceTokenId");
@@ -192,6 +197,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the primary key of this kaleo task instance token
 	*/
+	@Override
 	public long getPrimaryKey() {
 		return _kaleoTaskInstanceToken.getPrimaryKey();
 	}
@@ -201,6 +207,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param primaryKey the primary key of this kaleo task instance token
 	*/
+	@Override
 	public void setPrimaryKey(long primaryKey) {
 		_kaleoTaskInstanceToken.setPrimaryKey(primaryKey);
 	}
@@ -210,6 +217,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the kaleo task instance token ID of this kaleo task instance token
 	*/
+	@Override
 	public long getKaleoTaskInstanceTokenId() {
 		return _kaleoTaskInstanceToken.getKaleoTaskInstanceTokenId();
 	}
@@ -219,6 +227,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param kaleoTaskInstanceTokenId the kaleo task instance token ID of this kaleo task instance token
 	*/
+	@Override
 	public void setKaleoTaskInstanceTokenId(long kaleoTaskInstanceTokenId) {
 		_kaleoTaskInstanceToken.setKaleoTaskInstanceTokenId(kaleoTaskInstanceTokenId);
 	}
@@ -228,6 +237,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the group ID of this kaleo task instance token
 	*/
+	@Override
 	public long getGroupId() {
 		return _kaleoTaskInstanceToken.getGroupId();
 	}
@@ -237,6 +247,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param groupId the group ID of this kaleo task instance token
 	*/
+	@Override
 	public void setGroupId(long groupId) {
 		_kaleoTaskInstanceToken.setGroupId(groupId);
 	}
@@ -246,6 +257,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the company ID of this kaleo task instance token
 	*/
+	@Override
 	public long getCompanyId() {
 		return _kaleoTaskInstanceToken.getCompanyId();
 	}
@@ -255,6 +267,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param companyId the company ID of this kaleo task instance token
 	*/
+	@Override
 	public void setCompanyId(long companyId) {
 		_kaleoTaskInstanceToken.setCompanyId(companyId);
 	}
@@ -264,6 +277,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the user ID of this kaleo task instance token
 	*/
+	@Override
 	public long getUserId() {
 		return _kaleoTaskInstanceToken.getUserId();
 	}
@@ -273,6 +287,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param userId the user ID of this kaleo task instance token
 	*/
+	@Override
 	public void setUserId(long userId) {
 		_kaleoTaskInstanceToken.setUserId(userId);
 	}
@@ -283,6 +298,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	* @return the user uuid of this kaleo task instance token
 	* @throws SystemException if a system exception occurred
 	*/
+	@Override
 	public java.lang.String getUserUuid()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _kaleoTaskInstanceToken.getUserUuid();
@@ -293,6 +309,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param userUuid the user uuid of this kaleo task instance token
 	*/
+	@Override
 	public void setUserUuid(java.lang.String userUuid) {
 		_kaleoTaskInstanceToken.setUserUuid(userUuid);
 	}
@@ -302,6 +319,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the user name of this kaleo task instance token
 	*/
+	@Override
 	public java.lang.String getUserName() {
 		return _kaleoTaskInstanceToken.getUserName();
 	}
@@ -311,6 +329,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param userName the user name of this kaleo task instance token
 	*/
+	@Override
 	public void setUserName(java.lang.String userName) {
 		_kaleoTaskInstanceToken.setUserName(userName);
 	}
@@ -320,6 +339,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the create date of this kaleo task instance token
 	*/
+	@Override
 	public java.util.Date getCreateDate() {
 		return _kaleoTaskInstanceToken.getCreateDate();
 	}
@@ -329,6 +349,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param createDate the create date of this kaleo task instance token
 	*/
+	@Override
 	public void setCreateDate(java.util.Date createDate) {
 		_kaleoTaskInstanceToken.setCreateDate(createDate);
 	}
@@ -338,6 +359,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the modified date of this kaleo task instance token
 	*/
+	@Override
 	public java.util.Date getModifiedDate() {
 		return _kaleoTaskInstanceToken.getModifiedDate();
 	}
@@ -347,6 +369,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param modifiedDate the modified date of this kaleo task instance token
 	*/
+	@Override
 	public void setModifiedDate(java.util.Date modifiedDate) {
 		_kaleoTaskInstanceToken.setModifiedDate(modifiedDate);
 	}
@@ -356,6 +379,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the kaleo definition ID of this kaleo task instance token
 	*/
+	@Override
 	public long getKaleoDefinitionId() {
 		return _kaleoTaskInstanceToken.getKaleoDefinitionId();
 	}
@@ -365,6 +389,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param kaleoDefinitionId the kaleo definition ID of this kaleo task instance token
 	*/
+	@Override
 	public void setKaleoDefinitionId(long kaleoDefinitionId) {
 		_kaleoTaskInstanceToken.setKaleoDefinitionId(kaleoDefinitionId);
 	}
@@ -374,6 +399,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the kaleo instance ID of this kaleo task instance token
 	*/
+	@Override
 	public long getKaleoInstanceId() {
 		return _kaleoTaskInstanceToken.getKaleoInstanceId();
 	}
@@ -383,6 +409,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param kaleoInstanceId the kaleo instance ID of this kaleo task instance token
 	*/
+	@Override
 	public void setKaleoInstanceId(long kaleoInstanceId) {
 		_kaleoTaskInstanceToken.setKaleoInstanceId(kaleoInstanceId);
 	}
@@ -392,6 +419,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the kaleo instance token ID of this kaleo task instance token
 	*/
+	@Override
 	public long getKaleoInstanceTokenId() {
 		return _kaleoTaskInstanceToken.getKaleoInstanceTokenId();
 	}
@@ -401,6 +429,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param kaleoInstanceTokenId the kaleo instance token ID of this kaleo task instance token
 	*/
+	@Override
 	public void setKaleoInstanceTokenId(long kaleoInstanceTokenId) {
 		_kaleoTaskInstanceToken.setKaleoInstanceTokenId(kaleoInstanceTokenId);
 	}
@@ -410,6 +439,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the kaleo task ID of this kaleo task instance token
 	*/
+	@Override
 	public long getKaleoTaskId() {
 		return _kaleoTaskInstanceToken.getKaleoTaskId();
 	}
@@ -419,6 +449,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param kaleoTaskId the kaleo task ID of this kaleo task instance token
 	*/
+	@Override
 	public void setKaleoTaskId(long kaleoTaskId) {
 		_kaleoTaskInstanceToken.setKaleoTaskId(kaleoTaskId);
 	}
@@ -428,6 +459,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the kaleo task name of this kaleo task instance token
 	*/
+	@Override
 	public java.lang.String getKaleoTaskName() {
 		return _kaleoTaskInstanceToken.getKaleoTaskName();
 	}
@@ -437,6 +469,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param kaleoTaskName the kaleo task name of this kaleo task instance token
 	*/
+	@Override
 	public void setKaleoTaskName(java.lang.String kaleoTaskName) {
 		_kaleoTaskInstanceToken.setKaleoTaskName(kaleoTaskName);
 	}
@@ -446,6 +479,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the class name of this kaleo task instance token
 	*/
+	@Override
 	public java.lang.String getClassName() {
 		return _kaleoTaskInstanceToken.getClassName();
 	}
@@ -455,6 +489,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param className the class name of this kaleo task instance token
 	*/
+	@Override
 	public void setClassName(java.lang.String className) {
 		_kaleoTaskInstanceToken.setClassName(className);
 	}
@@ -464,6 +499,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the class p k of this kaleo task instance token
 	*/
+	@Override
 	public long getClassPK() {
 		return _kaleoTaskInstanceToken.getClassPK();
 	}
@@ -473,6 +509,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param classPK the class p k of this kaleo task instance token
 	*/
+	@Override
 	public void setClassPK(long classPK) {
 		_kaleoTaskInstanceToken.setClassPK(classPK);
 	}
@@ -482,6 +519,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the completion user ID of this kaleo task instance token
 	*/
+	@Override
 	public long getCompletionUserId() {
 		return _kaleoTaskInstanceToken.getCompletionUserId();
 	}
@@ -491,6 +529,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param completionUserId the completion user ID of this kaleo task instance token
 	*/
+	@Override
 	public void setCompletionUserId(long completionUserId) {
 		_kaleoTaskInstanceToken.setCompletionUserId(completionUserId);
 	}
@@ -501,6 +540,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	* @return the completion user uuid of this kaleo task instance token
 	* @throws SystemException if a system exception occurred
 	*/
+	@Override
 	public java.lang.String getCompletionUserUuid()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _kaleoTaskInstanceToken.getCompletionUserUuid();
@@ -511,6 +551,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param completionUserUuid the completion user uuid of this kaleo task instance token
 	*/
+	@Override
 	public void setCompletionUserUuid(java.lang.String completionUserUuid) {
 		_kaleoTaskInstanceToken.setCompletionUserUuid(completionUserUuid);
 	}
@@ -520,6 +561,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the completed of this kaleo task instance token
 	*/
+	@Override
 	public boolean getCompleted() {
 		return _kaleoTaskInstanceToken.getCompleted();
 	}
@@ -529,6 +571,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return <code>true</code> if this kaleo task instance token is completed; <code>false</code> otherwise
 	*/
+	@Override
 	public boolean isCompleted() {
 		return _kaleoTaskInstanceToken.isCompleted();
 	}
@@ -538,6 +581,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param completed the completed of this kaleo task instance token
 	*/
+	@Override
 	public void setCompleted(boolean completed) {
 		_kaleoTaskInstanceToken.setCompleted(completed);
 	}
@@ -547,6 +591,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the completion date of this kaleo task instance token
 	*/
+	@Override
 	public java.util.Date getCompletionDate() {
 		return _kaleoTaskInstanceToken.getCompletionDate();
 	}
@@ -556,6 +601,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param completionDate the completion date of this kaleo task instance token
 	*/
+	@Override
 	public void setCompletionDate(java.util.Date completionDate) {
 		_kaleoTaskInstanceToken.setCompletionDate(completionDate);
 	}
@@ -565,6 +611,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the due date of this kaleo task instance token
 	*/
+	@Override
 	public java.util.Date getDueDate() {
 		return _kaleoTaskInstanceToken.getDueDate();
 	}
@@ -574,6 +621,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param dueDate the due date of this kaleo task instance token
 	*/
+	@Override
 	public void setDueDate(java.util.Date dueDate) {
 		_kaleoTaskInstanceToken.setDueDate(dueDate);
 	}
@@ -583,6 +631,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @return the workflow context of this kaleo task instance token
 	*/
+	@Override
 	public java.lang.String getWorkflowContext() {
 		return _kaleoTaskInstanceToken.getWorkflowContext();
 	}
@@ -592,52 +641,64 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 	*
 	* @param workflowContext the workflow context of this kaleo task instance token
 	*/
+	@Override
 	public void setWorkflowContext(java.lang.String workflowContext) {
 		_kaleoTaskInstanceToken.setWorkflowContext(workflowContext);
 	}
 
+	@Override
 	public boolean isNew() {
 		return _kaleoTaskInstanceToken.isNew();
 	}
 
+	@Override
 	public void setNew(boolean n) {
 		_kaleoTaskInstanceToken.setNew(n);
 	}
 
+	@Override
 	public boolean isCachedModel() {
 		return _kaleoTaskInstanceToken.isCachedModel();
 	}
 
+	@Override
 	public void setCachedModel(boolean cachedModel) {
 		_kaleoTaskInstanceToken.setCachedModel(cachedModel);
 	}
 
+	@Override
 	public boolean isEscapedModel() {
 		return _kaleoTaskInstanceToken.isEscapedModel();
 	}
 
+	@Override
 	public java.io.Serializable getPrimaryKeyObj() {
 		return _kaleoTaskInstanceToken.getPrimaryKeyObj();
 	}
 
+	@Override
 	public void setPrimaryKeyObj(java.io.Serializable primaryKeyObj) {
 		_kaleoTaskInstanceToken.setPrimaryKeyObj(primaryKeyObj);
 	}
 
+	@Override
 	public com.liferay.portlet.expando.model.ExpandoBridge getExpandoBridge() {
 		return _kaleoTaskInstanceToken.getExpandoBridge();
 	}
 
+	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.model.BaseModel<?> baseModel) {
 		_kaleoTaskInstanceToken.setExpandoBridgeAttributes(baseModel);
 	}
 
+	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portlet.expando.model.ExpandoBridge expandoBridge) {
 		_kaleoTaskInstanceToken.setExpandoBridgeAttributes(expandoBridge);
 	}
 
+	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.service.ServiceContext serviceContext) {
 		_kaleoTaskInstanceToken.setExpandoBridgeAttributes(serviceContext);
@@ -648,6 +709,7 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 		return new KaleoTaskInstanceTokenWrapper((KaleoTaskInstanceToken)_kaleoTaskInstanceToken.clone());
 	}
 
+	@Override
 	public int compareTo(
 		com.liferay.portal.workflow.kaleo.model.KaleoTaskInstanceToken kaleoTaskInstanceToken) {
 		return _kaleoTaskInstanceToken.compareTo(kaleoTaskInstanceToken);
@@ -658,14 +720,17 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 		return _kaleoTaskInstanceToken.hashCode();
 	}
 
+	@Override
 	public com.liferay.portal.model.CacheModel<com.liferay.portal.workflow.kaleo.model.KaleoTaskInstanceToken> toCacheModel() {
 		return _kaleoTaskInstanceToken.toCacheModel();
 	}
 
+	@Override
 	public com.liferay.portal.workflow.kaleo.model.KaleoTaskInstanceToken toEscapedModel() {
 		return new KaleoTaskInstanceTokenWrapper(_kaleoTaskInstanceToken.toEscapedModel());
 	}
 
+	@Override
 	public com.liferay.portal.workflow.kaleo.model.KaleoTaskInstanceToken toUnescapedModel() {
 		return new KaleoTaskInstanceTokenWrapper(_kaleoTaskInstanceToken.toUnescapedModel());
 	}
@@ -675,30 +740,55 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 		return _kaleoTaskInstanceToken.toString();
 	}
 
+	@Override
 	public java.lang.String toXmlString() {
 		return _kaleoTaskInstanceToken.toXmlString();
 	}
 
+	@Override
 	public void persist()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		_kaleoTaskInstanceToken.persist();
 	}
 
+	@Override
 	public com.liferay.portal.workflow.kaleo.model.KaleoInstanceToken getKaleoInstanceToken()
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _kaleoTaskInstanceToken.getKaleoInstanceToken();
 	}
 
+	@Override
 	public com.liferay.portal.workflow.kaleo.model.KaleoTask getKaleoTask()
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _kaleoTaskInstanceToken.getKaleoTask();
 	}
 
+	@Override
 	public java.util.List<com.liferay.portal.workflow.kaleo.model.KaleoTaskAssignmentInstance> getKaleoTaskAssignmentInstances()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _kaleoTaskInstanceToken.getKaleoTaskAssignmentInstances();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof KaleoTaskInstanceTokenWrapper)) {
+			return false;
+		}
+
+		KaleoTaskInstanceTokenWrapper kaleoTaskInstanceTokenWrapper = (KaleoTaskInstanceTokenWrapper)obj;
+
+		if (Validator.equals(_kaleoTaskInstanceToken,
+					kaleoTaskInstanceTokenWrapper._kaleoTaskInstanceToken)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -708,10 +798,12 @@ public class KaleoTaskInstanceTokenWrapper implements KaleoTaskInstanceToken,
 		return _kaleoTaskInstanceToken;
 	}
 
+	@Override
 	public KaleoTaskInstanceToken getWrappedModel() {
 		return _kaleoTaskInstanceToken;
 	}
 
+	@Override
 	public void resetOriginalValues() {
 		_kaleoTaskInstanceToken.resetOriginalValues();
 	}

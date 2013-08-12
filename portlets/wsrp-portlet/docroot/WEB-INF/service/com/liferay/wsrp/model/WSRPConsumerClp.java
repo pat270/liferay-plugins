@@ -16,10 +16,12 @@ package com.liferay.wsrp.model;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
+import com.liferay.portal.util.PortalUtil;
 
 import com.liferay.wsrp.service.ClpSerializer;
 import com.liferay.wsrp.service.WSRPConsumerLocalServiceUtil;
@@ -40,26 +42,32 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 	public WSRPConsumerClp() {
 	}
 
+	@Override
 	public Class<?> getModelClass() {
 		return WSRPConsumer.class;
 	}
 
+	@Override
 	public String getModelClassName() {
 		return WSRPConsumer.class.getName();
 	}
 
+	@Override
 	public long getPrimaryKey() {
 		return _wsrpConsumerId;
 	}
 
+	@Override
 	public void setPrimaryKey(long primaryKey) {
 		setWsrpConsumerId(primaryKey);
 	}
 
+	@Override
 	public Serializable getPrimaryKeyObj() {
 		return _wsrpConsumerId;
 	}
 
+	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
 		setPrimaryKey(((Long)primaryKeyObj).longValue());
 	}
@@ -171,10 +179,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public String getUuid() {
 		return _uuid;
 	}
 
+	@Override
 	public void setUuid(String uuid) {
 		_uuid = uuid;
 
@@ -192,10 +202,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public long getWsrpConsumerId() {
 		return _wsrpConsumerId;
 	}
 
+	@Override
 	public void setWsrpConsumerId(long wsrpConsumerId) {
 		_wsrpConsumerId = wsrpConsumerId;
 
@@ -213,10 +225,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public long getCompanyId() {
 		return _companyId;
 	}
 
+	@Override
 	public void setCompanyId(long companyId) {
 		_companyId = companyId;
 
@@ -234,10 +248,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public Date getCreateDate() {
 		return _createDate;
 	}
 
+	@Override
 	public void setCreateDate(Date createDate) {
 		_createDate = createDate;
 
@@ -255,10 +271,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public Date getModifiedDate() {
 		return _modifiedDate;
 	}
 
+	@Override
 	public void setModifiedDate(Date modifiedDate) {
 		_modifiedDate = modifiedDate;
 
@@ -276,10 +294,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public String getName() {
 		return _name;
 	}
 
+	@Override
 	public void setName(String name) {
 		_name = name;
 
@@ -297,10 +317,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public String getUrl() {
 		return _url;
 	}
 
+	@Override
 	public void setUrl(String url) {
 		_url = url;
 
@@ -318,10 +340,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public String getWsdl() {
 		return _wsdl;
 	}
 
+	@Override
 	public void setWsdl(String wsdl) {
 		_wsdl = wsdl;
 
@@ -339,10 +363,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public String getRegistrationContextString() {
 		return _registrationContextString;
 	}
 
+	@Override
 	public void setRegistrationContextString(String registrationContextString) {
 		_registrationContextString = registrationContextString;
 
@@ -362,10 +388,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public String getRegistrationPropertiesString() {
 		return _registrationPropertiesString;
 	}
 
+	@Override
 	public void setRegistrationPropertiesString(
 		String registrationPropertiesString) {
 		_registrationPropertiesString = registrationPropertiesString;
@@ -386,10 +414,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public String getForwardCookies() {
 		return _forwardCookies;
 	}
 
+	@Override
 	public void setForwardCookies(String forwardCookies) {
 		_forwardCookies = forwardCookies;
 
@@ -408,10 +438,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public String getForwardHeaders() {
 		return _forwardHeaders;
 	}
 
+	@Override
 	public void setForwardHeaders(String forwardHeaders) {
 		_forwardHeaders = forwardHeaders;
 
@@ -430,10 +462,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public String getMarkupCharacterSets() {
 		return _markupCharacterSets;
 	}
 
+	@Override
 	public void setMarkupCharacterSets(String markupCharacterSets) {
 		_markupCharacterSets = markupCharacterSets;
 
@@ -452,6 +486,7 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public void setRegistrationContext(
 		oasis.names.tc.wsrp.v2.types.RegistrationContext registrationContext) {
 		try {
@@ -470,6 +505,7 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public com.liferay.portal.kernel.util.UnicodeProperties getRegistrationProperties() {
 		try {
 			String methodName = "getRegistrationProperties";
@@ -488,6 +524,7 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public void setRegistrationProperties(
 		com.liferay.portal.kernel.util.UnicodeProperties registrationProperties) {
 		try {
@@ -506,6 +543,7 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		}
 	}
 
+	@Override
 	public oasis.names.tc.wsrp.v2.types.RegistrationContext getRegistrationContext() {
 		try {
 			String methodName = "getRegistrationContext";
@@ -522,6 +560,12 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		catch (Exception e) {
 			throw new UnsupportedOperationException(e);
 		}
+	}
+
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				WSRPConsumer.class.getName()));
 	}
 
 	public BaseModel<?> getWSRPConsumerRemoteModel() {
@@ -573,6 +617,7 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		return returnValue;
 	}
 
+	@Override
 	public void persist() throws SystemException {
 		if (this.isNew()) {
 			WSRPConsumerLocalServiceUtil.addWSRPConsumer(this);
@@ -609,6 +654,7 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		return clone;
 	}
 
+	@Override
 	public int compareTo(WSRPConsumer wsrpConsumer) {
 		int value = 0;
 
@@ -623,18 +669,15 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof WSRPConsumerClp)) {
 			return false;
 		}
 
-		WSRPConsumerClp wsrpConsumer = null;
-
-		try {
-			wsrpConsumer = (WSRPConsumerClp)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		WSRPConsumerClp wsrpConsumer = (WSRPConsumerClp)obj;
 
 		long primaryKey = wsrpConsumer.getPrimaryKey();
 
@@ -686,6 +729,7 @@ public class WSRPConsumerClp extends BaseModelImpl<WSRPConsumer>
 		return sb.toString();
 	}
 
+	@Override
 	public String toXmlString() {
 		StringBundler sb = new StringBundler(43);
 

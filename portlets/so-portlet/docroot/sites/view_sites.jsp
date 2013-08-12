@@ -23,29 +23,28 @@
 String tabs1 = ParamUtil.getString(request, "tabs1");
 
 String keywords = ParamUtil.getString(request, "keywords");
-String searchKeywords = DAOParamUtil.getLike(request, "keywords");
 
 List<Group> groups = null;
 int groupsCount = 0;
 
 if (tabs1.equals("my-sites")) {
-	groups = SitesUtil.getVisibleSites(themeDisplay.getCompanyId(), themeDisplay.getUserId(), searchKeywords, true, 0, maxResultSize);
-	groupsCount = SitesUtil.getVisibleSitesCount(themeDisplay.getCompanyId(), themeDisplay.getUserId(), searchKeywords, true);
+	groups = SitesUtil.getVisibleSites(themeDisplay.getCompanyId(), themeDisplay.getUserId(), keywords, true, 0, maxResultSize);
+	groupsCount = SitesUtil.getVisibleSitesCount(themeDisplay.getCompanyId(), themeDisplay.getUserId(), keywords, true);
 
 	if (groupsCount == 0) {
 		tabs1 = "all-sites";
 
-		groups = SitesUtil.getVisibleSites(themeDisplay.getCompanyId(), themeDisplay.getUserId(), searchKeywords, false, 0, maxResultSize);
-		groupsCount = SitesUtil.getVisibleSitesCount(themeDisplay.getCompanyId(), themeDisplay.getUserId(), searchKeywords, false);
+		groups = SitesUtil.getVisibleSites(themeDisplay.getCompanyId(), themeDisplay.getUserId(), keywords, false, 0, maxResultSize);
+		groupsCount = SitesUtil.getVisibleSitesCount(themeDisplay.getCompanyId(), themeDisplay.getUserId(), keywords, false);
 	}
 }
 else if (tabs1.equals("my-favorites")) {
-	groups = SitesUtil.getFavoriteSitesGroups(themeDisplay.getUserId(), searchKeywords, 0, maxResultSize);
-	groupsCount = SitesUtil.getFavoriteSitesGroupsCount(themeDisplay.getUserId(), searchKeywords);
+	groups = SitesUtil.getFavoriteSitesGroups(themeDisplay.getUserId(), keywords, 0, maxResultSize);
+	groupsCount = SitesUtil.getFavoriteSitesGroupsCount(themeDisplay.getUserId(), keywords);
 }
 else {
-	groups = SitesUtil.getVisibleSites(themeDisplay.getCompanyId(), themeDisplay.getUserId(), searchKeywords, false, 0, maxResultSize);
-	groupsCount = SitesUtil.getVisibleSitesCount(themeDisplay.getCompanyId(), themeDisplay.getUserId(), searchKeywords, false);
+	groups = SitesUtil.getVisibleSites(themeDisplay.getCompanyId(), themeDisplay.getUserId(), keywords, false, 0, maxResultSize);
+	groupsCount = SitesUtil.getVisibleSitesCount(themeDisplay.getCompanyId(), themeDisplay.getUserId(), keywords, false);
 }
 %>
 
@@ -206,19 +205,19 @@ else {
 						<a href="<%= publicLayoutsURL %>"><%= HtmlUtil.escape(group.getDescriptiveName(locale)) %></a>
 					</c:if>
 
-					<c:if test="<%= (group.hasPrivateLayouts() && member) %>">
-						<liferay-portlet:actionURL portletName="<%= PortletKeys.SITE_REDIRECTOR %>" var="privateLayoutsURL" windowState="<%= LiferayWindowState.NORMAL.toString() %>">
-							<portlet:param name="struts_action" value="/my_sites/view" />
-							<portlet:param name="groupId" value="<%= String.valueOf(group.getGroupId()) %>" />
-							<portlet:param name="privateLayout" value="<%= Boolean.TRUE.toString() %>" />
-						</liferay-portlet:actionURL>
-
+					<c:if test="<%= group.hasPrivateLayouts() %>">
 						<c:choose>
-							<c:when test="<%= group.hasPublicLayouts() %>">
-								<a class="private-pages" href="<%= privateLayoutsURL %>"> (<liferay-ui:message key="private-pages" />)</a>
+							<c:when test="<%= member %>">
+								<liferay-portlet:actionURL portletName="<%= PortletKeys.SITE_REDIRECTOR %>" var="privateLayoutsURL" windowState="<%= LiferayWindowState.NORMAL.toString() %>">
+									<portlet:param name="struts_action" value="/my_sites/view" />
+									<portlet:param name="groupId" value="<%= String.valueOf(group.getGroupId()) %>" />
+									<portlet:param name="privateLayout" value="<%= Boolean.TRUE.toString() %>" />
+								</liferay-portlet:actionURL>
+
+								<a class="<%= group.hasPublicLayouts() ? "private-pages" : "" %>" href="<%= privateLayoutsURL %>"><%= group.hasPublicLayouts() ? "(" + LanguageUtil.get(locale, "private-pages") + ")" : HtmlUtil.escape(group.getDescriptiveName(locale)) %></a>
 							</c:when>
 							<c:otherwise>
-								<a href="<%= privateLayoutsURL %>"><%= HtmlUtil.escape(group.getDescriptiveName(locale)) %></a>
+								<%= group.hasPublicLayouts() ? "(" + LanguageUtil.get(locale, "private-pages") + ")" : HtmlUtil.escape(group.getDescriptiveName(locale)) %>
 							</c:otherwise>
 						</c:choose>
 					</c:if>

@@ -32,7 +32,10 @@ page import="com.liferay.calendar.CalendarResourceNameException" %><%@
 page import="com.liferay.calendar.DuplicateCalendarResourceException" %><%@
 page import="com.liferay.calendar.model.Calendar" %><%@
 page import="com.liferay.calendar.model.CalendarBooking" %><%@
+page import="com.liferay.calendar.model.CalendarNotificationTemplate" %><%@
+page import="com.liferay.calendar.model.CalendarNotificationTemplateConstants" %><%@
 page import="com.liferay.calendar.model.CalendarResource" %><%@
+page import="com.liferay.calendar.notification.NotificationField" %><%@
 page import="com.liferay.calendar.notification.NotificationTemplateType" %><%@
 page import="com.liferay.calendar.notification.NotificationType" %><%@
 page import="com.liferay.calendar.recurrence.Frequency" %><%@
@@ -40,10 +43,10 @@ page import="com.liferay.calendar.recurrence.Recurrence" %><%@
 page import="com.liferay.calendar.recurrence.Weekday" %><%@
 page import="com.liferay.calendar.search.CalendarResourceDisplayTerms" %><%@
 page import="com.liferay.calendar.search.CalendarResourceSearch" %><%@
-page import="com.liferay.calendar.search.CalendarResourceSearchTerms" %><%@
 page import="com.liferay.calendar.service.CalendarBookingLocalServiceUtil" %><%@
 page import="com.liferay.calendar.service.CalendarBookingServiceUtil" %><%@
 page import="com.liferay.calendar.service.CalendarLocalServiceUtil" %><%@
+page import="com.liferay.calendar.service.CalendarNotificationTemplateLocalServiceUtil" %><%@
 page import="com.liferay.calendar.service.CalendarResourceServiceUtil" %><%@
 page import="com.liferay.calendar.service.CalendarServiceUtil" %><%@
 page import="com.liferay.calendar.service.permission.CalendarPermission" %><%@
@@ -55,7 +58,6 @@ page import="com.liferay.calendar.util.CalendarUtil" %><%@
 page import="com.liferay.calendar.util.ColorUtil" %><%@
 page import="com.liferay.calendar.util.JCalendarUtil" %><%@
 page import="com.liferay.calendar.util.NotificationUtil" %><%@
-page import="com.liferay.calendar.util.PortletPropsKeys" %><%@
 page import="com.liferay.calendar.util.PortletPropsValues" %><%@
 page import="com.liferay.calendar.util.WebKeys" %><%@
 page import="com.liferay.calendar.util.comparator.CalendarNameComparator" %><%@
@@ -79,7 +81,6 @@ page import="com.liferay.portal.kernel.util.GetterUtil" %><%@
 page import="com.liferay.portal.kernel.util.HtmlUtil" %><%@
 page import="com.liferay.portal.kernel.util.OrderByComparator" %><%@
 page import="com.liferay.portal.kernel.util.ParamUtil" %><%@
-page import="com.liferay.portal.kernel.util.PrefsParamUtil" %><%@
 page import="com.liferay.portal.kernel.util.StringBundler" %><%@
 page import="com.liferay.portal.kernel.util.StringPool" %><%@
 page import="com.liferay.portal.kernel.util.StringUtil" %><%@
@@ -94,7 +95,6 @@ page import="com.liferay.portal.service.UserLocalServiceUtil" %><%@
 page import="com.liferay.portal.util.PortalUtil" %><%@
 page import="com.liferay.portal.util.SessionClicks" %><%@
 page import="com.liferay.portal.util.comparator.UserScreenNameComparator" %><%@
-page import="com.liferay.portlet.PortletPreferencesFactoryUtil" %><%@
 page import="com.liferay.portlet.asset.model.AssetEntry" %><%@
 page import="com.liferay.portlet.asset.service.AssetEntryLocalServiceUtil" %><%@
 page import="com.liferay.util.RSSUtil" %>
@@ -107,8 +107,7 @@ page import="java.util.Iterator" %><%@
 page import="java.util.List" %><%@
 page import="java.util.TimeZone" %>
 
-<%@ page import="javax.portlet.PortletPreferences" %><%@
-page import="javax.portlet.PortletURL" %>
+<%@ page import="javax.portlet.PortletURL" %>
 
 <portlet:defineObjects />
 
@@ -116,14 +115,6 @@ page import="javax.portlet.PortletURL" %>
 
 <%
 String currentURL = PortalUtil.getCurrentURL(request);
-
-PortletPreferences preferences = renderRequest.getPreferences();
-
-String portletResource = ParamUtil.getString(request, "portletResource");
-
-if (Validator.isNotNull(portletResource)) {
-	preferences = PortletPreferencesFactoryUtil.getPortletSetup(request, portletResource);
-}
 
 CalendarResource groupCalendarResource = CalendarResourceUtil.getGroupCalendarResource(liferayPortletRequest, scopeGroupId);
 
@@ -142,22 +133,22 @@ if (themeDisplay.isSignedIn()) {
 	}
 }
 
-int defaultDuration = GetterUtil.getInteger(preferences.getValue("defaultDuration", null), 60);
-String defaultView = preferences.getValue("defaultView", "week");
-boolean isoTimeFormat = GetterUtil.getBoolean(preferences.getValue("isoTimeFormat", null));
-String timeZoneId = preferences.getValue("timeZoneId", user.getTimeZoneId());
-boolean usePortalTimeZone = GetterUtil.getBoolean(preferences.getValue("usePortalTimeZone", Boolean.TRUE.toString()));
-int weekStartsOn = GetterUtil.getInteger(preferences.getValue("weekStartsOn", null), 0);
+int defaultDuration = GetterUtil.getInteger(portletPreferences.getValue("defaultDuration", null), 60);
+String defaultView = portletPreferences.getValue("defaultView", "week");
+boolean isoTimeFormat = GetterUtil.getBoolean(portletPreferences.getValue("isoTimeFormat", null));
+String timeZoneId = portletPreferences.getValue("timeZoneId", user.getTimeZoneId());
+boolean usePortalTimeZone = GetterUtil.getBoolean(portletPreferences.getValue("usePortalTimeZone", Boolean.TRUE.toString()));
+int weekStartsOn = GetterUtil.getInteger(portletPreferences.getValue("weekStartsOn", null), 0);
 
 if (usePortalTimeZone) {
 	timeZoneId = user.getTimeZoneId();
 }
 
-boolean enableRSS = !PortalUtil.isRSSFeedsEnabled() ? false : GetterUtil.getBoolean(preferences.getValue("enableRss", null), true);
-int rssDelta = GetterUtil.getInteger(preferences.getValue("rssDelta", StringPool.BLANK), SearchContainer.DEFAULT_DELTA);
-String rssDisplayStyle = preferences.getValue("rssDisplayStyle", RSSUtil.DISPLAY_STYLE_DEFAULT);
-String rssFeedType = preferences.getValue("rssFeedType", RSSUtil.FEED_TYPE_DEFAULT);
-long rssTimeInterval = GetterUtil.getLong(preferences.getValue("rssTimeInterval", StringPool.BLANK), Time.WEEK);
+boolean enableRSS = !PortalUtil.isRSSFeedsEnabled() ? false : GetterUtil.getBoolean(portletPreferences.getValue("enableRss", null), true);
+int rssDelta = GetterUtil.getInteger(portletPreferences.getValue("rssDelta", StringPool.BLANK), SearchContainer.DEFAULT_DELTA);
+String rssDisplayStyle = portletPreferences.getValue("rssDisplayStyle", RSSUtil.DISPLAY_STYLE_DEFAULT);
+String rssFeedType = portletPreferences.getValue("rssFeedType", RSSUtil.FEED_TYPE_DEFAULT);
+long rssTimeInterval = GetterUtil.getLong(portletPreferences.getValue("rssTimeInterval", StringPool.BLANK), Time.WEEK);
 
 TimeZone userTimeZone = TimeZone.getTimeZone(timeZoneId);
 TimeZone utcTimeZone = TimeZone.getTimeZone(StringPool.UTC);

@@ -14,14 +14,18 @@
 
 package com.liferay.portal.workflow.kaleo.runtime.notification;
 
-import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.model.Role;
 import com.liferay.portal.model.RoleConstants;
 import com.liferay.portal.model.User;
+import com.liferay.portal.model.UserGroupGroupRole;
 import com.liferay.portal.model.UserGroupRole;
 import com.liferay.portal.service.RoleLocalServiceUtil;
+import com.liferay.portal.service.UserGroupGroupRoleLocalServiceUtil;
 import com.liferay.portal.service.UserGroupRoleLocalServiceUtil;
 import com.liferay.portal.service.UserLocalServiceUtil;
+import com.liferay.portal.workflow.kaleo.definition.RecipientType;
 import com.liferay.portal.workflow.kaleo.model.KaleoInstance;
 import com.liferay.portal.workflow.kaleo.model.KaleoInstanceToken;
 import com.liferay.portal.workflow.kaleo.model.KaleoNotificationRecipient;
@@ -29,6 +33,7 @@ import com.liferay.portal.workflow.kaleo.model.KaleoTaskAssignmentInstance;
 import com.liferay.portal.workflow.kaleo.model.KaleoTaskInstanceToken;
 import com.liferay.portal.workflow.kaleo.runtime.ExecutionContext;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,6 +43,7 @@ import java.util.Set;
  */
 public abstract class BaseNotificationSender implements NotificationSender {
 
+	@Override
 	public void sendNotification(
 			List<KaleoNotificationRecipient> kaleoNotificationRecipients,
 			String defaultSubject, String notificationMessage,
@@ -107,35 +113,14 @@ public abstract class BaseNotificationSender implements NotificationSender {
 			int roleType, ExecutionContext executionContext)
 		throws Exception {
 
-		if (roleType == RoleConstants.TYPE_REGULAR) {
-			List<User> users = UserLocalServiceUtil.getRoleUsers(roleId);
+		List<User> users = getRoleUsers(roleId, roleType, executionContext);
 
-			for (User user : users) {
-				if (user.isActive()) {
-					NotificationRecipient notificationRecipient =
-						new NotificationRecipient(user);
+		for (User user : users) {
+			if (user.isActive()) {
+				NotificationRecipient notificationRecipient =
+					new NotificationRecipient(user);
 
-					notificationRecipients.add(notificationRecipient);
-				}
-			}
-		}
-		else {
-			KaleoInstanceToken kaleoInstanceToken =
-				executionContext.getKaleoInstanceToken();
-
-			List<UserGroupRole> userGroupRoles =
-				UserGroupRoleLocalServiceUtil.getUserGroupRolesByGroupAndRole(
-					kaleoInstanceToken.getGroupId(), roleId);
-
-			for (UserGroupRole userGroupRole : userGroupRoles) {
-				User user = userGroupRole.getUser();
-
-				if (user.isActive()) {
-					NotificationRecipient notificationRecipient =
-						new NotificationRecipient(user);
-
-					notificationRecipients.add(notificationRecipient);
-				}
+				notificationRecipients.add(notificationRecipient);
 			}
 		}
 	}
@@ -187,34 +172,82 @@ public abstract class BaseNotificationSender implements NotificationSender {
 		for (KaleoNotificationRecipient kaleoNotificationRecipient :
 				kaleoNotificationRecipients) {
 
-			if (Validator.isNotNull(kaleoNotificationRecipient.getAddress())) {
+			String recipientClassName =
+				kaleoNotificationRecipient.getRecipientClassName();
+
+			if (recipientClassName.equals(RecipientType.ADDRESS.name())) {
+				String address = kaleoNotificationRecipient.getAddress();
+
 				NotificationRecipient notificationRecipient =
-					new NotificationRecipient(
-						kaleoNotificationRecipient.getAddress());
+					new NotificationRecipient(address);
 
 				notificationRecipients.add(notificationRecipient);
 			}
-			else {
-				String recipientClassName =
-					kaleoNotificationRecipient.getRecipientClassName();
+			else if (recipientClassName.equals(
+						RecipientType.ASSIGNEES.name())) {
 
-				if (recipientClassName.equals(User.class.getName())) {
-					addUserNotificationRecipient(
-						notificationRecipients,
-						kaleoNotificationRecipient.getRecipientClassPK(),
-						executionContext);
-				}
-				else {
-					addRoleRecipientAddresses(
-						notificationRecipients,
-						kaleoNotificationRecipient.getRecipientClassPK(),
-						kaleoNotificationRecipient.getRecipientRoleType(),
-						executionContext);
+				addAssignedRecipients(notificationRecipients, executionContext);
+			}
+			else if (recipientClassName.equals(Role.class.getName())) {
+				addRoleRecipientAddresses(
+					notificationRecipients,
+					kaleoNotificationRecipient.getRecipientClassPK(),
+					kaleoNotificationRecipient.getRecipientRoleType(),
+					executionContext);
+			}
+			else if (recipientClassName.equals(User.class.getName())) {
+				addUserNotificationRecipient(
+					notificationRecipients,
+					kaleoNotificationRecipient.getRecipientClassPK(),
+					executionContext);
+			}
+			else {
+				if (_log.isWarnEnabled()) {
+					_log.warn(
+						"Unsupported recipient " + kaleoNotificationRecipient);
 				}
 			}
 		}
 
 		return notificationRecipients;
 	}
+
+	protected List<User> getRoleUsers(
+			long roleId, int roleType, ExecutionContext executionContext)
+		throws Exception {
+
+		if (roleType == RoleConstants.TYPE_REGULAR) {
+			return UserLocalServiceUtil.getRoleUsers(roleId);
+		}
+
+		List<User> users = new ArrayList<User>();
+
+		KaleoInstanceToken kaleoInstanceToken =
+			executionContext.getKaleoInstanceToken();
+
+		List<UserGroupRole> userGroupRoles =
+			UserGroupRoleLocalServiceUtil.getUserGroupRolesByGroupAndRole(
+				kaleoInstanceToken.getGroupId(), roleId);
+
+		for (UserGroupRole userGroupRole : userGroupRoles) {
+			users.add(userGroupRole.getUser());
+		}
+
+		List<UserGroupGroupRole> userGroupGroupRoles =
+			UserGroupGroupRoleLocalServiceUtil.
+				getUserGroupGroupRolesByGroupAndRole(
+					kaleoInstanceToken.getGroupId(), roleId);
+
+		for (UserGroupGroupRole userGroupGroupRole : userGroupGroupRoles) {
+			users.addAll(
+				UserLocalServiceUtil.getUserGroupUsers(
+					userGroupGroupRole.getUserGroupId()));
+		}
+
+		return users;
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(
+		BaseNotificationSender.class);
 
 }

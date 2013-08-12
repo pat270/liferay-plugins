@@ -19,11 +19,12 @@ import com.liferay.portal.kernel.util.ReferenceRegistry;
 import com.liferay.portal.service.InvokableService;
 
 /**
- * The utility for the calendar booking remote service. This utility wraps {@link com.liferay.calendar.service.impl.CalendarBookingServiceImpl} and is the primary access point for service operations in application layer code running on a remote server.
- *
- * <p>
- * This is a remote service. Methods of this service are expected to have security checks based on the propagated JAAS credentials because this service can be accessed remotely.
- * </p>
+ * Provides the remote service utility for CalendarBooking. This utility wraps
+ * {@link com.liferay.calendar.service.impl.CalendarBookingServiceImpl} and is the
+ * primary access point for service operations in application layer code running
+ * on a remote server. Methods of this service are expected to have security
+ * checks based on the propagated JAAS credentials because this service can be
+ * accessed remotely.
  *
  * @author Eduardo Lundgren
  * @see CalendarBookingService
@@ -167,6 +168,18 @@ public class CalendarBookingServiceUtil {
 			com.liferay.portal.kernel.exception.SystemException {
 		getService()
 			.invokeTransition(calendarBookingId, transitionName, serviceContext);
+	}
+
+	public static void moveCalendarBookingToTrash(long calendarBookingId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().moveCalendarBookingToTrash(calendarBookingId);
+	}
+
+	public static void restoreCalendarBookingFromTrash(long calendarBookingId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().restoreCalendarBookingFromTrash(calendarBookingId);
 	}
 
 	public static java.util.List<com.liferay.calendar.model.CalendarBooking> search(

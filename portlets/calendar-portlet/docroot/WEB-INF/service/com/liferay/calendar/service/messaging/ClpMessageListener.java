@@ -18,6 +18,8 @@ import com.liferay.calendar.service.CalendarBookingLocalServiceUtil;
 import com.liferay.calendar.service.CalendarBookingServiceUtil;
 import com.liferay.calendar.service.CalendarImporterLocalServiceUtil;
 import com.liferay.calendar.service.CalendarLocalServiceUtil;
+import com.liferay.calendar.service.CalendarNotificationTemplateLocalServiceUtil;
+import com.liferay.calendar.service.CalendarNotificationTemplateServiceUtil;
 import com.liferay.calendar.service.CalendarResourceLocalServiceUtil;
 import com.liferay.calendar.service.CalendarResourceServiceUtil;
 import com.liferay.calendar.service.CalendarServiceUtil;
@@ -27,7 +29,7 @@ import com.liferay.portal.kernel.messaging.BaseMessageListener;
 import com.liferay.portal.kernel.messaging.Message;
 
 /**
- * @author Brian Wing Shun Chan
+ * @author Eduardo Lundgren
  */
 public class ClpMessageListener extends BaseMessageListener {
 	public static String getServletContextName() {
@@ -49,6 +51,9 @@ public class ClpMessageListener extends BaseMessageListener {
 			CalendarBookingServiceUtil.clearService();
 			CalendarImporterLocalServiceUtil.clearService();
 
+			CalendarNotificationTemplateLocalServiceUtil.clearService();
+
+			CalendarNotificationTemplateServiceUtil.clearService();
 			CalendarResourceLocalServiceUtil.clearService();
 
 			CalendarResourceServiceUtil.clearService();

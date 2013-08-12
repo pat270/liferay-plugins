@@ -15,6 +15,7 @@
 package com.liferay.ddlform.lar;
 
 import com.liferay.portal.kernel.lar.BasePortletDataHandler;
+import com.liferay.portal.kernel.lar.DataLevel;
 import com.liferay.portal.kernel.lar.PortletDataContext;
 import com.liferay.portal.kernel.lar.StagedModelDataHandlerUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
@@ -36,7 +37,7 @@ import javax.portlet.PortletPreferences;
 public class DDLFormPortletDataHandler extends BasePortletDataHandler {
 
 	public DDLFormPortletDataHandler() {
-		setAlwaysExportable(true);
+		setDataLevel(DataLevel.PORTLET_INSTANCE);
 	}
 
 	@Override
@@ -64,8 +65,7 @@ public class DDLFormPortletDataHandler extends BasePortletDataHandler {
 		throws Exception {
 
 		portletDataContext.addPermissions(
-			"com.liferay.portlet.dynamicdatalist",
-			portletDataContext.getScopeGroupId());
+			RESOURCE_NAME, portletDataContext.getScopeGroupId());
 
 		long recordSetId = GetterUtil.getLong(
 			portletPreferences.getValue("recordSetId", null));
@@ -92,8 +92,7 @@ public class DDLFormPortletDataHandler extends BasePortletDataHandler {
 		throws Exception {
 
 		portletDataContext.importPermissions(
-			"com.liferay.portlet.dynamicdatalist",
-			portletDataContext.getSourceGroupId(),
+			RESOURCE_NAME, portletDataContext.getSourceGroupId(),
 			portletDataContext.getScopeGroupId());
 
 		Element recordSetsElement =
@@ -133,5 +132,8 @@ public class DDLFormPortletDataHandler extends BasePortletDataHandler {
 
 		return portletPreferences;
 	}
+
+	protected static final String RESOURCE_NAME =
+		"com.liferay.portlet.dynamicdatalist";
 
 }

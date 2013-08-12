@@ -93,8 +93,9 @@ public class CalendarResourceUtil {
 		Map<Locale, String> descriptionMap = new HashMap<Locale, String>();
 
 		return CalendarResourceLocalServiceUtil.addCalendarResource(
-			serviceContext.getUserId(), 0, Group.class.getName(), groupId, null,
-			null, nameMap, descriptionMap, true, serviceContext);
+			group.getCreatorUserId(), groupId,
+			PortalUtil.getClassNameId(Group.class), groupId, null, null,
+			nameMap, descriptionMap, true, serviceContext);
 	}
 
 	public static CalendarResource getGroupCalendarResource(
@@ -144,6 +145,9 @@ public class CalendarResourceUtil {
 
 		User user = UserLocalServiceUtil.getUser(userId);
 
+		Group userGroup = GroupLocalServiceUtil.getUserGroup(
+			serviceContext.getCompanyId(), userId);
+
 		Map<Locale, String> nameMap = new HashMap<Locale, String>();
 
 		nameMap.put(LocaleUtil.getDefault(), user.getFullName());
@@ -151,8 +155,9 @@ public class CalendarResourceUtil {
 		Map<Locale, String> descriptionMap = new HashMap<Locale, String>();
 
 		return CalendarResourceLocalServiceUtil.addCalendarResource(
-			serviceContext.getUserId(), 0, User.class.getName(), userId, null,
-			null, nameMap, descriptionMap, true, serviceContext);
+			userId, userGroup.getGroupId(),
+			PortalUtil.getClassNameId(User.class), userId, null, null, nameMap,
+			descriptionMap, true, serviceContext);
 	}
 
 	public static CalendarResource getUserCalendarResource(

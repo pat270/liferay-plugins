@@ -2,27 +2,29 @@ AUI().use(
 	'anim-color',
 	'anim-easing',
 	'aui-base',
-	'aui-live-search',
+	'aui-live-search-deprecated',
 	'liferay-poller',
 	'stylesheet',
 	'swfobject',
 	function(A) {
 		var Lang = A.Lang;
+		var Notification = A.config.win.Notification;
 
 		var now = Lang.now;
 
 		var DOC = A.config.doc;
 
-		var NOTIFICATIONS = A.config.win.webkitNotifications;
+		var NOTIFICATIONS_PERMISSION_DEFAULT = 'default';
 
-		var NOTIFICATIONS_ALLOWED = 0;
-		var NOTIFICATIONS_NOT_ALLOWED = 1;
+		var NOTIFICATIONS_PERMISSION_GRANTED = 'granted';
+
+		var NOTIFICATIONS_LIST = [];
 
 		var STR_NEW_MESSAGE = Liferay.Language.get('new-message-from-x');
 
 		Liferay.namespace('Chat');
 
-		A.one(DOC.documentElement).toggleClass('desktop-notifications', !!NOTIFICATIONS);
+		A.one(DOC.documentElement).toggleClass('desktop-notifications', !!Notification);
 
 		Liferay.Chat.Util = {
 			getDefaultColor: function() {
@@ -36,7 +38,7 @@ AUI().use(
 					if (bgColorNode) {
 						defaultColor = bgColorNode.getStyle('backgroundColor');
 
-						while (defaultColor == 'transparent') {
+						while (defaultColor.toLowerCase() == 'transparent') {
 							defaultColor = bgColorNode.getStyle('backgroundColor');
 
 							bgColorNode = bgColorNode.ancestor();
@@ -55,7 +57,7 @@ AUI().use(
 				var waitingColor = instance._waitingColor;
 
 				if (!waitingColor) {
-					var waitingColorNode = A.Node.create('<span class="aui-helper-hidden message-waiting" />').appendTo(DOC.body);
+					var waitingColorNode = A.Node.create('<span class="hide message-waiting" />').appendTo(DOC.body);
 
 					waitingColor = waitingColorNode.getStyle('backgroundColor');
 
@@ -274,7 +276,7 @@ AUI().use(
 							'<div class="panel-window">' +
 								'<div class="panel-button minimize"></div>' +
 								'<div class="panel-title"></div>' +
-								'<div class="search-buddies"><input class="search-buddies-field" type="text" /></div>' +
+								'<div class="search-buddies"><input class="search-buddies" type="text" /></div>' +
 								'<div class="panel-content"></div>' +
 							'</div>' +
 						'</div>' +
@@ -595,7 +597,7 @@ AUI().use(
 											'<div class="panel-profile">...</div>' +
 											'<div class="panel-output"></div>' +
 											'<div class="panel-input">' +
-												'<textarea></textarea>' +
+												'<textarea class="message-input"></textarea>' +
 											'</div>' +
 										'</div>' +
 									'</div>' +
@@ -665,6 +667,8 @@ AUI().use(
 
 				instance._updatePresenceTask.delay(0);
 
+				instance._notifyPermission = instance._getNotifyPermission();
+
 				Liferay.Poller.addListener(instance._portletId, instance._onPollerUpdate, instance);
 
 				Liferay.bind(
@@ -691,14 +695,43 @@ AUI().use(
 			notify: function(iconUrl, title, body) {
 				var instance = this;
 
-				if (NOTIFICATIONS && NOTIFICATIONS.checkPermission() === NOTIFICATIONS_ALLOWED) {
-					var notification = NOTIFICATIONS.createNotification(iconUrl, title, body);
+				if (instance._notifyPermission === NOTIFICATIONS_PERMISSION_GRANTED) {
+					var notification = new Notification(
+						title,
+						{
+							icon: iconUrl,
+							body: body
+						}
+					);
 
-					notification.show();
+					if (!NOTIFICATIONS_LIST.length) {
+						instance._notificationHandle = A.getWin().on(
+							'beforeunload',
+							function(event) {
+								A.Array.invoke(NOTIFICATIONS_LIST, 'close');
+
+								NOTIFICATIONS_LIST.length = 0;
+
+								instance._notificationHandle.detach();
+
+								instance._notificationHandle = null;
+							}
+						);
+					}
+
+					NOTIFICATIONS_LIST.push(notification);
 
 					setTimeout(
 						function() {
-							notification.cancel();
+							notification.close();
+
+							NOTIFICATIONS_LIST.shift();
+
+							if (!NOTIFICATIONS_LIST.length && instance._notificationHandle) {
+								instance._notificationHandle.detach();
+
+								instance._notificationHandle = null;
+							}
 						},
 						instance._notificationTimeout
 					);
@@ -802,7 +835,7 @@ AUI().use(
 
 				var buddyList = buddyListNode.one('.online-users');
 
-				var searchBuddiesField = buddyListNode.one('.search-buddies-field');
+				var searchBuddiesField = buddyListNode.one('.search-buddies');
 
 				var liveSearch = new A.LiveSearch(
 					{
@@ -903,13 +936,15 @@ AUI().use(
 					for (var i in entryCache) {
 						var entry = entryCache[i];
 
-						if (entry.flag) {
+						var incomingEntry = (entry.fromUserId == userId);
+
+						if (entry.flag || !incomingEntry) {
 							chat.update(
 								{
 									cache: true,
 									content: entry.content,
 									createDate: entry.createDate,
-									incoming: (entry.fromUserId == userId)
+									incoming: incomingEntry
 								}
 							);
 						}
@@ -950,16 +985,16 @@ AUI().use(
 				instance._online = instance._onlineObj.get('checked') ? 1 : 0;
 				instance._playSound = instance._playSoundObj.get('checked') ? 1 : 0;
 
-				if (NOTIFICATIONS) {
+				if (Notification) {
 					var showNotificationsObj = instance._showNotificationsObj;
 
-					var notifyPermission = NOTIFICATIONS.checkPermission();
+					var notifyPermission = instance._notifyPermission;
 
 					var attrs = {
-						checked: (notifyPermission === NOTIFICATIONS_ALLOWED)
+						checked: (notifyPermission === NOTIFICATIONS_PERMISSION_GRANTED)
 					};
 
-					if (notifyPermission === NOTIFICATIONS_NOT_ALLOWED) {
+					if (notifyPermission === NOTIFICATIONS_PERMISSION_DEFAULT) {
 						attrs.disabled = false;
 					}
 
@@ -967,6 +1002,31 @@ AUI().use(
 				}
 
 				saveSettings.on('click', instance._updateSettings, instance);
+			},
+
+			_getNotifyPermission: function() {
+				var notifyPermission;
+
+				if (Notification) {
+					if (Notification.permissionLevel) {
+						notifyPermission = Notification.permissionLevel();
+					}
+					else if (Notification.permission) {
+						notifyPermission = Notification.permission;
+					}
+					else if (A.config.win.webkitNotifications) {
+						var webkitNotifyPermission = A.config.win.webkitNotifications.checkPermission();
+
+						if (webkitNotifyPermission === 0) {
+							notifyPermission = NOTIFICATIONS_PERMISSION_GRANTED;
+						}
+						else if (webkitNotifyPermission === 1) {
+							notifyPermission = NOTIFICATIONS_PERMISSION_DEFAULT;
+						}
+					}
+				}
+
+				return notifyPermission;
 			},
 
 			_getSettings: function() {
@@ -1325,10 +1385,12 @@ AUI().use(
 
 				var showNotificationsObj = instance._showNotificationsObj;
 
-				if (showNotificationsObj.attr('checked') && NOTIFICATIONS && NOTIFICATIONS.checkPermission() === NOTIFICATIONS_NOT_ALLOWED) {
-					NOTIFICATIONS.requestPermission(
-						function() {
-							var allowed = NOTIFICATIONS.checkPermission() == NOTIFICATIONS_ALLOWED;
+				if (showNotificationsObj.attr('checked') && (instance._notifyPermission === NOTIFICATIONS_PERMISSION_DEFAULT)) {
+					var notification = A.config.win.webkitNotifications || Notification;
+
+					notification.requestPermission(
+						function(notifyPermission) {
+							var allowed = (notifyPermission == NOTIFICATIONS_PERMISSION_GRANTED);
 
 							showNotificationsObj.attr(
 								{
@@ -1336,6 +1398,8 @@ AUI().use(
 									disabled: allowed
 								}
 							);
+
+							instance._notifyPermission = notifyPermission;
 						}
 					);
 				}

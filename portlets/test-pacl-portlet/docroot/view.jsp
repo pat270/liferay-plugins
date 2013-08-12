@@ -107,7 +107,6 @@
 
 </p>
 
-
 <liferay-ui:header
 	title="Class Loader"
 />
@@ -484,85 +483,25 @@
 />
 
 <p>
-	java.home=
+	JAVA_HOME= (<%= System.getenv("JAVA_HOME") %>)
 
 		<%
 		new SecurityExceptionTest(out, themeDisplay, false) {
 
 			protected void test() throws Exception {
-				System.getenv("java.home");
+				System.getenv("JAVA_HOME");
 			}
 
 		};
 		%>
 
-	java.io.tmpdir=
+	PATH=
 
 		<%
 		new SecurityExceptionTest(out, themeDisplay, true) {
 
 			protected void test() throws Exception {
-				System.getenv("java.io.tmpdir");
-			}
-
-		};
-		%>
-
-	java.vendor=
-
-		<%
-		new SecurityExceptionTest(out, themeDisplay, false) {
-
-			protected void test() throws Exception {
-				System.getenv("java.vendor");
-			}
-
-		};
-		%>
-
-	java.vendor.url=
-
-		<%
-		new SecurityExceptionTest(out, themeDisplay, true) {
-
-			protected void test() throws Exception {
-				System.getenv("java.vendor.url");
-			}
-
-		};
-		%>
-
-	java.vm.specification.name=
-
-		<%
-		new SecurityExceptionTest(out, themeDisplay, true) {
-
-			protected void test() throws Exception {
-				System.getenv("java.vm.specification.name");
-			}
-
-		};
-		%>
-
-	java.vm.vendor=
-
-		<%
-		new SecurityExceptionTest(out, themeDisplay, false) {
-
-			protected void test() throws Exception {
-				System.getenv("java.vm.vendor");
-			}
-
-		};
-		%>
-
-	java.vm.version=
-
-		<%
-		new SecurityExceptionTest(out, themeDisplay, false) {
-
-			protected void test() throws Exception {
-				System.getenv("java.vm.version");
+				System.getenv("PATH");
 			}
 
 		};
@@ -820,7 +759,6 @@
 
 </p>
 
-
 <p>
 	<h3>Read</h3>
 </p>
@@ -888,6 +826,36 @@
 
 		protected void test() throws Exception {
 			testReadWithFileUtil("../webapps/chat-portlet/WEB-INF/src/content/Language.properties");
+		}
+
+	};
+
+	new FileSecurityExceptionTest(out, themeDisplay, false) {
+
+		protected void test() throws Exception {
+			testReadWithFile(System.getenv("JAVA_HOME"));
+		}
+
+	};
+
+	new FileSecurityExceptionTest(out, themeDisplay, true) {
+
+		protected void test() throws Exception {
+			testReadWithFile(System.getenv("JAVA_HOME") + "/bin");
+		}
+
+	};
+
+	new FileSecurityExceptionTest(out, themeDisplay, false) {
+
+		protected void test() throws Exception {
+			String javaCommand = "java";
+
+			if (OSDetector.isWindows()) {
+				javaCommand = "java.exe";
+			}
+
+			testReadWithFile(System.getenv("JAVA_HOME") + "/bin/" + javaCommand);
 		}
 
 	};
@@ -987,12 +955,12 @@
 </p>
 
 <p>
-	en_UK=<%= _assertEquals(LanguageUtil.get(Locale.UK, "stars"), "David Beckham") %><br />
-	en_US=<%= _assertEquals(LanguageUtil.get(Locale.US, "stars"), "Stars") %><br />
-	es_ES=<%= _assertEquals(LanguageUtil.get(new Locale("es"), "stars"), "Estrellas") %><br />
-	it_IT=<%= _assertEquals(LanguageUtil.get(Locale.ITALY, "stars"), "Stelle") %><br />
-	pt_BR=<%= _assertEquals(LanguageUtil.get(new Locale("pt", "BR"), "stars"), "Ricardo Kaka") %><br />
-	pt_PT=<%= _assertEquals(LanguageUtil.get(new Locale("pt", "PT"), "stars"), "Cristiano Ronaldo") %>
+	en_UK=<%= _assertEquals(LanguageUtil.get(LocaleUtil.UK, "stars"), "David Beckham") %><br />
+	en_US=<%= _assertEquals(LanguageUtil.get(LocaleUtil.US, "stars"), "Stars") %><br />
+	es_ES=<%= _assertEquals(LanguageUtil.get(LocaleUtil.SPAIN, "stars"), "Estrellas") %><br />
+	it_IT=<%= _assertEquals(LanguageUtil.get(LocaleUtil.ITALY, "stars"), "Stelle") %><br />
+	pt_BR=<%= _assertEquals(LanguageUtil.get(LocaleUtil.BRAZIL, "stars"), "Ricardo Kaka") %><br />
+	pt_PT=<%= _assertEquals(LanguageUtil.get(LocaleUtil.PORTUGAL, "stars"), "Cristiano Ronaldo") %>
 </p>
 
 <p>
@@ -1000,7 +968,7 @@
 </p>
 
 <p>
-	locales.beta=<%= _assertFalse(LanguageUtil.isBetaLocale(Locale.US)) %><br />
+	locales.beta=<%= _assertFalse(LanguageUtil.isBetaLocale(LocaleUtil.US)) %><br />
 
 	<%
 	String phoneNumber = PhoneNumberFormatUtil.format("123");
@@ -2282,7 +2250,6 @@
 		};
 		%>
 
-
 	4319=
 
 		<%
@@ -2294,7 +2261,6 @@
 
 		};
 		%>
-
 
 	4320=
 
@@ -2309,7 +2275,6 @@
 
 		};
 		%>
-
 
 	4321=
 

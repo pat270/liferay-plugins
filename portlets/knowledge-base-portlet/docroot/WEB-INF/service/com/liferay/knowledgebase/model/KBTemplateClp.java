@@ -19,6 +19,7 @@ import com.liferay.knowledgebase.service.KBTemplateLocalServiceUtil;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.DateUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -42,26 +43,32 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 	public KBTemplateClp() {
 	}
 
+	@Override
 	public Class<?> getModelClass() {
 		return KBTemplate.class;
 	}
 
+	@Override
 	public String getModelClassName() {
 		return KBTemplate.class.getName();
 	}
 
+	@Override
 	public long getPrimaryKey() {
 		return _kbTemplateId;
 	}
 
+	@Override
 	public void setPrimaryKey(long primaryKey) {
 		setKbTemplateId(primaryKey);
 	}
 
+	@Override
 	public Serializable getPrimaryKeyObj() {
 		return _kbTemplateId;
 	}
 
+	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
 		setPrimaryKey(((Long)primaryKeyObj).longValue());
 	}
@@ -147,10 +154,12 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 		}
 	}
 
+	@Override
 	public String getUuid() {
 		return _uuid;
 	}
 
+	@Override
 	public void setUuid(String uuid) {
 		_uuid = uuid;
 
@@ -168,10 +177,12 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 		}
 	}
 
+	@Override
 	public long getKbTemplateId() {
 		return _kbTemplateId;
 	}
 
+	@Override
 	public void setKbTemplateId(long kbTemplateId) {
 		_kbTemplateId = kbTemplateId;
 
@@ -189,10 +200,12 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 		}
 	}
 
+	@Override
 	public long getGroupId() {
 		return _groupId;
 	}
 
+	@Override
 	public void setGroupId(long groupId) {
 		_groupId = groupId;
 
@@ -210,10 +223,12 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 		}
 	}
 
+	@Override
 	public long getCompanyId() {
 		return _companyId;
 	}
 
+	@Override
 	public void setCompanyId(long companyId) {
 		_companyId = companyId;
 
@@ -231,10 +246,12 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 		}
 	}
 
+	@Override
 	public long getUserId() {
 		return _userId;
 	}
 
+	@Override
 	public void setUserId(long userId) {
 		_userId = userId;
 
@@ -252,18 +269,22 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 		}
 	}
 
+	@Override
 	public String getUserUuid() throws SystemException {
 		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
 	}
 
+	@Override
 	public void setUserUuid(String userUuid) {
 		_userUuid = userUuid;
 	}
 
+	@Override
 	public String getUserName() {
 		return _userName;
 	}
 
+	@Override
 	public void setUserName(String userName) {
 		_userName = userName;
 
@@ -281,10 +302,12 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 		}
 	}
 
+	@Override
 	public Date getCreateDate() {
 		return _createDate;
 	}
 
+	@Override
 	public void setCreateDate(Date createDate) {
 		_createDate = createDate;
 
@@ -302,10 +325,12 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 		}
 	}
 
+	@Override
 	public Date getModifiedDate() {
 		return _modifiedDate;
 	}
 
+	@Override
 	public void setModifiedDate(Date modifiedDate) {
 		_modifiedDate = modifiedDate;
 
@@ -323,10 +348,12 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 		}
 	}
 
+	@Override
 	public String getTitle() {
 		return _title;
 	}
 
+	@Override
 	public void setTitle(String title) {
 		_title = title;
 
@@ -344,10 +371,12 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 		}
 	}
 
+	@Override
 	public String getContent() {
 		return _content;
 	}
 
+	@Override
 	public void setContent(String content) {
 		_content = content;
 
@@ -363,6 +392,12 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 				throw new UnsupportedOperationException(e);
 			}
 		}
+	}
+
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				KBTemplate.class.getName()));
 	}
 
 	public BaseModel<?> getKBTemplateRemoteModel() {
@@ -414,6 +449,7 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 		return returnValue;
 	}
 
+	@Override
 	public void persist() throws SystemException {
 		if (this.isNew()) {
 			KBTemplateLocalServiceUtil.addKBTemplate(this);
@@ -447,6 +483,7 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 		return clone;
 	}
 
+	@Override
 	public int compareTo(KBTemplate kbTemplate) {
 		int value = 0;
 
@@ -464,18 +501,15 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof KBTemplateClp)) {
 			return false;
 		}
 
-		KBTemplateClp kbTemplate = null;
-
-		try {
-			kbTemplate = (KBTemplateClp)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		KBTemplateClp kbTemplate = (KBTemplateClp)obj;
 
 		long primaryKey = kbTemplate.getPrimaryKey();
 
@@ -521,6 +555,7 @@ public class KBTemplateClp extends BaseModelImpl<KBTemplate>
 		return sb.toString();
 	}
 
+	@Override
 	public String toXmlString() {
 		StringBundler sb = new StringBundler(34);
 

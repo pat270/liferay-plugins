@@ -38,14 +38,16 @@ import java.util.Map;
 public class ResourceActionTaskAssignmentSelector
 	extends BaseTaskAssignmentSelector {
 
+	@Override
 	public Collection<KaleoTaskAssignment> calculateTaskAssignments(
 			KaleoTaskAssignment kaleoTaskAssignment,
 			ExecutionContext executionContext, ClassLoader... classLoaders)
 		throws SystemException {
 
+		ServiceContext serviceContext = executionContext.getServiceContext();
+
 		Map<String, Serializable> workflowContext =
 			executionContext.getWorkflowContext();
-		ServiceContext serviceContext = executionContext.getServiceContext();
 
 		ServiceContext workflowContextServiceContext =
 			(ServiceContext)workflowContext.get(
@@ -63,12 +65,10 @@ public class ResourceActionTaskAssignmentSelector
 			(String)workflowContext.get(
 				WorkflowConstants.CONTEXT_ENTRY_CLASS_PK));
 
-		String assigneeActionId = kaleoTaskAssignment.getAssigneeActionId();
-
 		List<Role> roles = RoleLocalServiceUtil.getResourceRoles(
 			serviceContext.getCompanyId(), resourceName,
 			ResourceConstants.SCOPE_INDIVIDUAL, resourceClassPK,
-			assigneeActionId);
+			kaleoTaskAssignment.getAssigneeActionId());
 
 		List<KaleoTaskAssignment> kaleoTaskAssignments =
 			new ArrayList<KaleoTaskAssignment>(roles.size());

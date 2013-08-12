@@ -20,6 +20,7 @@ import java.util.Arrays;
 
 /**
  * @author Brian Wing Shun Chan
+ * @generated
  */
 public class FooServiceClpInvoker {
 	public FooServiceClpInvoker() {
@@ -34,6 +35,10 @@ public class FooServiceClpInvoker {
 		_methodName36 = "getUser";
 
 		_methodParameterTypes36 = new String[] { "long" };
+
+		_methodName37 = "getUserSitesGroups";
+
+		_methodParameterTypes37 = new String[] {  };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -55,6 +60,11 @@ public class FooServiceClpInvoker {
 			return FooServiceUtil.getUser(((Long)arguments[0]).longValue());
 		}
 
+		if (_methodName37.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes37, parameterTypes)) {
+			return FooServiceUtil.getUserSitesGroups();
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -64,4 +74,6 @@ public class FooServiceClpInvoker {
 	private String[] _methodParameterTypes31;
 	private String _methodName36;
 	private String[] _methodParameterTypes36;
+	private String _methodName37;
+	private String[] _methodParameterTypes37;
 }

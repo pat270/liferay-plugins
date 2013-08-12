@@ -14,6 +14,7 @@
 
 package com.liferay.microblogs.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -25,8 +26,8 @@ import java.util.Map;
  * This class is a wrapper for {@link MicroblogsEntry}.
  * </p>
  *
- * @author    Brian Wing Shun Chan
- * @see       MicroblogsEntry
+ * @author Brian Wing Shun Chan
+ * @see MicroblogsEntry
  * @generated
  */
 public class MicroblogsEntryWrapper implements MicroblogsEntry,
@@ -35,14 +36,17 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 		_microblogsEntry = microblogsEntry;
 	}
 
+	@Override
 	public Class<?> getModelClass() {
 		return MicroblogsEntry.class;
 	}
 
+	@Override
 	public String getModelClassName() {
 		return MicroblogsEntry.class.getName();
 	}
 
+	@Override
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
@@ -62,6 +66,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 		return attributes;
 	}
 
+	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
 		Long microblogsEntryId = (Long)attributes.get("microblogsEntryId");
 
@@ -137,6 +142,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @return the primary key of this microblogs entry
 	*/
+	@Override
 	public long getPrimaryKey() {
 		return _microblogsEntry.getPrimaryKey();
 	}
@@ -146,6 +152,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param primaryKey the primary key of this microblogs entry
 	*/
+	@Override
 	public void setPrimaryKey(long primaryKey) {
 		_microblogsEntry.setPrimaryKey(primaryKey);
 	}
@@ -155,6 +162,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @return the microblogs entry ID of this microblogs entry
 	*/
+	@Override
 	public long getMicroblogsEntryId() {
 		return _microblogsEntry.getMicroblogsEntryId();
 	}
@@ -164,6 +172,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param microblogsEntryId the microblogs entry ID of this microblogs entry
 	*/
+	@Override
 	public void setMicroblogsEntryId(long microblogsEntryId) {
 		_microblogsEntry.setMicroblogsEntryId(microblogsEntryId);
 	}
@@ -173,6 +182,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @return the company ID of this microblogs entry
 	*/
+	@Override
 	public long getCompanyId() {
 		return _microblogsEntry.getCompanyId();
 	}
@@ -182,6 +192,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param companyId the company ID of this microblogs entry
 	*/
+	@Override
 	public void setCompanyId(long companyId) {
 		_microblogsEntry.setCompanyId(companyId);
 	}
@@ -191,6 +202,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @return the user ID of this microblogs entry
 	*/
+	@Override
 	public long getUserId() {
 		return _microblogsEntry.getUserId();
 	}
@@ -200,6 +212,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param userId the user ID of this microblogs entry
 	*/
+	@Override
 	public void setUserId(long userId) {
 		_microblogsEntry.setUserId(userId);
 	}
@@ -210,6 +223,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	* @return the user uuid of this microblogs entry
 	* @throws SystemException if a system exception occurred
 	*/
+	@Override
 	public java.lang.String getUserUuid()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _microblogsEntry.getUserUuid();
@@ -220,6 +234,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param userUuid the user uuid of this microblogs entry
 	*/
+	@Override
 	public void setUserUuid(java.lang.String userUuid) {
 		_microblogsEntry.setUserUuid(userUuid);
 	}
@@ -229,6 +244,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @return the user name of this microblogs entry
 	*/
+	@Override
 	public java.lang.String getUserName() {
 		return _microblogsEntry.getUserName();
 	}
@@ -238,6 +254,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param userName the user name of this microblogs entry
 	*/
+	@Override
 	public void setUserName(java.lang.String userName) {
 		_microblogsEntry.setUserName(userName);
 	}
@@ -247,6 +264,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @return the create date of this microblogs entry
 	*/
+	@Override
 	public java.util.Date getCreateDate() {
 		return _microblogsEntry.getCreateDate();
 	}
@@ -256,6 +274,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param createDate the create date of this microblogs entry
 	*/
+	@Override
 	public void setCreateDate(java.util.Date createDate) {
 		_microblogsEntry.setCreateDate(createDate);
 	}
@@ -265,6 +284,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @return the modified date of this microblogs entry
 	*/
+	@Override
 	public java.util.Date getModifiedDate() {
 		return _microblogsEntry.getModifiedDate();
 	}
@@ -274,6 +294,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param modifiedDate the modified date of this microblogs entry
 	*/
+	@Override
 	public void setModifiedDate(java.util.Date modifiedDate) {
 		_microblogsEntry.setModifiedDate(modifiedDate);
 	}
@@ -283,6 +304,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @return the content of this microblogs entry
 	*/
+	@Override
 	public java.lang.String getContent() {
 		return _microblogsEntry.getContent();
 	}
@@ -292,6 +314,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param content the content of this microblogs entry
 	*/
+	@Override
 	public void setContent(java.lang.String content) {
 		_microblogsEntry.setContent(content);
 	}
@@ -301,6 +324,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @return the type of this microblogs entry
 	*/
+	@Override
 	public int getType() {
 		return _microblogsEntry.getType();
 	}
@@ -310,6 +334,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param type the type of this microblogs entry
 	*/
+	@Override
 	public void setType(int type) {
 		_microblogsEntry.setType(type);
 	}
@@ -319,6 +344,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @return the receiver user ID of this microblogs entry
 	*/
+	@Override
 	public long getReceiverUserId() {
 		return _microblogsEntry.getReceiverUserId();
 	}
@@ -328,6 +354,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param receiverUserId the receiver user ID of this microblogs entry
 	*/
+	@Override
 	public void setReceiverUserId(long receiverUserId) {
 		_microblogsEntry.setReceiverUserId(receiverUserId);
 	}
@@ -338,6 +365,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	* @return the receiver user uuid of this microblogs entry
 	* @throws SystemException if a system exception occurred
 	*/
+	@Override
 	public java.lang.String getReceiverUserUuid()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _microblogsEntry.getReceiverUserUuid();
@@ -348,6 +376,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param receiverUserUuid the receiver user uuid of this microblogs entry
 	*/
+	@Override
 	public void setReceiverUserUuid(java.lang.String receiverUserUuid) {
 		_microblogsEntry.setReceiverUserUuid(receiverUserUuid);
 	}
@@ -357,6 +386,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @return the receiver microblogs entry ID of this microblogs entry
 	*/
+	@Override
 	public long getReceiverMicroblogsEntryId() {
 		return _microblogsEntry.getReceiverMicroblogsEntryId();
 	}
@@ -366,6 +396,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param receiverMicroblogsEntryId the receiver microblogs entry ID of this microblogs entry
 	*/
+	@Override
 	public void setReceiverMicroblogsEntryId(long receiverMicroblogsEntryId) {
 		_microblogsEntry.setReceiverMicroblogsEntryId(receiverMicroblogsEntryId);
 	}
@@ -375,6 +406,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @return the social relation type of this microblogs entry
 	*/
+	@Override
 	public int getSocialRelationType() {
 		return _microblogsEntry.getSocialRelationType();
 	}
@@ -384,52 +416,64 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 	*
 	* @param socialRelationType the social relation type of this microblogs entry
 	*/
+	@Override
 	public void setSocialRelationType(int socialRelationType) {
 		_microblogsEntry.setSocialRelationType(socialRelationType);
 	}
 
+	@Override
 	public boolean isNew() {
 		return _microblogsEntry.isNew();
 	}
 
+	@Override
 	public void setNew(boolean n) {
 		_microblogsEntry.setNew(n);
 	}
 
+	@Override
 	public boolean isCachedModel() {
 		return _microblogsEntry.isCachedModel();
 	}
 
+	@Override
 	public void setCachedModel(boolean cachedModel) {
 		_microblogsEntry.setCachedModel(cachedModel);
 	}
 
+	@Override
 	public boolean isEscapedModel() {
 		return _microblogsEntry.isEscapedModel();
 	}
 
+	@Override
 	public java.io.Serializable getPrimaryKeyObj() {
 		return _microblogsEntry.getPrimaryKeyObj();
 	}
 
+	@Override
 	public void setPrimaryKeyObj(java.io.Serializable primaryKeyObj) {
 		_microblogsEntry.setPrimaryKeyObj(primaryKeyObj);
 	}
 
+	@Override
 	public com.liferay.portlet.expando.model.ExpandoBridge getExpandoBridge() {
 		return _microblogsEntry.getExpandoBridge();
 	}
 
+	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.model.BaseModel<?> baseModel) {
 		_microblogsEntry.setExpandoBridgeAttributes(baseModel);
 	}
 
+	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portlet.expando.model.ExpandoBridge expandoBridge) {
 		_microblogsEntry.setExpandoBridgeAttributes(expandoBridge);
 	}
 
+	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.service.ServiceContext serviceContext) {
 		_microblogsEntry.setExpandoBridgeAttributes(serviceContext);
@@ -440,6 +484,7 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 		return new MicroblogsEntryWrapper((MicroblogsEntry)_microblogsEntry.clone());
 	}
 
+	@Override
 	public int compareTo(
 		com.liferay.microblogs.model.MicroblogsEntry microblogsEntry) {
 		return _microblogsEntry.compareTo(microblogsEntry);
@@ -450,14 +495,17 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 		return _microblogsEntry.hashCode();
 	}
 
+	@Override
 	public com.liferay.portal.model.CacheModel<com.liferay.microblogs.model.MicroblogsEntry> toCacheModel() {
 		return _microblogsEntry.toCacheModel();
 	}
 
+	@Override
 	public com.liferay.microblogs.model.MicroblogsEntry toEscapedModel() {
 		return new MicroblogsEntryWrapper(_microblogsEntry.toEscapedModel());
 	}
 
+	@Override
 	public com.liferay.microblogs.model.MicroblogsEntry toUnescapedModel() {
 		return new MicroblogsEntryWrapper(_microblogsEntry.toUnescapedModel());
 	}
@@ -467,13 +515,35 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 		return _microblogsEntry.toString();
 	}
 
+	@Override
 	public java.lang.String toXmlString() {
 		return _microblogsEntry.toXmlString();
 	}
 
+	@Override
 	public void persist()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		_microblogsEntry.persist();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof MicroblogsEntryWrapper)) {
+			return false;
+		}
+
+		MicroblogsEntryWrapper microblogsEntryWrapper = (MicroblogsEntryWrapper)obj;
+
+		if (Validator.equals(_microblogsEntry,
+					microblogsEntryWrapper._microblogsEntry)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -483,10 +553,12 @@ public class MicroblogsEntryWrapper implements MicroblogsEntry,
 		return _microblogsEntry;
 	}
 
+	@Override
 	public MicroblogsEntry getWrappedModel() {
 		return _microblogsEntry;
 	}
 
+	@Override
 	public void resetOriginalValues() {
 		_microblogsEntry.resetOriginalValues();
 	}

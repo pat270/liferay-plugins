@@ -17,15 +17,7 @@
 <%@ include file="/init.jsp" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
-
-String portletResource = ParamUtil.getString(request, "portletResource");
-
-if (Validator.isNotNull(portletResource)) {
-	preferences = PortletPreferencesFactoryUtil.getPortletSetup(request, portletResource);
-}
-
-long questionId = GetterUtil.getLong(preferences.getValue("questionId", StringPool.BLANK));
+long questionId = GetterUtil.getLong(portletPreferences.getValue("questionId", StringPool.BLANK));
 
 Format dateFormatDateTime = FastDateFormatFactoryUtil.getDateTime(locale, timeZone);
 %>

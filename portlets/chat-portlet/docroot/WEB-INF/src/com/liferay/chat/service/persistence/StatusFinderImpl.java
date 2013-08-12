@@ -21,6 +21,7 @@ import com.liferay.portal.kernel.dao.orm.SQLQuery;
 import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.dao.orm.Type;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.service.persistence.impl.BasePersistenceImpl;
@@ -143,7 +144,11 @@ public class StatusFinderImpl
 			QueryPos qPos = QueryPos.getInstance(q);
 
 			qPos.add(userId);
-			qPos.add(StringUtil.merge(groupNames));
+
+			if (groupNames.length > 0) {
+				qPos.add(groupNames);
+			}
+
 			qPos.add(modifiedDate);
 			qPos.add(userId);
 
@@ -161,7 +166,7 @@ public class StatusFinderImpl
 		String sql = CustomSQLUtil.get(FIND_BY_USERS_GROUPS);
 
 		if (groupNames.length == 0) {
-			sql = StringUtil.replace(
+			return StringUtil.replace(
 				sql,
 				new String[] {
 					"[$USERS_GROUPS_JOIN$]", "[$USERS_GROUPS_WHERE$]"
@@ -169,12 +174,22 @@ public class StatusFinderImpl
 				new String[] {StringPool.BLANK, StringPool.BLANK});
 		}
 
+		StringBundler sb = new StringBundler(groupNames.length * 2 - 1);
+
+		for (int i = 0; i < groupNames.length; i++) {
+			sb.append(StringPool.QUESTION);
+
+			if ((i + 1) < groupNames.length) {
+				sb.append(StringPool.COMMA);
+			}
+		}
+
 		return StringUtil.replace(
 			sql,
 			new String[] {"[$USERS_GROUPS_JOIN$]", "[$USERS_GROUPS_WHERE$]"},
 			new String[] {
 				"INNER JOIN Group_ ON Group_.groupId = Users_Groups.groupId",
-				"AND Group_.name NOT IN (?)"
+				"AND Group_.name NOT IN (" + sb.toString() + ")"
 			});
 	}
 

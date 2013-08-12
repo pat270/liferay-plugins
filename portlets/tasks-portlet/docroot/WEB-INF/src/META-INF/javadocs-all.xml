@@ -2,6 +2,219 @@
 
 <javadocs>
 	<javadoc>
+		<name>TasksEntryAssetRenderer</name>
+		<type>com.liferay.tasks.asset.TasksEntryAssetRenderer</type>
+		<author><![CDATA[Matthew Kong]]></author>
+		<method>
+			<name>TasksEntryAssetRenderer</name>
+			<param>
+				<name>entry</name>
+				<type>com.liferay.tasks.model.TasksEntry</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+		</method>
+		<method>
+			<name>getClassName</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getClassPK</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getGroupId</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getSummary</name>
+			<param>
+				<name>locale</name>
+				<type>java.util.Locale</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getTitle</name>
+			<param>
+				<name>locale</name>
+				<type>java.util.Locale</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getURLViewInContext</name>
+			<param>
+				<name>liferayPortletRequest</name>
+				<type>com.liferay.portal.kernel.portlet.LiferayPortletRequest</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>liferayPortletResponse</name>
+				<type>com.liferay.portal.kernel.portlet.LiferayPortletResponse</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>noSuchEntryRedirect</name>
+				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getUserId</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getUserName</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getUuid</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>hasViewPermission</name>
+			<param>
+				<name>permissionChecker</name>
+				<type>com.liferay.portal.security.permission.PermissionChecker</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>render</name>
+			<param>
+				<name>renderRequest</name>
+				<type>javax.portlet.RenderRequest</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>renderResponse</name>
+				<type>javax.portlet.RenderResponse</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>template</name>
+				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<field>
+			<name>_entry</name>
+		</field>
+	</javadoc>
+	<javadoc>
+		<name>TasksEntryAssetRendererFactory</name>
+		<type>com.liferay.tasks.asset.TasksEntryAssetRendererFactory</type>
+		<author><![CDATA[Matthew Kong]]></author>
+		<method>
+			<name>getAssetRenderer</name>
+			<param>
+				<name>classPK</name>
+				<type>long</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>type</name>
+				<type>int</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+			<throws>
+				<name>PortalException</name>
+				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
+			</throws>
+			<throws>
+				<name>SystemException</name>
+				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
+			</throws>
+		</method>
+		<method>
+			<name>getClassName</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getType</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>hasPermission</name>
+			<param>
+				<name>permissionChecker</name>
+				<type>com.liferay.portal.security.permission.PermissionChecker</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>classPK</name>
+				<type>long</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>actionId</name>
+				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+			<throws>
+				<name>Exception</name>
+				<type>java.lang.Exception</type>
+				<comment><![CDATA[]]></comment>
+			</throws>
+		</method>
+		<method>
+			<name>getIconPath</name>
+			<param>
+				<name>themeDisplay</name>
+				<type>com.liferay.portal.theme.ThemeDisplay</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<field>
+			<name>CLASS_NAME</name>
+		</field>
+		<field>
+			<name>TYPE</name>
+		</field>
+	</javadoc>
+	<javadoc>
 		<name>TasksEntryImpl</name>
 		<type>com.liferay.tasks.model.impl.TasksEntryImpl</type>
 		<author><![CDATA[Ryan Park]]></author>
@@ -10,22 +223,38 @@
 		</method>
 		<method>
 			<name>getAssigneeFullName</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 		</method>
 		<method>
 			<name>getPriorityLabel</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 		</method>
 		<method>
 			<name>getReporterFullName</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 		</method>
 		<method>
 			<name>getStatusLabel</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 		</method>
 		<method>
 			<name>getUserFullName</name>
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 		</method>
 	</javadoc>
 	<javadoc>
@@ -37,14 +266,17 @@
 			<param>
 				<name>actionRequest</name>
 				<type>javax.portlet.ActionRequest</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>actionResponse</name>
 				<type>javax.portlet.ActionResponse</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<throws>
 				<name>Exception</name>
 				<type>java.lang.Exception</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -52,18 +284,22 @@
 			<param>
 				<name>actionRequest</name>
 				<type>javax.portlet.ActionRequest</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>actionResponse</name>
 				<type>javax.portlet.ActionResponse</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<throws>
 				<name>IOException</name>
 				<type>java.io.IOException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>PortletException</name>
 				<type>javax.portlet.PortletException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -71,14 +307,17 @@
 			<param>
 				<name>actionRequest</name>
 				<type>javax.portlet.ActionRequest</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>actionResponse</name>
 				<type>javax.portlet.ActionResponse</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<throws>
 				<name>Exception</name>
 				<type>java.lang.Exception</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -86,14 +325,17 @@
 			<param>
 				<name>actionRequest</name>
 				<type>javax.portlet.ActionRequest</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>actionResponse</name>
 				<type>javax.portlet.ActionResponse</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<throws>
 				<name>Exception</name>
 				<type>java.lang.Exception</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -101,346 +343,19 @@
 			<param>
 				<name>actionRequest</name>
 				<type>javax.portlet.ActionRequest</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>actionResponse</name>
 				<type>javax.portlet.ActionResponse</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<throws>
 				<name>Exception</name>
 				<type>java.lang.Exception</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
-	</javadoc>
-	<javadoc>
-		<name>TasksEntryLocalServiceClpInvoker</name>
-		<type>com.liferay.tasks.service.base.TasksEntryLocalServiceClpInvoker</type>
-		<author><![CDATA[Brian Wing Shun Chan]]></author>
-		<method>
-			<name>TasksEntryLocalServiceClpInvoker</name>
-		</method>
-		<method>
-			<name>invokeMethod</name>
-			<param>
-				<name>name</name>
-				<type>java.lang.String</type>
-			</param>
-			<param>
-				<name>parameterTypes</name>
-				<type>java.lang.String[]</type>
-			</param>
-			<param>
-				<name>arguments</name>
-				<type>java.lang.Object[]</type>
-			</param>
-			<throws>
-				<name>Throwable</name>
-				<type>java.lang.Throwable</type>
-			</throws>
-		</method>
-		<field>
-			<name>_methodName0</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes0</name>
-		</field>
-		<field>
-			<name>_methodName1</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes1</name>
-		</field>
-		<field>
-			<name>_methodName2</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes2</name>
-		</field>
-		<field>
-			<name>_methodName3</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes3</name>
-		</field>
-		<field>
-			<name>_methodName4</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes4</name>
-		</field>
-		<field>
-			<name>_methodName5</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes5</name>
-		</field>
-		<field>
-			<name>_methodName6</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes6</name>
-		</field>
-		<field>
-			<name>_methodName7</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes7</name>
-		</field>
-		<field>
-			<name>_methodName8</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes8</name>
-		</field>
-		<field>
-			<name>_methodName9</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes9</name>
-		</field>
-		<field>
-			<name>_methodName10</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes10</name>
-		</field>
-		<field>
-			<name>_methodName11</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes11</name>
-		</field>
-		<field>
-			<name>_methodName12</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes12</name>
-		</field>
-		<field>
-			<name>_methodName13</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes13</name>
-		</field>
-		<field>
-			<name>_methodName14</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes14</name>
-		</field>
-		<field>
-			<name>_methodName15</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes15</name>
-		</field>
-		<field>
-			<name>_methodName36</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes36</name>
-		</field>
-		<field>
-			<name>_methodName37</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes37</name>
-		</field>
-		<field>
-			<name>_methodName42</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes42</name>
-		</field>
-		<field>
-			<name>_methodName43</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes43</name>
-		</field>
-		<field>
-			<name>_methodName44</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes44</name>
-		</field>
-		<field>
-			<name>_methodName45</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes45</name>
-		</field>
-		<field>
-			<name>_methodName46</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes46</name>
-		</field>
-		<field>
-			<name>_methodName47</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes47</name>
-		</field>
-		<field>
-			<name>_methodName48</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes48</name>
-		</field>
-		<field>
-			<name>_methodName49</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes49</name>
-		</field>
-		<field>
-			<name>_methodName50</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes50</name>
-		</field>
-		<field>
-			<name>_methodName51</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes51</name>
-		</field>
-		<field>
-			<name>_methodName52</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes52</name>
-		</field>
-		<field>
-			<name>_methodName53</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes53</name>
-		</field>
-		<field>
-			<name>_methodName54</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes54</name>
-		</field>
-		<field>
-			<name>_methodName55</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes55</name>
-		</field>
-		<field>
-			<name>_methodName56</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes56</name>
-		</field>
-		<field>
-			<name>_methodName57</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes57</name>
-		</field>
-		<field>
-			<name>_methodName58</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes58</name>
-		</field>
-		<field>
-			<name>_methodName59</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes59</name>
-		</field>
-		<field>
-			<name>_methodName60</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes60</name>
-		</field>
-		<field>
-			<name>_methodName61</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes61</name>
-		</field>
-		<field>
-			<name>_methodName62</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes62</name>
-		</field>
-		<field>
-			<name>_methodName63</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes63</name>
-		</field>
-		<field>
-			<name>_methodName64</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes64</name>
-		</field>
-	</javadoc>
-	<javadoc>
-		<name>TasksEntryServiceClpInvoker</name>
-		<type>com.liferay.tasks.service.base.TasksEntryServiceClpInvoker</type>
-		<author><![CDATA[Brian Wing Shun Chan]]></author>
-		<method>
-			<name>TasksEntryServiceClpInvoker</name>
-		</method>
-		<method>
-			<name>invokeMethod</name>
-			<param>
-				<name>name</name>
-				<type>java.lang.String</type>
-			</param>
-			<param>
-				<name>parameterTypes</name>
-				<type>java.lang.String[]</type>
-			</param>
-			<param>
-				<name>arguments</name>
-				<type>java.lang.Object[]</type>
-			</param>
-			<throws>
-				<name>Throwable</name>
-				<type>java.lang.Throwable</type>
-			</throws>
-		</method>
-		<field>
-			<name>_methodName20</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes20</name>
-		</field>
-		<field>
-			<name>_methodName21</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes21</name>
-		</field>
-		<field>
-			<name>_methodName26</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes26</name>
-		</field>
-		<field>
-			<name>_methodName27</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes27</name>
-		</field>
-		<field>
-			<name>_methodName28</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes28</name>
-		</field>
 	</javadoc>
 	<javadoc>
 		<name>TasksEntryLocalServiceImpl</name>
@@ -452,54 +367,70 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>title</name>
 				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>priority</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assigneeUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateMonth</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateDay</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateYear</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateHour</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateMinute</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
-				<name>neverDue</name>
+				<name>addDueDate</name>
 				<type>boolean</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>serviceContext</name>
 				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -507,14 +438,20 @@
 			<param>
 				<name>tasksEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -522,14 +459,20 @@
 			<param>
 				<name>tasksEntry</name>
 				<type>com.liferay.tasks.model.TasksEntry</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -537,18 +480,25 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -556,10 +506,15 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -567,22 +522,30 @@
 			<param>
 				<name>groupId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -590,14 +553,20 @@
 			<param>
 				<name>groupId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -605,22 +574,30 @@
 			<param>
 				<name>groupId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -628,14 +605,20 @@
 			<param>
 				<name>groupId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -643,22 +626,30 @@
 			<param>
 				<name>groupId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -666,14 +657,20 @@
 			<param>
 				<name>groupId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -681,18 +678,25 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -700,10 +704,15 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -711,18 +720,25 @@
 			<param>
 				<name>groupId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -730,42 +746,55 @@
 			<param>
 				<name>groupId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>priority</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assigneeUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>reporterUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>status</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assetTagIds</name>
 				<type>long[]</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>notAssetTagIds</name>
 				<type>long[]</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -773,10 +802,15 @@
 			<param>
 				<name>groupId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -784,34 +818,45 @@
 			<param>
 				<name>groupId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>priority</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assigneeUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>reporterUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>status</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>tagsEntryIds</name>
 				<type>long[]</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>notTagsEntryIds</name>
 				<type>long[]</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -819,14 +864,20 @@
 			<param>
 				<name>tasksEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -834,18 +885,25 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -853,10 +911,15 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -864,26 +927,32 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>tasksEntry</name>
 				<type>com.liferay.tasks.model.TasksEntry</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assetCategoryIds</name>
 				<type>long[]</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assetTagNames</name>
 				<type>java.lang.String[]</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -891,62 +960,80 @@
 			<param>
 				<name>tasksEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>title</name>
 				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>priority</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assigneeUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>resolverUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateMonth</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateDay</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateYear</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateHour</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateMinute</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
-				<name>neverDue</name>
+				<name>addDueDate</name>
 				<type>boolean</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>status</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>serviceContext</name>
 				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -954,26 +1041,63 @@
 			<param>
 				<name>tasksEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>resolverUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>status</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>serviceContext</name>
 				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
+			</throws>
+		</method>
+		<method>
+			<name>addSocialActivity</name>
+			<param>
+				<name>status</name>
+				<type>int</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>tasksEntry</name>
+				<type>com.liferay.tasks.model.TasksEntry</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>serviceContext</name>
+				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<throws>
+				<name>PortalException</name>
+				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
+			</throws>
+			<throws>
+				<name>SystemException</name>
+				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -981,26 +1105,45 @@
 			<param>
 				<name>tasksEntry</name>
 				<type>com.liferay.tasks.model.TasksEntry</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>oldStatus</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>oldAssigneeUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>serviceContext</name>
 				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
+			</throws>
+		</method>
+		<method>
+			<name>validate</name>
+			<param>
+				<name>title</name>
+				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<throws>
+				<name>PortalException</name>
+				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 	</javadoc>
@@ -1013,50 +1156,65 @@
 			<param>
 				<name>title</name>
 				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>priority</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assigneeUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateMonth</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateDay</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateYear</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateHour</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateMinute</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>neverDue</name>
 				<type>boolean</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>serviceContext</name>
 				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1064,14 +1222,20 @@
 			<param>
 				<name>tasksEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1079,62 +1243,80 @@
 			<param>
 				<name>tasksEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>title</name>
 				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>priority</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assigneeUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>resolverUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateMonth</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateDay</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateYear</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateHour</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>dueDateMinute</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>neverDue</name>
 				<type>boolean</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>status</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>serviceContext</name>
 				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 	</javadoc>
@@ -1147,34 +1329,45 @@
 			<param>
 				<name>groupId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>priority</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assigneeUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>reporterUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>status</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assetTagIds</name>
 				<type>long[]</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>notAssetTagIds</name>
 				<type>long[]</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1182,42 +1375,55 @@
 			<param>
 				<name>groupId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>priority</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assigneeUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>reporterUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>status</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assetTagIds</name>
 				<type>long[]</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>notAssetTagIds</name>
 				<type>long[]</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1225,10 +1431,12 @@
 			<param>
 				<name>qPos</name>
 				<type>com.liferay.portal.kernel.dao.orm.QueryPos</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assetTagIds</name>
 				<type>long[]</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 		</method>
 		<field>
@@ -1241,21 +1449,124 @@
 		<author><![CDATA[Ryan Park]]></author>
 		<method>
 			<name>getClassNames</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 		</method>
 		<method>
-			<name>doInterpret</name>
+			<name>getBody</name>
 			<param>
 				<name>activity</name>
 				<type>com.liferay.portlet.social.model.SocialActivity</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
-				<name>themeDisplay</name>
-				<type>com.liferay.portal.theme.ThemeDisplay</type>
+				<name>serviceContext</name>
+				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>Exception</name>
 				<type>java.lang.Exception</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
+		</method>
+		<method>
+			<name>getLink</name>
+			<param>
+				<name>activity</name>
+				<type>com.liferay.portlet.social.model.SocialActivity</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>serviceContext</name>
+				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getTitleArguments</name>
+			<param>
+				<name>groupName</name>
+				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>activity</name>
+				<type>com.liferay.portlet.social.model.SocialActivity</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>link</name>
+				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>title</name>
+				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>serviceContext</name>
+				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+			<throws>
+				<name>Exception</name>
+				<type>java.lang.Exception</type>
+				<comment><![CDATA[]]></comment>
+			</throws>
+		</method>
+		<method>
+			<name>getTitlePattern</name>
+			<param>
+				<name>groupName</name>
+				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>activity</name>
+				<type>com.liferay.portlet.social.model.SocialActivity</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>hasPermissions</name>
+			<param>
+				<name>permissionChecker</name>
+				<type>com.liferay.portal.security.permission.PermissionChecker</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>activity</name>
+				<type>com.liferay.portlet.social.model.SocialActivity</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>actionId</name>
+				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>serviceContext</name>
+				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 		</method>
 		<field>
 			<name>_CLASS_NAMES</name>
@@ -1287,6 +1598,14 @@
 		</field>
 		<field>
 			<name>UPCOMING_TASKS</name>
+		</field>
+	</javadoc>
+	<javadoc>
+		<name>WebKeys</name>
+		<type>com.liferay.tasks.util.WebKeys</type>
+		<author><![CDATA[Jonathan Lee]]></author>
+		<field>
+			<name>TASKS_ENTRY</name>
 		</field>
 	</javadoc>
 </javadocs>

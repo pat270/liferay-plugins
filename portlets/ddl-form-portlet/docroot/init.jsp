@@ -30,7 +30,6 @@ page import="com.liferay.ddlform.util.DDLFormUtil" %><%@
 page import="com.liferay.portal.kernel.dao.search.SearchContainer" %><%@
 page import="com.liferay.portal.kernel.language.LanguageUtil" %><%@
 page import="com.liferay.portal.kernel.util.Constants" %><%@
-page import="com.liferay.portal.kernel.util.FastDateFormatFactoryUtil" %><%@
 page import="com.liferay.portal.kernel.util.GetterUtil" %><%@
 page import="com.liferay.portal.kernel.util.HtmlUtil" %><%@
 page import="com.liferay.portal.kernel.util.ParamUtil" %><%@
@@ -39,7 +38,6 @@ page import="com.liferay.portal.kernel.util.PropsKeys" %><%@
 page import="com.liferay.portal.kernel.util.StringBundler" %><%@
 page import="com.liferay.portal.kernel.util.StringPool" %><%@
 page import="com.liferay.portal.kernel.util.StringUtil" %><%@
-page import="com.liferay.portal.kernel.util.Validator" %><%@
 page import="com.liferay.portal.kernel.util.WebKeys" %><%@
 page import="com.liferay.portal.kernel.workflow.WorkflowConstants" %><%@
 page import="com.liferay.portal.security.auth.PrincipalException" %><%@
@@ -47,7 +45,6 @@ page import="com.liferay.portal.security.permission.ActionKeys" %><%@
 page import="com.liferay.portal.service.permission.PortletPermissionUtil" %><%@
 page import="com.liferay.portal.util.PortalUtil" %><%@
 page import="com.liferay.portal.util.PortletKeys" %><%@
-page import="com.liferay.portlet.PortletPreferencesFactoryUtil" %><%@
 page import="com.liferay.portlet.documentlibrary.FileSizeException" %><%@
 page import="com.liferay.portlet.dynamicdatalists.NoSuchRecordSetException" %><%@
 page import="com.liferay.portlet.dynamicdatalists.model.DDLRecordSet" %><%@
@@ -57,14 +54,13 @@ page import="com.liferay.portlet.dynamicdatamapping.StorageFieldRequiredExceptio
 page import="com.liferay.portlet.dynamicdatamapping.model.DDMStructure" %><%@
 page import="com.liferay.portlet.dynamicdatamapping.model.DDMTemplate" %><%@
 page import="com.liferay.portlet.dynamicdatamapping.model.DDMTemplateConstants" %><%@
-page import="com.liferay.portlet.dynamicdatamapping.service.DDMTemplateLocalServiceUtil" %>
-
-<%@ page import="java.text.Format" %>
+page import="com.liferay.portlet.dynamicdatamapping.service.DDMTemplateLocalServiceUtil" %><%@
+page import="com.liferay.portlet.dynamicdatamapping.util.DDMDisplay" %><%@
+page import="com.liferay.portlet.dynamicdatamapping.util.DDMDisplayRegistryUtil" %>
 
 <%@ page import="java.util.List" %>
 
 <%@ page import="javax.portlet.ActionRequest" %><%@
-page import="javax.portlet.PortletPreferences" %><%@
 page import="javax.portlet.WindowState" %>
 
 <portlet:defineObjects />
@@ -74,21 +70,11 @@ page import="javax.portlet.WindowState" %>
 <%
 String currentURL = PortalUtil.getCurrentURL(request);
 
-PortletPreferences preferences = liferayPortletRequest.getPreferences();
+long recordSetId = GetterUtil.getLong(portletPreferences.getValue("recordSetId", null));
 
-String portletResource = ParamUtil.getString(request, "portletResource");
+long formDDMTemplateId = GetterUtil.getLong(portletPreferences.getValue("formDDMTemplateId", null));
 
-if (Validator.isNotNull(portletResource)) {
-	preferences = PortletPreferencesFactoryUtil.getPortletSetup(request, portletResource);
-}
+boolean multipleSubmissions = GetterUtil.getBoolean(portletPreferences.getValue("multipleSubmissions", null));
 
-long recordSetId = GetterUtil.getLong(preferences.getValue("recordSetId", null));
-
-long formDDMTemplateId = GetterUtil.getLong(preferences.getValue("formDDMTemplateId", null));
-
-boolean multipleSubmissions = GetterUtil.getBoolean(preferences.getValue("multipleSubmissions", null));
-
-String ddmResource = portletConfig.getInitParameter("ddm-resource");
-
-Format dateFormatDateTime = FastDateFormatFactoryUtil.getDateTime(locale, timeZone);
+DDMDisplay ddmDisplay = DDMDisplayRegistryUtil.getDDMDisplay(PortletKeys.DYNAMIC_DATA_LISTS);
 %>

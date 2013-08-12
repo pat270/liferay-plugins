@@ -14,27 +14,33 @@
 
 package com.liferay.calendar.notification;
 
+import com.liferay.calendar.model.Calendar;
 import com.liferay.calendar.model.CalendarBooking;
+import com.liferay.calendar.model.CalendarNotificationTemplate;
+import com.liferay.calendar.service.CalendarNotificationTemplateLocalServiceUtil;
 import com.liferay.calendar.util.NotificationUtil;
 import com.liferay.calendar.util.PortletKeys;
-import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.util.FastDateFormatFactoryUtil;
-import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.Company;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.CompanyLocalServiceUtil;
-import com.liferay.portal.service.PortletPreferencesLocalServiceUtil;
-import com.liferay.portal.service.UserLocalServiceUtil;
+import com.liferay.portal.service.ServiceContext;
+import com.liferay.portal.theme.ThemeDisplay;
+import com.liferay.portlet.PortletURLFactoryUtil;
+
+import java.io.Serializable;
 
 import java.text.Format;
 
-import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TimeZone;
 
+import javax.portlet.ActionRequest;
 import javax.portlet.PortletConfig;
-import javax.portlet.PortletPreferences;
+import javax.portlet.PortletURL;
 
 /**
  * @author Eduardo Lundgren
@@ -42,83 +48,103 @@ import javax.portlet.PortletPreferences;
 public class NotificationTemplateContextFactory {
 
 	public static NotificationTemplateContext getInstance(
-			CalendarBooking calendarBooking)
-		throws PortalException, SystemException {
+			NotificationType notificationType,
+			NotificationTemplateType notificationTemplateType,
+			CalendarBooking calendarBooking, User user,
+			ServiceContext serviceContext)
+		throws Exception {
 
-		User user = UserLocalServiceUtil.getUser(calendarBooking.getUserId());
+		CalendarBooking parentCalendarBooking =
+			calendarBooking.getParentCalendarBooking();
 
-		return getInstance(calendarBooking, user);
-	}
-
-	public static NotificationTemplateContext getInstance(
-			CalendarBooking calendarBooking, User user)
-		throws PortalException, SystemException {
+		Calendar calendar = parentCalendarBooking.getCalendar();
 
 		NotificationTemplateContext notificationTemplateContext =
 			new NotificationTemplateContext();
 
+		notificationTemplateContext.setCompanyId(
+			calendarBooking.getCompanyId());
+		notificationTemplateContext.setGroupId(calendarBooking.getGroupId());
+		notificationTemplateContext.setCalendarId(calendar.getCalendarId());
+		notificationTemplateContext.setNotificationType(notificationType);
+
+		// Attributes
+
+		Map<String, Serializable> attributes =
+			new HashMap<String, Serializable>();
+
+		TimeZone userTimezone = user.getTimeZone();
+
 		Format dateFormatDateTime = FastDateFormatFactoryUtil.getDateTime(
-			user.getLocale(), user.getTimeZone());
+			user.getLocale(), userTimezone);
 
-		long endTime = calendarBooking.getEndTime();
+		String userTimezoneDisplayName = userTimezone.getDisplayName(
+			false, TimeZone.SHORT, user.getLocale());
 
-		notificationTemplateContext.setAttribute(
-			"endTime", dateFormatDateTime.format(endTime));
+		String endTime =
+			dateFormatDateTime.format(calendarBooking.getEndTime()) +
+				StringPool.SPACE + userTimezoneDisplayName;
 
-		PortletPreferences portletPreferences =
-			PortletPreferencesLocalServiceUtil.getPreferences(
-				calendarBooking.getCompanyId(), calendarBooking.getGroupId(),
-				PortletKeys.PREFS_OWNER_TYPE_GROUP,
-				PortletKeys.PREFS_PLID_SHARED, PortletKeys.CALENDAR, null);
+		attributes.put("endTime", endTime);
 
-		String fromAddress = NotificationUtil.getEmailFromAddress(
-			portletPreferences, calendarBooking.getCompanyId());
-		String fromName = NotificationUtil.getEmailFromName(
-			portletPreferences, calendarBooking.getCompanyId());
-
-		notificationTemplateContext.setAttribute("fromAddress", fromAddress);
-		notificationTemplateContext.setAttribute("fromName", fromName);
-
-		notificationTemplateContext.setAttribute(
-			"location", calendarBooking.getLocation());
+		attributes.put("location", calendarBooking.getLocation());
 
 		Company company = CompanyLocalServiceUtil.getCompany(
 			calendarBooking.getCompanyId());
 
-		notificationTemplateContext.setAttribute(
+		attributes.put(
 			"portalUrl", company.getPortalURL(calendarBooking.getGroupId()));
-
-		notificationTemplateContext.setAttribute(
+		attributes.put(
 			"portletName",
 			LanguageUtil.get(
 				getPortletConfig(), user.getLocale(),
 				"javax.portlet.title.".concat(PortletKeys.CALENDAR)));
 
-		long startTime = calendarBooking.getStartTime();
+		String startTime =
+			dateFormatDateTime.format(calendarBooking.getStartTime()) +
+				StringPool.SPACE + userTimezoneDisplayName;
 
-		notificationTemplateContext.setAttribute(
-			"startTime", dateFormatDateTime.format(startTime));
+		attributes.put("startTime", startTime);
 
-		notificationTemplateContext.setAttribute(
-			"title", calendarBooking.getTitle(user.getLocale()));
-		notificationTemplateContext.setAttribute(
-			"toAddress", user.getEmailAddress());
-		notificationTemplateContext.setAttribute("toName", user.getFullName());
+		attributes.put("title", calendarBooking.getTitle(user.getLocale()));
+		attributes.put("toAddress", user.getEmailAddress());
+		attributes.put("toName", user.getFullName());
 
-		Enumeration<String> enu = portletPreferences.getNames();
+		String calendarBookingURL = _getCalendarBookingURL(
+			calendarBooking.getCalendarBookingId(), serviceContext);
 
-		while (enu.hasMoreElements()) {
-			String name = enu.nextElement();
+		attributes.put("url", calendarBookingURL);
 
-			String value = GetterUtil.getString(
-				portletPreferences.getValue(name, StringPool.BLANK));
+		notificationTemplateContext.setAttributes(attributes);
 
-			notificationTemplateContext.setAttribute(name, value);
-		}
+		// Content
 
-		notificationTemplateContext.setCompanyId(
-			calendarBooking.getCompanyId());
-		notificationTemplateContext.setGroupId(calendarBooking.getGroupId());
+		CalendarNotificationTemplate calendarNotificationTemplate =
+			CalendarNotificationTemplateLocalServiceUtil.
+				fetchCalendarNotificationTemplate(
+					calendar.getCalendarId(), notificationType,
+					notificationTemplateType);
+
+		notificationTemplateContext.setCalendarNotificationTemplate(
+			calendarNotificationTemplate);
+
+		String templateSubject = NotificationUtil.getTemplate(
+			calendarNotificationTemplate, notificationType,
+			notificationTemplateType, NotificationField.SUBJECT);
+
+		String subject = NotificationUtil.processNotificationTemplate(
+			templateSubject, attributes);
+
+		notificationTemplateContext.setSubject(subject);
+
+		String templateBody = NotificationUtil.getTemplate(
+			calendarNotificationTemplate, notificationType,
+			notificationTemplateType, NotificationField.BODY);
+
+		String body = NotificationUtil.processNotificationTemplate(
+			templateBody, attributes);
+
+		notificationTemplateContext.setBody(body);
 
 		return notificationTemplateContext;
 	}
@@ -129,6 +155,30 @@ public class NotificationTemplateContextFactory {
 
 	public static void setPortletConfig(PortletConfig portletConfig) {
 		_portletConfig = portletConfig;
+	}
+
+	private static String _getCalendarBookingURL(
+		long calendarBookingId, ServiceContext serviceContext) {
+
+		if (serviceContext == null) {
+			return StringPool.BLANK;
+		}
+
+		ThemeDisplay themeDisplay = serviceContext.getThemeDisplay();
+
+		if (themeDisplay == null) {
+			return StringPool.BLANK;
+		}
+
+		PortletURL portletURL = PortletURLFactoryUtil.create(
+			serviceContext.getRequest(), PortletKeys.CALENDAR,
+			themeDisplay.getPlid(), ActionRequest.RENDER_PHASE);
+
+		portletURL.setParameter("mvcPath", "/view_calendar_booking.jsp");
+		portletURL.setParameter(
+			"calendarBookingId", String.valueOf(calendarBookingId));
+
+		return portletURL.toString();
 	}
 
 	private static PortletConfig _portletConfig;

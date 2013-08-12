@@ -33,6 +33,7 @@ import java.util.Map;
  */
 public class WorkflowInstanceManagerImpl implements WorkflowInstanceManager {
 
+	@Override
 	public void deleteWorkflowInstance(long companyId, long workflowInstanceId)
 		throws WorkflowException {
 
@@ -44,6 +45,7 @@ public class WorkflowInstanceManagerImpl implements WorkflowInstanceManager {
 			workflowInstanceId, serviceContext);
 	}
 
+	@Override
 	public List<String> getNextTransitionNames(
 			long companyId, long userId, long workflowInstanceId)
 		throws WorkflowException {
@@ -62,6 +64,7 @@ public class WorkflowInstanceManagerImpl implements WorkflowInstanceManager {
 		}
 	}
 
+	@Override
 	public WorkflowInstance getWorkflowInstance(
 			long companyId, long workflowInstanceId)
 		throws WorkflowException {
@@ -74,6 +77,7 @@ public class WorkflowInstanceManagerImpl implements WorkflowInstanceManager {
 			workflowInstanceId, serviceContext);
 	}
 
+	@Override
 	public int getWorkflowInstanceCount(
 			long companyId, Long userId, String assetClassName,
 			Long assetClassPK, Boolean completed)
@@ -87,6 +91,7 @@ public class WorkflowInstanceManagerImpl implements WorkflowInstanceManager {
 			userId, assetClassName, assetClassPK, completed, serviceContext);
 	}
 
+	@Override
 	public int getWorkflowInstanceCount(
 			long companyId, Long userId, String[] assetClassNames,
 			Boolean completed)
@@ -100,6 +105,7 @@ public class WorkflowInstanceManagerImpl implements WorkflowInstanceManager {
 			userId, assetClassNames, completed, serviceContext);
 	}
 
+	@Override
 	public int getWorkflowInstanceCount(
 			long companyId, String workflowDefinitionName,
 			Integer workflowDefinitionVersion, Boolean completed)
@@ -114,6 +120,7 @@ public class WorkflowInstanceManagerImpl implements WorkflowInstanceManager {
 			serviceContext);
 	}
 
+	@Override
 	public List<WorkflowInstance> getWorkflowInstances(
 			long companyId, Long userId, String assetClassName,
 			Long assetClassPK, Boolean completed, int start, int end,
@@ -129,6 +136,7 @@ public class WorkflowInstanceManagerImpl implements WorkflowInstanceManager {
 			orderByComparator, serviceContext);
 	}
 
+	@Override
 	public List<WorkflowInstance> getWorkflowInstances(
 			long companyId, Long userId, String[] assetClassNames,
 			Boolean completed, int start, int end,
@@ -144,6 +152,7 @@ public class WorkflowInstanceManagerImpl implements WorkflowInstanceManager {
 			serviceContext);
 	}
 
+	@Override
 	public List<WorkflowInstance> getWorkflowInstances(
 			long companyId, String workflowDefinitionName,
 			Integer workflowDefinitionVersion, Boolean completed, int start,
@@ -163,6 +172,7 @@ public class WorkflowInstanceManagerImpl implements WorkflowInstanceManager {
 		_workflowEngine = workflowEngine;
 	}
 
+	@Override
 	public WorkflowInstance signalWorkflowInstance(
 			long companyId, long userId, long workflowInstanceId,
 			String transitionName, Map<String, Serializable> workflowContext)
@@ -173,14 +183,12 @@ public class WorkflowInstanceManagerImpl implements WorkflowInstanceManager {
 		serviceContext.setCompanyId(companyId);
 		serviceContext.setUserId(userId);
 
-		WorkflowInstanceAdapter workflowInstanceAdapter =
-			(WorkflowInstanceAdapter)_workflowEngine.signalWorkflowInstance(
-				workflowInstanceId, transitionName, workflowContext,
-				serviceContext);
-
-		return workflowInstanceAdapter;
+		return _workflowEngine.signalWorkflowInstance(
+			workflowInstanceId, transitionName, workflowContext,
+			serviceContext);
 	}
 
+	@Override
 	public WorkflowInstance startWorkflowInstance(
 			long companyId, long groupId, long userId,
 			String workflowDefinitionName, Integer workflowDefinitionVersion,
@@ -194,14 +202,12 @@ public class WorkflowInstanceManagerImpl implements WorkflowInstanceManager {
 		serviceContext.setScopeGroupId(groupId);
 		serviceContext.setUserId(userId);
 
-		WorkflowInstanceAdapter workflowInstanceAdapter =
-			(WorkflowInstanceAdapter)_workflowEngine.startWorkflowInstance(
-				workflowDefinitionName, workflowDefinitionVersion,
-				transitionName, workflowContext, serviceContext);
-
-		return workflowInstanceAdapter;
+		return _workflowEngine.startWorkflowInstance(
+			workflowDefinitionName, workflowDefinitionVersion, transitionName,
+			workflowContext, serviceContext);
 	}
 
+	@Override
 	public WorkflowInstance updateWorkflowContext(
 			long companyId, long workflowInstanceId,
 			Map<String, Serializable> workflowContext)

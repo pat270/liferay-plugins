@@ -16,11 +16,14 @@ package com.liferay.httpservice.internal.http;
 
 import com.liferay.httpservice.internal.servlet.BundleServletContext;
 import com.liferay.portal.kernel.util.GetterUtil;
+import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.Validator;
 
 import java.util.Map;
 
 import javax.servlet.Servlet;
 
+import org.osgi.framework.Constants;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.http.HttpContext;
 
@@ -44,8 +47,23 @@ public class ServletTracker
 
 		String servletName = GetterUtil.getString(
 			serviceReference.getProperty("servletName"));
+
+		if (Validator.isNull(servletName)) {
+			servletName = String.valueOf(
+				serviceReference.getProperty(Constants.SERVICE_ID));
+		}
+
 		String urlPattern = GetterUtil.getString(
 			serviceReference.getProperty("urlPattern"));
+
+		if (Validator.isNull(urlPattern)) {
+			urlPattern = GetterUtil.getString(
+				serviceReference.getProperty("alias"));
+		}
+
+		if (Validator.isNull(urlPattern)) {
+			return;
+		}
 
 		bundleServletContext.registerServlet(
 			servletName, urlPattern, servlet, initParameters, httpContext);
@@ -58,6 +76,11 @@ public class ServletTracker
 
 		String servletName = GetterUtil.getString(
 			serviceReference.getProperty("servletName"));
+
+		if (Validator.isNull(servletName)) {
+			servletName = String.valueOf(
+				serviceReference.getProperty(Constants.SERVICE_ID));
+		}
 
 		bundleServletContext.unregisterServlet(servletName);
 	}

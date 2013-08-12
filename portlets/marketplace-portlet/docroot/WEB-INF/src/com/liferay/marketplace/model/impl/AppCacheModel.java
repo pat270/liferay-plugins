@@ -37,7 +37,7 @@ import java.util.Date;
 public class AppCacheModel implements CacheModel<App>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(27);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -55,6 +55,14 @@ public class AppCacheModel implements CacheModel<App>, Externalizable {
 		sb.append(modifiedDate);
 		sb.append(", remoteAppId=");
 		sb.append(remoteAppId);
+		sb.append(", title=");
+		sb.append(title);
+		sb.append(", description=");
+		sb.append(description);
+		sb.append(", category=");
+		sb.append(category);
+		sb.append(", iconURL=");
+		sb.append(iconURL);
 		sb.append(", version=");
 		sb.append(version);
 		sb.append("}");
@@ -62,6 +70,7 @@ public class AppCacheModel implements CacheModel<App>, Externalizable {
 		return sb.toString();
 	}
 
+	@Override
 	public App toEntityModel() {
 		AppImpl appImpl = new AppImpl();
 
@@ -99,6 +108,34 @@ public class AppCacheModel implements CacheModel<App>, Externalizable {
 
 		appImpl.setRemoteAppId(remoteAppId);
 
+		if (title == null) {
+			appImpl.setTitle(StringPool.BLANK);
+		}
+		else {
+			appImpl.setTitle(title);
+		}
+
+		if (description == null) {
+			appImpl.setDescription(StringPool.BLANK);
+		}
+		else {
+			appImpl.setDescription(description);
+		}
+
+		if (category == null) {
+			appImpl.setCategory(StringPool.BLANK);
+		}
+		else {
+			appImpl.setCategory(category);
+		}
+
+		if (iconURL == null) {
+			appImpl.setIconURL(StringPool.BLANK);
+		}
+		else {
+			appImpl.setIconURL(iconURL);
+		}
+
 		if (version == null) {
 			appImpl.setVersion(StringPool.BLANK);
 		}
@@ -111,6 +148,7 @@ public class AppCacheModel implements CacheModel<App>, Externalizable {
 		return appImpl;
 	}
 
+	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
 		uuid = objectInput.readUTF();
 		appId = objectInput.readLong();
@@ -120,9 +158,14 @@ public class AppCacheModel implements CacheModel<App>, Externalizable {
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		remoteAppId = objectInput.readLong();
+		title = objectInput.readUTF();
+		description = objectInput.readUTF();
+		category = objectInput.readUTF();
+		iconURL = objectInput.readUTF();
 		version = objectInput.readUTF();
 	}
 
+	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
 		if (uuid == null) {
@@ -147,6 +190,34 @@ public class AppCacheModel implements CacheModel<App>, Externalizable {
 		objectOutput.writeLong(modifiedDate);
 		objectOutput.writeLong(remoteAppId);
 
+		if (title == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(title);
+		}
+
+		if (description == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(description);
+		}
+
+		if (category == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(category);
+		}
+
+		if (iconURL == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(iconURL);
+		}
+
 		if (version == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
@@ -163,5 +234,9 @@ public class AppCacheModel implements CacheModel<App>, Externalizable {
 	public long createDate;
 	public long modifiedDate;
 	public long remoteAppId;
+	public String title;
+	public String description;
+	public String category;
+	public String iconURL;
 	public String version;
 }

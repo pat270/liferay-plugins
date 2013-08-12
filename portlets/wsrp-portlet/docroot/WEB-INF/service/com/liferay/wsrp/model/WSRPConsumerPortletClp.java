@@ -16,10 +16,12 @@ package com.liferay.wsrp.model;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
+import com.liferay.portal.util.PortalUtil;
 
 import com.liferay.wsrp.service.ClpSerializer;
 import com.liferay.wsrp.service.WSRPConsumerPortletLocalServiceUtil;
@@ -40,26 +42,32 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 	public WSRPConsumerPortletClp() {
 	}
 
+	@Override
 	public Class<?> getModelClass() {
 		return WSRPConsumerPortlet.class;
 	}
 
+	@Override
 	public String getModelClassName() {
 		return WSRPConsumerPortlet.class.getName();
 	}
 
+	@Override
 	public long getPrimaryKey() {
 		return _wsrpConsumerPortletId;
 	}
 
+	@Override
 	public void setPrimaryKey(long primaryKey) {
 		setWsrpConsumerPortletId(primaryKey);
 	}
 
+	@Override
 	public Serializable getPrimaryKeyObj() {
 		return _wsrpConsumerPortletId;
 	}
 
+	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
 		setPrimaryKey(((Long)primaryKeyObj).longValue());
 	}
@@ -132,10 +140,12 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 		}
 	}
 
+	@Override
 	public String getUuid() {
 		return _uuid;
 	}
 
+	@Override
 	public void setUuid(String uuid) {
 		_uuid = uuid;
 
@@ -153,10 +163,12 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 		}
 	}
 
+	@Override
 	public long getWsrpConsumerPortletId() {
 		return _wsrpConsumerPortletId;
 	}
 
+	@Override
 	public void setWsrpConsumerPortletId(long wsrpConsumerPortletId) {
 		_wsrpConsumerPortletId = wsrpConsumerPortletId;
 
@@ -176,10 +188,12 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 		}
 	}
 
+	@Override
 	public long getCompanyId() {
 		return _companyId;
 	}
 
+	@Override
 	public void setCompanyId(long companyId) {
 		_companyId = companyId;
 
@@ -197,10 +211,12 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 		}
 	}
 
+	@Override
 	public Date getCreateDate() {
 		return _createDate;
 	}
 
+	@Override
 	public void setCreateDate(Date createDate) {
 		_createDate = createDate;
 
@@ -218,10 +234,12 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 		}
 	}
 
+	@Override
 	public Date getModifiedDate() {
 		return _modifiedDate;
 	}
 
+	@Override
 	public void setModifiedDate(Date modifiedDate) {
 		_modifiedDate = modifiedDate;
 
@@ -239,10 +257,12 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 		}
 	}
 
+	@Override
 	public long getWsrpConsumerId() {
 		return _wsrpConsumerId;
 	}
 
+	@Override
 	public void setWsrpConsumerId(long wsrpConsumerId) {
 		_wsrpConsumerId = wsrpConsumerId;
 
@@ -260,10 +280,12 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 		}
 	}
 
+	@Override
 	public String getName() {
 		return _name;
 	}
 
+	@Override
 	public void setName(String name) {
 		_name = name;
 
@@ -281,10 +303,12 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 		}
 	}
 
+	@Override
 	public String getPortletHandle() {
 		return _portletHandle;
 	}
 
+	@Override
 	public void setPortletHandle(String portletHandle) {
 		_portletHandle = portletHandle;
 
@@ -300,6 +324,12 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 				throw new UnsupportedOperationException(e);
 			}
 		}
+	}
+
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				WSRPConsumerPortlet.class.getName()));
 	}
 
 	public BaseModel<?> getWSRPConsumerPortletRemoteModel() {
@@ -352,6 +382,7 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 		return returnValue;
 	}
 
+	@Override
 	public void persist() throws SystemException {
 		if (this.isNew()) {
 			WSRPConsumerPortletLocalServiceUtil.addWSRPConsumerPortlet(this);
@@ -384,6 +415,7 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 		return clone;
 	}
 
+	@Override
 	public int compareTo(WSRPConsumerPortlet wsrpConsumerPortlet) {
 		int value = 0;
 
@@ -398,18 +430,15 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof WSRPConsumerPortletClp)) {
 			return false;
 		}
 
-		WSRPConsumerPortletClp wsrpConsumerPortlet = null;
-
-		try {
-			wsrpConsumerPortlet = (WSRPConsumerPortletClp)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		WSRPConsumerPortletClp wsrpConsumerPortlet = (WSRPConsumerPortletClp)obj;
 
 		long primaryKey = wsrpConsumerPortlet.getPrimaryKey();
 
@@ -451,6 +480,7 @@ public class WSRPConsumerPortletClp extends BaseModelImpl<WSRPConsumerPortlet>
 		return sb.toString();
 	}
 
+	@Override
 	public String toXmlString() {
 		StringBundler sb = new StringBundler(28);
 

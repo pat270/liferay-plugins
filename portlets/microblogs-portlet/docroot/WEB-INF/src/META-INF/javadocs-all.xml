@@ -2,6 +2,224 @@
 
 <javadocs>
 	<javadoc>
+		<name>MicroblogsEntryAssetRenderer</name>
+		<type>com.liferay.microblogs.microblogs.asset.MicroblogsEntryAssetRenderer</type>
+		<author><![CDATA[Matthew Kong]]></author>
+		<method>
+			<name>MicroblogsEntryAssetRenderer</name>
+			<param>
+				<name>entry</name>
+				<type>com.liferay.microblogs.model.MicroblogsEntry</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+		</method>
+		<method>
+			<name>getClassName</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getClassPK</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getGroupId</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getSummary</name>
+			<param>
+				<name>locale</name>
+				<type>java.util.Locale</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getTitle</name>
+			<param>
+				<name>locale</name>
+				<type>java.util.Locale</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getURLViewInContext</name>
+			<param>
+				<name>liferayPortletRequest</name>
+				<type>com.liferay.portal.kernel.portlet.LiferayPortletRequest</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>liferayPortletResponse</name>
+				<type>com.liferay.portal.kernel.portlet.LiferayPortletResponse</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>noSuchEntryRedirect</name>
+				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getUserId</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getUserName</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getUuid</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>hasViewPermission</name>
+			<param>
+				<name>permissionChecker</name>
+				<type>com.liferay.portal.security.permission.PermissionChecker</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>render</name>
+			<param>
+				<name>renderRequest</name>
+				<type>javax.portlet.RenderRequest</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>renderResponse</name>
+				<type>javax.portlet.RenderResponse</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>template</name>
+				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+			<throws>
+				<name>Exception</name>
+				<type>java.lang.Exception</type>
+				<comment><![CDATA[]]></comment>
+			</throws>
+		</method>
+		<field>
+			<name>_entry</name>
+		</field>
+	</javadoc>
+	<javadoc>
+		<name>MicroblogsEntryAssetRendererFactory</name>
+		<type>com.liferay.microblogs.microblogs.asset.MicroblogsEntryAssetRendererFactory</type>
+		<author><![CDATA[Matthew Kong]]></author>
+		<method>
+			<name>getAssetRenderer</name>
+			<param>
+				<name>classPK</name>
+				<type>long</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>type</name>
+				<type>int</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+			<throws>
+				<name>PortalException</name>
+				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
+			</throws>
+			<throws>
+				<name>SystemException</name>
+				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
+			</throws>
+		</method>
+		<method>
+			<name>getClassName</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getType</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>hasPermission</name>
+			<param>
+				<name>permissionChecker</name>
+				<type>com.liferay.portal.security.permission.PermissionChecker</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>classPK</name>
+				<type>long</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>actionId</name>
+				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+			<throws>
+				<name>Exception</name>
+				<type>java.lang.Exception</type>
+				<comment><![CDATA[]]></comment>
+			</throws>
+		</method>
+		<method>
+			<name>getIconPath</name>
+			<param>
+				<name>themeDisplay</name>
+				<type>com.liferay.portal.theme.ThemeDisplay</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<field>
+			<name>CLASS_NAME</name>
+		</field>
+		<field>
+			<name>TYPE</name>
+		</field>
+	</javadoc>
+	<javadoc>
 		<name>MicroblogsPortlet</name>
 		<type>com.liferay.microblogs.microblogs.portlet.MicroblogsPortlet</type>
 		<author><![CDATA[Jonathan Lee]]></author>
@@ -10,14 +228,17 @@
 			<param>
 				<name>actionRequest</name>
 				<type>javax.portlet.ActionRequest</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>actionResponse</name>
 				<type>javax.portlet.ActionResponse</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<throws>
 				<name>Exception</name>
 				<type>java.lang.Exception</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -25,14 +246,17 @@
 			<param>
 				<name>actionRequest</name>
 				<type>javax.portlet.ActionRequest</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>actionResponse</name>
 				<type>javax.portlet.ActionResponse</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<throws>
 				<name>Exception</name>
 				<type>java.lang.Exception</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -40,7 +264,11 @@
 			<param>
 				<name>content</name>
 				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 		</method>
 		<field>
 			<name>_assetTagPattern</name>
@@ -55,20 +283,92 @@
 		<author><![CDATA[Jonathan Lee]]></author>
 		<method>
 			<name>getClassNames</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 		</method>
 		<method>
-			<name>doInterpret</name>
+			<name>getBody</name>
 			<param>
 				<name>activity</name>
 				<type>com.liferay.portlet.social.model.SocialActivity</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
-				<name>themeDisplay</name>
-				<type>com.liferay.portal.theme.ThemeDisplay</type>
+				<name>serviceContext</name>
+				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getLink</name>
+			<param>
+				<name>activity</name>
+				<type>com.liferay.portlet.social.model.SocialActivity</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>serviceContext</name>
+				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+		</method>
+		<method>
+			<name>getTitle</name>
+			<param>
+				<name>activity</name>
+				<type>com.liferay.portlet.social.model.SocialActivity</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>serviceContext</name>
+				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>Exception</name>
 				<type>java.lang.Exception</type>
+				<comment><![CDATA[]]></comment>
+			</throws>
+		</method>
+		<method>
+			<name>hasPermissions</name>
+			<param>
+				<name>permissionChecker</name>
+				<type>com.liferay.portal.security.permission.PermissionChecker</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>activity</name>
+				<type>com.liferay.portlet.social.model.SocialActivity</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>actionId</name>
+				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<param>
+				<name>serviceContext</name>
+				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
+			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
+			<throws>
+				<name>Exception</name>
+				<type>java.lang.Exception</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<field>
@@ -101,354 +401,6 @@
 		</method>
 	</javadoc>
 	<javadoc>
-		<name>MicroblogsEntryLocalServiceClpInvoker</name>
-		<type>com.liferay.microblogs.service.base.MicroblogsEntryLocalServiceClpInvoker</type>
-		<author><![CDATA[Brian Wing Shun Chan]]></author>
-		<method>
-			<name>MicroblogsEntryLocalServiceClpInvoker</name>
-		</method>
-		<method>
-			<name>invokeMethod</name>
-			<param>
-				<name>name</name>
-				<type>java.lang.String</type>
-			</param>
-			<param>
-				<name>parameterTypes</name>
-				<type>java.lang.String[]</type>
-			</param>
-			<param>
-				<name>arguments</name>
-				<type>java.lang.Object[]</type>
-			</param>
-			<throws>
-				<name>Throwable</name>
-				<type>java.lang.Throwable</type>
-			</throws>
-		</method>
-		<field>
-			<name>_methodName0</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes0</name>
-		</field>
-		<field>
-			<name>_methodName1</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes1</name>
-		</field>
-		<field>
-			<name>_methodName2</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes2</name>
-		</field>
-		<field>
-			<name>_methodName3</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes3</name>
-		</field>
-		<field>
-			<name>_methodName4</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes4</name>
-		</field>
-		<field>
-			<name>_methodName5</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes5</name>
-		</field>
-		<field>
-			<name>_methodName6</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes6</name>
-		</field>
-		<field>
-			<name>_methodName7</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes7</name>
-		</field>
-		<field>
-			<name>_methodName8</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes8</name>
-		</field>
-		<field>
-			<name>_methodName9</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes9</name>
-		</field>
-		<field>
-			<name>_methodName10</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes10</name>
-		</field>
-		<field>
-			<name>_methodName11</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes11</name>
-		</field>
-		<field>
-			<name>_methodName12</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes12</name>
-		</field>
-		<field>
-			<name>_methodName13</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes13</name>
-		</field>
-		<field>
-			<name>_methodName14</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes14</name>
-		</field>
-		<field>
-			<name>_methodName15</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes15</name>
-		</field>
-		<field>
-			<name>_methodName36</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes36</name>
-		</field>
-		<field>
-			<name>_methodName37</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes37</name>
-		</field>
-		<field>
-			<name>_methodName42</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes42</name>
-		</field>
-		<field>
-			<name>_methodName43</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes43</name>
-		</field>
-		<field>
-			<name>_methodName44</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes44</name>
-		</field>
-		<field>
-			<name>_methodName45</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes45</name>
-		</field>
-		<field>
-			<name>_methodName46</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes46</name>
-		</field>
-		<field>
-			<name>_methodName47</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes47</name>
-		</field>
-		<field>
-			<name>_methodName48</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes48</name>
-		</field>
-		<field>
-			<name>_methodName49</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes49</name>
-		</field>
-		<field>
-			<name>_methodName50</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes50</name>
-		</field>
-		<field>
-			<name>_methodName51</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes51</name>
-		</field>
-		<field>
-			<name>_methodName52</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes52</name>
-		</field>
-		<field>
-			<name>_methodName53</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes53</name>
-		</field>
-		<field>
-			<name>_methodName54</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes54</name>
-		</field>
-		<field>
-			<name>_methodName55</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes55</name>
-		</field>
-		<field>
-			<name>_methodName56</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes56</name>
-		</field>
-		<field>
-			<name>_methodName57</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes57</name>
-		</field>
-		<field>
-			<name>_methodName58</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes58</name>
-		</field>
-	</javadoc>
-	<javadoc>
-		<name>MicroblogsEntryServiceClpInvoker</name>
-		<type>com.liferay.microblogs.service.base.MicroblogsEntryServiceClpInvoker</type>
-		<author><![CDATA[Brian Wing Shun Chan]]></author>
-		<method>
-			<name>MicroblogsEntryServiceClpInvoker</name>
-		</method>
-		<method>
-			<name>invokeMethod</name>
-			<param>
-				<name>name</name>
-				<type>java.lang.String</type>
-			</param>
-			<param>
-				<name>parameterTypes</name>
-				<type>java.lang.String[]</type>
-			</param>
-			<param>
-				<name>arguments</name>
-				<type>java.lang.Object[]</type>
-			</param>
-			<throws>
-				<name>Throwable</name>
-				<type>java.lang.Throwable</type>
-			</throws>
-		</method>
-		<field>
-			<name>_methodName20</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes20</name>
-		</field>
-		<field>
-			<name>_methodName21</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes21</name>
-		</field>
-		<field>
-			<name>_methodName26</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes26</name>
-		</field>
-		<field>
-			<name>_methodName27</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes27</name>
-		</field>
-		<field>
-			<name>_methodName28</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes28</name>
-		</field>
-		<field>
-			<name>_methodName29</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes29</name>
-		</field>
-		<field>
-			<name>_methodName30</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes30</name>
-		</field>
-		<field>
-			<name>_methodName31</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes31</name>
-		</field>
-		<field>
-			<name>_methodName32</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes32</name>
-		</field>
-		<field>
-			<name>_methodName33</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes33</name>
-		</field>
-		<field>
-			<name>_methodName34</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes34</name>
-		</field>
-		<field>
-			<name>_methodName35</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes35</name>
-		</field>
-		<field>
-			<name>_methodName36</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes36</name>
-		</field>
-		<field>
-			<name>_methodName37</name>
-		</field>
-		<field>
-			<name>_methodParameterTypes37</name>
-		</field>
-	</javadoc>
-	<javadoc>
 		<name>MicroblogsEntryLocalServiceImpl</name>
 		<type>com.liferay.microblogs.service.impl.MicroblogsEntryLocalServiceImpl</type>
 		<author><![CDATA[Jonathan Lee]]></author>
@@ -457,38 +409,50 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>content</name>
 				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>type</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>receiverUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>receiverMicroblogsEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>socialRelationType</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>serviceContext</name>
 				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -496,14 +460,20 @@
 			<param>
 				<name>microblogsEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -511,14 +481,20 @@
 			<param>
 				<name>microblogsEntry</name>
 				<type>com.liferay.microblogs.model.MicroblogsEntry</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -526,14 +502,17 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -541,18 +520,25 @@
 			<param>
 				<name>companyId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -560,10 +546,15 @@
 			<param>
 				<name>companyId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -571,14 +562,20 @@
 			<param>
 				<name>microblogsEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -586,26 +583,35 @@
 			<param>
 				<name>type</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>receiverMicroblogsEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>orderByComparator</name>
 				<type>com.liferay.portal.kernel.util.OrderByComparator</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -613,14 +619,20 @@
 			<param>
 				<name>type</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>receiverMicroblogsEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -628,22 +640,30 @@
 			<param>
 				<name>type</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>receiverUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -651,14 +671,20 @@
 			<param>
 				<name>type</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>receiverUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -666,18 +692,25 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -685,22 +718,30 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>type</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -708,10 +749,15 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -719,14 +765,20 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>type</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -734,22 +786,27 @@
 			<param>
 				<name>microblogsEntry</name>
 				<type>com.liferay.microblogs.model.MicroblogsEntry</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assetCategoryIds</name>
 				<type>long[]</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assetTagNames</name>
 				<type>java.lang.String[]</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -757,26 +814,35 @@
 			<param>
 				<name>microblogsEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>content</name>
 				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>socialRelationType</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>serviceContext</name>
 				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -784,14 +850,17 @@
 			<param>
 				<name>microblogsEntry</name>
 				<type>com.liferay.microblogs.model.MicroblogsEntry</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -799,18 +868,22 @@
 			<param>
 				<name>type</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>receiverMicroblogsEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 	</javadoc>
@@ -823,38 +896,50 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>content</name>
 				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>type</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>receiverUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>receiverMicroblogsEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>socialRelationType</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>serviceContext</name>
 				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -862,14 +947,20 @@
 			<param>
 				<name>microblogsEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -877,18 +968,25 @@
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -896,33 +994,46 @@
 			<param>
 				<name>assetTagName</name>
 				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
 			<name>getMicroblogsEntriesCount</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -930,14 +1041,20 @@
 			<param>
 				<name>assetTagName</name>
 				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -945,14 +1062,20 @@
 			<param>
 				<name>microblogsEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -960,22 +1083,30 @@
 			<param>
 				<name>microblogsEntryUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -983,26 +1114,35 @@
 			<param>
 				<name>microblogsEntryUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>type</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1010,14 +1150,20 @@
 			<param>
 				<name>microblogsEntryUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1025,18 +1171,25 @@
 			<param>
 				<name>microblogsEntryUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>type</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1044,26 +1197,35 @@
 			<param>
 				<name>microblogsEntryId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>content</name>
 				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>socialRelationType</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>serviceContext</name>
 				<type>com.liferay.portal.service.ServiceContext</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>PortalException</name>
 				<type>com.liferay.portal.kernel.exception.PortalException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 	</javadoc>
@@ -1079,10 +1241,15 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1090,14 +1257,20 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>microblogsEntryUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1105,14 +1278,20 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assetTagName</name>
 				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1120,18 +1299,25 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>type</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>microblogsEntryUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1139,18 +1325,25 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1158,22 +1351,30 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>microblogsEntryUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1181,22 +1382,30 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>assetTagName</name>
 				<type>java.lang.String</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<method>
@@ -1204,26 +1413,35 @@
 			<param>
 				<name>userId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>type</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>microblogsEntryUserId</name>
 				<type>long</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>start</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>end</name>
 				<type>int</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 			<throws>
 				<name>SystemException</name>
 				<type>com.liferay.portal.kernel.exception.SystemException</type>
+				<comment><![CDATA[]]></comment>
 			</throws>
 		</method>
 		<field>
@@ -1258,30 +1476,6 @@
 		</field>
 	</javadoc>
 	<javadoc>
-		<name>MicroblogsUtil</name>
-		<type>com.liferay.microblogs.util.MicroblogsUtil</type>
-		<author><![CDATA[Jonathan Lee]]></author>
-		<method>
-			<name>getJSONRecipients</name>
-			<param>
-				<name>userId</name>
-				<type>long</type>
-			</param>
-			<param>
-				<name>themeDisplay</name>
-				<type>com.liferay.portal.theme.ThemeDisplay</type>
-			</param>
-			<throws>
-				<name>PortalException</name>
-				<type>com.liferay.portal.kernel.exception.PortalException</type>
-			</throws>
-			<throws>
-				<name>SystemException</name>
-				<type>com.liferay.portal.kernel.exception.SystemException</type>
-			</throws>
-		</method>
-	</javadoc>
-	<javadoc>
 		<name>WebKeys</name>
 		<type>com.liferay.microblogs.util.WebKeys</type>
 		<author><![CDATA[Jonathan Lee]]></author>
@@ -1290,6 +1484,9 @@
 		</field>
 		<field>
 			<name>MICROBLOGS_ENTRIES_URL</name>
+		</field>
+		<field>
+			<name>MICROBLOGS_ENTRY</name>
 		</field>
 	</javadoc>
 	<javadoc>
@@ -1304,6 +1501,7 @@
 			<param>
 				<name>ascending</name>
 				<type>boolean</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 		</method>
 		<method>
@@ -1311,20 +1509,34 @@
 			<param>
 				<name>obj1</name>
 				<type>java.lang.Object</type>
+				<comment><![CDATA[]]></comment>
 			</param>
 			<param>
 				<name>obj2</name>
 				<type>java.lang.Object</type>
+				<comment><![CDATA[]]></comment>
 			</param>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 		</method>
 		<method>
 			<name>getOrderBy</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 		</method>
 		<method>
 			<name>getOrderByFields</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 		</method>
 		<method>
 			<name>isAscending</name>
+			<return>
+				<comment><![CDATA[]]></comment>
+			</return>
 		</method>
 		<field>
 			<name>ORDER_BY_ASC</name>

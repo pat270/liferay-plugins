@@ -15,16 +15,14 @@
 package com.liferay.httpservice.internal.http;
 
 import com.liferay.httpservice.internal.servlet.BundleServletContext;
+import com.liferay.httpservice.mock.MockFilter;
 
 import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 
 import org.junit.runner.RunWith;
 
 import org.mockito.Mockito;
+import org.mockito.verification.VerificationMode;
 
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
@@ -47,9 +45,12 @@ public class FilterTrackerTest extends BaseTrackerTestCase<Filter> {
 	}
 
 	@Override
-	protected void verifyRegisterServiceAction() throws Exception {
+	protected void verifyRegisterServiceAction(
+			VerificationMode verificationMode)
+		throws Exception {
+
 		BundleServletContext bundleServletContext = Mockito.verify(
-			this.bundleServletContext);
+			this.bundleServletContext, verificationMode);
 
 		bundleServletContext.registerFilter(
 			Mockito.anyString(), Mockito.anyString(), Mockito.eq(service),
@@ -62,24 +63,6 @@ public class FilterTrackerTest extends BaseTrackerTestCase<Filter> {
 			this.bundleServletContext);
 
 		bundleServletContext.unregisterFilter(Mockito.anyString());
-	}
-
-	private class MockFilter implements Filter {
-
-		@Override
-		public void destroy() {
-		}
-
-		@Override
-		public void doFilter(
-			ServletRequest servletRequest, ServletResponse servletResponse,
-			FilterChain filterChain) {
-		}
-
-		@Override
-		public void init(FilterConfig filterConfig) {
-		}
-
 	}
 
 }

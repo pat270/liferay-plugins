@@ -37,7 +37,8 @@ import java.util.List;
 public abstract class BaseNodeExecutor
 	extends BaseKaleoBean implements NodeExecutor {
 
-	public void enter(
+	@Override
+	public boolean enter(
 			KaleoNode currentKaleoNode, ExecutionContext executionContext)
 		throws PortalException, SystemException {
 
@@ -46,7 +47,7 @@ public abstract class BaseNodeExecutor
 
 		kaleoInstanceToken.setCurrentKaleoNode(currentKaleoNode);
 
-		doEnter(currentKaleoNode, executionContext);
+		boolean performExecute = doEnter(currentKaleoNode, executionContext);
 
 		ActionExecutorUtil.executeKaleoActions(
 			KaleoNode.class.getName(), currentKaleoNode.getKaleoNodeId(),
@@ -64,8 +65,11 @@ public abstract class BaseNodeExecutor
 			executionContext.getKaleoTaskInstanceToken(), kaleoTimers,
 			executionContext.getWorkflowContext(),
 			executionContext.getServiceContext());
+
+		return performExecute;
 	}
 
+	@Override
 	public void execute(
 			KaleoNode currentKaleoNode, ExecutionContext executionContext,
 			List<PathElement> remainingPathElements)
@@ -78,6 +82,7 @@ public abstract class BaseNodeExecutor
 		doExecute(currentKaleoNode, executionContext, remainingPathElements);
 	}
 
+	@Override
 	public void executeTimer(
 			KaleoNode currentKaleoNode, ExecutionContext executionContext)
 		throws PortalException, SystemException {
@@ -106,6 +111,7 @@ public abstract class BaseNodeExecutor
 		}
 	}
 
+	@Override
 	public void exit(
 			KaleoNode currentKaleoNode, ExecutionContext executionContext,
 			List<PathElement> remainingPathElements)
@@ -124,7 +130,7 @@ public abstract class BaseNodeExecutor
 			ExecutionType.ON_EXIT, executionContext);
 	}
 
-	protected abstract void doEnter(
+	protected abstract boolean doEnter(
 			KaleoNode currentKaleoNode, ExecutionContext executionContext)
 		throws PortalException, SystemException;
 

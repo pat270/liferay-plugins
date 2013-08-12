@@ -33,11 +33,7 @@ if (gadgetId > 0) {
 else {
 	redirect = StringPool.BLANK;
 
-	String portletResource = ParamUtil.getString(renderRequest, "portletResource");
-
-	PortletPreferences preferences = PortletPreferencesFactoryUtil.getPortletSetup(renderRequest, portletResource);
-
-	gadget = ShindigUtil.getGadget(preferences);
+	gadget = ShindigUtil.getGadget(portletPreferences);
 
 	String namespace = ShindigUtil.getPortletResourceNamespace(renderRequest, themeDisplay);
 

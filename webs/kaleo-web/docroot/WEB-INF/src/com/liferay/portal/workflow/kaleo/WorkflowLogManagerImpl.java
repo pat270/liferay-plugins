@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.workflow.WorkflowLog;
 import com.liferay.portal.kernel.workflow.WorkflowLogManager;
 import com.liferay.portal.workflow.kaleo.model.KaleoLog;
 import com.liferay.portal.workflow.kaleo.service.KaleoLogLocalServiceUtil;
+import com.liferay.portal.workflow.kaleo.util.WorkflowModelUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ import java.util.List;
  */
 public class WorkflowLogManagerImpl implements WorkflowLogManager {
 
+	@Override
 	public int getWorkflowLogCountByWorkflowInstance(
 			long companyId, long workflowInstanceId, List<Integer> logTypes)
 		throws WorkflowException {
@@ -42,6 +44,7 @@ public class WorkflowLogManagerImpl implements WorkflowLogManager {
 		}
 	}
 
+	@Override
 	public int getWorkflowLogCountByWorkflowTask(
 			long companyId, long workflowTaskId, List<Integer> logTypes)
 		throws WorkflowException {
@@ -56,6 +59,7 @@ public class WorkflowLogManagerImpl implements WorkflowLogManager {
 		}
 	}
 
+	@Override
 	public List<WorkflowLog> getWorkflowLogsByWorkflowInstance(
 			long companyId, long workflowInstanceId, List<Integer> logTypes,
 			int start, int end, OrderByComparator orderByComparator)
@@ -74,6 +78,7 @@ public class WorkflowLogManagerImpl implements WorkflowLogManager {
 		}
 	}
 
+	@Override
 	public List<WorkflowLog> getWorkflowLogsByWorkflowTask(
 			long companyId, long workflowTaskId, List<Integer> logTypes,
 			int start, int end, OrderByComparator orderByComparator)
@@ -96,7 +101,7 @@ public class WorkflowLogManagerImpl implements WorkflowLogManager {
 			kaleoLogs.size());
 
 		for (KaleoLog kaleoLog : kaleoLogs) {
-			workflowLogs.add(new WorkflowLogAdapter(kaleoLog));
+			workflowLogs.add(WorkflowModelUtil.toWorkflowLog(kaleoLog));
 		}
 
 		return workflowLogs;
