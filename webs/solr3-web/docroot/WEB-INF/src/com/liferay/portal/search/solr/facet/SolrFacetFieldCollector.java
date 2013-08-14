@@ -22,8 +22,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.solr.client.solrj.response.FacetField.Count;
 import org.apache.solr.client.solrj.response.FacetField;
+import org.apache.solr.client.solrj.response.FacetField.Count;
 
 /**
  * @author Raymond Augé
@@ -42,10 +42,12 @@ public class SolrFacetFieldCollector implements FacetCollector {
 		}
 	}
 
+	@Override
 	public String getFieldName() {
 		return _fieldName;
 	}
 
+	@Override
 	public TermCollector getTermCollector(String term) {
 		Count count = _counts.get(term);
 
@@ -58,6 +60,7 @@ public class SolrFacetFieldCollector implements FacetCollector {
 		return new SolrTermCollector(term, occurences);
 	}
 
+	@Override
 	public List<TermCollector> getTermCollectors() {
 		if (_termCollectors != null) {
 			return _termCollectors;

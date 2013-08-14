@@ -27,64 +27,213 @@ PortletURL portletURL = renderResponse.createRenderURL();
 portletURL.setParameter("tabs1", tabs1);
 
 SearchContainer searchContainer = new SearchContainer(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, 10, portletURL, null, null);
-
-List<SocialActivity> activities = null;
-int total = 0;
 %>
 
 <c:choose>
-	<c:when test="<%= group.isUser() && (themeDisplay.getUserId() == group.getClassPK()) && !layout.isPublicLayout() %>">
-		<liferay-ui:tabs
-			names="connections,following,my-sites,me"
-			url="<%= portletURL.toString() %>"
-			value="<%= tabs1 %>"
-		/>
-
-		<%
-		if (tabs1.equals("connections")) {
-			activities = SocialActivityLocalServiceUtil.getRelationActivities(user.getUserId(), SocialRelationConstants.TYPE_BI_CONNECTION, searchContainer.getStart(), searchContainer.getEnd());
-			total = SocialActivityLocalServiceUtil.getRelationActivitiesCount(user.getUserId(), SocialRelationConstants.TYPE_BI_CONNECTION);
-		}
-		else if (tabs1.equals("following")) {
-			activities = SocialActivityLocalServiceUtil.getRelationActivities(user.getUserId(), SocialRelationConstants.TYPE_UNI_FOLLOWER, searchContainer.getStart(), searchContainer.getEnd());
-			total = SocialActivityLocalServiceUtil.getRelationActivitiesCount(user.getUserId(), SocialRelationConstants.TYPE_UNI_FOLLOWER);
-		}
-		else if (tabs1.equals("my-sites")) {
-			activities = SocialActivityLocalServiceUtil.getUserGroupsActivities(user.getUserId(), searchContainer.getStart(), searchContainer.getEnd());
-			total = SocialActivityLocalServiceUtil.getUserGroupsActivitiesCount(user.getUserId());
-		}
-		else {
-			activities = SocialActivityLocalServiceUtil.getUserActivities(user.getUserId(), searchContainer.getStart(), searchContainer.getEnd());
-			total = SocialActivityLocalServiceUtil.getUserActivitiesCount(user.getUserId());
-		}
-
-		searchContainer.setTotal(total);
-		%>
-
-		<%@ include file="/activities/view_activities.jspf" %>
+	<c:when test="<%= GetterUtil.getBoolean(PropsUtil.get(PropsKeys.SOCIAL_ACTIVITY_SETS_ENABLED)) %>">
+		<%@ include file="/activities/view_activity_sets.jspf" %>
 	</c:when>
 	<c:otherwise>
-
-		<%
-		if (group.isUser()) {
-			activities = SocialActivityLocalServiceUtil.getUserActivities(group.getClassPK(), searchContainer.getStart(), searchContainer.getEnd());
-			total = SocialActivityLocalServiceUtil.getUserActivitiesCount(group.getClassPK());
-		}
-		else {
-			activities = SocialActivityLocalServiceUtil.getGroupActivities(group.getGroupId(), searchContainer.getStart(), searchContainer.getEnd());
-			total = SocialActivityLocalServiceUtil.getGroupActivitiesCount(group.getGroupId());
-		}
-
-		searchContainer.setTotal(total);
-		%>
-
 		<%@ include file="/activities/view_activities.jspf" %>
 	</c:otherwise>
 </c:choose>
 
-<c:if test="<%= (!activities.isEmpty()) %>">
-	<liferay-ui:search-paginator
-		searchContainer="<%= searchContainer %>"
-		type="article"
-	/>
-</c:if>
+<aui:script use="aui-base">
+	var activities = A.one('#p_p_id<portlet:namespace />');
+
+	activities.delegate(
+		'click',
+		function(event) {
+			var currentTarget = event.currentTarget;
+
+			var activityFooterToolbar = currentTarget.ancestor('.activity-footer-toolbar');
+
+			var commentsContainer = activityFooterToolbar.siblings('.comments-container');
+
+			var commentsList = commentsContainer.one('.comments-list');
+
+			var commentEntry = commentsList.one('.comment-entry');
+
+			if (commentEntry) {
+				commentsList.toggleClass('aui-helper-hidden');
+			}
+			else {
+				var uri = '<liferay-portlet:resourceURL id="getComments"></liferay-portlet:resourceURL>';
+
+				uri = Liferay.Util.addParams('activitySetId=' + currentTarget.getAttribute('data-activitySetId'), uri) || uri;
+
+				A.io.request(
+					uri,
+					{
+						after: {
+							success: function(event, id, obj) {
+								var responseData = this.get('responseData');
+
+								if (responseData) {
+									var comments = responseData.comments;
+
+									A.Array.map(
+										comments,
+										function(comment) {
+											Liferay.SO.Activities.addNewComment(commentsList, comment);
+										}
+									)
+								}
+							}
+						},
+						dataType: 'json',
+					}
+				);
+			}
+		},
+		'.view-comments a'
+	);
+
+	activities.delegate(
+		'click',
+		function(event) {
+			if (confirm('<%= UnicodeLanguageUtil.get(pageContext,"are-you-sure-you-want-to-delete-the-selected-entry") %>')) {
+				var currentTarget = event.currentTarget;
+
+				var activityFooter = currentTarget.ancestor('.activity-footer');
+				var commentEntry = currentTarget.ancestor('.comment-entry')
+				var commentsContainer = currentTarget.ancestor('.comments-container');
+
+				var form = commentsContainer.one('form');
+
+				var cmdInput = form.one('#<portlet:namespace /><%= Constants.CMD %>');
+
+				cmdInput.val('<%= Constants.DELETE %>');
+
+				var mbMessageIdOrMicroblogsEntryId = currentTarget.getAttribute('data-mbMessageIdOrMicroblogsEntryId');
+
+				var mbMessageIdOrMicroblogsEntryIdInput = form.one('#<portlet:namespace />mbMessageIdOrMicroblogsEntryId');
+
+				mbMessageIdOrMicroblogsEntryIdInput.val(mbMessageIdOrMicroblogsEntryId);
+
+				A.io.request(
+					form.attr('action'),
+					{
+						after: {
+							success: function(event, id, obj) {
+								var responseData = this.get('responseData');
+
+								if (responseData.success) {
+									commentEntry.remove();
+
+									var viewComments = activityFooter.one('.view-comments a');
+
+									var viewCommentsHtml = viewComments.get('innerHTML');
+
+									var messagesCount = parseInt(viewCommentsHtml) - 1;
+
+									viewComments.html(
+										(messagesCount > 0 ? messagesCount : '') +
+										(messagesCount > 1 ? ' <%= UnicodeLanguageUtil.get(pageContext, "comments") %>' : ' <%= UnicodeLanguageUtil.get(pageContext, "comment") %>')
+									);
+								}
+							}
+						},
+						dataType: 'json',
+						form: {
+							id: form
+						}
+					}
+				);
+			}
+		},
+		'.comment-entry .delete-comment a'
+	);
+
+	activities.delegate(
+		'click',
+		function(event) {
+			var currentTarget = event.currentTarget;
+
+			var mbMessageIdOrMicroblogsEntryId = currentTarget.getAttribute('data-mbMessageIdOrMicroblogsEntryId');
+
+			var editForm = A.one('#<portlet:namespace />fm1' + mbMessageIdOrMicroblogsEntryId);
+
+			var commentEntry = currentTarget.ancestor('.comment-entry');
+
+			var message = commentEntry.one('.comment-body .message');
+
+			message.toggleClass('aui-helper-hidden');
+
+			if (editForm) {
+				editForm.toggleClass('aui-helper-hidden');
+			}
+			else {
+				var commentsContainer = currentTarget.ancestor('.comments-container');
+
+				editForm = commentsContainer.one('form').cloneNode(true);
+
+				editForm.removeClass('aui-helper-hidden');
+
+				editForm.set('id','<portlet:namespace />fm1' + mbMessageIdOrMicroblogsEntryId);
+				editForm.set('name','<portlet:namespace />fm1' + mbMessageIdOrMicroblogsEntryId);
+
+				var cmdInput = editForm.one('#<portlet:namespace /><%= Constants.CMD %>');
+
+				cmdInput.val('<%= Constants.EDIT %>');
+
+				var mbMessageIdOrMicroblogsEntryIdInput = editForm.one('#<portlet:namespace />mbMessageIdOrMicroblogsEntryId');
+
+				mbMessageIdOrMicroblogsEntryIdInput.val(mbMessageIdOrMicroblogsEntryId);
+
+				var commentBody = commentEntry.one('.comment-body');
+
+				commentBody.append(editForm);
+
+				editForm.on(
+					'submit',
+					function(event) {
+						event.halt();
+
+						A.io.request(
+							editForm.attr('action'),
+							{
+								after: {
+									success: function(event, id, obj) {
+										var responseData = this.get('responseData');
+
+										if (responseData.success) {
+											message.html(responseData.body);
+
+											var postDate = commentEntry.one('.comment-info .post-date');
+
+											postDate.html(responseData.modifiedDate);
+
+											editForm.toggleClass('aui-helper-hidden');
+
+											message.toggleClass('aui-helper-hidden');
+										}
+									}
+								},
+								dataType: 'json',
+								form: {
+									id: editForm
+								}
+							}
+						);
+					}
+				);
+			}
+
+			var messageHtml = message.get('innerHTML');
+
+			var bodyInput = editForm.one('#<portlet:namespace />body');
+
+			bodyInput.val(messageHtml);
+		},
+		'.comment-entry .edit-comment a'
+	);
+
+	activities.delegate(
+		'click',
+		function(event) {
+			Liferay.SO.Activities.toggleEntry(event,'<portlet:namespace />');
+		},
+		'.toggle-entry'
+	);
+</aui:script>

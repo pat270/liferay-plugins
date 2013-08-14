@@ -57,8 +57,8 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -221,6 +221,7 @@ public class BundleServletContext extends LiferayServletContext {
 		return _bundle;
 	}
 
+	@Override
 	public ClassLoader getClassLoader() {
 		ClassLoader classLoader = (ClassLoader)_contextAttributes.get(
 			PluginContextListener.PLUGIN_CLASS_LOADER);
@@ -1094,14 +1095,6 @@ public class BundleServletContext extends LiferayServletContext {
 
 		@Override
 		public boolean equals(Object object) {
-			if (this == object) {
-				return true;
-			}
-
-			if (!(object instanceof FilterServiceRanking)) {
-				return false;
-			}
-
 			FilterServiceRanking filterServiceRanking =
 				(FilterServiceRanking)object;
 
@@ -1154,6 +1147,7 @@ public class BundleServletContext extends LiferayServletContext {
 	private class FilterServiceRankingComparator
 		implements Comparator<FilterServiceRanking> {
 
+		@Override
 		public int compare(
 			FilterServiceRanking filterServiceRanking1,
 			FilterServiceRanking filterServiceRanking2) {

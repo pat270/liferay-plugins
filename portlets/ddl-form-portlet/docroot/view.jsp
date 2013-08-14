@@ -26,6 +26,14 @@ DDMTemplate ddmTemplate = null;
 try {
 	if (recordSetId > 0) {
 		recordSet = DDLRecordSetLocalServiceUtil.getRecordSet(recordSetId);
+
+		if (recordSet.getGroupId() != scopeGroupId) {
+			recordSet = null;
+		}
+	}
+
+	if (formDDMTemplateId > 0) {
+		ddmTemplate = DDMTemplateLocalServiceUtil.getTemplate(formDDMTemplateId);
 	}
 %>
 
@@ -84,14 +92,14 @@ try {
 								</aui:fieldset>
 							</c:when>
 							<c:otherwise>
-								<div class="portlet-msg-info">
+								<div class="alert alert-info">
 									<liferay-ui:message key="your-form-has-already-been-submitted" />
 								</div>
 							</c:otherwise>
 						</c:choose>
 					</c:when>
 					<c:otherwise>
-						<div class="portlet-msg-info">
+						<div class="alert alert-error">
 							<liferay-ui:message key="you-do-not-have-the-required-permissions" />
 						</div>
 					</c:otherwise>
@@ -106,7 +114,7 @@ try {
 
 			<br />
 
-			<div class="portlet-msg-info">
+			<div class="alert alert-info">
 				<liferay-ui:message key="select-an-existing-list-or-add-a-list-to-be-displayed-in-this-portlet" />
 			</div>
 		</c:otherwise>
@@ -117,37 +125,40 @@ try {
 catch (NoSuchRecordSetException nsrse) {
 %>
 
-	<div class="portlet-msg-error">
+	<div class="alert alert-error">
 		<%= LanguageUtil.get(pageContext, "the-selected-list-no-longer-exists") %>
 	</div>
 
 <%
 }
 
-boolean showAddListIcon = PortletPermissionUtil.contains(permissionChecker, plid, portletDisplay.getId(), ActionKeys.CONFIGURATION) && permissionChecker.hasPermission(scopeGroupId, "com.liferay.portlet.dynamicdatalists", scopeGroupId, ActionKeys.ADD_RECORD_SET);
-boolean showAddTemplateIcon = (recordSet != null) && permissionChecker.hasPermission(scopeGroupId, "com.liferay.portlet.dynamicdatalists", scopeGroupId, ActionKeys.ADD_TEMPLATE);
+boolean hasConfigurationPermission = PortletPermissionUtil.contains(permissionChecker, layout, portletDisplay.getId(), ActionKeys.CONFIGURATION);
+
+boolean showAddListIcon = hasConfigurationPermission && permissionChecker.hasPermission(scopeGroupId, ddmDisplay.getResourceName(), scopeGroupId, ActionKeys.ADD_RECORD_SET);
+boolean showAddTemplateIcon = (recordSet != null) && permissionChecker.hasPermission(scopeGroupId, ddmDisplay.getResourceName(), scopeGroupId, ActionKeys.ADD_TEMPLATE);
 boolean showEditTemplateIcon = (ddmTemplate != null) && (permissionChecker.hasOwnerPermission(ddmTemplate.getCompanyId(), DDMTemplate.class.getName(), ddmTemplate.getTemplateId(), ddmTemplate.getUserId(), ActionKeys.UPDATE) || permissionChecker.hasPermission(ddmTemplate.getGroupId(), DDMTemplate.class.getName(), ddmTemplate.getTemplateId(), ActionKeys.UPDATE));
-boolean showSelectListIcon = PortletPermissionUtil.contains(permissionChecker, plid, portletDisplay.getId(), ActionKeys.CONFIGURATION);
 %>
 
-<c:if test="<%= themeDisplay.isSignedIn() && (showEditTemplateIcon || showSelectListIcon || showAddListIcon) %>">
+<c:if test="<%= themeDisplay.isSignedIn() && (hasConfigurationPermission || showEditTemplateIcon || showAddListIcon) %>">
 	<div class="lfr-meta-actions icons-container">
-		<div class="icon-actions">
+		<div class="lfr-icon-actions">
 			<c:if test="<%= showAddTemplateIcon %>">
 				<liferay-portlet:renderURL portletName="<%= PortletKeys.DYNAMIC_DATA_MAPPING %>" var="addTemplateURL" windowState="<%= WindowState.MAXIMIZED.toString() %>">
 					<portlet:param name="struts_action" value="/dynamic_data_mapping/edit_template" />
-					<portlet:param name="portletResource" value="<%= portletDisplay.getId() %>" />
 					<portlet:param name="redirect" value="<%= currentURL %>" />
+					<portlet:param name="portletResource" value="<%= portletDisplay.getId() %>" />
 					<portlet:param name="portletResourceNamespace" value="<%= renderResponse.getNamespace() %>" />
+					<portlet:param name="refererPortletName" value="<%= PortletKeys.DYNAMIC_DATA_LISTS %>" />
 					<portlet:param name="groupId" value="<%= String.valueOf(scopeGroupId) %>" />
 					<portlet:param name="classNameId" value="<%= String.valueOf(PortalUtil.getClassNameId(DDMStructure.class)) %>" />
 					<portlet:param name="classPK" value="<%= String.valueOf(recordSet.getDDMStructureId()) %>" />
-					<portlet:param name="structureAvailableFields" value='<%= renderResponse.getNamespace() + "structureAvailableFields" %>' />
-					<portlet:param name="ddmResource" value="<%= ddmResource %>" />
+					<portlet:param name="structureAvailableFields" value='<%= renderResponse.getNamespace() + "getAvailableFields" %>' />
 				</liferay-portlet:renderURL>
 
 				<liferay-ui:icon
+					cssClass="lfr-icon-action lfr-icon-action-add"
 					image="add_template"
+					label="<%= true %>"
 					message="add-form"
 					url="<%= addTemplateURL %>"
 				/>
@@ -156,23 +167,27 @@ boolean showSelectListIcon = PortletPermissionUtil.contains(permissionChecker, p
 				<liferay-portlet:renderURL portletName="<%= PortletKeys.DYNAMIC_DATA_MAPPING %>" var="editTemplateURL" windowState="<%= WindowState.MAXIMIZED.toString() %>">
 					<portlet:param name="struts_action" value="/dynamic_data_mapping/edit_template" />
 					<portlet:param name="redirect" value="<%= currentURL %>" />
+					<portlet:param name="portletResource" value="<%= portletDisplay.getId() %>" />
 					<portlet:param name="portletResourceNamespace" value="<%= renderResponse.getNamespace() %>" />
-					<portlet:param name="groupId" value="<%= String.valueOf(ddmTemplate.getGroupId()) %>" />
-					<portlet:param name="templateId" value="<%= String.valueOf(ddmTemplate.getTemplateId()) %>" />
-					<portlet:param name="structureAvailableFields" value='<%= renderResponse.getNamespace() + "structureAvailableFields" %>' />
+					<portlet:param name="refererPortletName" value="<%= PortletKeys.DYNAMIC_DATA_LISTS %>" />
+					<portlet:param name="templateId" value="<%= String.valueOf(formDDMTemplateId) %>" />
+					<portlet:param name="structureAvailableFields" value='<%= renderResponse.getNamespace() + "getAvailableFields" %>' />
 				</liferay-portlet:renderURL>
 
 				<liferay-ui:icon
+					cssClass="lfr-icon-action lfr-icon-action-edit-template"
 					image="../file_system/small/xml"
+					label="<%= true %>"
 					message="edit-form"
 					url="<%= editTemplateURL %>"
 				/>
 			</c:if>
 
-			<c:if test="<%= showSelectListIcon %>">
+			<c:if test="<%= hasConfigurationPermission %>">
 				<liferay-ui:icon
-					cssClass="portlet-configuration"
+					cssClass="lfr-icon-action lfr-icon-action-configuration"
 					image="configuration"
+					label="<%= true %>"
 					message="select-list"
 					method="get"
 					onClick="<%= portletDisplay.getURLConfigurationJS() %>"
@@ -185,10 +200,13 @@ boolean showSelectListIcon = PortletPermissionUtil.contains(permissionChecker, p
 					<portlet:param name="struts_action" value="/dynamic_data_lists/edit_record_set" />
 					<portlet:param name="redirect" value="<%= currentURL %>" />
 					<portlet:param name="portletResource" value="<%= portletDisplay.getId() %>" />
+					<portlet:param name="groupId" value="<%= String.valueOf(scopeGroupId) %>" />
 				</liferay-portlet:renderURL>
 
 				<liferay-ui:icon
+					cssClass="lfr-icon-action lfr-icon-action-add"
 					image="add_article"
+					label="<%= true %>"
 					message="add-list"
 					url="<%= addListURL %>"
 				/>

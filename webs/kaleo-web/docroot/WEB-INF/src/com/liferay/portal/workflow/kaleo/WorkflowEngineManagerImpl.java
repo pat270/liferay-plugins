@@ -24,20 +24,29 @@ import java.util.Map;
  */
 public class WorkflowEngineManagerImpl implements WorkflowEngineManager {
 
+	@Override
 	public String getKey() {
 		return _KEY;
 	}
 
+	@Override
 	public String getName() {
 		return _NAME;
 	}
 
+	@Override
 	public Map<String, Object> getOptionalAttributes() {
 		return _OPTIONAL_ATTRIBUTES;
 	}
 
+	@Override
 	public String getVersion() {
 		return _VERSION;
+	}
+
+	@Override
+	public boolean isDeployed() {
+		return true;
 	}
 
 	private static final String _KEY = "liferay";

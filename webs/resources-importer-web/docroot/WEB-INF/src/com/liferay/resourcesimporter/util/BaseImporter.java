@@ -43,6 +43,7 @@ import javax.servlet.ServletContext;
  */
 public abstract class BaseImporter implements Importer {
 
+	@Override
 	public void afterPropertiesSet() throws Exception {
 		User user = UserLocalServiceUtil.getDefaultUser(companyId);
 
@@ -66,7 +67,6 @@ public abstract class BaseImporter implements Importer {
 
 			group = layoutSetPrototype.getGroup();
 
-			privateLayout = true;
 			targetClassPK = layoutSetPrototype.getLayoutSetPrototypeId();
 		}
 		else if (targetClassName.equals(Group.class.getName())) {
@@ -109,14 +109,15 @@ public abstract class BaseImporter implements Importer {
 				else {
 					group = GroupLocalServiceUtil.addGroup(
 						userId, GroupConstants.DEFAULT_PARENT_GROUP_ID,
-						StringPool.BLANK, 0,
+						StringPool.BLANK,
+						GroupConstants.DEFAULT_PARENT_GROUP_ID,
 						GroupConstants.DEFAULT_LIVE_GROUP_ID, targetValue,
-						StringPool.BLANK, GroupConstants.TYPE_SITE_OPEN, null,
+						StringPool.BLANK, GroupConstants.TYPE_SITE_OPEN, true,
+						GroupConstants.DEFAULT_MEMBERSHIP_RESTRICTION, null,
 						true, true, new ServiceContext());
 				}
 			}
 
-			privateLayout = false;
 			targetClassPK = group.getGroupId();
 		}
 
@@ -125,10 +126,12 @@ public abstract class BaseImporter implements Importer {
 		}
 	}
 
+	@Override
 	public long getGroupId() {
 		return groupId;
 	}
 
+	@Override
 	public long getTargetClassPK() {
 		return targetClassPK;
 	}
@@ -143,30 +146,37 @@ public abstract class BaseImporter implements Importer {
 		return targetValueMap;
 	}
 
+	@Override
 	public boolean isExisting() {
 		return existing;
 	}
 
+	@Override
 	public void setCompanyId(long companyId) {
 		this.companyId = companyId;
 	}
 
+	@Override
 	public void setResourcesDir(String resourcesDir) {
 		this.resourcesDir = resourcesDir;
 	}
 
+	@Override
 	public void setServletContext(ServletContext servletContext) {
 		this.servletContext = servletContext;
 	}
 
+	@Override
 	public void setServletContextName(String servletContextName) {
 		this.servletContextName = servletContextName;
 	}
 
+	@Override
 	public void setTargetClassName(String targetClassName) {
 		this.targetClassName = targetClassName;
 	}
 
+	@Override
 	public void setTargetValue(String targetValue) {
 		this.targetValue = targetValue;
 	}
@@ -193,7 +203,6 @@ public abstract class BaseImporter implements Importer {
 	protected long companyId;
 	protected boolean existing;
 	protected long groupId;
-	protected boolean privateLayout;
 	protected String resourcesDir;
 	protected ServletContext servletContext;
 	protected String servletContextName;

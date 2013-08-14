@@ -14,6 +14,7 @@
 
 package com.liferay.privatemessaging.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -25,8 +26,8 @@ import java.util.Map;
  * This class is a wrapper for {@link UserThread}.
  * </p>
  *
- * @author    Brian Wing Shun Chan
- * @see       UserThread
+ * @author Brian Wing Shun Chan
+ * @see UserThread
  * @generated
  */
 public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
@@ -34,14 +35,17 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 		_userThread = userThread;
 	}
 
+	@Override
 	public Class<?> getModelClass() {
 		return UserThread.class;
 	}
 
+	@Override
 	public String getModelClassName() {
 		return UserThread.class.getName();
 	}
 
+	@Override
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
@@ -59,6 +63,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 		return attributes;
 	}
 
+	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
 		Long userThreadId = (Long)attributes.get("userThreadId");
 
@@ -126,6 +131,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @return the primary key of this user thread
 	*/
+	@Override
 	public long getPrimaryKey() {
 		return _userThread.getPrimaryKey();
 	}
@@ -135,6 +141,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @param primaryKey the primary key of this user thread
 	*/
+	@Override
 	public void setPrimaryKey(long primaryKey) {
 		_userThread.setPrimaryKey(primaryKey);
 	}
@@ -144,6 +151,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @return the user thread ID of this user thread
 	*/
+	@Override
 	public long getUserThreadId() {
 		return _userThread.getUserThreadId();
 	}
@@ -153,6 +161,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @param userThreadId the user thread ID of this user thread
 	*/
+	@Override
 	public void setUserThreadId(long userThreadId) {
 		_userThread.setUserThreadId(userThreadId);
 	}
@@ -162,6 +171,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @return the company ID of this user thread
 	*/
+	@Override
 	public long getCompanyId() {
 		return _userThread.getCompanyId();
 	}
@@ -171,6 +181,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @param companyId the company ID of this user thread
 	*/
+	@Override
 	public void setCompanyId(long companyId) {
 		_userThread.setCompanyId(companyId);
 	}
@@ -180,6 +191,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @return the user ID of this user thread
 	*/
+	@Override
 	public long getUserId() {
 		return _userThread.getUserId();
 	}
@@ -189,6 +201,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @param userId the user ID of this user thread
 	*/
+	@Override
 	public void setUserId(long userId) {
 		_userThread.setUserId(userId);
 	}
@@ -199,6 +212,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	* @return the user uuid of this user thread
 	* @throws SystemException if a system exception occurred
 	*/
+	@Override
 	public java.lang.String getUserUuid()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _userThread.getUserUuid();
@@ -209,6 +223,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @param userUuid the user uuid of this user thread
 	*/
+	@Override
 	public void setUserUuid(java.lang.String userUuid) {
 		_userThread.setUserUuid(userUuid);
 	}
@@ -218,6 +233,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @return the user name of this user thread
 	*/
+	@Override
 	public java.lang.String getUserName() {
 		return _userThread.getUserName();
 	}
@@ -227,6 +243,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @param userName the user name of this user thread
 	*/
+	@Override
 	public void setUserName(java.lang.String userName) {
 		_userThread.setUserName(userName);
 	}
@@ -236,6 +253,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @return the create date of this user thread
 	*/
+	@Override
 	public java.util.Date getCreateDate() {
 		return _userThread.getCreateDate();
 	}
@@ -245,6 +263,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @param createDate the create date of this user thread
 	*/
+	@Override
 	public void setCreateDate(java.util.Date createDate) {
 		_userThread.setCreateDate(createDate);
 	}
@@ -254,6 +273,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @return the modified date of this user thread
 	*/
+	@Override
 	public java.util.Date getModifiedDate() {
 		return _userThread.getModifiedDate();
 	}
@@ -263,6 +283,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @param modifiedDate the modified date of this user thread
 	*/
+	@Override
 	public void setModifiedDate(java.util.Date modifiedDate) {
 		_userThread.setModifiedDate(modifiedDate);
 	}
@@ -272,6 +293,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @return the mb thread ID of this user thread
 	*/
+	@Override
 	public long getMbThreadId() {
 		return _userThread.getMbThreadId();
 	}
@@ -281,6 +303,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @param mbThreadId the mb thread ID of this user thread
 	*/
+	@Override
 	public void setMbThreadId(long mbThreadId) {
 		_userThread.setMbThreadId(mbThreadId);
 	}
@@ -290,6 +313,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @return the top m b message ID of this user thread
 	*/
+	@Override
 	public long getTopMBMessageId() {
 		return _userThread.getTopMBMessageId();
 	}
@@ -299,6 +323,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @param topMBMessageId the top m b message ID of this user thread
 	*/
+	@Override
 	public void setTopMBMessageId(long topMBMessageId) {
 		_userThread.setTopMBMessageId(topMBMessageId);
 	}
@@ -308,6 +333,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @return the read of this user thread
 	*/
+	@Override
 	public boolean getRead() {
 		return _userThread.getRead();
 	}
@@ -317,6 +343,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @return <code>true</code> if this user thread is read; <code>false</code> otherwise
 	*/
+	@Override
 	public boolean isRead() {
 		return _userThread.isRead();
 	}
@@ -326,6 +353,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @param read the read of this user thread
 	*/
+	@Override
 	public void setRead(boolean read) {
 		_userThread.setRead(read);
 	}
@@ -335,6 +363,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @return the deleted of this user thread
 	*/
+	@Override
 	public boolean getDeleted() {
 		return _userThread.getDeleted();
 	}
@@ -344,6 +373,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @return <code>true</code> if this user thread is deleted; <code>false</code> otherwise
 	*/
+	@Override
 	public boolean isDeleted() {
 		return _userThread.isDeleted();
 	}
@@ -353,52 +383,64 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 	*
 	* @param deleted the deleted of this user thread
 	*/
+	@Override
 	public void setDeleted(boolean deleted) {
 		_userThread.setDeleted(deleted);
 	}
 
+	@Override
 	public boolean isNew() {
 		return _userThread.isNew();
 	}
 
+	@Override
 	public void setNew(boolean n) {
 		_userThread.setNew(n);
 	}
 
+	@Override
 	public boolean isCachedModel() {
 		return _userThread.isCachedModel();
 	}
 
+	@Override
 	public void setCachedModel(boolean cachedModel) {
 		_userThread.setCachedModel(cachedModel);
 	}
 
+	@Override
 	public boolean isEscapedModel() {
 		return _userThread.isEscapedModel();
 	}
 
+	@Override
 	public java.io.Serializable getPrimaryKeyObj() {
 		return _userThread.getPrimaryKeyObj();
 	}
 
+	@Override
 	public void setPrimaryKeyObj(java.io.Serializable primaryKeyObj) {
 		_userThread.setPrimaryKeyObj(primaryKeyObj);
 	}
 
+	@Override
 	public com.liferay.portlet.expando.model.ExpandoBridge getExpandoBridge() {
 		return _userThread.getExpandoBridge();
 	}
 
+	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.model.BaseModel<?> baseModel) {
 		_userThread.setExpandoBridgeAttributes(baseModel);
 	}
 
+	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portlet.expando.model.ExpandoBridge expandoBridge) {
 		_userThread.setExpandoBridgeAttributes(expandoBridge);
 	}
 
+	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.service.ServiceContext serviceContext) {
 		_userThread.setExpandoBridgeAttributes(serviceContext);
@@ -409,6 +451,7 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 		return new UserThreadWrapper((UserThread)_userThread.clone());
 	}
 
+	@Override
 	public int compareTo(
 		com.liferay.privatemessaging.model.UserThread userThread) {
 		return _userThread.compareTo(userThread);
@@ -419,14 +462,17 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 		return _userThread.hashCode();
 	}
 
+	@Override
 	public com.liferay.portal.model.CacheModel<com.liferay.privatemessaging.model.UserThread> toCacheModel() {
 		return _userThread.toCacheModel();
 	}
 
+	@Override
 	public com.liferay.privatemessaging.model.UserThread toEscapedModel() {
 		return new UserThreadWrapper(_userThread.toEscapedModel());
 	}
 
+	@Override
 	public com.liferay.privatemessaging.model.UserThread toUnescapedModel() {
 		return new UserThreadWrapper(_userThread.toUnescapedModel());
 	}
@@ -436,13 +482,34 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 		return _userThread.toString();
 	}
 
+	@Override
 	public java.lang.String toXmlString() {
 		return _userThread.toXmlString();
 	}
 
+	@Override
 	public void persist()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		_userThread.persist();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof UserThreadWrapper)) {
+			return false;
+		}
+
+		UserThreadWrapper userThreadWrapper = (UserThreadWrapper)obj;
+
+		if (Validator.equals(_userThread, userThreadWrapper._userThread)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -452,10 +519,12 @@ public class UserThreadWrapper implements UserThread, ModelWrapper<UserThread> {
 		return _userThread;
 	}
 
+	@Override
 	public UserThread getWrappedModel() {
 		return _userThread;
 	}
 
+	@Override
 	public void resetOriginalValues() {
 		_userThread.resetOriginalValues();
 	}

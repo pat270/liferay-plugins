@@ -18,6 +18,7 @@ import com.liferay.calendar.model.Calendar;
 import com.liferay.calendar.model.CalendarResource;
 import com.liferay.calendar.service.CalendarLocalServiceUtil;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.model.Group;
 import com.liferay.portal.model.User;
 import com.liferay.portal.util.PortalUtil;
@@ -30,6 +31,7 @@ import java.util.List;
  */
 public class CalendarResourceImpl extends CalendarResourceBaseImpl {
 
+	@Override
 	public List<Calendar> getCalendars() throws SystemException {
 		List<Calendar> calendars =
 			CalendarLocalServiceUtil.getCalendarResourceCalendars(
@@ -38,6 +40,7 @@ public class CalendarResourceImpl extends CalendarResourceBaseImpl {
 		return calendars;
 	}
 
+	@Override
 	public Calendar getDefaultCalendar() throws SystemException {
 		List<Calendar> calendars =
 			CalendarLocalServiceUtil.getCalendarResourceCalendars(
@@ -50,6 +53,7 @@ public class CalendarResourceImpl extends CalendarResourceBaseImpl {
 		return null;
 	}
 
+	@Override
 	public long getDefaultCalendarId() throws SystemException {
 		Calendar calendar = getDefaultCalendar();
 
@@ -60,17 +64,13 @@ public class CalendarResourceImpl extends CalendarResourceBaseImpl {
 		return 0;
 	}
 
-	public boolean isGlobal() {
-		long calendarResourceClassNameId = PortalUtil.getClassNameId(
-			CalendarResource.class);
-
-		if (calendarResourceClassNameId == getClassNameId()) {
-			return false;
-		}
-
-		return true;
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(
+			PortalUtil.getClassNameId(CalendarResource.class.getName()));
 	}
 
+	@Override
 	public boolean isGroup() {
 		long groupClassNameId = PortalUtil.getClassNameId(Group.class);
 
@@ -81,6 +81,7 @@ public class CalendarResourceImpl extends CalendarResourceBaseImpl {
 		return false;
 	}
 
+	@Override
 	public boolean isUser() {
 		long userClassNameId = PortalUtil.getClassNameId(User.class);
 

@@ -21,10 +21,12 @@ import com.liferay.calendar.service.base.CalendarLocalServiceBaseImpl;
 import com.liferay.calendar.util.PortletPropsValues;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.systemevent.SystemEvent;
 import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ResourceConstants;
+import com.liferay.portal.model.SystemEventConstants;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
 
@@ -40,10 +42,12 @@ import java.util.Map;
  */
 public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 
+	@Override
 	public Calendar addCalendar(
 			long userId, long groupId, long calendarResourceId,
 			Map<Locale, String> nameMap, Map<Locale, String> descriptionMap,
-			int color, boolean defaultCalendar, ServiceContext serviceContext)
+			int color, boolean defaultCalendar, boolean enableComments,
+			boolean enableRatings, ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
 		// Calendar
@@ -74,6 +78,8 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 		calendar.setDescriptionMap(descriptionMap);
 		calendar.setColor(color);
 		calendar.setDefaultCalendar(defaultCalendar);
+		calendar.setEnableComments(enableComments);
+		calendar.setEnableRatings(enableRatings);
 
 		calendarPersistence.update(calendar);
 
@@ -89,6 +95,9 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 	}
 
 	@Override
+	@SystemEvent(
+		action = SystemEventConstants.ACTION_SKIP,
+		type = SystemEventConstants.TYPE_DELETE)
 	public Calendar deleteCalendar(Calendar calendar)
 		throws PortalException, SystemException {
 
@@ -110,6 +119,11 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 		calendarBookingLocalService.deleteCalendarBookings(
 			calendar.getCalendarId());
 
+		// Calendar notification templates
+
+		calendarNotificationTemplateLocalService.
+			deleteCalendarNotificationTemplates(calendar.getCalendarId());
+
 		return calendar;
 	}
 
@@ -119,7 +133,7 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 
 		Calendar calendar = calendarPersistence.findByPrimaryKey(calendarId);
 
-		return deleteCalendar(calendar);
+		return calendarLocalService.deleteCalendar(calendar);
 	}
 
 	@Override
@@ -134,6 +148,7 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 		return calendarPersistence.findByPrimaryKey(calendarId);
 	}
 
+	@Override
 	public List<Calendar> getCalendarResourceCalendars(
 			long groupId, long calendarResourceId)
 		throws SystemException {
@@ -141,6 +156,7 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 		return calendarPersistence.findByG_C(groupId, calendarResourceId);
 	}
 
+	@Override
 	public List<Calendar> getCalendarResourceCalendars(
 			long groupId, long calendarResourceId, boolean defaultCalendar)
 		throws SystemException {
@@ -149,6 +165,7 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 			groupId, calendarResourceId, defaultCalendar);
 	}
 
+	@Override
 	public List<Calendar> search(
 			long companyId, long[] groupIds, long[] calendarResourceIds,
 			String keywords, boolean andOperator, int start, int end,
@@ -160,6 +177,7 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 			orderByComparator);
 	}
 
+	@Override
 	public List<Calendar> search(
 			long companyId, long[] groupIds, long[] calendarResourceIds,
 			String name, String description, boolean andOperator, int start,
@@ -171,6 +189,7 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 			andOperator, start, end, orderByComparator);
 	}
 
+	@Override
 	public int searchCount(
 			long companyId, long[] groupIds, long[] calendarResourceIds,
 			String keywords, boolean andOperator)
@@ -180,6 +199,7 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 			companyId, groupIds, calendarResourceIds, keywords);
 	}
 
+	@Override
 	public int searchCount(
 			long companyId, long[] groupIds, long[] calendarResourceIds,
 			String name, String description, boolean andOperator)
@@ -190,6 +210,7 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 			andOperator);
 	}
 
+	@Override
 	public void updateCalendar(long calendarId, boolean defaultCalendar)
 		throws PortalException, SystemException {
 
@@ -202,10 +223,12 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 		updateDefaultCalendar(calendar);
 	}
 
+	@Override
 	public Calendar updateCalendar(
 			long calendarId, Map<Locale, String> nameMap,
 			Map<Locale, String> descriptionMap, int color,
-			boolean defaultCalendar, ServiceContext serviceContext)
+			boolean defaultCalendar, boolean enableComments,
+			boolean enableRatings, ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
 		// Calendar
@@ -223,6 +246,8 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 		calendar.setDescriptionMap(descriptionMap);
 		calendar.setColor(color);
 		calendar.setDefaultCalendar(defaultCalendar);
+		calendar.setEnableComments(enableComments);
+		calendar.setEnableRatings(enableRatings);
 
 		calendarPersistence.update(calendar);
 
@@ -233,6 +258,7 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 		return calendar;
 	}
 
+	@Override
 	public Calendar updateCalendar(
 			long calendarId, Map<Locale, String> nameMap,
 			Map<Locale, String> descriptionMap, int color,
@@ -243,9 +269,11 @@ public class CalendarLocalServiceImpl extends CalendarLocalServiceBaseImpl {
 
 		return updateCalendar(
 			calendarId, nameMap, descriptionMap, color,
-			calendar.isDefaultCalendar(), serviceContext);
+			calendar.isDefaultCalendar(), calendar.isEnableComments(),
+			calendar.isEnableRatings(), serviceContext);
 	}
 
+	@Override
 	public Calendar updateColor(
 			long calendarId, int color, ServiceContext serviceContext)
 		throws PortalException, SystemException {

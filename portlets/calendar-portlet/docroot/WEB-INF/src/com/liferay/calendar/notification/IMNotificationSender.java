@@ -19,12 +19,13 @@ package com.liferay.calendar.notification;
  */
 public class IMNotificationSender implements NotificationSender {
 
+	@Override
 	public void sendNotification(
 		NotificationRecipient notificationRecipient,
-		NotificationTemplateType notificationTemplateType,
 		NotificationTemplateContext notificationTemplateContext) {
 	}
 
+	@Override
 	public void sendNotification(
 		String fromAddress, String fromName,
 		NotificationRecipient notificationRecipient, String subject,

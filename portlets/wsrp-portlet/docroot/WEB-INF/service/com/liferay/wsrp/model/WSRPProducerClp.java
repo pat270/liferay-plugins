@@ -16,10 +16,12 @@ package com.liferay.wsrp.model;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
+import com.liferay.portal.util.PortalUtil;
 
 import com.liferay.wsrp.service.ClpSerializer;
 import com.liferay.wsrp.service.WSRPProducerLocalServiceUtil;
@@ -40,26 +42,32 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 	public WSRPProducerClp() {
 	}
 
+	@Override
 	public Class<?> getModelClass() {
 		return WSRPProducer.class;
 	}
 
+	@Override
 	public String getModelClassName() {
 		return WSRPProducer.class.getName();
 	}
 
+	@Override
 	public long getPrimaryKey() {
 		return _wsrpProducerId;
 	}
 
+	@Override
 	public void setPrimaryKey(long primaryKey) {
 		setWsrpProducerId(primaryKey);
 	}
 
+	@Override
 	public Serializable getPrimaryKeyObj() {
 		return _wsrpProducerId;
 	}
 
+	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
 		setPrimaryKey(((Long)primaryKeyObj).longValue());
 	}
@@ -138,10 +146,12 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		}
 	}
 
+	@Override
 	public String getUuid() {
 		return _uuid;
 	}
 
+	@Override
 	public void setUuid(String uuid) {
 		_uuid = uuid;
 
@@ -159,10 +169,12 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		}
 	}
 
+	@Override
 	public long getWsrpProducerId() {
 		return _wsrpProducerId;
 	}
 
+	@Override
 	public void setWsrpProducerId(long wsrpProducerId) {
 		_wsrpProducerId = wsrpProducerId;
 
@@ -180,10 +192,12 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		}
 	}
 
+	@Override
 	public long getGroupId() {
 		return _groupId;
 	}
 
+	@Override
 	public void setGroupId(long groupId) {
 		_groupId = groupId;
 
@@ -201,10 +215,12 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		}
 	}
 
+	@Override
 	public long getCompanyId() {
 		return _companyId;
 	}
 
+	@Override
 	public void setCompanyId(long companyId) {
 		_companyId = companyId;
 
@@ -222,10 +238,12 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		}
 	}
 
+	@Override
 	public Date getCreateDate() {
 		return _createDate;
 	}
 
+	@Override
 	public void setCreateDate(Date createDate) {
 		_createDate = createDate;
 
@@ -243,10 +261,12 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		}
 	}
 
+	@Override
 	public Date getModifiedDate() {
 		return _modifiedDate;
 	}
 
+	@Override
 	public void setModifiedDate(Date modifiedDate) {
 		_modifiedDate = modifiedDate;
 
@@ -264,10 +284,12 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		}
 	}
 
+	@Override
 	public String getName() {
 		return _name;
 	}
 
+	@Override
 	public void setName(String name) {
 		_name = name;
 
@@ -285,10 +307,12 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		}
 	}
 
+	@Override
 	public String getVersion() {
 		return _version;
 	}
 
+	@Override
 	public void setVersion(String version) {
 		_version = version;
 
@@ -306,10 +330,12 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		}
 	}
 
+	@Override
 	public String getPortletIds() {
 		return _portletIds;
 	}
 
+	@Override
 	public void setPortletIds(String portletIds) {
 		_portletIds = portletIds;
 
@@ -327,6 +353,7 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		}
 	}
 
+	@Override
 	public java.lang.String getURL(java.lang.String portalURL) {
 		try {
 			String methodName = "getURL";
@@ -343,6 +370,12 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		catch (Exception e) {
 			throw new UnsupportedOperationException(e);
 		}
+	}
+
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				WSRPProducer.class.getName()));
 	}
 
 	public BaseModel<?> getWSRPProducerRemoteModel() {
@@ -394,6 +427,7 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		return returnValue;
 	}
 
+	@Override
 	public void persist() throws SystemException {
 		if (this.isNew()) {
 			WSRPProducerLocalServiceUtil.addWSRPProducer(this);
@@ -426,6 +460,7 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		return clone;
 	}
 
+	@Override
 	public int compareTo(WSRPProducer wsrpProducer) {
 		int value = 0;
 
@@ -440,18 +475,15 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof WSRPProducerClp)) {
 			return false;
 		}
 
-		WSRPProducerClp wsrpProducer = null;
-
-		try {
-			wsrpProducer = (WSRPProducerClp)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		WSRPProducerClp wsrpProducer = (WSRPProducerClp)obj;
 
 		long primaryKey = wsrpProducer.getPrimaryKey();
 
@@ -495,6 +527,7 @@ public class WSRPProducerClp extends BaseModelImpl<WSRPProducer>
 		return sb.toString();
 	}
 
+	@Override
 	public String toXmlString() {
 		StringBundler sb = new StringBundler(31);
 

@@ -25,11 +25,9 @@ import com.liferay.portal.service.BaseService;
 import com.liferay.portal.service.InvokableService;
 
 /**
- * The interface for the calendar resource remote service.
- *
- * <p>
- * This is a remote service. Methods of this service are expected to have security checks based on the propagated JAAS credentials because this service can be accessed remotely.
- * </p>
+ * Provides the remote service interface for CalendarResource. Methods of this
+ * service are expected to have security checks based on the propagated JAAS
+ * credentials because this service can be accessed remotely.
  *
  * @author Eduardo Lundgren
  * @see CalendarResourceServiceUtil
@@ -62,12 +60,13 @@ public interface CalendarResourceService extends BaseService, InvokableService {
 	*/
 	public void setBeanIdentifier(java.lang.String beanIdentifier);
 
+	@Override
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
 
 	public com.liferay.calendar.model.CalendarResource addCalendarResource(
-		long groupId, java.lang.String className, long classPK,
+		long groupId, long classNameId, long classPK,
 		java.lang.String classUuid, java.lang.String code,
 		java.util.Map<java.util.Locale, java.lang.String> nameMap,
 		java.util.Map<java.util.Locale, java.lang.String> descriptionMap,

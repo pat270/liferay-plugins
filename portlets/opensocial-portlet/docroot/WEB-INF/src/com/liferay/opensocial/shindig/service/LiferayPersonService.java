@@ -50,11 +50,11 @@ import org.apache.shindig.protocol.RestfulCollection;
 import org.apache.shindig.social.core.model.ListFieldImpl;
 import org.apache.shindig.social.core.model.NameImpl;
 import org.apache.shindig.social.core.model.PersonImpl;
-import org.apache.shindig.social.opensocial.model.ListField.Field;
 import org.apache.shindig.social.opensocial.model.ListField;
+import org.apache.shindig.social.opensocial.model.ListField.Field;
 import org.apache.shindig.social.opensocial.model.Name;
-import org.apache.shindig.social.opensocial.model.Person.Gender;
 import org.apache.shindig.social.opensocial.model.Person;
+import org.apache.shindig.social.opensocial.model.Person.Gender;
 import org.apache.shindig.social.opensocial.spi.CollectionOptions;
 import org.apache.shindig.social.opensocial.spi.GroupId;
 import org.apache.shindig.social.opensocial.spi.PersonService;
@@ -314,7 +314,8 @@ public class LiferayPersonService implements PersonService {
 		if (fields.contains(Person.Field.GENDER.toString())) {
 			if (user.isFemale()) {
 				person.setGender(Gender.female);
-			} else {
+			}
+			else {
 				person.setGender(Gender.male);
 			}
 		}

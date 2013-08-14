@@ -16,7 +16,6 @@ package com.liferay.portal.workflow.kaleo.runtime.notification;
 
 import com.liferay.portal.kernel.template.StringTemplateResource;
 import com.liferay.portal.kernel.template.Template;
-import com.liferay.portal.kernel.template.TemplateContextType;
 import com.liferay.portal.kernel.template.TemplateManagerUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.workflow.WorkflowTaskAssignee;
@@ -42,6 +41,7 @@ import java.util.Map;
 public class TemplateNotificationMessageGenerator
 	implements NotificationMessageGenerator {
 
+	@Override
 	public String generateMessage(
 			String kaleoClassName, long kaleoClassPK, String notificationName,
 			String notificationTemplateLanguage, String notificationTemplate,
@@ -64,7 +64,7 @@ public class TemplateNotificationMessageGenerator
 			Template template = TemplateManagerUtil.getTemplate(
 				templateManagerName,
 				new StringTemplateResource(templateId, notificationTemplate),
-				TemplateContextType.RESTRICTED);
+				false);
 
 			populateContextVariables(template, executionContext);
 
@@ -118,6 +118,7 @@ public class TemplateNotificationMessageGenerator
 			template.put("taskName", kaleoTask.getName());
 
 			template.put("userId", kaleoTaskInstanceToken.getUserId());
+			template.put("userName", kaleoTaskInstanceToken.getUserName());
 
 			List<WorkflowTaskAssignee> workflowTaskAssignees =
 				KaleoTaskAssignmentInstanceUtil.getWorkflowTaskAssignees(
@@ -130,6 +131,7 @@ public class TemplateNotificationMessageGenerator
 				executionContext.getKaleoInstanceToken();
 
 			template.put("userId", kaleoInstanceToken.getUserId());
+			template.put("userName", kaleoInstanceToken.getUserName());
 		}
 	}
 

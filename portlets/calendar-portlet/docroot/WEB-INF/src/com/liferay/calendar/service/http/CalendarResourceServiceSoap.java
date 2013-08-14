@@ -26,13 +26,11 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * <p>
- * This class provides a SOAP utility for the
+ * Provides the SOAP utility for the
  * {@link com.liferay.calendar.service.CalendarResourceServiceUtil} service utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it is difficult for SOAP to
  * support certain types.
- * </p>
  *
  * <p>
  * ServiceBuilder follows certain rules in translating the methods. For example,
@@ -61,15 +59,15 @@ import java.util.Map;
  * The SOAP utility is only generated for remote services.
  * </p>
  *
- * @author    Eduardo Lundgren
- * @see       CalendarResourceServiceHttp
- * @see       com.liferay.calendar.model.CalendarResourceSoap
- * @see       com.liferay.calendar.service.CalendarResourceServiceUtil
+ * @author Eduardo Lundgren
+ * @see CalendarResourceServiceHttp
+ * @see com.liferay.calendar.model.CalendarResourceSoap
+ * @see com.liferay.calendar.service.CalendarResourceServiceUtil
  * @generated
  */
 public class CalendarResourceServiceSoap {
 	public static com.liferay.calendar.model.CalendarResourceSoap addCalendarResource(
-		long groupId, java.lang.String className, long classPK,
+		long groupId, long classNameId, long classPK,
 		java.lang.String classUuid, java.lang.String code,
 		java.lang.String[] nameMapLanguageIds,
 		java.lang.String[] nameMapValues,
@@ -84,7 +82,7 @@ public class CalendarResourceServiceSoap {
 					descriptionMapValues);
 
 			com.liferay.calendar.model.CalendarResource returnValue = CalendarResourceServiceUtil.addCalendarResource(groupId,
-					className, classPK, classUuid, code, nameMap,
+					classNameId, classPK, classUuid, code, nameMap,
 					descriptionMap, active, serviceContext);
 
 			return com.liferay.calendar.model.CalendarResourceSoap.toSoapModel(returnValue);

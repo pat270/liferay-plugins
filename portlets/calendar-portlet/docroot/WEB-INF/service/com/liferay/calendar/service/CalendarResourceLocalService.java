@@ -24,11 +24,10 @@ import com.liferay.portal.service.InvokableLocalService;
 import com.liferay.portal.service.PermissionedModelLocalService;
 
 /**
- * The interface for the calendar resource local service.
- *
- * <p>
- * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
- * </p>
+ * Provides the local service interface for CalendarResource. Methods of this
+ * service will not have security checks based on the propagated JAAS
+ * credentials because this service can only be accessed from within the same
+ * VM.
  *
  * @author Eduardo Lundgren
  * @see CalendarResourceLocalServiceUtil
@@ -156,9 +155,48 @@ public interface CalendarResourceLocalService extends BaseLocalService,
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Returns the number of rows that match the dynamic query.
+	*
+	* @param dynamicQuery the dynamic query
+	* @param projection the projection to apply to the query
+	* @return the number of rows that match the dynamic query
+	* @throws SystemException if a system exception occurred
+	*/
+	public long dynamicQueryCount(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery,
+		com.liferay.portal.kernel.dao.orm.Projection projection)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public com.liferay.calendar.model.CalendarResource fetchCalendarResource(
 		long calendarResourceId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the calendar resource with the matching UUID and company.
+	*
+	* @param uuid the calendar resource's UUID
+	* @param companyId the primary key of the company
+	* @return the matching calendar resource, or <code>null</code> if a matching calendar resource could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public com.liferay.calendar.model.CalendarResource fetchCalendarResourceByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the calendar resource matching the UUID and group.
+	*
+	* @param uuid the calendar resource's UUID
+	* @param groupId the primary key of the group
+	* @return the matching calendar resource, or <code>null</code> if a matching calendar resource could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public com.liferay.calendar.model.CalendarResource fetchCalendarResourceByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -175,9 +213,25 @@ public interface CalendarResourceLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	@Override
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public com.liferay.portal.model.PersistedModel getPersistedModel(
 		java.io.Serializable primaryKeyObj)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the calendar resource with the matching UUID and company.
+	*
+	* @param uuid the calendar resource's UUID
+	* @param companyId the primary key of the company
+	* @return the matching calendar resource
+	* @throws PortalException if a matching calendar resource could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public com.liferay.calendar.model.CalendarResource getCalendarResourceByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
@@ -248,12 +302,13 @@ public interface CalendarResourceLocalService extends BaseLocalService,
 	*/
 	public void setBeanIdentifier(java.lang.String beanIdentifier);
 
+	@Override
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
 
 	public com.liferay.calendar.model.CalendarResource addCalendarResource(
-		long userId, long groupId, java.lang.String className, long classPK,
+		long userId, long groupId, long classNameId, long classPK,
 		java.lang.String classUuid, java.lang.String code,
 		java.util.Map<java.util.Locale, java.lang.String> nameMap,
 		java.util.Map<java.util.Locale, java.lang.String> descriptionMap,

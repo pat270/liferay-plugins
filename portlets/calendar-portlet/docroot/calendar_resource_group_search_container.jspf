@@ -14,25 +14,19 @@
  */
 --%>
 
-<liferay-portlet:renderURL varImpl="iteratorURL">
-	<portlet:param name="mvcPath" value="/view_calendar_resources.jsp" />
-</liferay-portlet:renderURL>
-
 <liferay-ui:search-container id="sites" searchContainer='<%= new CalendarResourceSearch(renderRequest, CalendarResourceSearch.DEFAULT_CUR_PARAM + "Groups", iteratorURL) %>'>
 	<liferay-ui:search-container-results>
 
 		<%
-		CalendarResourceSearchTerms searchTerms = (CalendarResourceSearchTerms)searchContainer.getSearchTerms();
-
 		String[] params = {"site:true:boolean"};
 
-		if (searchTerms.isAdvancedSearch()) {
-			results = GroupServiceUtil.search(themeDisplay.getCompanyId(), searchTerms.getName(), searchTerms.getDescription(), params, searchContainer.getStart(), searchContainer.getEnd());
-			total = GroupServiceUtil.searchCount(themeDisplay.getCompanyId(), searchTerms.getName(), searchTerms.getDescription(), params);
+		if (displayTerms.isAdvancedSearch()) {
+			results = GroupServiceUtil.search(themeDisplay.getCompanyId(), displayTerms.getName(), displayTerms.getDescription(), params, searchContainer.getStart(), searchContainer.getEnd());
+			total = GroupServiceUtil.searchCount(themeDisplay.getCompanyId(), displayTerms.getName(), displayTerms.getDescription(), params);
 		}
 		else {
-			results = GroupServiceUtil.search(themeDisplay.getCompanyId(), searchTerms.getKeywords(), searchTerms.getKeywords(), params, searchContainer.getStart(), searchContainer.getEnd());
-			total = GroupServiceUtil.searchCount(themeDisplay.getCompanyId(), searchTerms.getKeywords(), searchTerms.getKeywords(), params);
+			results = GroupServiceUtil.search(themeDisplay.getCompanyId(), displayTerms.getKeywords(), displayTerms.getKeywords(), params, searchContainer.getStart(), searchContainer.getEnd());
+			total = GroupServiceUtil.searchCount(themeDisplay.getCompanyId(), displayTerms.getKeywords(), displayTerms.getKeywords(), params);
 		}
 
 		pageContext.setAttribute("results", results);

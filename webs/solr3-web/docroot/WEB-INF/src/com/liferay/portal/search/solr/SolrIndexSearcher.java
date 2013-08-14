@@ -55,8 +55,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.solr.client.solrj.SolrQuery.ORDER;
 import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrQuery.ORDER;
 import org.apache.solr.client.solrj.SolrRequest.METHOD;
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.response.FacetField;
@@ -72,6 +72,7 @@ import org.apache.solr.common.params.FacetParams;
  */
 public class SolrIndexSearcher extends BaseIndexSearcher {
 
+	@Override
 	public Hits search(SearchContext searchContext, Query query)
 		throws SearchException {
 
@@ -85,6 +86,7 @@ public class SolrIndexSearcher extends BaseIndexSearcher {
 		}
 	}
 
+	@Override
 	public Hits search(
 			String searchEngineId, long companyId, Query query, Sort[] sorts,
 			int start, int end)

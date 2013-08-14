@@ -24,11 +24,10 @@ import com.liferay.portal.service.InvokableLocalService;
 import com.liferay.portal.service.PersistedModelLocalService;
 
 /**
- * The interface for the bar local service.
- *
- * <p>
- * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
- * </p>
+ * Provides the local service interface for Bar. Methods of this
+ * service will not have security checks based on the propagated JAAS
+ * credentials because this service can only be accessed from within the same
+ * VM.
  *
  * @author Brian Wing Shun Chan
  * @see BarLocalServiceUtil
@@ -152,6 +151,19 @@ public interface BarLocalService extends BaseLocalService, InvokableLocalService
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Returns the number of rows that match the dynamic query.
+	*
+	* @param dynamicQuery the dynamic query
+	* @param projection the projection to apply to the query
+	* @return the number of rows that match the dynamic query
+	* @throws SystemException if a system exception occurred
+	*/
+	public long dynamicQueryCount(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery,
+		com.liferay.portal.kernel.dao.orm.Projection projection)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public com.liferay.testtransaction.model.Bar fetchBar(long barId)
 		throws com.liferay.portal.kernel.exception.SystemException;
@@ -169,6 +181,7 @@ public interface BarLocalService extends BaseLocalService, InvokableLocalService
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	@Override
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public com.liferay.portal.model.PersistedModel getPersistedModel(
 		java.io.Serializable primaryKeyObj)
@@ -227,6 +240,7 @@ public interface BarLocalService extends BaseLocalService, InvokableLocalService
 	*/
 	public void setBeanIdentifier(java.lang.String beanIdentifier);
 
+	@Override
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;

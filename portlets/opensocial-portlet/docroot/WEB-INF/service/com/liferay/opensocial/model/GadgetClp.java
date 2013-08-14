@@ -19,10 +19,12 @@ import com.liferay.opensocial.service.GadgetLocalServiceUtil;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
+import com.liferay.portal.util.PortalUtil;
 
 import java.io.Serializable;
 
@@ -39,26 +41,32 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 	public GadgetClp() {
 	}
 
+	@Override
 	public Class<?> getModelClass() {
 		return Gadget.class;
 	}
 
+	@Override
 	public String getModelClassName() {
 		return Gadget.class.getName();
 	}
 
+	@Override
 	public long getPrimaryKey() {
 		return _gadgetId;
 	}
 
+	@Override
 	public void setPrimaryKey(long primaryKey) {
 		setGadgetId(primaryKey);
 	}
 
+	@Override
 	public Serializable getPrimaryKeyObj() {
 		return _gadgetId;
 	}
 
+	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
 		setPrimaryKey(((Long)primaryKeyObj).longValue());
 	}
@@ -131,10 +139,12 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 		}
 	}
 
+	@Override
 	public String getUuid() {
 		return _uuid;
 	}
 
+	@Override
 	public void setUuid(String uuid) {
 		_uuid = uuid;
 
@@ -152,10 +162,12 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 		}
 	}
 
+	@Override
 	public long getGadgetId() {
 		return _gadgetId;
 	}
 
+	@Override
 	public void setGadgetId(long gadgetId) {
 		_gadgetId = gadgetId;
 
@@ -173,10 +185,12 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 		}
 	}
 
+	@Override
 	public long getCompanyId() {
 		return _companyId;
 	}
 
+	@Override
 	public void setCompanyId(long companyId) {
 		_companyId = companyId;
 
@@ -194,10 +208,12 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 		}
 	}
 
+	@Override
 	public Date getCreateDate() {
 		return _createDate;
 	}
 
+	@Override
 	public void setCreateDate(Date createDate) {
 		_createDate = createDate;
 
@@ -215,10 +231,12 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 		}
 	}
 
+	@Override
 	public Date getModifiedDate() {
 		return _modifiedDate;
 	}
 
+	@Override
 	public void setModifiedDate(Date modifiedDate) {
 		_modifiedDate = modifiedDate;
 
@@ -236,10 +254,12 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 		}
 	}
 
+	@Override
 	public String getName() {
 		return _name;
 	}
 
+	@Override
 	public void setName(String name) {
 		_name = name;
 
@@ -257,10 +277,12 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 		}
 	}
 
+	@Override
 	public String getUrl() {
 		return _url;
 	}
 
+	@Override
 	public void setUrl(String url) {
 		_url = url;
 
@@ -278,10 +300,12 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 		}
 	}
 
+	@Override
 	public String getPortletCategoryNames() {
 		return _portletCategoryNames;
 	}
 
+	@Override
 	public void setPortletCategoryNames(String portletCategoryNames) {
 		_portletCategoryNames = portletCategoryNames;
 
@@ -298,6 +322,12 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 				throw new UnsupportedOperationException(e);
 			}
 		}
+	}
+
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				Gadget.class.getName()));
 	}
 
 	public BaseModel<?> getGadgetRemoteModel() {
@@ -349,6 +379,7 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 		return returnValue;
 	}
 
+	@Override
 	public void persist() throws SystemException {
 		if (this.isNew()) {
 			GadgetLocalServiceUtil.addGadget(this);
@@ -380,6 +411,7 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 		return clone;
 	}
 
+	@Override
 	public int compareTo(Gadget gadget) {
 		int value = 0;
 
@@ -394,18 +426,15 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof GadgetClp)) {
 			return false;
 		}
 
-		GadgetClp gadget = null;
-
-		try {
-			gadget = (GadgetClp)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		GadgetClp gadget = (GadgetClp)obj;
 
 		long primaryKey = gadget.getPrimaryKey();
 
@@ -447,6 +476,7 @@ public class GadgetClp extends BaseModelImpl<Gadget> implements Gadget {
 		return sb.toString();
 	}
 
+	@Override
 	public String toXmlString() {
 		StringBundler sb = new StringBundler(28);
 

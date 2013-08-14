@@ -20,9 +20,6 @@ import com.liferay.mail.model.Message;
 import com.liferay.mail.service.MessageLocalServiceUtil;
 import com.liferay.mail.service.persistence.MessageActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
-import com.liferay.portal.kernel.dao.orm.DynamicQuery;
-import com.liferay.portal.kernel.dao.orm.Property;
-import com.liferay.portal.kernel.dao.orm.PropertyFactoryUtil;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -38,14 +35,12 @@ import com.liferay.portal.kernel.search.SearchEngineUtil;
 import com.liferay.portal.kernel.search.Summary;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.HtmlUtil;
-import com.liferay.portal.kernel.workflow.WorkflowConstants;
 import com.liferay.portal.util.PortletKeys;
 import com.liferay.portlet.expando.model.ExpandoBridge;
 import com.liferay.portlet.expando.util.ExpandoBridgeIndexerUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Locale;
 
 import javax.portlet.PortletURL;
@@ -59,10 +54,12 @@ public class MessageIndexer extends BaseIndexer {
 
 	public static final String PORTLET_ID = PortletKeys.MAIL;
 
+	@Override
 	public String[] getClassNames() {
 		return CLASS_NAMES;
 	}
 
+	@Override
 	public String getPortletId() {
 		return PORTLET_ID;
 	}
@@ -194,23 +191,6 @@ public class MessageIndexer extends BaseIndexer {
 
 		ActionableDynamicQuery actionableDynamicQuery =
 			new MessageActionableDynamicQuery() {
-
-			@Override
-			protected void addCriteria(DynamicQuery dynamicQuery) {
-				Property displayDateProperty = PropertyFactoryUtil.forName(
-					"displayDate");
-
-				dynamicQuery.add(displayDateProperty.lt(new Date()));
-
-				Property statusProperty = PropertyFactoryUtil.forName("status");
-
-				Integer[] statuses = {
-					WorkflowConstants.STATUS_APPROVED,
-					WorkflowConstants.STATUS_IN_TRASH
-				};
-
-				dynamicQuery.add(statusProperty.in(statuses));
-			}
 
 			@Override
 			protected void performAction(Object object) throws PortalException {

@@ -19,6 +19,7 @@ import com.liferay.knowledgebase.service.KBArticleLocalServiceUtil;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.DateUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -42,26 +43,32 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 	public KBArticleClp() {
 	}
 
+	@Override
 	public Class<?> getModelClass() {
 		return KBArticle.class;
 	}
 
+	@Override
 	public String getModelClassName() {
 		return KBArticle.class.getName();
 	}
 
+	@Override
 	public long getPrimaryKey() {
 		return _kbArticleId;
 	}
 
+	@Override
 	public void setPrimaryKey(long primaryKey) {
 		setKbArticleId(primaryKey);
 	}
 
+	@Override
 	public Serializable getPrimaryKeyObj() {
 		return _kbArticleId;
 	}
 
+	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
 		setPrimaryKey(((Long)primaryKeyObj).longValue());
 	}
@@ -246,10 +253,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public String getUuid() {
 		return _uuid;
 	}
 
+	@Override
 	public void setUuid(String uuid) {
 		_uuid = uuid;
 
@@ -267,10 +276,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public long getKbArticleId() {
 		return _kbArticleId;
 	}
 
+	@Override
 	public void setKbArticleId(long kbArticleId) {
 		_kbArticleId = kbArticleId;
 
@@ -288,10 +299,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public long getResourcePrimKey() {
 		return _resourcePrimKey;
 	}
 
+	@Override
 	public void setResourcePrimKey(long resourcePrimKey) {
 		_resourcePrimKey = resourcePrimKey;
 
@@ -309,6 +322,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public boolean isResourceMain() {
 		return _resourceMain;
 	}
@@ -317,10 +331,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		_resourceMain = resourceMain;
 	}
 
+	@Override
 	public long getGroupId() {
 		return _groupId;
 	}
 
+	@Override
 	public void setGroupId(long groupId) {
 		_groupId = groupId;
 
@@ -338,10 +354,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public long getCompanyId() {
 		return _companyId;
 	}
 
+	@Override
 	public void setCompanyId(long companyId) {
 		_companyId = companyId;
 
@@ -359,10 +377,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public long getUserId() {
 		return _userId;
 	}
 
+	@Override
 	public void setUserId(long userId) {
 		_userId = userId;
 
@@ -380,18 +400,22 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public String getUserUuid() throws SystemException {
 		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
 	}
 
+	@Override
 	public void setUserUuid(String userUuid) {
 		_userUuid = userUuid;
 	}
 
+	@Override
 	public String getUserName() {
 		return _userName;
 	}
 
+	@Override
 	public void setUserName(String userName) {
 		_userName = userName;
 
@@ -409,10 +433,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public Date getCreateDate() {
 		return _createDate;
 	}
 
+	@Override
 	public void setCreateDate(Date createDate) {
 		_createDate = createDate;
 
@@ -430,10 +456,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public Date getModifiedDate() {
 		return _modifiedDate;
 	}
 
+	@Override
 	public void setModifiedDate(Date modifiedDate) {
 		_modifiedDate = modifiedDate;
 
@@ -451,10 +479,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public long getRootResourcePrimKey() {
 		return _rootResourcePrimKey;
 	}
 
+	@Override
 	public void setRootResourcePrimKey(long rootResourcePrimKey) {
 		_rootResourcePrimKey = rootResourcePrimKey;
 
@@ -473,10 +503,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public long getParentResourcePrimKey() {
 		return _parentResourcePrimKey;
 	}
 
+	@Override
 	public void setParentResourcePrimKey(long parentResourcePrimKey) {
 		_parentResourcePrimKey = parentResourcePrimKey;
 
@@ -495,10 +527,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public int getVersion() {
 		return _version;
 	}
 
+	@Override
 	public void setVersion(int version) {
 		_version = version;
 
@@ -516,10 +550,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public String getTitle() {
 		return _title;
 	}
 
+	@Override
 	public void setTitle(String title) {
 		_title = title;
 
@@ -537,10 +573,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public String getContent() {
 		return _content;
 	}
 
+	@Override
 	public void setContent(String content) {
 		_content = content;
 
@@ -558,10 +596,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public String getDescription() {
 		return _description;
 	}
 
+	@Override
 	public void setDescription(String description) {
 		_description = description;
 
@@ -579,10 +619,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public double getPriority() {
 		return _priority;
 	}
 
+	@Override
 	public void setPriority(double priority) {
 		_priority = priority;
 
@@ -600,10 +642,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public String getSections() {
 		return _sections;
 	}
 
+	@Override
 	public void setSections(String sections) {
 		_sections = sections;
 
@@ -621,10 +665,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public int getViewCount() {
 		return _viewCount;
 	}
 
+	@Override
 	public void setViewCount(int viewCount) {
 		_viewCount = viewCount;
 
@@ -642,14 +688,17 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public boolean getLatest() {
 		return _latest;
 	}
 
+	@Override
 	public boolean isLatest() {
 		return _latest;
 	}
 
+	@Override
 	public void setLatest(boolean latest) {
 		_latest = latest;
 
@@ -667,14 +716,17 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public boolean getMain() {
 		return _main;
 	}
 
+	@Override
 	public boolean isMain() {
 		return _main;
 	}
 
+	@Override
 	public void setMain(boolean main) {
 		_main = main;
 
@@ -692,10 +744,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public int getStatus() {
 		return _status;
 	}
 
+	@Override
 	public void setStatus(int status) {
 		_status = status;
 
@@ -713,10 +767,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public long getStatusByUserId() {
 		return _statusByUserId;
 	}
 
+	@Override
 	public void setStatusByUserId(long statusByUserId) {
 		_statusByUserId = statusByUserId;
 
@@ -734,19 +790,23 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public String getStatusByUserUuid() throws SystemException {
 		return PortalUtil.getUserValue(getStatusByUserId(), "uuid",
 			_statusByUserUuid);
 	}
 
+	@Override
 	public void setStatusByUserUuid(String statusByUserUuid) {
 		_statusByUserUuid = statusByUserUuid;
 	}
 
+	@Override
 	public String getStatusByUserName() {
 		return _statusByUserName;
 	}
 
+	@Override
 	public void setStatusByUserName(String statusByUserName) {
 		_statusByUserName = statusByUserName;
 
@@ -765,10 +825,12 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public Date getStatusDate() {
 		return _statusDate;
 	}
 
+	@Override
 	public void setStatusDate(Date statusDate) {
 		_statusDate = statusDate;
 
@@ -786,6 +848,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public long getAttachmentsFolderId() {
 		try {
 			String methodName = "getAttachmentsFolderId";
@@ -804,6 +867,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public java.util.List<com.liferay.portal.kernel.repository.model.FileEntry> getAttachmentsFileEntries() {
 		try {
 			String methodName = "getAttachmentsFileEntries";
@@ -823,6 +887,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public boolean isFirstVersion() {
 		try {
 			String methodName = "isFirstVersion";
@@ -841,6 +906,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public java.lang.String getAttachmentsDirName() {
 		try {
 			String methodName = "getAttachmentsDirName";
@@ -859,6 +925,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public long getClassPK() {
 		try {
 			String methodName = "getClassPK";
@@ -877,6 +944,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public boolean isRoot() {
 		try {
 			String methodName = "isRoot";
@@ -895,6 +963,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public java.lang.String[] getAttachmentsFileNames() {
 		try {
 			String methodName = "getAttachmentsFileNames";
@@ -913,13 +982,21 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				KBArticle.class.getName()));
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #isApproved}
 	 */
+	@Override
 	public boolean getApproved() {
 		return isApproved();
 	}
 
+	@Override
 	public boolean isApproved() {
 		if (getStatus() == WorkflowConstants.STATUS_APPROVED) {
 			return true;
@@ -929,6 +1006,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public boolean isDenied() {
 		if (getStatus() == WorkflowConstants.STATUS_DENIED) {
 			return true;
@@ -938,6 +1016,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public boolean isDraft() {
 		if (getStatus() == WorkflowConstants.STATUS_DRAFT) {
 			return true;
@@ -947,6 +1026,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public boolean isExpired() {
 		if (getStatus() == WorkflowConstants.STATUS_EXPIRED) {
 			return true;
@@ -956,6 +1036,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public boolean isInactive() {
 		if (getStatus() == WorkflowConstants.STATUS_INACTIVE) {
 			return true;
@@ -965,6 +1046,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public boolean isIncomplete() {
 		if (getStatus() == WorkflowConstants.STATUS_INCOMPLETE) {
 			return true;
@@ -974,6 +1056,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public boolean isInTrash() {
 		if (getStatus() == WorkflowConstants.STATUS_IN_TRASH) {
 			return true;
@@ -983,6 +1066,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public boolean isPending() {
 		if (getStatus() == WorkflowConstants.STATUS_PENDING) {
 			return true;
@@ -992,6 +1076,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		}
 	}
 
+	@Override
 	public boolean isScheduled() {
 		if (getStatus() == WorkflowConstants.STATUS_SCHEDULED) {
 			return true;
@@ -1050,6 +1135,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		return returnValue;
 	}
 
+	@Override
 	public void persist() throws SystemException {
 		if (this.isNew()) {
 			KBArticleLocalServiceUtil.addKBArticle(this);
@@ -1097,6 +1183,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		return clone;
 	}
 
+	@Override
 	public int compareTo(KBArticle kbArticle) {
 		int value = 0;
 
@@ -1114,18 +1201,15 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof KBArticleClp)) {
 			return false;
 		}
 
-		KBArticleClp kbArticle = null;
-
-		try {
-			kbArticle = (KBArticleClp)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		KBArticleClp kbArticle = (KBArticleClp)obj;
 
 		long primaryKey = kbArticle.getPrimaryKey();
 
@@ -1199,6 +1283,7 @@ public class KBArticleClp extends BaseModelImpl<KBArticle> implements KBArticle 
 		return sb.toString();
 	}
 
+	@Override
 	public String toXmlString() {
 		StringBundler sb = new StringBundler(76);
 

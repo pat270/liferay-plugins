@@ -36,6 +36,16 @@ for (String importer : importers) {
 	}
 
 	if (group != null) {
+		if (importer.equals("lar")) {
+			File privateLAR = _exportLayoutsAsFile(group, true);
+
+			FileUtil.copyFile(privateLAR, new File(application.getRealPath("/WEB-INF/classes/test/lar/private.lar")));
+
+			File publicLAR = _exportLayoutsAsFile(group, false);
+
+			FileUtil.copyFile(publicLAR, new File(application.getRealPath("/WEB-INF/classes/test/lar/public.lar")));
+		}
+
 		GroupLocalServiceUtil.deleteGroup(group);
 	}
 
@@ -96,17 +106,25 @@ for (String importer : importers) {
 		}
 		%>
 
-		LayoutLocalServiceUtil#getLayoutsCount=<%= _assertEquals(5, LayoutLocalServiceUtil.getLayoutsCount(group, false)) %><br />
-
 		<%
 		Layout importedLayout = LayoutLocalServiceUtil.getLayout(groupId, false, 1);
 
+		Map<Locale, String> nameMap = importedLayout.getNameMap();
+		%>
+
+		Layout#getNameMap=<%= _assertTrue(nameMap.containsValue("Bienvenue")) %><br />
+
+		LayoutLocalServiceUtil#getLayoutsCount(group, false)=<%= _assertEquals(5, LayoutLocalServiceUtil.getLayoutsCount(group, false)) %><br />
+
+		LayoutLocalServiceUtil#getLayoutsCount(group, true)=<%= _assertEquals(1, LayoutLocalServiceUtil.getLayoutsCount(group, true)) %><br />
+
+		<%
 		UnicodeProperties layoutTypeSettingsProperties = importedLayout.getTypeSettingsProperties();
 
 		String nestedColumnIds = layoutTypeSettingsProperties.get(LayoutTypePortletConstants.NESTED_COLUMN_IDS);
 		%>
 
-		LayoutTypePortletConstants#NESTED_COLUMN_IDS=<%= _assertTrue((nestedColumnIds != null) && nestedColumnIds.contains("column-1") && nestedColumnIds.contains("column-2")) %>
+		LayoutTypePortletConstants#NESTED_COLUMN_IDS=<%= _assertTrue((nestedColumnIds != null) && nestedColumnIds.contains("column-1") && nestedColumnIds.contains("column-2")) %><br />
 	</p>
 
 	<p>
@@ -117,7 +135,7 @@ for (String importer : importers) {
 		String[] assetTagNames = null;
 
 		try {
-			dlFileEntry = DLFileEntryLocalServiceUtil.getFileEntry(groupId, DLFolderConstants.DEFAULT_PARENT_FOLDER_ID, "company_logo");
+			dlFileEntry = DLFileEntryLocalServiceUtil.fetchFileEntry(groupId, DLFolderConstants.DEFAULT_PARENT_FOLDER_ID, "company_logo");
 
 			assetTagNames = AssetTagLocalServiceUtil.getTagNames(DLFileEntry.class.getName(), dlFileEntry.getFileEntryId());
 		}
@@ -129,6 +147,17 @@ for (String importer : importers) {
 	</p>
 
 	<p>
+
+		<%
+		DLFolder dlFolder = DLFolderLocalServiceUtil.fetchFolder(groupId, DLFolderConstants.DEFAULT_PARENT_FOLDER_ID, "Parent Folder");
+
+		dlFileEntry = DLFileEntryLocalServiceUtil.fetchFileEntry(groupId, dlFolder.getFolderId(), "child_document");
+		%>
+
+		DLFolderLocalServiceUtil#fetchFolder=<%= _assertTrue(dlFolder != null) %><br />
+
+		DLFileEntryLocalServiceUtil#fetchFileEntry=<%= _assertTrue(dlFileEntry != null) %><br />
+
 		DLFileEntryLocalServiceUtil#getFileEntriesCount=<%= _assertEquals(1, DLFileEntryLocalServiceUtil.getFileEntriesCount(groupId, DLFolderConstants.DEFAULT_PARENT_FOLDER_ID)) %><br />
 	</p>
 
@@ -147,15 +176,15 @@ for (String importer : importers) {
 		JournalArticleLocalService#getArticlesCount=<%= _assertEquals(5, JournalArticleLocalServiceUtil.getArticlesCount(groupId)) %><br />
 
 		<%
-		DDMStructure ddmStructure = DDMStructureLocalServiceUtil.getStructure(groupId, "CHILD-STRUCTURE-1");
+		DDMStructure ddmStructure = DDMStructureLocalServiceUtil.getStructure(groupId, PortalUtil.getClassNameId(JournalArticle.class), "CHILD-STRUCTURE-1");
 
 		long parentStructureId = ddmStructure.getParentStructureId();
 
 		String parentStructureKey = StringPool.BLANK;
 
-		if (parentStructureId > 0) {
-			DDMStructure parentDDMStructure = DDMStructureLocalServiceUtil.getStructure(parentStructureId);
+		DDMStructure parentDDMStructure = DDMStructureLocalServiceUtil.fetchStructure(parentStructureId);
 
+		if (parentDDMStructure != null) {
 			parentStructureKey = parentDDMStructure.getStructureKey();
 		}
 		%>
@@ -165,7 +194,7 @@ for (String importer : importers) {
 		DDMStructureLocalServiceUtil#getStructuresCount=<%= _assertEquals(3, DDMStructureLocalServiceUtil.getStructuresCount(groupId)) %><br />
 
 		<%
-		DDMTemplate ddmTemplate = DDMTemplateLocalServiceUtil.getTemplate(groupId, "CHILD-TEMPLATE-1");
+		DDMTemplate ddmTemplate = DDMTemplateLocalServiceUtil.getTemplate(groupId, PortalUtil.getClassNameId(DDMStructure.class), "CHILD-TEMPLATE-1");
 
 		DDMStructure ddmTemplateStructure = DDMStructureLocalServiceUtil.fetchDDMStructure(ddmTemplate.getClassPK());
 
@@ -197,5 +226,23 @@ private static String _assertTrue(boolean value) {
 	else {
 		return "FAILED";
 	}
+}
+
+private static File _exportLayoutsAsFile(Group group, boolean privateLayout) throws PortalException, SystemException {
+	Map<String, String[]> parameters = new HashMap<String, String[]>();
+
+	parameters.put(PortletDataHandlerKeys.PORTLET_DATA_ALL, new String[] {Boolean.TRUE.toString()});
+
+	List<Layout> layouts = LayoutLocalServiceUtil.getLayouts(group.getGroupId(), privateLayout);
+
+	long[] layoutIds = new long[layouts.size()];
+
+	for (int i = 0; i < layoutIds.length; i++) {
+		Layout layout = layouts.get(i);
+
+		layoutIds[i] = layout.getLayoutId();
+	}
+
+	return LayoutLocalServiceUtil.exportLayoutsAsFile(group.getGroupId(), privateLayout, layoutIds, parameters, null, null);
 }
 %>

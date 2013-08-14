@@ -19,11 +19,12 @@ import com.liferay.portal.kernel.util.ReferenceRegistry;
 import com.liferay.portal.service.InvokableLocalService;
 
 /**
- * The utility for the calendar booking local service. This utility wraps {@link com.liferay.calendar.service.impl.CalendarBookingLocalServiceImpl} and is the primary access point for service operations in application layer code running on the local server.
- *
- * <p>
- * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
- * </p>
+ * Provides the local service utility for CalendarBooking. This utility wraps
+ * {@link com.liferay.calendar.service.impl.CalendarBookingLocalServiceImpl} and is the
+ * primary access point for service operations in application layer code running
+ * on the local server. Methods of this service will not have security checks
+ * based on the propagated JAAS credentials because this service can only be
+ * accessed from within the same VM.
  *
  * @author Eduardo Lundgren
  * @see CalendarBookingLocalService
@@ -167,10 +168,54 @@ public class CalendarBookingLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery);
 	}
 
+	/**
+	* Returns the number of rows that match the dynamic query.
+	*
+	* @param dynamicQuery the dynamic query
+	* @param projection the projection to apply to the query
+	* @return the number of rows that match the dynamic query
+	* @throws SystemException if a system exception occurred
+	*/
+	public static long dynamicQueryCount(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery,
+		com.liferay.portal.kernel.dao.orm.Projection projection)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().dynamicQueryCount(dynamicQuery, projection);
+	}
+
 	public static com.liferay.calendar.model.CalendarBooking fetchCalendarBooking(
 		long calendarBookingId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService().fetchCalendarBooking(calendarBookingId);
+	}
+
+	/**
+	* Returns the calendar booking with the matching UUID and company.
+	*
+	* @param uuid the calendar booking's UUID
+	* @param companyId the primary key of the company
+	* @return the matching calendar booking, or <code>null</code> if a matching calendar booking could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.calendar.model.CalendarBooking fetchCalendarBookingByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .fetchCalendarBookingByUuidAndCompanyId(uuid, companyId);
+	}
+
+	/**
+	* Returns the calendar booking matching the UUID and group.
+	*
+	* @param uuid the calendar booking's UUID
+	* @param groupId the primary key of the group
+	* @return the matching calendar booking, or <code>null</code> if a matching calendar booking could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.calendar.model.CalendarBooking fetchCalendarBookingByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().fetchCalendarBookingByUuidAndGroupId(uuid, groupId);
 	}
 
 	/**
@@ -193,6 +238,22 @@ public class CalendarBookingLocalServiceUtil {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	/**
+	* Returns the calendar booking with the matching UUID and company.
+	*
+	* @param uuid the calendar booking's UUID
+	* @param companyId the primary key of the company
+	* @return the matching calendar booking
+	* @throws PortalException if a matching calendar booking could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.calendar.model.CalendarBooking getCalendarBookingByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getCalendarBookingByUuidAndCompanyId(uuid, companyId);
 	}
 
 	/**
@@ -379,6 +440,27 @@ public class CalendarBookingLocalServiceUtil {
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .getChildCalendarBookings(parentCalendarBookingId, status);
+	}
+
+	public static void moveCalendarBookingToTrash(long userId,
+		com.liferay.calendar.model.CalendarBooking calendarBooking)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().moveCalendarBookingToTrash(userId, calendarBooking);
+	}
+
+	public static void moveCalendarBookingToTrash(long userId,
+		long calendarBookingId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().moveCalendarBookingToTrash(userId, calendarBookingId);
+	}
+
+	public static void restoreCalendarBookingFromTrash(long userId,
+		long calendarBookingId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().restoreCalendarBookingFromTrash(userId, calendarBookingId);
 	}
 
 	public static java.util.List<com.liferay.calendar.model.CalendarBooking> search(

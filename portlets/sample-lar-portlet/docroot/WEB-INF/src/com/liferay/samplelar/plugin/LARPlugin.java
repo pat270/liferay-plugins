@@ -15,6 +15,7 @@
 package com.liferay.samplelar.plugin;
 
 import com.liferay.portal.kernel.lar.BasePortletDataHandler;
+import com.liferay.portal.kernel.lar.DataLevel;
 import com.liferay.portal.kernel.lar.PortletDataContext;
 import com.liferay.portal.kernel.lar.PortletDataException;
 import com.liferay.portal.kernel.lar.PortletDataHandlerBoolean;
@@ -36,6 +37,10 @@ import javax.portlet.PortletPreferences;
  * @author Raymond Augé
  */
 public class LARPlugin extends BasePortletDataHandler {
+
+	public LARPlugin() {
+		setDataLevel(DataLevel.PORTLET_INSTANCE);
+	}
 
 	@Override
 	public PortletPreferences deleteData(
@@ -219,16 +224,13 @@ public class LARPlugin extends BasePortletDataHandler {
 
 	private static PortletDataHandlerBoolean _createReadme =
 		new PortletDataHandlerBoolean(_NAMESPACE, "create-readme", true, true);
-
 	private static PortletDataHandlerChoice _dataType =
 		new PortletDataHandlerChoice(
 			_NAMESPACE, "data-type", 1, new String[] {"csv", "xml"});
-
 	private static PortletDataHandlerBoolean _enableExport =
 		new PortletDataHandlerBoolean(
 			_NAMESPACE, "export-sample-lar-portlet-data", true,
 			new PortletDataHandlerControl[] {_createReadme, _dataType});
-
 	private static PortletDataHandlerBoolean _enableImport =
 		new PortletDataHandlerBoolean(
 			_NAMESPACE, "import-sample-lar-portlet-data", true, true);

@@ -23,29 +23,28 @@
 String tabs1 = ParamUtil.getString(request, "tabs1", "my-sites");
 
 String name = ParamUtil.getString(request, "name");
-String searchName = DAOParamUtil.getLike(request, "name");
 
 List<Group> groups = null;
 int groupsCount = 0;
 
 if (tabs1.equals("my-sites")) {
-	groups = SitesUtil.getVisibleSites(themeDisplay.getCompanyId(), themeDisplay.getUserId(), searchName, true, 0, maxResultSize);
-	groupsCount = SitesUtil.getVisibleSitesCount(themeDisplay.getCompanyId(), themeDisplay.getUserId(), searchName, true);
+	groups = SitesUtil.getVisibleSites(themeDisplay.getCompanyId(), themeDisplay.getUserId(), name, true, 0, maxResultSize);
+	groupsCount = SitesUtil.getVisibleSitesCount(themeDisplay.getCompanyId(), themeDisplay.getUserId(), name, true);
 
 	if (groupsCount == 0) {
 		tabs1 = "all-sites";
 
-		groups = SitesUtil.getVisibleSites(themeDisplay.getCompanyId(), themeDisplay.getUserId(), searchName, false, 0, maxResultSize);
-		groupsCount = SitesUtil.getVisibleSitesCount(themeDisplay.getCompanyId(), themeDisplay.getUserId(), searchName, false);
+		groups = SitesUtil.getVisibleSites(themeDisplay.getCompanyId(), themeDisplay.getUserId(), name, false, 0, maxResultSize);
+		groupsCount = SitesUtil.getVisibleSitesCount(themeDisplay.getCompanyId(), themeDisplay.getUserId(), name, false);
 	}
 }
 else if (tabs1.equals("my-favorites")) {
-	groups = SitesUtil.getFavoriteSitesGroups(themeDisplay.getUserId(), searchName, 0, maxResultSize);
-	groupsCount = SitesUtil.getFavoriteSitesGroupsCount(themeDisplay.getUserId(), searchName);
+	groups = SitesUtil.getFavoriteSitesGroups(themeDisplay.getUserId(), name, 0, maxResultSize);
+	groupsCount = SitesUtil.getFavoriteSitesGroupsCount(themeDisplay.getUserId(), name);
 }
 else {
-	groups = SitesUtil.getVisibleSites(themeDisplay.getCompanyId(), themeDisplay.getUserId(), searchName, false, 0, maxResultSize);
-	groupsCount = SitesUtil.getVisibleSitesCount(themeDisplay.getCompanyId(), themeDisplay.getUserId(), searchName, false);
+	groups = SitesUtil.getVisibleSites(themeDisplay.getCompanyId(), themeDisplay.getUserId(), name, false, 0, maxResultSize);
+	groupsCount = SitesUtil.getVisibleSitesCount(themeDisplay.getCompanyId(), themeDisplay.getUserId(), name, false);
 }
 
 PortletURL portletURL = renderResponse.createRenderURL();
@@ -77,7 +76,7 @@ pageContext.setAttribute("portletURL", portletURL);
 <div class="site-list-container">
 
 	<%
-	boolean hideNotice = GetterUtil.getBoolean(preferences.getValue("hide-notice", StringPool.BLANK), false);
+	boolean hideNotice = GetterUtil.getBoolean(portletPreferences.getValue("hide-notice", StringPool.BLANK), false);
 	%>
 
 	<c:if test="<%= !hideNotice %>">
@@ -158,22 +157,21 @@ pageContext.setAttribute("portletURL", portletURL);
 								<a href="<%= publicLayoutsURL %>"><%= HtmlUtil.escape(group.getDescriptiveName(locale)) %></a>
 							</c:if>
 
-							<c:if test="<%= (group.hasPrivateLayouts() && member) %>">
-								<liferay-portlet:actionURL portletName="<%= PortletKeys.SITE_REDIRECTOR %>" var="privateLayoutsURL" windowState="<%= LiferayWindowState.NORMAL.toString() %>">
-									<portlet:param name="struts_action" value="/my_sites/view" />
-									<portlet:param name="groupId" value="<%= String.valueOf(group.getGroupId()) %>" />
-									<portlet:param name="privateLayout" value="<%= Boolean.TRUE.toString() %>" />
-								</liferay-portlet:actionURL>
-
+							<c:if test="<%= group.hasPrivateLayouts() %>">
 								<c:choose>
-									<c:when test="<%= group.hasPublicLayouts() %>">
-										<a class="private-pages" href="<%= privateLayoutsURL %>"> (<liferay-ui:message key="private-pages" />)</a>
+									<c:when test="<%= member %>">
+										<liferay-portlet:actionURL portletName="<%= PortletKeys.SITE_REDIRECTOR %>" var="privateLayoutsURL" windowState="<%= LiferayWindowState.NORMAL.toString() %>">
+											<portlet:param name="struts_action" value="/my_sites/view" />
+											<portlet:param name="groupId" value="<%= String.valueOf(group.getGroupId()) %>" />
+											<portlet:param name="privateLayout" value="<%= Boolean.TRUE.toString() %>" />
+										</liferay-portlet:actionURL>
+
+										<a class="<%= group.hasPublicLayouts() ? "private-pages" : "" %>" href="<%= privateLayoutsURL %>"><%= group.hasPublicLayouts() ? "(" + LanguageUtil.get(locale, "private-pages") + ")" : HtmlUtil.escape(group.getDescriptiveName(locale)) %></a>
 									</c:when>
 									<c:otherwise>
-										<a href="<%= privateLayoutsURL %>"><%= HtmlUtil.escape(group.getDescriptiveName(locale)) %></a>
+										<%= group.hasPublicLayouts() ? "(" + LanguageUtil.get(locale, "private-pages") + ")" : HtmlUtil.escape(group.getDescriptiveName(locale)) %>
 									</c:otherwise>
 								</c:choose>
-
 							</c:if>
 						</span>
 					</li>

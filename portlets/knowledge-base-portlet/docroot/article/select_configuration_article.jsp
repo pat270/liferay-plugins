@@ -71,20 +71,20 @@ String orderByType = ParamUtil.getString(request, "orderByType", "desc");
 			property="userName"
 		/>
 
-		<liferay-ui:search-container-column-text
+		<liferay-ui:search-container-column-date
 			cssClass="kb-column-no-wrap"
 			href="<%= rowURL %>"
 			name="create-date"
 			orderable="<%= true %>"
-			value='<%= dateFormatDate.format(kbArticle.getCreateDate()) + "<br />" + dateFormatTime.format(kbArticle.getCreateDate()) %>'
+			value="<%= kbArticle.getCreateDate() %>"
 		/>
 
-		<liferay-ui:search-container-column-text
+		<liferay-ui:search-container-column-date
 			cssClass="kb-column-no-wrap"
 			href="<%= rowURL %>"
 			name="modified-date"
 			orderable="<%= true %>"
-			value='<%= dateFormatDate.format(kbArticle.getModifiedDate()) + "<br />" + dateFormatTime.format(kbArticle.getModifiedDate()) %>'
+			value="<%= kbArticle.getModifiedDate() %>"
 		/>
 
 		<liferay-ui:search-container-column-text
@@ -92,7 +92,7 @@ String orderByType = ParamUtil.getString(request, "orderByType", "desc");
 			href="<%= rowURL %>"
 			name="status"
 			orderable="<%= true %>"
-			value='<%= kbArticle.getStatus() + " (" + LanguageUtil.get(pageContext, WorkflowConstants.toLabel(kbArticle.getStatus())) + ")" %>'
+			value='<%= kbArticle.getStatus() + " (" + LanguageUtil.get(pageContext, WorkflowConstants.getStatusLabel(kbArticle.getStatus())) + ")" %>'
 		/>
 
 		<liferay-ui:search-container-column-text

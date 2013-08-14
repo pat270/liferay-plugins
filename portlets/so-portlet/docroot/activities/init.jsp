@@ -19,22 +19,20 @@
 
 <%@ include file="/init.jsp" %>
 
+<%@ page import="com.liferay.microblogs.model.MicroblogsEntry" %><%@
+page import="com.liferay.microblogs.model.MicroblogsEntryConstants" %><%@
+page import="com.liferay.microblogs.service.MicroblogsEntryLocalServiceUtil" %><%@
+page import="com.liferay.portal.kernel.util.PropsKeys" %><%@
+page import="com.liferay.portal.kernel.util.PropsUtil" %><%@
+page import="com.liferay.portal.service.ServiceContextFactory" %><%@
+page import="com.liferay.portlet.messageboards.service.MBMessageLocalServiceUtil" %><%@
+page import="com.liferay.portlet.social.model.SocialActivity" %><%@
+page import="com.liferay.portlet.social.model.SocialActivitySet" %><%@
+page import="com.liferay.portlet.social.service.SocialActivityLocalServiceUtil" %><%@
+page import="com.liferay.portlet.social.service.SocialActivitySetLocalServiceUtil" %>
+
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+String tabs1 = ParamUtil.getString(request, "tabs1", "all");
 
-String portletResource = ParamUtil.getString(request, "portletResource");
-
-if (Validator.isNotNull(portletResource)) {
-	preferences = PortletPreferencesFactoryUtil.getPortletSetup(request, portletResource);
-}
-
-String defaultTabs1 = preferences.getValue("defaultTabs1", "connections");
-
-String tabs1 = ParamUtil.getString(request, "tabs1", defaultTabs1);
-
-if (!defaultTabs1.equals(tabs1)) {
-	preferences.setValue("defaultTabs1", tabs1);
-
-	preferences.store();
-}
+Format dateFormatDateTime = FastDateFormatFactoryUtil.getDateTime(locale, timeZone);
 %>
