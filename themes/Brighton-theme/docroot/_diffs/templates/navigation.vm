@@ -1,0 +1,57 @@
+<nav class="$nav_css_class desktop-margins" id="navigation">
+	<h1>
+		<span>#language ("navigation")</span>
+	</h1>
+
+	<ul>
+		#foreach ($nav_item in $nav_items)
+			#if ($velocityCount == 1)
+				#set ($first_class = "first")
+			#else
+				#set ($first_class = "")
+			#end
+
+			#if (!$velocityHasNext)
+				#set ($last_class = "last")
+			#else
+				#set ($last_class = "")
+			#end
+
+			#if ($nav_item.isSelected())
+				<li aria-selected="true" class="selected">
+			#else
+				<li>
+			#end
+				#if ($nav_item.hasChildren())
+					<a class="$first_class has-dropdown $last_class" href="$nav_item.getURL()" $nav_item.getTarget()><span>$nav_item.icon() $nav_item.getName()</span></a>
+
+					<span><a class="tablet-link" href="#1"></a></span>
+				#else
+					<a class="$first_class $last_class" href="$nav_item.getURL()" $nav_item.getTarget()><span>$nav_item.icon() $nav_item.getName()</span></a>
+				#end
+
+				#if ($nav_item.hasChildren())
+					<div class="menu-wrapper menu-wrapper-toggle">
+						<ul class="child-menu">
+							#foreach ($nav_child in $nav_item.getChildren())
+								#if ($nav_child.isSelected())
+									<li aria-selected="true" class="selected">
+								#else
+									<li>
+								#end
+									<a href="$nav_child.getURL()" $nav_child.getTarget()>$nav_child.getName()</a>
+								</li>
+							#end
+						</ul>
+					</div>
+				#end
+			</li>
+		#end
+	</ul>
+
+	<div id="searchBar">
+		$theme.journalContentSearch()
+	</div>
+
+	<div class="aui-helper-clearfix"></div>
+</nav>
