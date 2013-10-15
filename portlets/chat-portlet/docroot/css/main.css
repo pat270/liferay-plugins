@@ -476,6 +476,10 @@ pre.chat-height-monitor {
 		width: 202px;
 	}
 
+	.panel-icon {
+		max-width: 48px;
+	}
+
 	.panel-output {
 		position: relative;
 	}
