@@ -97,6 +97,7 @@ public class ContactsCenterUserNotificationHandler
 
 		confirmURL.setParameter(
 			ActionRequest.ACTION_NAME, "updateSocialRequest");
+		confirmURL.setParameter("redirect", serviceContext.getLayoutFullURL());
 		confirmURL.setParameter(
 			"socialRequestId", String.valueOf(socialRequestId));
 		confirmURL.setParameter(
@@ -117,6 +118,7 @@ public class ContactsCenterUserNotificationHandler
 
 		ignoreURL.setParameter(
 			ActionRequest.ACTION_NAME, "updateSocialRequest");
+		ignoreURL.setParameter("redirect", serviceContext.getLayoutFullURL());
 		ignoreURL.setParameter(
 			"socialRequestId", String.valueOf(socialRequestId));
 		ignoreURL.setParameter(

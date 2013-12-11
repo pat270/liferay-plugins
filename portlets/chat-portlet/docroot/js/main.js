@@ -80,7 +80,7 @@ AUI().use(
 				var hour = time.getHours();
 				var minute = time.getMinutes();
 
-				if (hour >= 11) {
+				if (hour >= 12) {
 					meridian = 'pm';
 				}
 
@@ -117,6 +117,12 @@ AUI().use(
 				time = Number(time);
 
 				time += instance._getOffset();
+
+				var currentSystemTime = now();
+
+				if (time > currentSystemTime) {
+					time = currentSystemTime;
+				}
 
 				return time;
 			},
