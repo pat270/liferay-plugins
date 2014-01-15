@@ -46,6 +46,14 @@
 			"title": "Pricing"
 		},
 		{
+			"columns": [
+				[
+					"Who We Are.xml"
+				],
+				[
+					"Media1.xml"
+				]
+			],
 			"friendlyURL": "/support",
 			"name": "Support",
 			"title": "Support"
