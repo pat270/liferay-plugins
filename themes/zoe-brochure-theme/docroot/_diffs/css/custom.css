@@ -117,8 +117,12 @@ $default-box-shadow-v-offset: 1px;
 	/* -------- Heading -------- */
 
 	#banner {
-		margin: 0 auto;
-		width: 960px;
+		float: left;
+		width: 100%;
+	}
+
+	#content {
+		clear: left;
 	}
 
 	#heading {
@@ -143,14 +147,9 @@ $default-box-shadow-v-offset: 1px;
 		&.navbar .nav {
 			margin: 0;
 
-			> .active {
-				> a, a:hover, a:focus {
-					@include box-shadow(none);
-					@include text-shadow(none);
-				}
-			}
-
 			> li {
+				background-color: #FFF;
+
 				&:last-of-type > .dropdown-menu {
 					left: auto;
 					right: 0;
@@ -159,10 +158,6 @@ $default-box-shadow-v-offset: 1px;
 				> .dropdown-menu {
 					background-color: #333;
 					border: 0;
-
-					@include border-radius(0);
-					@include box-shadow(none);
-
 					margin: 0;
 
 					&:after {
@@ -180,8 +175,6 @@ $default-box-shadow-v-offset: 1px;
 
 						&:focus, &:hover {
 							background-color: #252525;
-
-							@include background-image(none);
 						}
 					}
 				}
@@ -195,25 +188,17 @@ $default-box-shadow-v-offset: 1px;
 					background-color: #333;
 					border-top: 5px solid green;
 					color: #FFF;
-
-					@include text-shadow(none);
 				}
 
 				> a:focus, > a:hover {
 					background-color: #333;
 					color: #FFF;
-
-					@include text-shadow(none);
 				}
 			}
 		}
 
 		.navbar-inner {
 			background-color: transparent;
-
-			@include background-image(none);
-			@include box-shadow(none);
-
 			border: 0;
 			padding: 0;
 		}
@@ -700,6 +685,42 @@ $default-box-shadow-v-offset: 1px;
 	}
 
 	/* -------- Extras -------- */
+
+	#navigation {
+		&.navbar .nav {
+			> .active {
+				> a, a:hover, a:focus {
+					@include box-shadow(none);
+					@include text-shadow(none);
+				}
+			}
+
+			> li {
+				> .dropdown-menu {
+					@include border-radius(0);
+					@include box-shadow(none);
+
+					> li > a {
+						&:focus, &:hover {
+							@include background-image(none);
+						}
+					}
+				}
+
+				&.hover > a {
+					@include text-shadow(none);
+				}
+
+				> a:focus, > a:hover {
+					@include text-shadow(none);
+				}
+			}
+		}
+
+		.navbar-inner {
+			@include box-shadow(none);
+		}
+	}
 
 	.dockbar-split .dockbar {
 		.navbar-inner {
