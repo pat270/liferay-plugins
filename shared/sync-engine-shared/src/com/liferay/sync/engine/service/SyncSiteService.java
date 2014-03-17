@@ -14,19 +14,19 @@
 
 package com.liferay.sync.engine.service;
 
+import com.liferay.sync.engine.documentlibrary.event.GetUserSitesGroupsEvent;
 import com.liferay.sync.engine.model.ModelListener;
-import com.liferay.sync.engine.model.SyncFile;
 import com.liferay.sync.engine.model.SyncSite;
 import com.liferay.sync.engine.service.persistence.SyncSitePersistence;
-import com.liferay.sync.engine.util.FileUtil;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import java.sql.SQLException;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,34 +36,6 @@ import org.slf4j.LoggerFactory;
  */
 public class SyncSiteService {
 
-	public static SyncSite addSyncSite(
-			long companyId, String filePathName, long groupId,
-			long syncAccountId)
-		throws Exception {
-
-		// Sync site
-
-		SyncSite syncSite = new SyncSite();
-
-		syncSite.setCompanyId(companyId);
-		syncSite.setFilePathName(filePathName);
-		syncSite.setGroupId(groupId);
-		syncSite.setSyncAccountId(syncAccountId);
-
-		_syncSitePersistence.create(syncSite);
-
-		// Sync file
-
-		Files.createDirectories(Paths.get(filePathName));
-
-		SyncFileService.addSyncFile(
-			null, null, filePathName, FileUtil.getFileKey(filePathName),
-			filePathName, null, filePathName, 0, groupId,
-			syncSite.getSyncAccountId(), SyncFile.TYPE_FOLDER);
-
-		return syncSite;
-	}
-
 	public static void deleteSyncSite(long syncSiteId) {
 		try {
 			_syncSitePersistence.deleteById(syncSiteId);
@@ -72,6 +44,19 @@ public class SyncSiteService {
 			if (_logger.isDebugEnabled()) {
 				_logger.debug(sqle.getMessage(), sqle);
 			}
+		}
+	}
+
+	public static SyncSite fetchSyncSite(long syncSiteId) {
+		try {
+			return _syncSitePersistence.queryForId(syncSiteId);
+		}
+		catch (SQLException sqle) {
+			if (_logger.isDebugEnabled()) {
+				_logger.debug(sqle.getMessage(), sqle);
+			}
+
+			return null;
 		}
 	}
 
@@ -116,6 +101,30 @@ public class SyncSiteService {
 		}
 	}
 
+	public static Set<Long> getActiveSyncSiteIds(long syncAccountId) {
+		try {
+			Set<Long> activeSyncSiteIds = _activeSyncSiteIds.get(syncAccountId);
+
+			if (activeSyncSiteIds != null) {
+				return activeSyncSiteIds;
+			}
+
+			activeSyncSiteIds = new HashSet<Long>(
+				_syncSitePersistence.findByA_S(true, syncAccountId));
+
+			_activeSyncSiteIds.put(syncAccountId, activeSyncSiteIds);
+
+			return activeSyncSiteIds;
+		}
+		catch (SQLException sqle) {
+			if (_logger.isDebugEnabled()) {
+				_logger.debug(sqle.getMessage(), sqle);
+			}
+
+			return Collections.emptySet();
+		}
+	}
+
 	public static SyncSitePersistence getSyncSitePersistence() {
 		if (_syncSitePersistence != null) {
 			return _syncSitePersistence;
@@ -139,6 +148,20 @@ public class SyncSiteService {
 		_syncSitePersistence.registerModelListener(modelListener);
 	}
 
+	public static void synchronizeSyncSites(long syncAccountId) {
+		GetUserSitesGroupsEvent getUserSitesGroupsEvent =
+			new GetUserSitesGroupsEvent(
+				syncAccountId, Collections.<String, Object>emptyMap());
+
+		getUserSitesGroupsEvent.run();
+	}
+
+	public static void unregisterModelListener(
+		ModelListener<SyncSite> modelListener) {
+
+		_syncSitePersistence.unregisterModelListener(modelListener);
+	}
+
 	public static SyncSite update(SyncSite syncSite) {
 		try {
 			_syncSitePersistence.createOrUpdate(syncSite);
@@ -157,6 +180,8 @@ public class SyncSiteService {
 	private static Logger _logger = LoggerFactory.getLogger(
 		SyncSiteService.class);
 
+	private static Map<Long, Set<Long>> _activeSyncSiteIds =
+		new HashMap<Long, Set<Long>>();
 	private static SyncSitePersistence _syncSitePersistence =
 		getSyncSitePersistence();
 

@@ -19,7 +19,6 @@ import com.liferay.sync.engine.model.SyncFile;
 import com.liferay.sync.engine.model.SyncWatchEvent;
 import com.liferay.sync.engine.service.SyncAccountService;
 import com.liferay.sync.engine.service.SyncFileService;
-import com.liferay.sync.engine.service.SyncSiteService;
 import com.liferay.sync.engine.service.SyncWatchEventService;
 import com.liferay.sync.engine.util.FilePathNameUtil;
 import com.liferay.sync.engine.util.FileUtil;
@@ -49,6 +48,13 @@ public class SyncWatchEventProcessor implements Runnable {
 			"eventType", true);
 
 		for (SyncWatchEvent syncWatchEvent : syncWatchEvents) {
+			SyncAccount syncAccount = SyncAccountService.fetchSyncAccount(
+				syncWatchEvent.getSyncAccountId());
+
+			if (syncAccount.getState() == SyncAccount.STATE_DISCONNECTED) {
+				continue;
+			}
+
 			if (_processedSyncWatchEventIds.contains(
 					syncWatchEvent.getSyncWatchEventId())) {
 
@@ -98,8 +104,13 @@ public class SyncWatchEventProcessor implements Runnable {
 				_logger.error(e.getMessage(), e);
 			}
 
-			SyncWatchEventService.deleteSyncWatchEvent(
-				syncWatchEvent.getSyncWatchEventId());
+			syncAccount = SyncAccountService.fetchSyncAccount(
+				syncWatchEvent.getSyncAccountId());
+
+			if (syncAccount.getState() != SyncAccount.STATE_DISCONNECTED) {
+				SyncWatchEventService.deleteSyncWatchEvent(
+					syncWatchEvent.getSyncWatchEventId());
+			}
 		}
 
 		_processedSyncWatchEventIds.clear();
@@ -149,26 +160,17 @@ public class SyncWatchEventProcessor implements Runnable {
 				syncWatchEvent.getSyncAccountId(), syncFile);
 		}
 
-		_processedSyncWatchEventIds.add(
-			relatedSyncWatchEvent.getSyncWatchEventId());
+		SyncAccount syncAccount = SyncAccountService.fetchSyncAccount(
+			syncWatchEvent.getSyncAccountId());
+
+		if (syncAccount.getState() != SyncAccount.STATE_DISCONNECTED) {
+			_processedSyncWatchEventIds.add(
+				relatedSyncWatchEvent.getSyncWatchEventId());
+		}
 	}
 
 	protected void addFolder(SyncWatchEvent syncWatchEvent) throws Exception {
 		Path targetFilePath = Paths.get(syncWatchEvent.getFilePathName());
-
-		String targetFilePathName = FilePathNameUtil.getFilePathName(
-			targetFilePath);
-
-		SyncAccount syncAccount = SyncAccountService.fetchSyncAccount(
-			syncWatchEvent.getSyncAccountId());
-
-		if (targetFilePathName.equals(syncAccount.getFilePathName()) ||
-			(SyncSiteService.fetchSyncSite(
-				targetFilePathName, syncWatchEvent.getSyncAccountId()) !=
-					null)) {
-
-			return;
-		}
 
 		Path parentTargetFilePath = targetFilePath.getParent();
 

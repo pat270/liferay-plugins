@@ -46,40 +46,13 @@ public class BaseSyncDLObjectUpdateEvent extends BaseEvent {
 	protected void addFile(SyncFile syncFile, String filePathName)
 		throws Exception {
 
-		syncFile.setFilePathName(filePathName);
-		syncFile.setSyncAccountId(getSyncAccountId());
-
-		SyncFileService.update(syncFile);
-
-		String type = syncFile.getType();
-
-		if (type.equals(SyncFile.TYPE_FOLDER)) {
-			Path filePath = Paths.get(filePathName);
-
-			if (Files.notExists(filePath)) {
-				Files.createDirectory(filePath);
-			}
-
-			return;
-		}
-
-		downloadFile(syncFile);
-	}
-
-	protected void deleteFile(SyncFile targetSyncFile) throws Exception {
-		SyncFile sourceSyncFile = SyncFileService.fetchSyncFile(
-			targetSyncFile.getRepositoryId(), getSyncAccountId(),
-			targetSyncFile.getTypePK());
-
-		Files.deleteIfExists(Paths.get(sourceSyncFile.getFilePathName()));
-
-		SyncFileService.deleteSyncFile(sourceSyncFile.getSyncFileId());
-	}
-
-	protected void downloadFile(SyncFile syncFile) {
-		Path filePath = Paths.get(syncFile.getFilePathName());
+		Path filePath = Paths.get(filePathName);
 
 		if (Files.exists(filePath)) {
+			if (syncFile.isFolder()) {
+				return;
+			}
+
 			String checksum = FileUtil.getChecksum(filePath);
 
 			if (checksum.equals(syncFile.getChecksum())) {
@@ -87,6 +60,37 @@ public class BaseSyncDLObjectUpdateEvent extends BaseEvent {
 			}
 		}
 
+		syncFile.setFilePathName(filePathName);
+		syncFile.setSyncAccountId(getSyncAccountId());
+		syncFile.setUiEvent(SyncFile.UI_EVENT_ADDED_REMOTE);
+
+		SyncFileService.update(syncFile);
+
+		if (syncFile.isFolder()) {
+			Files.createDirectories(filePath);
+		}
+		else {
+			downloadFile(syncFile);
+		}
+	}
+
+	protected void deleteFile(SyncFile targetSyncFile) throws Exception {
+		SyncFile sourceSyncFile = SyncFileService.fetchSyncFile(
+			targetSyncFile.getRepositoryId(), getSyncAccountId(),
+			targetSyncFile.getTypePK());
+
+		if (sourceSyncFile == null) {
+			return;
+		}
+
+		sourceSyncFile.setUiEvent(SyncFile.UI_EVENT_TRASHED_REMOTE);
+
+		Files.deleteIfExists(Paths.get(sourceSyncFile.getFilePathName()));
+
+		SyncFileService.deleteSyncFile(sourceSyncFile);
+	}
+
+	protected void downloadFile(SyncFile syncFile) {
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
 		parameters.put("patch", false);
@@ -114,6 +118,7 @@ public class BaseSyncDLObjectUpdateEvent extends BaseEvent {
 		sourceSyncFile.setFilePathName(targetFilePathName);
 		sourceSyncFile.setModifiedTime(targetSyncFile.getModifiedTime());
 		sourceSyncFile.setParentFolderId(targetSyncFile.getParentFolderId());
+		sourceSyncFile.setUiEvent(SyncFile.UI_EVENT_MOVED_REMOTE);
 
 		SyncFileService.update(sourceSyncFile);
 	}
@@ -146,6 +151,14 @@ public class BaseSyncDLObjectUpdateEvent extends BaseEvent {
 				addFile(syncFile, filePathName);
 			}
 			else if (event.equals(SyncFile.EVENT_DELETE)) {
+				syncFile = SyncFileService.fetchSyncFile(
+					syncFile.getRepositoryId(), getSyncAccountId(),
+					syncFile.getTypePK());
+
+				syncFile.setState(SyncFile.STATE_DELETED);
+				syncFile.setUiEvent(SyncFile.UI_EVENT_DELETED_REMOTE);
+
+				SyncFileService.update(syncFile);
 			}
 			else if (event.equals(SyncFile.EVENT_MOVE)) {
 				moveFile(syncFile, filePathName);
@@ -192,16 +205,25 @@ public class BaseSyncDLObjectUpdateEvent extends BaseEvent {
 		sourceSyncFile.setExtension(targetSyncFile.getExtension());
 		sourceSyncFile.setExtraSettings(targetSyncFile.getExtraSettings());
 		sourceSyncFile.setLockExpirationDate(
-				targetSyncFile.getLockExpirationDate());
+			targetSyncFile.getLockExpirationDate());
 		sourceSyncFile.setLockUserId(targetSyncFile.getLockUserId());
 		sourceSyncFile.setLockUserName(targetSyncFile.getLockUserName());
 		sourceSyncFile.setModifiedTime(targetSyncFile.getModifiedTime());
 		sourceSyncFile.setSize(targetSyncFile.getSize());
+		sourceSyncFile.setUiEvent(SyncFile.UI_EVENT_UPDATED_REMOTE);
 		sourceSyncFile.setVersion(targetSyncFile.getVersion());
 
 		SyncFileService.update(sourceSyncFile);
 
-		downloadFile(sourceSyncFile);
+		if (Files.exists(sourceFilePath) && !targetSyncFile.isFolder()) {
+			String checksum = FileUtil.getChecksum(sourceFilePath);
+
+			if (checksum.equals(targetSyncFile.getChecksum())) {
+				return;
+			}
+
+			downloadFile(sourceSyncFile);
+		}
 	}
 
 }

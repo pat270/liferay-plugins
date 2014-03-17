@@ -175,7 +175,7 @@ if (comment) {
 
 	<span class="microblogs-countdown-holder">
 		<c:if test="<%= !repost %>">
-			<span class="microblogs-countdown">150</span>
+			<span class="microblogs-countdown"><%= 150 - (((microblogsEntry != null) && edit) ? microblogsEntry.getContent() : StringPool.BLANK).length() %></span>
 		</c:if>
 	</span>
 
@@ -225,7 +225,7 @@ if (comment) {
 
 	var MAP_USERS = {};
 
-	var REGEX_USER_NAME = /@[^\s]+$/;
+	var REGEX_USER_NAME = /@(.*[^\s]+)$/;
 
 	var TPL_SEARCH_RESULTS = '<div class="microblogs-autocomplete">' +
 		'<div class="thumbnail">' +
@@ -277,8 +277,7 @@ if (comment) {
 			var textarea = new A.Textarea(
 				{
 					autoSize: true,
-					id: '<portlet:namespace />contentInput<%= formId %>',
-					value: inputValue
+					id: '<portlet:namespace />contentInput<%= formId %>'
 				}
 			).render(autocompleteContent);
 
@@ -319,6 +318,8 @@ if (comment) {
 			createAutocomplete(contentTextarea);
 
 			contentTextarea.focus();
+
+			contentTextarea.val(inputValue);
 
 			return contentTextarea;
 		};
@@ -455,6 +456,9 @@ if (comment) {
 							highlighterContent.removeClass('textbox');
 
 							createTextarea('#<portlet:namespace />autocompleteContent');
+						}
+						else {
+							contentInput.focus();
 						}
 					}
 				);
