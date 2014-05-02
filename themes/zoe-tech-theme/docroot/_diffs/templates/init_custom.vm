@@ -1,13 +1,5 @@
 #set ($css_class = "${css_class} dockbar-split")
 
-## ---------- Logo ---------- ##
-
-#if (($company.getLogoId() == 0) && $use_company_logo && $theme_settings.display-company-logo != true)
-	#set ($site_logo = "${images_folder}/custom/logo.png")
-	#set ($site_logo_height = 36)
-	#set ($site_logo_width = 88)
-#end
-
 ## ---------- Footer Content ---------- ##
 
 #if ($theme_settings.display-footer == true)

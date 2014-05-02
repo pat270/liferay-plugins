@@ -18,33 +18,23 @@
 
 $theme.include($body_top_include)
 
-#if ($is_signed_in)
-	#dockbar()
-#end
+#dockbar()
 
 <div class="container-fluid" id="wrapper">
 	<header id="banner" role="banner">
 		<div id="heading">
 			<h1 class="site-title">
 				<a class="$logo_css_class" href="$site_default_url" title="#language_format ("go-to-x", [$site_name])">
-					<img alt="$logo_description" height="$site_logo_height" src="$site_logo" width="$site_logo_width" />
+					<img alt="$logo_description" src="$site_logo" />
+
+					#if ($show_site_name)
+						<span class="site-name" title="#language_format ("go-to-x", [$site_name])">
+							$site_name
+						</span>
+					#end
 				</a>
-
-				#if ($show_site_name)
-					<span class="site-name" title="#language_format ("go-to-x", [$site_name])">
-						$site_name
-					</span>
-				#end
-
-				<div id="pageSearch">
-					$theme.journalContentSearch()
-				</div>
 			</h1>
 		</div>
-
-		#if (!$is_signed_in)
-			<a href="$sign_in_url" id="sign-in" rel="nofollow">$sign_in_text</a>
-		#end
 
 		#if ($has_navigation || $is_signed_in)
 			#parse ("$full_templates_path/navigation.vm")
