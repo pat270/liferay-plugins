@@ -3,7 +3,7 @@
 
 /* ---------- Set compass defaults ---------- */
 
-$default-font-size: 12px;
+$default-font-size: 16px;
 
 /* ---------- Global ---------- */
 
@@ -55,6 +55,7 @@ $default-font-size: 12px;
 
 	#wrapper {
 		font-size: $default-font-size;
+		font-weight: 100;
 		margin: 0 auto;
 		max-width: 1200px;
 		padding-top: 0;
@@ -178,7 +179,7 @@ $default-font-size: 12px;
 		.portlet-body {
 			margin: 0 auto;
 			max-width: 400px;
-			padding: 60px 10px;
+			padding: 20px 10px 60px;
 
 			.navigation {
 				background-color: transparent;
@@ -207,7 +208,7 @@ $default-font-size: 12px;
 					margin-bottom: 0;
 
 					li {
-						margin-right: 5em;
+						margin-right: 4em;
 
 						&:first-child + li + li {
 							margin-right: 0;
@@ -263,6 +264,11 @@ $default-font-size: 12px;
 
 				select {
 					width: 100%;
+				}
+
+				.alert {
+					margin-bottom: 0;
+					margin-top: 20px;
 				}
 			}
 		}
@@ -750,6 +756,63 @@ $default-font-size: 12px;
 		}
 	}
 
+	/* -------- Zoe Pricing Table -------- */
+
+	.zoe-pricing-table-container {
+		@include box-sizing(border-box);
+
+		.rate {
+			background-color: #FAFAFA;
+			line-height: normal;
+			margin-bottom: 0;
+			padding: 10px;
+			text-align: center;
+		}
+
+		.zoe-pricing-table {
+			h3 {
+				background-color: #6E6E6E;
+				color: #FFF;
+				font-weight: 100;
+				margin: 0;
+				text-align: center;
+			}
+
+			ul li {
+				background-color: #EEE;
+				overflow: hidden;
+				padding: 10px;
+				text-align: center;
+				white-space: nowrap;
+
+				&.even {
+					background-color: #FAFAFA;
+				}
+			}
+		}
+	}
+
+	.zoe-pricing-tables-connected.row-fluid {
+		.zoe-pricing-table.span3 {
+			float: left;
+			margin-left: 0;
+			width: 20%;
+		}
+
+		.zoe-pricing-table.span3:first-of-type {
+			width: 40%;
+
+			h3 {
+				padding-left: 10px;
+				text-align: left;
+			}
+
+			ul li {
+				text-align: left;
+			}
+		}
+	}
+
 	/* -------- Media Queries -------- */
 
 	@media (min-width: 980px) {
@@ -796,6 +859,23 @@ $default-font-size: 12px;
 		#wrapper {
 			padding-left: 0;
 			padding-right: 0;
+		}
+
+		.zoe-pricing-tables-connected.row-fluid {
+			overflow: auto;
+			white-space: nowrap;
+			width: 100%;
+
+			.zoe-pricing-table.span3 {
+				display: inline-block;
+				float: none;
+				min-width: 150px;
+				white-space: normal;
+
+				&:first-of-type {
+					min-width: 230px;
+				}
+			}
 		}
 	}
 }

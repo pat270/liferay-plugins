@@ -542,7 +542,9 @@ AUI().add(
               oldImage = instance.nodeSelection.item(prevVal);
             }
             else {
-              newImage.addClass(CSS_ITEM_ACTIVE);
+              if (newImage) {
+                newImage.addClass(CSS_ITEM_ACTIVE);
+              }
             }
 
             if (objOptions) {

@@ -14,6 +14,19 @@
 			</entry>
 		</meta-data>
 	</dynamic-element>
+	<dynamic-element dataType="integer" fieldNamespace="ddm" indexType="keyword" localizable="true" name="banner_message_font_size" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-integer" width="small">
+		<meta-data locale="en_US">
+			<entry name="label">
+				<![CDATA[Banner Message Font Size (px)]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
 	<dynamic-element dataType="string" indexType="keyword" localizable="true" name="banner_message_color" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="large">
 		<meta-data locale="en_US">
 			<entry name="label">
@@ -79,6 +92,32 @@
 		<meta-data locale="en_US">
 			<entry name="label">
 				<![CDATA[Banner Secondary Message]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="string" indexType="keyword" localizable="true" name="banner_secondary_message_margins" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="large">
+		<meta-data locale="en_US">
+			<entry name="label">
+				<![CDATA[Banner Secondary Message Margins (e.g. 12px 24px 12px 24px, 12px, or 1em)]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="integer" fieldNamespace="ddm" indexType="keyword" localizable="true" name="banner_secondary_message_font_size" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-integer" width="small">
+		<meta-data locale="en_US">
+			<entry name="label">
+				<![CDATA[Banner Secondary Message Font Size (px)]]>
 			</entry>
 			<entry name="predefinedValue">
 				<![CDATA[]]>
@@ -209,8 +248,21 @@
 			</entry>
 		</meta-data>
 	</dynamic-element>
-	<dynamic-element dataType="string" indexType="keyword" name="banner_button_text" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
-		<dynamic-element dataType="string" indexType="keyword" name="banner_button_link" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
+	<dynamic-element dataType="string" indexType="keyword" name="banner_button_text" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="large">
+		<dynamic-element dataType="integer" fieldNamespace="ddm" indexType="keyword" localizable="true" name="font_size" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-integer" width="small">
+			<meta-data locale="en_US">
+				<entry name="label">
+					<![CDATA[Banner Button Text Font Size (px)]]>
+				</entry>
+				<entry name="predefinedValue">
+					<![CDATA[]]>
+				</entry>
+				<entry name="tip">
+					<![CDATA[]]>
+				</entry>
+			</meta-data>
+		</dynamic-element>
+		<dynamic-element dataType="string" indexType="keyword" name="banner_button_link" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="large">
 			<meta-data locale="en_US">
 				<entry name="label">
 					<![CDATA[Banner_Button_Link]]>
@@ -334,6 +386,40 @@
 				</entry>
 				<entry name="predefinedValue">
 					<![CDATA[["btn-large"]]]>
+				</entry>
+				<entry name="tip">
+					<![CDATA[]]>
+				</entry>
+			</meta-data>
+		</dynamic-element>
+		<dynamic-element dataType="string" indexType="keyword" localizable="true" multiple="false" name="banner_button_alignment" readOnly="false" repeatable="false" required="false" showLabel="true" type="select" width="">
+			<dynamic-element name="option_banner_button_alignment_center" type="option" value="center">
+				<meta-data locale="en_US">
+					<entry name="label">
+						<![CDATA[Center]]>
+					</entry>
+				</meta-data>
+			</dynamic-element>
+			<dynamic-element name="option_banner_button_alignment_left" type="option" value="left">
+				<meta-data locale="en_US">
+					<entry name="label">
+						<![CDATA[Left]]>
+					</entry>
+				</meta-data>
+			</dynamic-element>
+			<dynamic-element name="option_banner_button_alignment_right" type="option" value="right">
+				<meta-data locale="en_US">
+					<entry name="label">
+						<![CDATA[Right]]>
+					</entry>
+				</meta-data>
+			</dynamic-element>
+			<meta-data locale="en_US">
+				<entry name="label">
+					<![CDATA[Banner Button Alignment]]>
+				</entry>
+				<entry name="predefinedValue">
+					<![CDATA[["center"]]]>
 				</entry>
 				<entry name="tip">
 					<![CDATA[]]>

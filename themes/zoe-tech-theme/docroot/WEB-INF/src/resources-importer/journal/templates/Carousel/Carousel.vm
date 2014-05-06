@@ -93,8 +93,6 @@
 	#end
 </div>
 
-<script src="/zoe-tech-theme/js/zoe-carousel.js"></script>
-
 <script type="text/javascript">
 	AUI().ready(
 		'zoe-carousel',
