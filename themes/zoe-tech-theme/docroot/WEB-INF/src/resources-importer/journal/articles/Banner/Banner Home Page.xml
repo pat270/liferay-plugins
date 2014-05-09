@@ -28,11 +28,17 @@
 	<dynamic-element name="banner_secondary_message_color" type="text">
 		<dynamic-content><![CDATA[]]></dynamic-content>
 	</dynamic-element>
-	<dynamic-element name="banner_message_alignment" type="select">
+	<dynamic-element name="banner_message_text_alignment" type="select">
 		<dynamic-content><![CDATA[center]]></dynamic-content>
 	</dynamic-element>
 	<dynamic-element name="banner_background_color" type="text">
 		<dynamic-content><![CDATA[#B3D929]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_background_image" type="ddm-documentlibrary">
+		<dynamic-content><![CDATA[]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_background_minimum_height" type="ddm-integer">
+		<dynamic-content><![CDATA[]]></dynamic-content>
 	</dynamic-element>
 	<dynamic-element name="banner_background_padding" type="text">
 		<dynamic-content><![CDATA[25px 20px]]></dynamic-content>

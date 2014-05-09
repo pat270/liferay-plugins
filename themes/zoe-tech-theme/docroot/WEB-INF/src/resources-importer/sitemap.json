@@ -87,11 +87,114 @@
 			"title": "Home"
 		},
 		{
-			"friendlyURL": "/clients",
-			"name": "Clients",
-			"title": "Clients"
+			"columns" : [
+				[
+					{
+						"portletId": "118",
+						"portletPreferences": {
+							"columns": [
+								[
+									{
+										"portletId": "3",
+										"portletPreferences": {
+											"showContextLink": "false",
+											"portletSetupShowBorders": "false",
+											"portletSetupTitle_en_US": "Search",
+											"portletSetupUseCustomTitle": "false"
+										}
+									}
+								],
+								[
+									{
+										"portletId": "101",
+										"portletPreferences": {
+											"delta": "5",
+											"paginationType": "regular",
+											"portletSetupShowBorders": "false",
+											"portletSetupTitle_en_US": "Asset Publisher",
+											"portletSetupUseCustomTitle": "false"
+										}
+									}
+								]
+							],
+							"layoutTemplateId": "2_columns_ii"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Footer.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false",
+							"portletSetupTitle_en_US":
+								"Web Content Display",
+							"portletSetupUseCustomTitle": "false"
+						}
+					}
+				]
+			],
+			"friendlyURL": "/blogs",
+			"name": "Blogs",
+			"title": "Blogs"
 		},
 		{
+			"columns" : [
+				[
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Careers Page Main.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false",
+							"portletSetupTitle_en_US": "Web Content Display",
+							"portletSetupUseCustomTitle": "false"
+						}
+					},
+					{
+						"portletId": "118",
+						"portletPreferences": {
+							"columns": [
+								[
+									{
+										"portletId": "101",
+										"portletPreferences": {
+											"displayStyle": "full-content",
+											"delta": "4",
+											"paginationType": "regular",
+											"showContextLink": "false",
+											"portletSetupShowBorders": "false",
+											"portletSetupTitle_en_US": "Asset Publisher",
+											"portletSetupUseCustomTitle": "false"
+										}
+									}
+								],
+								[
+									{
+										"portletId": "3",
+										"portletPreferences": {
+											"portletSetupShowBorders": "false",
+											"portletSetupTitle_en_US": "Search",
+											"portletSetupUseCustomTitle": "false"
+										}
+									}
+								]
+							],
+							"layoutTemplateId": "2_columns_iii"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Footer.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false",
+							"portletSetupTitle_en_US":
+								"Web Content Display",
+							"portletSetupUseCustomTitle": "false"
+						}
+					}
+				]
+			],
 			"friendlyURL": "/careers",
 			"name": "Careers",
 			"title": "Careers"
@@ -145,8 +248,7 @@
 							"articleId": "Footer.xml",
 							"groupId": "${groupId}",
 							"portletSetupShowBorders": "false",
-							"portletSetupTitle_en_US":
-								"Web Content Display",
+							"portletSetupTitle_en_US": "Web Content Display",
 							"portletSetupUseCustomTitle": "false"
 						}
 					}
@@ -161,6 +263,65 @@
 			"friendlyURL": "/contact-us",
 			"name": "Contact Us",
 			"title": "Contact Us"
+		},
+		{
+			"columns" : [
+				[
+					{
+						"portletId": "118",
+						"portletPreferences": {
+							"columns": [
+								[
+									{
+										"portletId": "3",
+										"portletPreferences": {
+											"portletSetupShowBorders": "false",
+											"portletSetupTitle_en_US": "Search",
+											"portletSetupUseCustomTitle": "false"
+										}
+									},
+									{
+										"portletId": "194",
+										"portletPreferences": {
+											"abstractLength": "100",
+											"delta": "3",
+											"portletSetupShowBorders": "true",
+											"portletSetupTitle_en_US": "Highest Rated Assets",
+											"portletSetupUseCustomTitle": "false"
+										}
+									}
+								],
+								[
+									{
+										"portletId": "33",
+										"portletPreferences": {
+											"portletSetupShowBorders": "false",
+											"portletSetupTitle_en_US": "Blogs",
+											"portletSetupUseCustomTitle": "false"
+										}
+									}
+								]
+							],
+							"layoutTemplateId": "2_columns_ii"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Footer.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false",
+							"portletSetupTitle_en_US":
+								"Web Content Display",
+							"portletSetupUseCustomTitle": "false"
+						}
+					}
+				]
+			],
+			"friendlyURL": "/blogs-template",
+			"name": "Blogs Template",
+			"title": "Blogs Template",
+			"hidden": "true"
 		}
 	]
 }

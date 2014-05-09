@@ -8,6 +8,8 @@ $default-font-size: 16px;
 /* ---------- Global ---------- */
 
 .aui {
+	background-color: #B2B2B2;
+
 	&.dialog-iframe-root-node body {
 		background-color: #FFF;
 		background-image: none;
@@ -159,15 +161,25 @@ $default-font-size: 16px;
 		display: none;
 	}
 
+	.portlet-asset-publisher, .portlet-blogs {
+		.header-back-to {
+			display: none;
+		}
+	}
+
 	.portlet-content {
 		padding: 0;
+	}
+
+	.portlet-nested-portlets > .portlet-borderless-container > .portlet-borderless-bar {
+		margin-top: -25px;
 	}
 
 	.portlet-topper-toolbar .caret.lfr-icon-menu-arrow {
 		display: none;
 	}
 
-		/* -------- Login Portlet -------- */
+	/* -------- Login Portlet -------- */
 
 	.portlet-login {
 		background-color: #F6F6F6;
@@ -323,7 +335,6 @@ $default-font-size: 16px;
 		}
 
 		.btn-large {
-			font-size: 25px;
 			padding: 20px 25px;
 		}
 	}
@@ -331,7 +342,23 @@ $default-font-size: 16px;
 	/* ---------- Zoe Banner Common Styles ---------- */
 
 	.zoe-banner {
+		@include box-sizing(border-box);
+
+		display: table;
+		padding: 10px;
+		width: 100%;
+
+		.banner-button {
+			display: table-cell;
+			text-align: center;
+			vertical-align: middle;
+			width: 25%;
+		}
+
 		.banner-message {
+			display: table-cell;
+			vertical-align: middle;
+
 			h2, p {
 				line-height: normal;
 			}
@@ -756,6 +783,27 @@ $default-font-size: 16px;
 		}
 	}
 
+	/* -------- Zoe Tech Nested Portlet -------- */
+
+	.portlet-nested-portlets {
+		background-color: #F6F6F6;
+		padding: 40px;
+
+		.portlet-column-content > .portlet-boundary {
+			background-color: #FFF;
+			margin-bottom: 40px;
+			padding: 40px;
+		}
+
+		.span4 {
+			.portlet-boundary {
+				background-color: #EEE;
+				margin-bottom: 40px;
+				padding: 40px;
+			}
+		}
+	}
+
 	/* -------- Zoe Pricing Table -------- */
 
 	.zoe-pricing-table-container {
@@ -810,6 +858,15 @@ $default-font-size: 16px;
 			ul li {
 				text-align: left;
 			}
+		}
+	}
+
+	/* -------- Zoe Tech Footer -------- */
+
+	.zoe-footer {
+		.separator {
+			border-bottom: 1px solid #343434;
+			border-top: 1px solid #171717;
 		}
 	}
 
