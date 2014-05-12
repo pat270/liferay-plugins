@@ -36,6 +36,8 @@
 
 		<aui:input name="preferences--height--" size="4" suffix="px" type="text" value="<%= height %>" />
 
+		<aui:input name="preferences--zoom--" size="4" type="text" value="<%= zoom %>" />
+
 		<aui:input name="preferences--showGoogleMapsLink--" type="checkbox" value="<%= showGoogleMapsLink %>" />
 	</aui:fieldset>
 

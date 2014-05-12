@@ -51,12 +51,9 @@ AUI.add(
 						value: false
 					},
 
-					mapParams: {
-						validator: Lang.isObject,
-						value: {
-							mapTypeId: MAP_TYPE_ROADMAP,
-							zoom: 8
-						}
+					mapTypeId: {
+						validator: Lang.isNumber,
+						value: MAP_TYPE_ROADMAP
 					},
 
 					namespace: {
@@ -70,6 +67,11 @@ AUI.add(
 					showDirectionSteps: {
 						validator: Lang.isBoolean,
 						value: false
+					},
+
+					zoom: {
+						validator: Lang.isNumber,
+						value: 8
 					}
 				},
 
@@ -401,14 +403,10 @@ AUI.add(
 					_renderMap: function() {
 						var instance = this;
 
-						var mapParams = instance.get('mapParams');
-
-						mapParams = A.merge(
-							mapParams,
-							{
-								mapTypeId: instance._getGoogleMapType(mapParams.mapTypeId)
-							}
-						);
+						var mapParams = {
+							mapTypeId: instance._getGoogleMapType(instance.get('mapTypeId')),
+							zoom: instance.get('zoom')
+						};
 
 						var googleMaps = google.maps;
 
