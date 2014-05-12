@@ -103,7 +103,12 @@ AUI.add(
 
 						var eventHandles = [];
 
+						var directionsAddressNode = instance.byId(STR_DIRECTION_ADDRESS);
 						var getDirectionsButtonNode = instance.byId('getDirectionsButton');
+						var getMapButtonNode = instance.byId('getMapButton');
+						var mapAddressNode = instance.byId(STR_MAP_ADDRESS);
+						var openLinkNode = instance.byId('openInGoogleMapsLink');
+						var travelingModeNode = instance.byId(STR_TRAVELING_MODE);
 
 						if (getDirectionsButtonNode) {
 							eventHandles.push(
@@ -111,15 +116,11 @@ AUI.add(
 							);
 						}
 
-						var travelingModeNode = instance.byId(STR_TRAVELING_MODE);
-
 						if (travelingModeNode) {
 							eventHandles.push(
 								travelingModeNode.on('change', instance._getDirections, instance)
 							);
 						}
-
-						var getMapButtonNode = instance.byId('getMapButton');
 
 						if (getMapButtonNode) {
 							eventHandles.push(
@@ -127,23 +128,17 @@ AUI.add(
 							);
 						}
 
-						var directionsAddressNode = instance.byId(STR_DIRECTION_ADDRESS);
-
 						if (directionsAddressNode) {
 							eventHandles.push(
 								directionsAddressNode.on(STR_KEY, A.bind(instance._onDirectionsAddressKeyDown, instance), KEY_DOWN_ENTER)
 							);
 						}
 
-						var mapAddressNode = instance.byId(STR_MAP_ADDRESS);
-
 						if (mapAddressNode) {
 							eventHandles.push(
 								mapAddressNode.on(STR_KEY, A.bind(instance._onMapAddressKeyDown, instance), KEY_DOWN_ENTER)
 							);
 						}
-
-						var openLinkNode = instance.byId('openInGoogleMapsLink');
 
 						if (openLinkNode) {
 							eventHandles.push(
@@ -196,7 +191,6 @@ AUI.add(
 						var mapAddress = instance.get(STR_MAP_ADDRESS);
 
 						var directionsAddress = instance.byId(STR_DIRECTION_ADDRESS).val();
-
 						var travelingMode = instance.byId(STR_TRAVELING_MODE).val();
 
 						var request = {
@@ -273,10 +267,8 @@ AUI.add(
 
 						var isDirectionFilled = false;
 
-						if (instance.get(STR_DIRECTION_ADDRESS)) {
-							if (instance.byId(STR_DIRECTION_ADDRESS).val()) {
-								isDirectionFilled = true;
-							}
+						if (instance.get(STR_DIRECTION_ADDRESS) && instance.byId(STR_DIRECTION_ADDRESS).val()) {
+							isDirectionFilled = true;
 						}
 
 						return isDirectionFilled;
@@ -424,8 +416,8 @@ AUI.add(
 							scrollwheel: instance.get('scrollwheel'),
 							styles: [
 								{
-									featureType: 'all',
 									elementType: 'all',
+									featureType: 'all',
 									stylers: [
 										{
 											saturation: saturationValue
@@ -476,8 +468,8 @@ AUI.add(
 						for (var i = 0; i < stepsCount; i++) {
 							var marker = new googleMaps.Marker(
 								{
-									position: myRoute.steps[i].start_point,
-									map: instance._map
+									map: instance._map,
+									position: myRoute.steps[i].start_point
 								}
 							);
 
