@@ -413,7 +413,11 @@ AUI.add(
 					_renderMap: function() {
 						var instance = this;
 
-						var saturationValue = instance.get('desaturateMap') ? -100 : 0;
+						var saturationValue = 0;
+
+						if (instance.get('desaturateMap')) {
+							saturationValue = -100;
+						}
 
 						var mapParams = {
 							mapTypeId: instance._getGoogleMapType(instance.get('mapTypeId')),
