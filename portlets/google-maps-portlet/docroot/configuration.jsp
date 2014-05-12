@@ -36,6 +36,10 @@
 
 		<aui:input name="preferences--height--" size="4" suffix="px" type="text" value="<%= height %>" />
 
+		<aui:input name="preferences--enableMouseWheelZoom--" type="checkbox" value="<%= enableMouseWheelZoom %>" />
+
+		<aui:input name="preferences--desaturateMap--" type="checkbox" value="<%= desaturateMap %>" />
+
 		<aui:input name="preferences--showGoogleMapsLink--" type="checkbox" value="<%= showGoogleMapsLink %>" />
 	</aui:fieldset>
 

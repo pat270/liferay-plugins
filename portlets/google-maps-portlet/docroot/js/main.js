@@ -28,6 +28,11 @@ AUI.add(
 		var GoogleMaps = A.Component.create(
 			{
 				ATTRS: {
+					desaturateMap: {
+						validator: Lang.isBoolean,
+						value: false
+					},
+
 					directionsAddress: {
 						validator: Lang.isString
 					},
@@ -51,12 +56,9 @@ AUI.add(
 						value: false
 					},
 
-					mapParams: {
-						validator: Lang.isObject,
-						value: {
-							mapTypeId: MAP_TYPE_ROADMAP,
-							zoom: 8
-						}
+					mapTypeId: {
+						validator: Lang.isNumber,
+						value: MAP_TYPE_ROADMAP
 					},
 
 					namespace: {
@@ -67,9 +69,19 @@ AUI.add(
 						validator: Lang.isNumber
 					},
 
+					scrollwheel: {
+						validator: Lang.isBoolean,
+						value: false
+					},
+
 					showDirectionSteps: {
 						validator: Lang.isBoolean,
 						value: false
+					},
+
+					zoom: {
+						validator: Lang.isNumber,
+						value: 8
 					}
 				},
 
@@ -401,14 +413,24 @@ AUI.add(
 					_renderMap: function() {
 						var instance = this;
 
-						var mapParams = instance.get('mapParams');
+						var saturationValue = instance.get('desaturateMap') ? -100 : 0;
 
-						mapParams = A.merge(
-							mapParams,
-							{
-								mapTypeId: instance._getGoogleMapType(mapParams.mapTypeId)
-							}
-						);
+						var mapParams = {
+							mapTypeId: instance._getGoogleMapType(instance.get('mapTypeId')),
+							scrollwheel: instance.get('scrollwheel'),
+							styles: [
+								{
+									featureType: 'all',
+									elementType: 'all',
+									stylers: [
+										{
+											saturation: saturationValue
+										}
+									]
+								}
+							],
+							zoom: instance.get('zoom')
+						};
 
 						var googleMaps = google.maps;
 

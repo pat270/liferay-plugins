@@ -92,6 +92,7 @@
 		<aui:script use="liferay-google-maps">
 			new Liferay.Portlet.GoogleMaps(
 				{
+					desaturateMap: <%= desaturateMap %>,
 					directionsAddress: '<%= directionsAddress %>',
 
 					<c:if test="<%= PortalUtil.isSecure(request) %>">
@@ -103,6 +104,7 @@
 					mapInputEnabled: <%= mapInputEnabled %>,
 					namespace: '<portlet:namespace />',
 					portletId: '<%= portletDisplay.getId() %>',
+					scrollwheel: <%= enableMouseWheelZoom %>,
 					showDirectionSteps: <%= showDirectionSteps %>
 				}
 			).render();

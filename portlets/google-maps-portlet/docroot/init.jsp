@@ -47,6 +47,8 @@ if (directionsInputEnabled) {
 }
 
 int height = GetterUtil.getInteger(portletPreferences.getValue("height", null), 400);
+boolean desaturateMap = GetterUtil.getBoolean(portletPreferences.getValue("desaturateMap", null));
+boolean enableMouseWheelZoom = GetterUtil.getBoolean(portletPreferences.getValue("enableMouseWheelZoom", null));
 boolean showDirectionSteps = GetterUtil.getBoolean(portletPreferences.getValue("showDirectionSteps", null));
 boolean showGoogleMapsLink = GetterUtil.getBoolean(portletPreferences.getValue("showGoogleMapsLink", null));
 %>
