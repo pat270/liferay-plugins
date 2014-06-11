@@ -1,0 +1,688 @@
+/* This file allows you to override default styles in one central location for easier upgrade and maintenance. */
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+
+/* Colors */
+$green: #1ABC9C;
+$greenLighter: #1dd2af;
+$greenDarker: #149077;
+$red: #bc1a3a;
+$fgGrey: #737373;
+$fgBlack: #404040;
+$bgDark: #37414E;
+$bgDarker: #2E3641;
+$bgDarkest: #232a32;
+$bgLighter: #3f4a59;
+$border: 2px solid #E0E0E0;
+$topBarH: 60px;
+
+.aui {
+	
+	a {
+		color: #000;
+
+		&:hover {
+			color: $green;
+			text-decoration: underline;
+		};
+	}
+
+	.alert {
+		background-color: $greenLighter;
+		border-color: $greenDarker;
+		color: #FFF;
+		text-shadow: none;
+	}
+
+	body {
+		color: $fgGrey;
+		background-color: #ba5b49;
+		background-image: url('../images/background.jpg');
+		background-repeat: repeat;
+		background-position: left top;
+		background-attachment: scroll;
+		font-size: 14px;
+		font-family: 'Source Sans Pro',sans-serif;
+		min-height: 100%;
+	}
+
+	.breadcrumb {
+		display: none;
+		background: $greenDarker;
+		border-radius: 0px;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+
+		li, a {
+			color: #FFF;
+			text-shadow: none;
+		}
+	}
+
+	.btn {
+		transition: all 200ms ease-in-out 0s;
+		box-shadow: 0px -1px 0px 0px #000 inset;
+		background-image: none;
+
+	}
+
+	.btn-link {
+		color: $green;
+
+		&:hover {
+			color: $greenDarker;
+		}
+	}
+
+	.btn-primary {
+		background-color: $bgDarker;
+
+		&:hover, &:focus {
+			background-color: $green;
+		}
+	}
+
+	.dropdown-menu {
+		background: $bgDarker;
+		border: none;
+		border-top: 4px solid $green;
+		border-radius: 0px;
+		margin: 0px;
+		padding: 0px;
+
+		& > li > a {
+			color: #FFF;
+
+			&:hover, &:focus {
+				background-color: $bgLighter;
+				background-image: none;
+			}
+		}
+
+		.active > a {
+			background-image: none;
+			background-color: $green;
+
+			&:hover, &:focus {
+				background-image: none;
+				background-color: $greenLighter;
+			}
+		}
+	}
+ 
+	.dropdown-submenu > a, 
+	.dropdown-submenu > a {
+		color: #FFF;
+		
+		&:hover, &:focus {
+			background-color: $bgLighter;
+			background-image: none;
+		}
+	}
+
+	.open .dropdown-toggle {
+		background-color: $bgDarker;
+	}
+
+	.dockbar .navbar-inner .site-administration-menu li a, 
+	.dockbar .navbar-inner .site-administration-menu li a {
+		color: #FFF;
+
+		&:hover, &:focus {
+			background-color: $bgLighter;
+		}
+	}
+
+	input[type="text"] {
+		border: $border;
+		border-radius: 5px;
+
+		&:focus {
+			border-color: $green;
+			box-shadow: none;
+		}
+	}
+
+	.navbar-inner {
+		background-color: $bgDarker;
+		background-image: none;
+		border: none;
+	}
+
+	.navbar.navbar-static-top.dockbar {
+		box-shadow: none;
+		height: 60px;
+		left: auto;       /* Crop Dockbar for overlapping #navigation */
+		position: fixed;
+		z-index: 656;
+
+		.navbar-inner {
+			box-shadow: none;
+		}
+
+		.container {
+			height: $topBarH;
+		}
+
+		.nav {
+			& > li {
+				height: $topBarH;
+				padding: 0px;
+
+				& > a {
+					padding: 0px 10px;
+					line-height: $topBarH;
+				}
+			}
+		}
+	}
+
+
+	.nav.nav-add-controls {
+		margin-top: 200px;
+		position: fixed;
+		top: 0px;
+		width: 40px;
+
+		li {
+			background-color: $bgDark;
+			float: none;
+			position: relative;
+			
+
+			i {
+				color: #FFF;
+				height: 20px;
+				width: 20px;
+
+				&:hover {
+					color: $green;
+				}
+			}
+
+			.nav-item-label {
+				display: none;
+			}
+		}
+	}
+
+	.navbar {
+
+		.divider-vertical {
+			display: none;
+		}
+
+		img {
+			max-height: 20px;
+		}
+
+		.nav > li > a {
+			color: #FFF;
+			text-shadow: none;
+
+			&:hover, &:focus {
+				color: $green;
+			}
+		}
+
+		/* Remove pointy triangle above navbar dropdown */
+		.nav > li > .dropdown-menu {
+			&:after {
+				border: none;
+			}
+			&:before {
+				border: none;
+			}
+		}
+
+		.nav li.dropdown.open > .dropdown-toggle, 
+		.nav li.dropdown.active > .dropdown-toggle, 
+		.nav li.dropdown.open.active > .dropdown-toggle {
+			background-color: $bgLighter;
+			color: $green;
+		}
+	}
+
+	.navbar-inner {
+		background-color: $bgDarker;
+		background-image: none;
+		border: none;
+	}
+
+	.nav-list > .active > a, 
+	.nav-list > .active > a:hover, 
+	.nav-list > .active > a:focus {
+		background-color: $green;
+	}
+
+	.nav-pills > .active > a {
+		background-color: $green;
+
+		&:hover, &:focus {
+			background-color: $greenLighter;
+		}
+	}
+
+	.page-title {
+		display: none;
+	}
+
+	select {
+		border: $border;
+	}
+
+	textarea {
+		border: 2px solid #E0E0E0;
+
+		&:focus {
+			box-shadow: none;
+			border-color: $green;
+		}
+	}
+
+	.well {
+		background-color: $bgDarkest;
+		border: none;
+	}
+
+}
+
+.controls-visible {
+	
+	.portlet-title {
+		background-color: #DDD;
+	}
+
+	.portlet {
+		background-color: #EEE;
+	}
+}
+
+.modify-pages .delete-tab {
+	padding: 3px 6px;
+	text-shadow: none;
+}
+
+.navbar .container .btn-navbar:hover {
+	color: $green;
+}
+
+.taglib-icon img {
+	display: inline;
+}
+
+.panel-page-menu {
+	margin-top: 15px;
+}
+
+.portlet {
+	background: #FFF;
+	margin: 0px;
+}
+
+.portlet-borderless {
+	background: #FFF;
+	padding: 15px;
+}
+
+.portlet-borderless-bar {
+	text-shadow: none;
+}
+
+.portlet-boundary {
+	margin-bottom: 0px;
+	//border-bottom: 6px $green solid;
+
+	&:last-child {
+		border-bottom: none;
+	}
+}
+
+.portlet-layout {
+	margin-top: 0px;
+}
+
+.portlet-title {
+	background-color: #FFF;
+	padding-left: 15px;
+}
+
+.portlet-title-text {
+	font-size: 16px;
+	color: $fgBlack;
+}
+
+.portlet-topper {
+	z-index: 5;
+
+	.portlet-topper-toolbar a i {
+		color: $fgGrey;
+	}
+}
+
+
+.powered-by {
+	margin-top: 15px;
+	color: #FFF;
+	text-shadow: #000 1px 1px 2px;
+
+	a {
+		color: $greenLighter;
+	}
+}
+
+.taglib-icon img {
+	display: inline;
+}
+
+#content {
+	margin: 54px 5% 40px;
+}
+
+#footer {
+	margin: 2em 2em;
+	clear: both;
+}
+
+#heading { 
+	color: #FFF;
+	text-shadow: #000 1px 1px 2px;
+}
+
+#banner {
+	background-color: $bgDarker;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 60px;
+	z-index: 655;
+
+	#heading {
+		color: #FFF;
+		float: left;
+		height: $topBarH;
+		text-shadow: #000 1px 1px 2px;
+
+		h1 {
+			font-size: 32px;
+			font-family: 'Yesteryear', script;
+			line-height: $topBarH;
+			margin: 0px 20px;
+		}
+
+		img {
+			display: none;
+		}
+	}
+
+	/* Dropdown Navigation Menu */
+	#navigation {
+		float: left;
+
+		.delete-tab {
+			display: none;
+		}
+
+		& > ul {
+			display: inline-table;
+			list-style: none;
+
+			& > li {
+				float: right;
+			}
+
+			ul {
+				display: none;
+
+				& > li {
+					width: 100%;
+					height: 100%;
+					margin: 0px;
+				}
+			}
+
+			& > li {
+				height: $topBarH;
+				line-height: $topBarH;
+				padding: 0px 10px;
+			}
+
+			li:hover {
+				background-color: $bgLighter;
+
+				ul {
+					display: block;
+					position: absolute;
+				}
+			}
+		}
+
+		.selected > a {
+			color: $green;
+		}
+
+		a {
+			color: #FFF;
+		}
+	}
+	/* End Dropdown Navigation */
+}
+
+html {
+	height: 100%;
+}
+
+#main-content:not(iframe #main-content) {
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+
+	& > .row-fluid {
+		background-color: #FFF;
+	}
+}
+
+#sign-in {
+	color: #FFF;
+	float: left;
+	line-height: 60px;
+}
+
+#wrapper {
+	padding: 0em 0em 0em;
+}
+
+/* Dark Sidebar Layout, requires a wider display */
+@media (min-width: 768px) {
+
+	.aui {
+
+		.portlet-layout.row-fluid [class*="span"] {
+			display: table-cell;
+			float: none;
+		}
+
+		/* Set whole number percent width for various column layouts */
+		.row-fluid {
+
+			.span4 {
+				width: 30%;
+			}
+			.span6 {
+				width: 50%;
+			}
+			.span8 {
+				width: 70%;
+			}
+		}
+	}
+
+	.portlet-layout {
+		display: table;
+	}
+
+	/* Light Background */
+	.portlet-column {
+		background-color: #FFF;
+		float: none;
+		margin: 0px;
+	}
+
+	/* Dark Background */
+	.portlet-column-last {
+		background-color: $bgDark;
+		color: #DDD;
+		float: none;
+		margin: 0px;
+		padding: 20px;
+		a {
+			color: $green;
+		}
+
+		.nav-tabs {
+			border-bottom: 1px solid #BBB;
+
+			& > .active > a {
+				border-color: #BBB #BBB transparent;
+				color: #DDD;
+
+				&:hover {
+					background-color: $bgLighter;
+				}
+			}
+
+			& > li > a:hover,
+			& > li > a:active,
+			& > li > a:focus, {
+				background-color: $bgLighter;
+			}
+		}
+
+		.portlet {
+			background-color: $bgDark;
+		}
+
+		.portlet-boundary {
+			margin: 20px 0px;
+			background-color: $bgDark;
+			border-bottom: 4px rgba(255, 255, 255, 0.1) solid;
+
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+
+		.portlet-title {
+			background-color: $bgDark;
+		}
+
+		.portlet-title-text {
+			color: #FFF;
+		}
+
+		.tab.active > a {
+			background-color: $bgLighter;
+		}
+
+		table {
+
+			.table-sorted {
+				background-color: $green;
+
+				a {
+					color: #DDD;
+				}
+			}
+		}
+
+		.table-striped tbody > tr:nth-child(2n+1) > td {
+			background-color: #777;
+
+			a {
+				color: #DDD;
+			}
+		}
+	}
+}
+
+@media (max-width: 979px) {
+
+	.aui {
+
+		.dockbar .navbar-inner {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+
+		.navbar.navbar-static-top.dockbar .nav {
+			margin: 0px;
+
+			& > li {
+				height: auto;
+			}
+		}
+
+		.nav-collapse {
+			float: left;
+			width: 100%;
+
+			.dropdown-menu a {
+				border-radius: 0px;
+				color: #FFF;
+				margin: 2px 0px;
+
+				&:hover {
+					background-color: $bgDark;
+				}
+
+				li a {
+					margin-bottom: 0px;
+				}
+			}
+
+			.nav {
+				width: 100%;
+
+				& > li > a {
+					margin: 0px;
+
+					&:hover {
+						background-color: $bgLighter;
+					}
+				}
+			}
+
+			ul {
+				background-color: $bgDarkest;
+			}
+		}
+	}
+
+	#navigation {
+		display: none;
+	}
+}
+
+@media (max-width: 767px) {
+
+	.aui {
+
+		.breadcrumb {
+			display: block;
+			margin: 0px;
+		}
+
+		body {
+			padding: 0px;
+		}
+
+		.navbar-static-top {
+			margin-right: 0px;
+		}
+	}
+
+	#content {
+		margin: 54px 20px 15px 20px;
+	}
+
+	.portlet-layout {
+		background-color: #FFF;
+	}
+}
