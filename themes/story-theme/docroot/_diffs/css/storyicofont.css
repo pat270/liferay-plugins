@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'storyicofont';
+  src: url('../fonts/storyicofont.eot?37878297');
+  src: url('../fonts/storyicofont.eot?37878297#iefix') format('embedded-opentype'),
+       url('../fonts/storyicofont.woff?37878297') format('woff'),
+       url('../fonts/storyicofont.ttf?37878297') format('truetype'),
+       url('../fonts/storyicofont.svg?37878297#storyicofont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

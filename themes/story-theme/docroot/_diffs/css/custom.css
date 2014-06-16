@@ -1,0 +1,830 @@
+/* This file allows you to override default styles in one central location for easier upgrade and maintenance. */
+@import "compass";
+
+/* fonts */
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+@import url(storyicofont.css);
+
+/* Colors */
+$green: #1ABC9C;
+$greenLighter: #1FF2AF;
+$greenDarker: #149077;
+$red: #BC1A3A;
+$fgGrey: #737373;
+$fgBlack: #404040;
+$pageBg: #F1AC5F;
+$bgDark: #37414E;
+$bgDarker: #2E3641;
+$bgDarkest: #232A32;
+$bgLighter: #3f4A59;
+
+$border: 2px solid #E0E0E0;
+$topBarH: 60px;
+
+.aui {
+	a {
+		color: #000;
+
+		&:hover {
+			color: $green;
+			text-decoration: none;;
+		};
+	}
+
+	.alert {
+		background-color: $greenLighter;
+		border-color: $greenDarker;
+		color: #FFF;
+		text-shadow: none;
+	}
+
+	body {
+		background-color: $pageBg;
+		color: $fgGrey;
+		font-size: 14px;
+		font-family: 'Source Sans Pro',sans-serif;
+		min-height: 100%;
+	}
+
+	.breadcrumb {
+		background: $greenDarker;
+		@include border-radius(0px);
+		@include box-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
+		display: none;
+
+		li, a {
+			color: #FFF;
+			text-shadow: none;
+		}
+	}
+
+	.btn {
+		background-image: none;
+		@include box-shadow(0px -1px 0px 0px #000 inset);
+		@include transition(all 200ms ease-in-out 0s);
+
+	}
+
+	.btn-link {
+		color: $green;
+
+		&:hover {
+			color: $greenDarker;
+		}
+	}
+
+	.btn-primary {
+		background-color: $bgDarker;
+
+		&:hover, &:focus {
+			background-color: $green;
+		}
+	}
+
+	.dropdown-menu {
+		background: $bgDarker;
+		border: none;
+		border-top: 4px solid $green;
+		@include border-radius(0px);
+		margin: 0px;
+		padding: 0px;
+
+		> li > a {
+			color: #FFF;
+
+			&:hover, &:focus {
+				background-color: $bgLighter;
+				background-image: none;
+			}
+		}
+
+		.active > a {
+			background-image: none;
+			background-color: $green;
+
+			&:hover, &:focus {
+				background-image: none;
+				background-color: $greenLighter;
+			}
+		}
+	}
+ 
+	.dropdown-submenu > a, 
+	.dropdown-submenu > a {
+		color: #FFF;
+		
+		&:hover, &:focus {
+			background-color: $bgLighter;
+			background-image: none;
+		}
+	}
+
+	.open .dropdown-toggle {
+		background-color: $bgDarker;
+	}
+
+	.dockbar .navbar-inner .site-administration-menu li a, 
+	.dockbar .navbar-inner .site-administration-menu li a {
+		color: #FFF;
+
+		&:hover, &:focus {
+			background-color: $bgLighter;
+		}
+	}
+
+	h1, h2, h3, h4 {
+		font-weight: 400;
+	}
+
+	input[type="text"] {
+		border: $border;
+		@include border-radius(5px);
+
+		&:focus {
+			border-color: $green;
+			@include box-shadow(none);
+		}
+	}
+
+	.navbar-inner {
+		background-color: $bgDarker;
+		background-image: none;
+		border: none;
+	}
+
+	/* Cropping Dockbar for overlapping #navigation */
+	.navbar.navbar-static-top.dockbar {
+		@include box-shadow(none);
+		height: 60px;
+		left: auto;
+		position: fixed;
+		z-index: 656;
+
+		.navbar-inner {
+			@include box-shadow(none);
+		}
+
+		.container {
+			height: $topBarH;
+		}
+
+		.nav {
+			> li {
+				height: $topBarH;
+				padding: 0px;
+
+				> a {
+					padding: 0px 10px;
+					line-height: $topBarH;
+				}
+			}
+		}
+	}
+
+
+	.nav.nav-add-controls {
+		margin-top: 200px;
+		position: fixed;
+		top: 0px;
+		width: 40px;
+
+		li {
+			background-color: $bgDarker;
+			float: none;
+			position: relative;
+			
+
+			i {
+				color: #FFF;
+				height: 20px;
+				width: 20px;
+
+				&:hover {
+					color: $green;
+				}
+			}
+
+			.nav-item-label {
+				display: none;
+			}
+		}
+	}
+
+	.navbar {
+		.divider-vertical {
+			display: none;
+		}
+
+		img {
+			max-height: 20px;
+		}
+
+		.nav {
+			> .active > a {
+				color: #FFF;
+				background-color: $bgDark;
+
+				&:hover {
+					color: #FFF;
+					background-color: $bgLighter;
+				}
+			}
+
+			> li > a {
+				color: #FFF;
+				text-shadow: none;
+
+				&:hover, &:focus {
+					color: $green;
+				}
+			}
+		}
+
+		/* Remove pointy triangle above navbar dropdown */
+		.nav > li > .dropdown-menu {
+			&:after {
+				display: none;
+			}
+			&:before {
+				display: none;
+			}
+		}
+
+		.nav li.dropdown.open > .dropdown-toggle, 
+		.nav li.dropdown.active > .dropdown-toggle, 
+		.nav li.dropdown.open.active > .dropdown-toggle {
+			background-color: $bgLighter;
+			color: $green;
+		}
+	}
+
+	.navbar-inner {
+		background-color: $bgDarker;
+		background-image: none;
+		border: none;
+	}
+
+	.nav-list > .active > a, 
+	.nav-list > .active > a:hover, 
+	.nav-list > .active > a:focus {
+		background-color: $green;
+	}
+
+	.nav-pills > .active > a {
+		background-color: $green;
+
+		&:hover, &:focus {
+			background-color: $greenLighter;
+		}
+	}
+
+	.page-title {
+		display: none;
+	}
+
+	.portlet-borderless-bar .portlet-options .dropdown-toggle {
+		background-image: url('../images/portlet/options_borderless.png');
+	}
+
+	select {
+		border: $border;
+	}
+
+	textarea {
+		border: 2px solid #E0E0E0;
+
+		&:focus {
+			@include box-shadow(none);
+			border-color: $green;
+		}
+	}
+}
+
+body {
+	background-color: $pageBg;
+	background-image: url('../images/background.jpg');
+	background-repeat: repeat;
+	background-position: left top;
+	background-attachment: scroll;
+}
+
+body.dialog-iframe-popup {
+	background: #FFF;
+}
+
+.controls-visible {
+	.portlet-title {
+		background-color: #DDD;
+	}
+
+	.portlet {
+		background-color: #EEE;
+	}
+}
+
+.modify-pages .delete-tab {
+	padding: 3px 6px;
+	text-shadow: none;
+}
+
+.navbar .container .btn-navbar:hover {
+	color: $green;
+}
+
+.panel-page-menu {
+	margin-top: 15px;
+}
+
+.portlet {
+	background: #FFF;
+	margin: 0px;
+}
+
+.portlet-blogs {
+	.edit-actions {
+		margin: 0px 0px 15px;
+	}
+
+	.entry-content {
+		text-align: center;
+
+		.entry-date {
+			background: none;
+			font-size: 10pt;
+			font-weight: 400;
+			margin-bottom: 15px;
+			padding-left: 0px;
+
+			&:after {
+				font-family: 'storyicofont';
+				background: url('../images/separator.png') repeat-x scroll 0px 50% transparent;
+				content: "\e801";
+				color: $green;
+				display: block;
+				margin: auto;
+				width: 150px;
+			}
+		}
+	}
+}
+
+.portlet-borderless {
+	background: #FFF;
+	padding: 15px;
+}
+
+.portlet-borderless-bar {
+	text-shadow: none;
+}
+
+.portlet-boundary {
+	margin-bottom: 0px;
+	&:last-child {
+		border-bottom: none;
+	}
+}
+
+.portlet-layout {
+	margin-top: 0px;
+}
+
+.portlet-title {
+	background-color: #FFF;
+	padding-left: 15px;
+}
+
+.portlet-title-text {
+	color: $fgBlack;
+	font-size: 16px;
+}
+
+.portlet-topper {
+	z-index: 5;
+
+	.portlet-topper-toolbar a i {
+		color: $fgGrey;
+	}
+}
+
+.powered-by {
+	margin-top: 15px;
+	color: #FFF;
+	text-shadow: #000 1px 1px 2px;
+
+	a {
+		color: $greenLighter;
+	}
+}
+
+.separator {
+	border-top: 6px $green solid;
+}
+
+.taglib-icon img {
+	display: inline;
+}
+
+.taglib-ratings {
+	display: none;
+}
+
+.taglib-social-bookmarks {
+	background: #FFF;;
+}
+
+/* ID Selectors */
+#banner {
+	background-color: $bgDarker;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: $topBarH;
+	z-index: 655;
+
+	#heading {
+		color: #FFF;
+		float: left;
+		height: $topBarH;
+		text-shadow: #000 1px 1px 2px;
+
+		h1 {
+			font-size: 32px;
+			font-family: 'Yesteryear', script;
+			line-height: $topBarH;
+			margin: 0px 20px;
+		}
+
+		img {
+			display: none;
+		}
+	}
+
+	/* Dropdown Navigation Menu */
+	#navigation {
+		float: left;
+
+		.delete-tab {
+			display: none;
+		}
+
+		> ul {
+			display: inline-table;
+			list-style: none;
+
+			> li {
+				float: right;
+			}
+
+			ul {
+				display: none;
+
+				> li {
+					height: 100%;
+					margin: 0px;
+					width: 100%;
+				}
+			}
+
+			> li {
+				height: $topBarH;
+				line-height: $topBarH;
+				padding: 0px 10px;
+			}
+
+			li:hover {
+				background-color: $bgLighter;
+
+				ul {
+					display: block;
+					position: absolute;
+				}
+			}
+		}
+
+		.selected > a {
+			color: $green;
+		}
+
+		a {
+			color: #FFF;
+		}
+	}
+	/* End Dropdown Navigation */
+}
+
+#content {
+	background-color: #FFF;
+	margin: 60px 5% 40px;
+}
+
+#footer {
+	clear: both;
+	margin: 2em 2em;
+}
+
+#heading { 
+	color: #FFF;
+	text-shadow: #000 1px 1px 2px;
+}
+
+html {
+	height: 100%;
+}
+
+#content #main-content {
+	@include box-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
+
+	> .row-fluid {
+		background-color: #FFF;
+	}
+}
+
+#sign-in {
+	color: #FFF;
+	float: left;
+	line-height: 60px;
+}
+
+#wrapper {
+	padding: 0em 0em 0em;
+}
+
+/* Size specific styles */
+
+/* Dark Sidebar Layout, requires a wider display */
+@media (min-width: 768px) {
+	.aui {
+		.portlet-layout.row-fluid [class*="span"] {
+			display: table-cell;
+			float: none;
+		}
+
+		.row-fluid {
+			/* Fix 1px white border in chrome */
+			&:before,
+			&:after {
+				content: none;
+			}
+
+			/* Set whole number percent width for various column layouts */
+			.span4 {
+				width: 30%;
+			}
+			.span6 {
+				width: 50%;
+			}
+			.span8 {
+				width: 70%;
+			}
+		}
+	}
+
+	.portlet-layout {
+		display: table;
+	}
+
+	/* Light Background */
+	.portlet-column {
+		background-color: #FFF;
+		float: none;
+		margin: 0px;
+	}
+
+	/* Dark Background */
+	.portlet-column-last {
+		background-color: $bgDark;
+		color: #DDD;
+		float: none;
+		margin: 0px;
+		padding: 20px;
+
+		a {
+			color: $greenLighter;
+		}
+
+		.nav-tabs {
+			border-bottom: 1px solid #BBB;
+
+			> .active > a {
+				border-color: #BBB #BBB transparent;
+				color: #DDD;
+
+				&:hover {
+					background-color: $bgLighter;
+				}
+			}
+
+			> li > a:hover,
+			> li > a:active,
+			> li > a:focus, {
+				background-color: $bgLighter;
+			}
+		}
+
+		.portlet {
+			background-color: $bgDark;
+		}
+
+		.portlet-blogs .entry-content .entry-date:after {
+			background: url('../images/separator-dark.png') repeat-x scroll 0px 50% transparent
+		}
+
+		.portlet-boundary {
+			margin: 20px 0px;
+			background-color: $bgDark;
+			border-bottom: 4px rgba(255, 255, 255, 0.1) solid;
+
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+
+		.portlet-title {
+			background-color: $bgDark;
+		}
+
+		.portlet-title-text {
+			color: #FFF;
+		}
+
+		.tab.active > a {
+			background-color: $bgLighter;
+		}
+
+		table {
+			.table-sorted {
+				background-color: $green;
+
+				a {
+					color: #DDD;
+				}
+			}
+
+			tr:hover {
+				background-color: $bgLighter;
+			}
+		}
+
+		.table-striped tbody > tr:nth-child(2n+1) > td {
+			background-color: #777;
+
+			a {
+				color: #DDD;
+			}
+		}
+
+		.table-striped tbody > tr:hover {
+			background-color: red;
+		}
+
+		.well {
+			background-color: $bgDarkest;
+			border: none;
+		}
+	}
+}
+
+@media (max-width: 979px) {
+	.aui {
+		.dockbar .navbar-inner {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+
+		.navbar.navbar-static-top.dockbar {
+			.nav {
+				margin: 13px 0px 0px;
+
+				> li {
+					height: auto;
+				}
+			}
+
+			.nav.nav-add-controls {
+				margin: 60px 0px 0px;
+			}
+		}
+
+		.nav-collapse {
+			float: left;
+			width: 100%;
+
+			.dropdown-menu a {
+				@include border-radius(0px);
+				color: #FFF;
+				margin: 2px 0px;
+
+				&:hover {
+					background-color: $bgDark;
+				}
+
+				li a {
+					margin-bottom: 0px;
+				}
+			}
+
+			.nav {
+				width: 100%;
+
+				> li > a {
+					@include border-radius(0px);
+					margin: 0px;
+
+					&:hover {
+						background-color: $bgLighter;
+					}
+				}
+			}
+
+			.navbar-search {
+				border: 0px;
+			}
+
+			ul {
+				background-color: $bgDarkest;
+			}
+		}
+
+		.nav.nav-add-controls {
+			left: auto;
+			margin: 60px 0px 0px;
+			right: 0px;
+			width: auto;
+
+			> li > a {
+				text-align: center;
+
+				.nav-item-label {
+					display: inline;
+				}
+			}
+		}
+	}
+
+	#banner > #navigation {
+		display: none;
+		float: right;
+
+		&.open {
+			display: block;
+		}
+
+		> ul {
+			background-color: $bgDarker;
+			margin: 60px 0px 0px;
+
+			> li {
+				display: block;
+				float: none;
+				height: auto;
+
+				> a:hover {
+					color: #DDD;
+				}
+
+				&:hover {
+					background-color: $bgDarker;
+				}
+
+				> ul,
+				&:hover > ul {
+					@include box-shadow(none);
+					display: block;
+					float: none;
+					position: static;
+
+					li {
+						
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.aui {
+
+		.breadcrumb {
+			display: block;
+			margin: 0px;
+		}
+
+		body {
+			padding: 0px;
+		}
+
+		.navbar-static-top {
+			margin-right: 0px;
+		}
+	}
+
+	#content {
+		margin: 60px 20px 15px 20px;
+	}
+
+	.portlet-layout {
+		background-color: #FFF;
+	}
+}
