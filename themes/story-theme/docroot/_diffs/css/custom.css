@@ -6,20 +6,151 @@
 @import url(storyicofont.css);
 
 /* Colors */
-$green: #1ABC9C;
-$greenLighter: #1FF2AF;
-$greenDarker: #149077;
-$red: #BC1A3A;
-$fgGrey: #737373;
-$fgBlack: #404040;
-$pageBg: #F1AC5F;
+
 $bgDark: #37414E;
 $bgDarker: #2E3641;
 $bgDarkest: #232A32;
 $bgLighter: #3f4A59;
-
 $border: 2px solid #E0E0E0;
+$fgBlack: #404040;
+$fgGrey: #737373;
+$green: #1ABC9C;
+$greenDarker: #149077;
+$greenLighter: #1FF2AF;
+$pageBg: #F1AC5F;
+$red: #BC1A3A;
 $topBarH: 60px;
+
+body {
+	background-attachment: scroll;
+	background-color: $pageBg;
+	background-image: url('../images/background.jpg');
+	background-position: left top;
+	background-repeat: repeat;
+
+	&.dialog-iframe-popup {
+		background: #FFF;
+	}
+}
+
+html {
+	height: 100%;
+}
+
+/* ID Selectors */
+
+#banner {
+	background-color: $bgDarker;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: $topBarH;
+	z-index: 655;
+
+	#heading {
+		color: #FFF;
+		float: left;
+		height: $topBarH;
+		text-shadow: #000 1px 1px 2px;
+
+		h1 {
+			font-size: 32px;
+			font-family: 'Yesteryear', script;
+			line-height: $topBarH;
+			margin: 0px 20px;
+		}
+
+		img {
+			display: none;
+		}
+	}
+
+	/* Dropdown Navigation Menu */
+
+	#navigation {
+		float: left;
+
+		.delete-tab {
+			display: none;
+		}
+
+		> ul {
+			display: inline-table;
+			list-style: none;
+
+			> li {
+				float: right;
+			}
+
+			ul {
+				display: none;
+
+				> li {
+					height: 100%;
+					margin: 0px;
+					width: 100%;
+				}
+			}
+
+			> li {
+				height: $topBarH;
+				line-height: $topBarH;
+				padding: 0px 10px;
+			}
+
+			li:hover {
+				background-color: $bgLighter;
+
+				ul {
+					display: block;
+					position: absolute;
+				}
+			}
+		}
+
+		.selected > a {
+			color: $green;
+		}
+
+		a {
+			color: #FFF;
+		}
+	}
+}
+
+#content {
+	background-color: #FFF;
+	margin: 60px 5% 40px;
+}
+
+#footer {
+	clear: both;
+	margin: 2em 2em;
+}
+
+#heading { 
+	color: #FFF;
+	text-shadow: #000 1px 1px 2px;
+}
+
+#content #main-content {
+	@include box-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
+
+	> .row-fluid {
+		background-color: #FFF;
+	}
+}
+
+#sign-in {
+	color: #FFF;
+	float: left;
+	line-height: 60px;
+}
+
+#wrapper {
+	padding: 0em 0em 0em;
+}
 
 .aui {
 	a {
@@ -31,6 +162,42 @@ $topBarH: 60px;
 		};
 	}
 
+	body {
+		background-color: $pageBg;
+		color: $fgGrey;
+		font-size: 14px;
+		font-family: 'Source Sans Pro', sans-serif;
+		min-height: 100%;
+	}
+
+	h1, h2, h3, h4 {
+		font-weight: 400;
+	}
+
+	input[type="text"] {
+		border: $border;
+		@include border-radius(5px);
+
+		&:focus {
+			border-color: $green;
+			@include box-shadow(none);
+		}
+	}
+
+	select {
+		border: $border;
+	}
+
+	textarea {
+		border: 2px solid #E0E0E0;
+
+		&:focus {
+			border-color: $green;
+
+			@include box-shadow(none);
+		}
+	}
+
 	.alert {
 		background-color: $greenLighter;
 		border-color: $greenDarker;
@@ -38,18 +205,12 @@ $topBarH: 60px;
 		text-shadow: none;
 	}
 
-	body {
-		background-color: $pageBg;
-		color: $fgGrey;
-		font-size: 14px;
-		font-family: 'Source Sans Pro',sans-serif;
-		min-height: 100%;
-	}
-
 	.breadcrumb {
 		background: $greenDarker;
+
 		@include border-radius(0px);
 		@include box-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
+
 		display: none;
 
 		li, a {
@@ -60,6 +221,7 @@ $topBarH: 60px;
 
 	.btn {
 		background-image: none;
+
 		@include box-shadow(0px -1px 0px 0px #000 inset);
 		@include transition(all 200ms ease-in-out 0s);
 
@@ -81,11 +243,21 @@ $topBarH: 60px;
 		}
 	}
 
+	.dockbar .navbar-inner .site-administration-menu li a {
+		color: #FFF;
+
+		&:hover, &:focus {
+			background-color: $bgLighter;
+		}
+	}
+
 	.dropdown-menu {
 		background: $bgDarker;
-		border: none;
 		border-top: 4px solid $green;
+		border-width: 0;
+
 		@include border-radius(0px);
+
 		margin: 0px;
 		padding: 0px;
 
@@ -99,17 +271,16 @@ $topBarH: 60px;
 		}
 
 		.active > a {
-			background-image: none;
 			background-color: $green;
+			background-image: none;
 
 			&:hover, &:focus {
-				background-image: none;
 				background-color: $greenLighter;
+				background-image: none;
 			}
 		}
 	}
- 
-	.dropdown-submenu > a, 
+
 	.dropdown-submenu > a {
 		color: #FFF;
 		
@@ -119,68 +290,29 @@ $topBarH: 60px;
 		}
 	}
 
-	.open .dropdown-toggle {
-		background-color: $bgDarker;
-	}
-
-	.dockbar .navbar-inner .site-administration-menu li a, 
-	.dockbar .navbar-inner .site-administration-menu li a {
-		color: #FFF;
-
-		&:hover, &:focus {
-			background-color: $bgLighter;
-		}
-	}
-
-	h1, h2, h3, h4 {
-		font-weight: 400;
-	}
-
-	input[type="text"] {
-		border: $border;
-		@include border-radius(5px);
-
-		&:focus {
-			border-color: $green;
-			@include box-shadow(none);
-		}
-	}
-
 	.navbar-inner {
 		background-color: $bgDarker;
 		background-image: none;
 		border: none;
 	}
 
-	/* Cropping Dockbar for overlapping #navigation */
-	.navbar.navbar-static-top.dockbar {
-		@include box-shadow(none);
-		height: 60px;
-		left: auto;
-		position: fixed;
-		z-index: 656;
+	.open .dropdown-toggle {
+		background-color: $bgDarker;
+	}
 
-		.navbar-inner {
-			@include box-shadow(none);
-		}
-
-		.container {
-			height: $topBarH;
-		}
-
-		.nav {
-			> li {
-				height: $topBarH;
-				padding: 0px;
-
-				> a {
-					padding: 0px 10px;
-					line-height: $topBarH;
-				}
-			}
+	.nav-list > .active > a {
+		&, &:focus, &:hover {
+			background-color: $green;
 		}
 	}
 
+	.nav-pills > .active > a {
+		background-color: $green;
+
+		&:focus, &:hover {
+			background-color: $greenLighter;
+		}
+	}
 
 	.nav.nav-add-controls {
 		margin-top: 200px;
@@ -211,15 +343,24 @@ $topBarH: 60px;
 	}
 
 	.navbar {
-		.divider-vertical {
-			display: none;
-		}
-
 		img {
 			max-height: 20px;
 		}
 
+		.divider-vertical {
+			display: none;
+		}
+
 		.nav {
+			> li > a {
+				color: #FFF;
+				text-shadow: none;
+
+				&:focus, &:hover {
+					color: $green;
+				}
+			}
+
 			> .active > a {
 				color: #FFF;
 				background-color: $bgDark;
@@ -229,52 +370,53 @@ $topBarH: 60px;
 					background-color: $bgLighter;
 				}
 			}
-
-			> li > a {
-				color: #FFF;
-				text-shadow: none;
-
-				&:hover, &:focus {
-					color: $green;
-				}
-			}
 		}
 
 		/* Remove pointy triangle above navbar dropdown */
 		.nav > li > .dropdown-menu {
-			&:after {
-				display: none;
-			}
-			&:before {
+			&:after, &:before {
 				display: none;
 			}
 		}
 
-		.nav li.dropdown.open > .dropdown-toggle, 
-		.nav li.dropdown.active > .dropdown-toggle, 
-		.nav li.dropdown.open.active > .dropdown-toggle {
-			background-color: $bgLighter;
-			color: $green;
+		.nav li.dropdown {
+			&.active, &.active.open, &.open {
+				> .dropdown-toggle {
+					background-color: $bgLighter;
+					color: $green;
+				}
+			}
 		}
 	}
 
-	.navbar-inner {
-		background-color: $bgDarker;
-		background-image: none;
-		border: none;
-	}
+	/* Cropping Dockbar for overlapping #navigation */
 
-	.nav-list > .active > a, 
-	.nav-list > .active > a:hover, 
-	.nav-list > .active > a:focus {
-		background-color: $green;
-	}
+	.navbar.navbar-static-top.dockbar {
+		@include box-shadow(none);
 
-	.nav-pills > .active > a {
-		background-color: $green;
+		height: 60px;
+		left: auto;
+		position: fixed;
+		z-index: 656;
 
-		&:hover, &:focus {
-			background-color: $greenLighter;
+		.container {
+			height: $topBarH;
+		}
+
+		.nav {
+			> li {
+				height: $topBarH;
+				padding: 0px;
+
+				> a {
+					padding: 0px 10px;
+					line-height: $topBarH;
+				}
+			}
+		}
+
+		.navbar-inner {
+			@include box-shadow(none);
 		}
 	}
 
@@ -285,31 +427,6 @@ $topBarH: 60px;
 	.portlet-borderless-bar .portlet-options .dropdown-toggle {
 		background-image: url('../images/portlet/options_borderless.png');
 	}
-
-	select {
-		border: $border;
-	}
-
-	textarea {
-		border: 2px solid #E0E0E0;
-
-		&:focus {
-			@include box-shadow(none);
-			border-color: $green;
-		}
-	}
-}
-
-body {
-	background-color: $pageBg;
-	background-image: url('../images/background.jpg');
-	background-repeat: repeat;
-	background-position: left top;
-	background-attachment: scroll;
-}
-
-body.dialog-iframe-popup {
-	background: #FFF;
 }
 
 .controls-visible {
@@ -356,11 +473,11 @@ body.dialog-iframe-popup {
 			padding-left: 0px;
 
 			&:after {
-				font-family: 'storyicofont';
 				background: url('../images/separator.png') repeat-x scroll 0px 50% transparent;
-				content: "\e801";
 				color: $green;
+				content: "\e801";
 				display: block;
+				font-family: 'storyicofont';
 				margin: auto;
 				width: 150px;
 			}
@@ -432,127 +549,10 @@ body.dialog-iframe-popup {
 	background: #FFF;;
 }
 
-/* ID Selectors */
-#banner {
-	background-color: $bgDarker;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	height: $topBarH;
-	z-index: 655;
-
-	#heading {
-		color: #FFF;
-		float: left;
-		height: $topBarH;
-		text-shadow: #000 1px 1px 2px;
-
-		h1 {
-			font-size: 32px;
-			font-family: 'Yesteryear', script;
-			line-height: $topBarH;
-			margin: 0px 20px;
-		}
-
-		img {
-			display: none;
-		}
-	}
-
-	/* Dropdown Navigation Menu */
-	#navigation {
-		float: left;
-
-		.delete-tab {
-			display: none;
-		}
-
-		> ul {
-			display: inline-table;
-			list-style: none;
-
-			> li {
-				float: right;
-			}
-
-			ul {
-				display: none;
-
-				> li {
-					height: 100%;
-					margin: 0px;
-					width: 100%;
-				}
-			}
-
-			> li {
-				height: $topBarH;
-				line-height: $topBarH;
-				padding: 0px 10px;
-			}
-
-			li:hover {
-				background-color: $bgLighter;
-
-				ul {
-					display: block;
-					position: absolute;
-				}
-			}
-		}
-
-		.selected > a {
-			color: $green;
-		}
-
-		a {
-			color: #FFF;
-		}
-	}
-	/* End Dropdown Navigation */
-}
-
-#content {
-	background-color: #FFF;
-	margin: 60px 5% 40px;
-}
-
-#footer {
-	clear: both;
-	margin: 2em 2em;
-}
-
-#heading { 
-	color: #FFF;
-	text-shadow: #000 1px 1px 2px;
-}
-
-html {
-	height: 100%;
-}
-
-#content #main-content {
-	@include box-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
-
-	> .row-fluid {
-		background-color: #FFF;
-	}
-}
-
-#sign-in {
-	color: #FFF;
-	float: left;
-	line-height: 60px;
-}
-
-#wrapper {
-	padding: 0em 0em 0em;
-}
-
 /* Size specific styles */
 
 /* Dark Sidebar Layout, requires a wider display */
+
 @media (min-width: 768px) {
 	.aui {
 		.portlet-layout.row-fluid [class*="span"] {
@@ -561,19 +561,23 @@ html {
 		}
 
 		.row-fluid {
+
 			/* Fix 1px white border in chrome */
-			&:before,
-			&:after {
+
+			&:after, &:before {
 				content: none;
 			}
 
 			/* Set whole number percent width for various column layouts */
+
 			.span4 {
 				width: 30%;
 			}
+
 			.span6 {
 				width: 50%;
 			}
+
 			.span8 {
 				width: 70%;
 			}
@@ -585,26 +589,48 @@ html {
 	}
 
 	/* Light Background */
+
 	.portlet-column {
 		background-color: #FFF;
 		float: none;
-		margin: 0px;
+		margin: 0;
 	}
 
 	/* Dark Background */
+
 	.portlet-column-last {
 		background-color: $bgDark;
 		color: #DDD;
 		float: none;
-		margin: 0px;
+		margin: 0;
 		padding: 20px;
 
 		a {
 			color: $greenLighter;
 		}
 
+		table {
+			tr:hover {
+				background-color: $bgLighter;
+			}
+
+			.table-sorted {
+				background-color: $green;
+
+				a {
+					color: #DDD;
+				}
+			}
+		}
+
 		.nav-tabs {
 			border-bottom: 1px solid #BBB;
+
+			> li > a {
+				&:active, &:focus, &:hover {
+					background-color: $bgLighter;
+				}
+			}
 
 			> .active > a {
 				border-color: #BBB #BBB transparent;
@@ -613,12 +639,6 @@ html {
 				&:hover {
 					background-color: $bgLighter;
 				}
-			}
-
-			> li > a:hover,
-			> li > a:active,
-			> li > a:focus, {
-				background-color: $bgLighter;
 			}
 		}
 
@@ -631,9 +651,9 @@ html {
 		}
 
 		.portlet-boundary {
-			margin: 20px 0px;
 			background-color: $bgDark;
 			border-bottom: 4px rgba(255, 255, 255, 0.1) solid;
+			margin: 20px 0;
 
 			&:last-child {
 				border-bottom: none;
@@ -652,20 +672,6 @@ html {
 			background-color: $bgLighter;
 		}
 
-		table {
-			.table-sorted {
-				background-color: $green;
-
-				a {
-					color: #DDD;
-				}
-			}
-
-			tr:hover {
-				background-color: $bgLighter;
-			}
-		}
-
 		.table-striped tbody > tr:nth-child(2n+1) > td {
 			background-color: #777;
 
@@ -675,26 +681,62 @@ html {
 		}
 
 		.table-striped tbody > tr:hover {
-			background-color: red;
+			background-color: #F00;
 		}
 
 		.well {
 			background-color: $bgDarkest;
-			border: none;
+			border-width: 0;
 		}
 	}
 }
 
 @media (max-width: 979px) {
+	#banner > #navigation {
+		display: none;
+		float: right;
+
+		&.open {
+			display: block;
+		}
+
+		> ul {
+			background-color: $bgDarker;
+			margin: 60px 0 0;
+
+			> li {
+				display: block;
+				float: none;
+				height: auto;
+
+				&:hover {
+					background-color: $bgDarker;
+				}
+
+				> a:hover {
+					color: #DDD;
+				}
+
+				> ul, &:hover > ul {
+					@include box-shadow(none);
+
+					display: block;
+					float: none;
+					position: static;
+				}
+			}
+		}
+	}
+
 	.aui {
 		.dockbar .navbar-inner {
-			padding-left: 0px;
-			padding-right: 0px;
+			padding-left: 0;
+			padding-right: 0;
 		}
 
 		.navbar.navbar-static-top.dockbar {
 			.nav {
-				margin: 13px 0px 0px;
+				margin: 13px 0 0;
 
 				> li {
 					height: auto;
@@ -702,7 +744,7 @@ html {
 			}
 
 			.nav.nav-add-controls {
-				margin: 60px 0px 0px;
+				margin: 60px 0 0;
 			}
 		}
 
@@ -710,17 +752,22 @@ html {
 			float: left;
 			width: 100%;
 
+			ul {
+				background-color: $bgDarkest;
+			}
+
 			.dropdown-menu a {
-				@include border-radius(0px);
+				@include border-radius(0);
+
 				color: #FFF;
-				margin: 2px 0px;
+				margin: 2px 0;
 
 				&:hover {
 					background-color: $bgDark;
 				}
 
 				li a {
-					margin-bottom: 0px;
+					margin-bottom: 0;
 				}
 			}
 
@@ -728,8 +775,9 @@ html {
 				width: 100%;
 
 				> li > a {
-					@include border-radius(0px);
-					margin: 0px;
+					@include border-radius(0);
+
+					margin: 0;
 
 					&:hover {
 						background-color: $bgLighter;
@@ -738,18 +786,14 @@ html {
 			}
 
 			.navbar-search {
-				border: 0px;
-			}
-
-			ul {
-				background-color: $bgDarkest;
+				border: 0;
 			}
 		}
 
 		.nav.nav-add-controls {
 			left: auto;
-			margin: 60px 0px 0px;
-			right: 0px;
+			margin: 60px 0 0;
+			right: 0;
 			width: auto;
 
 			> li > a {
@@ -761,67 +805,26 @@ html {
 			}
 		}
 	}
-
-	#banner > #navigation {
-		display: none;
-		float: right;
-
-		&.open {
-			display: block;
-		}
-
-		> ul {
-			background-color: $bgDarker;
-			margin: 60px 0px 0px;
-
-			> li {
-				display: block;
-				float: none;
-				height: auto;
-
-				> a:hover {
-					color: #DDD;
-				}
-
-				&:hover {
-					background-color: $bgDarker;
-				}
-
-				> ul,
-				&:hover > ul {
-					@include box-shadow(none);
-					display: block;
-					float: none;
-					position: static;
-
-					li {
-						
-					}
-				}
-			}
-		}
-	}
 }
 
 @media (max-width: 767px) {
+	#content {
+		margin: 60px 20px 15px 20px;
+	}
+
 	.aui {
+		body {
+			padding: 0;
+		}
 
 		.breadcrumb {
 			display: block;
-			margin: 0px;
-		}
-
-		body {
-			padding: 0px;
+			margin: 0;
 		}
 
 		.navbar-static-top {
-			margin-right: 0px;
+			margin-right: 0;
 		}
-	}
-
-	#content {
-		margin: 60px 20px 15px 20px;
 	}
 
 	.portlet-layout {
