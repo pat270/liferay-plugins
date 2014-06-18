@@ -6,7 +6,7 @@ AUI().ready(
 	*/
 
 	function(A) {
-		//A.one(".portlet-search input[type=\"text\"]").set("placeholder", "Search ... ");
+		A.one(".portlet-search input[type=\"text\"]").set("placeholder", "Search ... ");
 	}
 );
 
