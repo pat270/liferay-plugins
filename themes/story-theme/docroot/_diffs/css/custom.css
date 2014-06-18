@@ -818,6 +818,21 @@ html {
 		.portlet-search {
 			form {
 				margin: 0;
+
+				/* Green Magnifying Glass */
+				&:after {
+					background-color: $bgLightest;
+					color: $green;
+					content: "\e80B";
+					display: inline-block;
+					font-family: 'storyicofont';
+					height: 22px;
+					padding-left: 5px;
+					position: relative;
+					right: -277px;
+					top: -29px;
+					width: 20px;
+				}
 			}
 
 			img {
