@@ -829,7 +829,7 @@ html {
 			}
 
 			input[type="text"] {
-				box-sizing: border-box;
+				@include box-sizing(border-box);
 				border-width: 0;
 				height: 36px;
 				margin: 0;
