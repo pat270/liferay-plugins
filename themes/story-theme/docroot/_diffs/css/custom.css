@@ -214,7 +214,7 @@ html {
 	.alert {
 		background-color: $greenLighter;
 		border-color: $greenDarker;
-		color: #FFF;
+		color: #000;
 		text-shadow: none;
 	}
 
@@ -491,6 +491,7 @@ html {
 				content: "\e801";
 				display: block;
 				font-family: 'storyicofont';
+				font-size: 12pt;
 				margin: auto;
 				width: 150px;
 			}
@@ -581,9 +582,10 @@ html {
 	}
 
 	.header-back-to {
-		float: left;
+		float: none;
 		padding-left: 15px;
 		position: absolute;
+		top: -35px;
 	}
 }
 
@@ -778,10 +780,6 @@ html {
 				padding: 0;
 			}
 
-			.taglib-categorization-filter.entry-title {
-				color: #EEE;
-			}
-
 			.title-list {
 				li {
 					border-bottom: $darkBorderSmall;
@@ -793,6 +791,10 @@ html {
 				}
 			}
 
+		}
+
+		.portlet-asset-tags-navigation .portlet-body {
+			margin-bottom: 10px;
 		}
 
 		.portlet-blogs .entry-content .entry-date:after {
@@ -875,6 +877,10 @@ html {
 
 		.table-striped tbody > tr:hover {
 			background-color: #F00;
+		}
+
+		.taglib-categorization-filter.entry-title {
+			color: #EEE;
 		}
 
 		.well {
