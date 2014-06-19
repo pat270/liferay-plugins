@@ -72,7 +72,7 @@ html {
 	/* Dropdown Navigation Menu */
 
 	#navigation {
-		float: left;
+		float: right;
 
 		.delete-tab {
 			display: none;
@@ -81,13 +81,20 @@ html {
 		> ul {
 			display: inline-table;
 			list-style: none;
+			margin: 0 25px 10px;
 
 			> li {
 				float: right;
+
+				&:first-child ul {
+					left: auto;
+					right: 0;
+				}
 			}
 
 			ul {
 				display: none;
+				position: absolute;
 
 				> li {
 					height: 100%;
@@ -407,9 +414,10 @@ html {
 	.navbar.navbar-static-top.dockbar {
 		@include box-shadow(none);
 
+		float: left;
 		height: 60px;
 		left: auto;
-		position: fixed;
+		position: relative;
 		z-index: 656;
 
 		.container {
