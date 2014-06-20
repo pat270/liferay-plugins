@@ -540,6 +540,14 @@ html {
 	padding: 0;
 }
 
+.portlet-journal {
+
+	.journal-article-container,
+	.journal-article-general-fields {
+		padding-left: 1em;
+	}
+}
+
 .portlet-layout {
 	margin-top: 0;
 }
