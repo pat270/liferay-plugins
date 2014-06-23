@@ -667,6 +667,7 @@ html {
 		float: none;
 		margin: 0;
 		padding: 20px;
+		vertical-align: top;
 
 		a {
 			color: $green;

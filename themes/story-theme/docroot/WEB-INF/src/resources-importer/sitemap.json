@@ -8,10 +8,10 @@
 						"portletId": "56",
 						"portletPreferences": {
 							"portletSetupShowBorders": "false",
-							"articleId": "frontpage.html"
-						},
-						"articleId": "lorem.html"
-					},
+							"articleId": "feedCarousel.xml",
+							"groupId": "${groupId}"
+						}
+					}
 				],
 				[
 					{
