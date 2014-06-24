@@ -369,7 +369,7 @@ html {
 
 	.navbar {
 		img {
-			max-height: 20px;
+			max-height: 16px;
 		}
 
 		.divider-vertical {
@@ -989,6 +989,10 @@ html {
 		.dockbar .navbar-inner {
 			padding-left: 0;
 			padding-right: 0;
+
+			.btn-navbar {
+				margin-top: 11px;
+			}
 		}
 
 		.navbar.navbar-static-top.dockbar {
