@@ -846,9 +846,9 @@ html {
 					height: 22px;
 					padding-left: 5px;
 					position: relative;
-					right: -277px;
+					right: -87%;
 					top: -29px;
-					width: 20px;
+					width: 10%;
 				}
 			}
 
@@ -880,6 +880,10 @@ html {
 				span {
 					display: none;
 				}
+			}
+
+			.portlet-body {
+				width: 100%;
 			}
 
 			.result {
