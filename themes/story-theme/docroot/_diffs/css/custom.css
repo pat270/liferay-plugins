@@ -933,6 +933,8 @@ html {
 
 		&.open {
 			display: block;
+			position: absolute;
+			right: 0;
 		}
 
 		> ul {
@@ -970,8 +972,10 @@ html {
 		}
 
 		.navbar.navbar-static-top.dockbar {
+			float: right;
+
 			.nav {
-				margin: 13px 0 0;
+				margin: 12px 0 0;
 
 				> li {
 					height: auto;
