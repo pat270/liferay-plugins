@@ -61,7 +61,7 @@
             new Y.Carousel(
                 {
                     contentBox: '#${content_id}',
-                    height: 500,
+                    height: 400,
                     intervalTime: 4,
                     animationTime: 0.75,
                     width: '100%'
