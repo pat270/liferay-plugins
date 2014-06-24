@@ -25,6 +25,11 @@ $greenLighter: #1FF2AF;
 $pageBg: #F1AC5F;
 $topBarH: 60px;
 
+a.taglib-icon:focus .taglib-text, 
+a.taglib-icon:hover .taglib-text {
+	text-decoration: none;
+}
+
 body {
 	background-attachment: scroll;
 	background-color: $pageBg;
@@ -172,9 +177,9 @@ html {
 	a {
 		color: #000;
 
-		&:hover {
-			color: $green;
-			text-decoration: none;;
+		&:hover, &:focus {
+			color: $greenDarker;
+			text-decoration: none;
 		};
 	}
 
@@ -298,7 +303,7 @@ html {
 			background-image: none;
 
 			&:hover, &:focus {
-				background-color: $greenLighter;
+				background-color: $greenDarker;
 				background-image: none;
 			}
 		}
