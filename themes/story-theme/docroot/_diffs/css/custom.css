@@ -95,7 +95,9 @@ html {
 			> li {
 				float: right;
 
-				&:first-child ul {
+				/* Keep right two menus from going off screen */
+				&:first-child ul,
+				&:first-child + li ul {
 					left: auto;
 					right: 0;
 				}
