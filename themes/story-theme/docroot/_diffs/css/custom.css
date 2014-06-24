@@ -930,6 +930,10 @@ html {
 	#banner > #navigation {
 		display: none;
 		float: right;
+		
+		a {
+			padding: 0 10px;
+		}
 
 		&.open {
 			display: block;
@@ -945,13 +949,22 @@ html {
 				display: block;
 				float: none;
 				height: auto;
+				padding: 0;
 
 				&:hover {
-					background-color: $bgDarker;
+					background-color: $bgLighter;
 				}
 
 				> a:hover {
 					color: #DDD;
+				}
+
+				ul {
+					background-color: $bgDarkest;
+
+					li {
+						padding: 10px 0;
+					}
 				}
 
 				> ul, &:hover > ul {
