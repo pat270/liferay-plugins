@@ -1,22 +1,138 @@
 {
-	"layoutTemplateId": "2_columns_ii",
-	"privatePages": [
+	"layoutTemplateId": "2_columns_iii",
+	"layouts": [
 		{
 			"columns": [
 				[
 					{
-						"portletId": "58"
+						"portletId": "56",
+						"portletPreferences": {
+							"portletSetupShowBorders": "false",
+							"articleId": "feedCarousel.xml",
+							"groupId": "${groupId}"
+						}
 					}
 				],
 				[
 					{
-						"portletId": "47"
+						"portletId": "3"
+					},
+					{
+						"portletId": "101",
+						"portletPreferences": {
+							"displayStyle": "title-list",
+							"portletSetupTitle_en_US": "Recent Posts",
+							"portletSetupUseCustomTitle": "true"
+						}
+					},
+					{
+						"portletId": "122",
+						"portletPreferences": {
+							"portletSetupTitle_en_US": "Categories",
+							"portletSetupUseCustomTitle": "true"
+						}
+					}
+				],
+			],
+			"friendlyURL": "/blog",
+			"name": "Blog",
+			"title": "Story"
+		},
+		{
+			"friendlyURL": "/articles",
+			"name": "Articles",
+			"title": "Articles",
+			"columns": [
+				[
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "lorem.html",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false"
+						}
+					}
+				],
+				[
+					{
+						"portletId": "3"
+					}					
+				]
+			],
+			"layouts": [
+				{
+					"friendlyURL": "/childpage1",
+					"name": "Child Page 1",
+					"title": "Child Page 1",
+					"layoutTemplateId": "1_column",
+					"columns": [
+						[
+							{
+								"portletId": "56",
+								"portletPreferences": {
+									"articleId": "childpage.html",
+									"groupId": "${groupId}",
+									"portletSetupShowBorders": "false"
+								}
+							}
+						]
+					],
+				},
+				{
+					"friendlyURL": "/childpage2",
+					"name": "Child Page 2",
+					"title": "Child Page 2",
+					"layoutTemplateId": "1_column",
+					"columns": [
+						[
+							{
+								"portletId": "56",
+								"portletPreferences": {
+									"articleId": "childpage.html",
+									"groupId": "${groupId}",
+									"portletSetupShowBorders": "false"
+								}
+							}
+						]
+					],
+				},
+				{
+					"friendlyURL": "/childpage3",
+					"name": "Child Page 3",
+					"title": "Child Page 3",
+					"layoutTemplateId": "1_column",
+					"columns": [
+						[
+							{
+								"portletId": "56",
+								"portletPreferences": {
+									"articleId": "childpage.html",
+									"groupId": "${groupId}",
+									"portletSetupShowBorders": "false"
+								}
+							}
+						]
+					],
+				}
+			]
+		},
+		{
+			"layoutTemplateId": "1_column",
+			"columns": [
+				[
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "about.html",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false"
+						}
 					}
 				]
 			],
-			"friendlyURL": "/home",
-			"name": "Welcome",
-			"title": "Welcome"
+			"friendlyURL": "/about",
+			"name": "About",
+			"title": "About"
 		}
 	]
 }

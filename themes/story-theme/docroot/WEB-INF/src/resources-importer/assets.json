@@ -1,0 +1,18 @@
+{
+	"assets": [
+		{
+			"name": "lorem.html",
+			"tags": [
+				"LoremIpsum",
+				"news",
+				"blog",
+				"tech",
+				"yolo"
+			]
+		},
+		{
+			"name": "childpage.html",
+			"smallImage": "boat.jpg"
+		}
+	]
+}

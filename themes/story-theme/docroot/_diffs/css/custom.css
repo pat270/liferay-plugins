@@ -3,6 +3,7 @@
 
 /* fonts */
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+@import url(http://fonts.googleapis.com/css?family=Bitter:400,700);
 @import url(storyicofont.css);
 
 /* Colors */
@@ -10,15 +11,17 @@
 $bgDark: #37414E;
 $bgDarker: #2E3641;
 $bgDarkest: #232A32;
-$bgLighter: #3f4A59;
+$bgLighter: #3F4A59;
+$bgLightest: #4A5668;
 $border: 2px solid #E0E0E0;
+$darkBorder: 4px solid rgba(255, 255, 255, 0.1);
+$darkBorderSmall: 1px solid rgba(255, 255, 255, 0.1);
 $fgBlack: #404040;
 $fgGrey: #737373;
 $green: #1ABC9C;
 $greenDarker: #149077;
 $greenLighter: #1FF2AF;
 $pageBg: #F1AC5F;
-$red: #BC1A3A;
 $topBarH: 60px;
 
 body {
@@ -42,9 +45,9 @@ html {
 #banner {
 	background-color: $bgDarker;
 	position: fixed;
-	top: 0px;
-	left: 0px;
-	right: 0px;
+	top: 0;
+	left: 0;
+	right: 0;
 	height: $topBarH;
 	z-index: 655;
 
@@ -58,7 +61,7 @@ html {
 			font-size: 32px;
 			font-family: 'Yesteryear', script;
 			line-height: $topBarH;
-			margin: 0px 20px;
+			margin: 0 20px;
 		}
 
 		img {
@@ -69,7 +72,7 @@ html {
 	/* Dropdown Navigation Menu */
 
 	#navigation {
-		float: left;
+		float: right;
 
 		.delete-tab {
 			display: none;
@@ -78,17 +81,24 @@ html {
 		> ul {
 			display: inline-table;
 			list-style: none;
+			margin: 0 25px 10px;
 
 			> li {
 				float: right;
+
+				&:first-child ul {
+					left: auto;
+					right: 0;
+				}
 			}
 
 			ul {
 				display: none;
+				position: absolute;
 
 				> li {
 					height: 100%;
-					margin: 0px;
+					margin: 0;
 					width: 100%;
 				}
 			}
@@ -96,7 +106,7 @@ html {
 			> li {
 				height: $topBarH;
 				line-height: $topBarH;
-				padding: 0px 10px;
+				padding: 0 10px;
 			}
 
 			li:hover {
@@ -121,7 +131,8 @@ html {
 
 #content {
 	background-color: #FFF;
-	margin: 60px 5% 40px;
+	margin: 100px auto 40px;
+	max-width: 1145px;
 }
 
 #footer {
@@ -135,7 +146,7 @@ html {
 }
 
 #content #main-content {
-	@include box-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
+	@include box-shadow(0 0 10px rgba(0, 0, 0, 0.2));
 
 	> .row-fluid {
 		background-color: #FFF;
@@ -151,6 +162,8 @@ html {
 #wrapper {
 	padding: 0em 0em 0em;
 }
+
+/* class selectors */
 
 .aui {
 	a {
@@ -168,18 +181,25 @@ html {
 		font-size: 14px;
 		font-family: 'Source Sans Pro', sans-serif;
 		min-height: 100%;
+
+		&.dialog-iframe-popup {
+			background-color: #FFF;
+		}
 	}
 
 	h1, h2, h3, h4 {
+		font-family: 'Bitter', serif;
 		font-weight: 400;
 	}
 
 	input[type="text"] {
 		border: $border;
+
 		@include border-radius(5px);
 
 		&:focus {
 			border-color: $green;
+
 			@include box-shadow(none);
 		}
 	}
@@ -201,7 +221,7 @@ html {
 	.alert {
 		background-color: $greenLighter;
 		border-color: $greenDarker;
-		color: #FFF;
+		color: #000;
 		text-shadow: none;
 	}
 
@@ -209,7 +229,7 @@ html {
 		background: $greenDarker;
 
 		@include border-radius(0px);
-		@include box-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
+		@include box-shadow(0 0 10px rgba(0, 0, 0, 0.2));
 
 		display: none;
 
@@ -222,7 +242,7 @@ html {
 	.btn {
 		background-image: none;
 
-		@include box-shadow(0px -1px 0px 0px #000 inset);
+		@include box-shadow(0px -1px 0 0 #000 inset);
 		@include transition(all 200ms ease-in-out 0s);
 
 	}
@@ -254,12 +274,12 @@ html {
 	.dropdown-menu {
 		background: $bgDarker;
 		border-top: 4px solid $green;
-		border-width: 0;
+		border-width: 4px 0 0;
 
 		@include border-radius(0px);
 
-		margin: 0px;
-		padding: 0px;
+		margin: 0;
+		padding: 0;
 
 		> li > a {
 			color: #FFF;
@@ -317,7 +337,7 @@ html {
 	.nav.nav-add-controls {
 		margin-top: 200px;
 		position: fixed;
-		top: 0px;
+		top: 0;
 		width: 40px;
 
 		li {
@@ -362,12 +382,12 @@ html {
 			}
 
 			> .active > a {
-				color: #FFF;
 				background-color: $bgDark;
+				color: #FFF;
 
 				&:hover {
-					color: #FFF;
 					background-color: $bgLighter;
+					color: #FFF;
 				}
 			}
 		}
@@ -394,9 +414,10 @@ html {
 	.navbar.navbar-static-top.dockbar {
 		@include box-shadow(none);
 
+		float: left;
 		height: 60px;
 		left: auto;
-		position: fixed;
+		position: relative;
 		z-index: 656;
 
 		.container {
@@ -406,10 +427,10 @@ html {
 		.nav {
 			> li {
 				height: $topBarH;
-				padding: 0px;
+				padding: 0;
 
 				> a {
-					padding: 0px 10px;
+					padding: 0 10px;
 					line-height: $topBarH;
 				}
 			}
@@ -429,16 +450,6 @@ html {
 	}
 }
 
-.controls-visible {
-	.portlet-title {
-		background-color: #DDD;
-	}
-
-	.portlet {
-		background-color: #EEE;
-	}
-}
-
 .modify-pages .delete-tab {
 	padding: 3px 6px;
 	text-shadow: none;
@@ -454,12 +465,22 @@ html {
 
 .portlet {
 	background: #FFF;
-	margin: 0px;
+	margin: 0;
 }
 
-.portlet-blogs {
+.portlet-blogs.portlet-boundary {
+	padding: 0;
+
+	img {
+		display: none;
+	}
+
 	.edit-actions {
-		margin: 0px 0px 15px;
+		margin: 0 0 15px;
+	}
+
+	.entry {
+		padding: 0 15px;
 	}
 
 	.entry-content {
@@ -470,24 +491,37 @@ html {
 			font-size: 10pt;
 			font-weight: 400;
 			margin-bottom: 15px;
-			padding-left: 0px;
+			padding-left: 0;
 
 			&:after {
-				background: url('../images/separator.png') repeat-x scroll 0px 50% transparent;
+				background: url('../images/separator.png') repeat-x scroll 0 50% transparent;
 				color: $green;
 				content: "\e801";
 				display: block;
 				font-family: 'storyicofont';
+				font-size: 12pt;
 				margin: auto;
 				width: 150px;
 			}
 		}
 	}
+
+	.entry-title {
+		padding: 0 15px;
+	}
+
+	.navbar {
+		display: none;
+		margin: 0 15px 20px;
+	}
+
+	.subscribe {
+		padding: 0 15px;
+	}
 }
 
 .portlet-borderless {
 	background: #FFF;
-	padding: 15px;
 }
 
 .portlet-borderless-bar {
@@ -495,14 +529,27 @@ html {
 }
 
 .portlet-boundary {
-	margin-bottom: 0px;
+	padding: 15px;
+	margin-bottom: 0;
 	&:last-child {
 		border-bottom: none;
 	}
 }
 
+.portlet-dockbar {
+	padding: 0;
+}
+
+.portlet-journal {
+
+	.journal-article-container,
+	.journal-article-general-fields {
+		padding-left: 1em;
+	}
+}
+
 .portlet-layout {
-	margin-top: 0px;
+	margin-top: 0;
 }
 
 .portlet-title {
@@ -526,6 +573,7 @@ html {
 .powered-by {
 	margin-top: 15px;
 	color: #FFF;
+	text-align: center;
 	text-shadow: #000 1px 1px 2px;
 
 	a {
@@ -535,6 +583,26 @@ html {
 
 .separator {
 	border-top: 6px $green solid;
+}
+
+.taglib-categorization-filter .asset-entry {
+	background-color: $green;
+	border-color: $greenDarker;
+}
+
+.taglib-header {
+	border-width: 0;
+
+	.header-title {
+		text-align: center;
+	}
+
+	.header-back-to {
+		float: none;
+		padding-left: 15px;
+		position: absolute;
+		top: -35px;
+	}
 }
 
 .taglib-icon img {
@@ -552,7 +620,6 @@ html {
 /* Size specific styles */
 
 /* Dark Sidebar Layout, requires a wider display */
-
 @media (min-width: 768px) {
 	.aui {
 		.portlet-layout.row-fluid [class*="span"] {
@@ -563,21 +630,17 @@ html {
 		.row-fluid {
 
 			/* Fix 1px white border in chrome */
-
 			&:after, &:before {
 				content: none;
 			}
 
 			/* Set whole number percent width for various column layouts */
-
 			.span4 {
 				width: 30%;
 			}
-
 			.span6 {
 				width: 50%;
 			}
-
 			.span8 {
 				width: 70%;
 			}
@@ -604,9 +667,19 @@ html {
 		float: none;
 		margin: 0;
 		padding: 20px;
+		vertical-align: top;
 
 		a {
-			color: $greenLighter;
+			color: $green;
+		}
+
+		input[type="text"] {
+			background-color: $bgLightest;
+			border-color: $bgLightest;
+
+			@include box-shadow(none);
+			
+			color: #EEE;
 		}
 
 		table {
@@ -646,17 +719,171 @@ html {
 			background-color: $bgDark;
 		}
 
+		.portlet-asset-categories-navigation,
+		.portlet-asset-publisher,
+		.portlet-asset-tags-navigation	 {
+
+			img {
+				display: none;
+			}
+
+			.accordion-group {
+				border-width: 0;
+
+				.accordion-heading {
+					display: none;
+				}
+
+				.accordion-inner {
+					border-width: 0;
+					padding: 0;
+				}
+
+				.tree-normal {
+					margin: 0;
+
+					.tree-node {
+						border-bottom: $darkBorderSmall;
+						padding: 0 1px 0 0;
+
+						&:last-child {
+							border-width: 0;
+						}
+					}
+
+					.tree-node-leaf {
+						margin: 0;
+						padding: 10px 0;
+
+						.tree-label {
+							margin-left: 0;
+							padding: 0;
+
+							span {
+								padding-left: 0;
+							}
+						}
+					}
+				}
+
+				.title-text {
+					display: none;
+				}
+			}
+
+			&.portlet-boundary {
+				margin: 0;
+				padding: 0;
+			}
+
+			.portlet-content {
+				padding: 0;
+			}
+
+			.asset-abstract {
+				margin-bottom: 10px;
+			}
+
+			.asset-content {
+				margin: 0;
+			}
+
+			.asset-title {
+				border-bottom: $darkBorderSmall; 
+			}
+
+			.portlet-title {
+				margin: 0;
+				padding: 0;
+			}
+
+			.title-list {
+				li {
+					border-bottom: $darkBorderSmall;
+					padding: 10px 0;
+
+					&:last-child {
+						border-width: 0;
+					}
+				}
+			}
+
+		}
+
+		.portlet-asset-tags-navigation .portlet-body {
+			margin-bottom: 10px;
+		}
+
 		.portlet-blogs .entry-content .entry-date:after {
-			background: url('../images/separator-dark.png') repeat-x scroll 0px 50% transparent
+			background: url('../images/separator-dark.png') repeat-x scroll 0 50% transparent;
 		}
 
 		.portlet-boundary {
 			background-color: $bgDark;
-			border-bottom: 4px rgba(255, 255, 255, 0.1) solid;
-			margin: 20px 0;
+			border-bottom: $darkBorder;
+			padding: 0 0 15px;
 
 			&:last-child {
 				border-bottom: none;
+			}
+		}
+
+		.portlet-content {
+			padding: 12px 0 10px;
+		}
+
+		.portlet-search {
+			form {
+				margin: 0;
+
+				/* Green Magnifying Glass */
+				&:after {
+					background-color: $bgLightest;
+					color: $green;
+					content: "\e80B";
+					display: inline-block;
+					font-family: 'storyicofont';
+					height: 22px;
+					padding-left: 5px;
+					position: relative;
+					right: -277px;
+					top: -29px;
+					width: 20px;
+				}
+			}
+
+			img {
+				display: none;
+			}
+
+			input[type="image"] {
+				display: none;
+			}
+
+			input[type="text"] {
+				@include box-sizing(border-box);
+				border-width: 0;
+				height: 36px;
+				margin: 0;
+				padding: 6px;
+				width: 100%;
+			}
+
+			select {
+				display: none;
+			}
+
+			.portlet-title {
+				height: 10px;
+				margin: 0;
+
+				span {
+					display: none;
+				}
+			}
+
+			.result {
+				padding: 15px;
 			}
 		}
 
@@ -682,6 +909,10 @@ html {
 
 		.table-striped tbody > tr:hover {
 			background-color: #F00;
+		}
+
+		.taglib-categorization-filter.entry-title {
+			color: #EEE;
 		}
 
 		.well {
@@ -809,7 +1040,7 @@ html {
 
 @media (max-width: 767px) {
 	#content {
-		margin: 60px 20px 15px 20px;
+		margin: 100px 20px 15px 20px;
 	}
 
 	.aui {
