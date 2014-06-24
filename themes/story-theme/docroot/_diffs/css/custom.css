@@ -81,6 +81,7 @@ html {
 
 	#navigation {
 		float: right;
+		margin-right: 20px;
 
 		.delete-tab {
 			display: none;
@@ -231,6 +232,10 @@ html {
 		border-color: $greenDarker;
 		color: #000;
 		text-shadow: none;
+	}
+
+	.badge {
+		background-color: $bgDarker;
 	}
 
 	.breadcrumb {
@@ -458,6 +463,10 @@ html {
 	.portlet-borderless-bar .portlet-options .dropdown-toggle {
 		background-image: url('../images/portlet/options_borderless.png');
 	}
+
+	.tab-content > .active {
+		padding: 0 20px;
+	}
 }
 
 .modify-pages .delete-tab {
@@ -550,12 +559,8 @@ html {
 	padding: 0;
 }
 
-.portlet-journal {
-
-	.journal-article-container,
-	.journal-article-general-fields {
-		padding-left: 1em;
-	}
+.portlet-journal .journal-article-header-edit {
+	border-width: 1px;
 }
 
 .portlet-layout {
