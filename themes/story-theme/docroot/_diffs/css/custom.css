@@ -14,6 +14,7 @@ $bgDarkest: #232A32;
 $bgLighter: #3F4A59;
 $bgLightest: #4A5668;
 $border: 2px solid #E0E0E0;
+$boxShadow: -1px 5px 5px rgba(0, 0, 0, 0.2);
 $darkBorder: 4px solid rgba(255, 255, 255, 0.1);
 $darkBorderSmall: 1px solid rgba(255, 255, 255, 0.1);
 $fgBlack: #404040;
@@ -50,6 +51,8 @@ html {
 	right: 0;
 	height: $topBarH;
 	z-index: 655;
+
+	@include box-shadow($boxShadow);
 
 	#heading {
 		color: #FFF;
@@ -334,11 +337,17 @@ html {
 		}
 	}
 
+	.nav.nav-account-controls {
+		@include box-shadow($boxShadow);
+	}
+
 	.nav.nav-add-controls {
 		margin-top: 200px;
 		position: fixed;
 		top: 0;
 		width: 40px;
+
+		@include box-shadow($boxShadow);
 
 		li {
 			background-color: $bgDarker;
@@ -945,6 +954,8 @@ html {
 			background-color: $bgDarker;
 			margin: 60px 0 0;
 
+			@include box-shadow($boxShadow);
+
 			> li {
 				display: block;
 				float: none;
@@ -1008,18 +1019,26 @@ html {
 				background-color: $bgDarkest;
 			}
 
-			.dropdown-menu a {
-				@include border-radius(0);
+			.dropdown-menu {
+				border-width: 0;
+				margin: 0;
 
-				color: #FFF;
-				margin: 2px 0;
+				a {
+					@include border-radius(0);
 
-				&:hover {
-					background-color: $bgDark;
+					color: #FFF;
+
+					&:hover {
+						background-color: $bgDark;
+					}
+
+					li a {
+						margin-bottom: 0;
+					}
 				}
 
-				li a {
-					margin-bottom: 0;
+				li + li a {
+					margin: 0;
 				}
 			}
 
