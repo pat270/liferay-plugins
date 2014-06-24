@@ -337,10 +337,6 @@ html {
 		}
 	}
 
-	.nav.nav-account-controls {
-		@include box-shadow($boxShadow);
-	}
-
 	.nav.nav-add-controls {
 		margin-top: 200px;
 		position: fixed;
@@ -1059,6 +1055,10 @@ html {
 			.navbar-search {
 				border: 0;
 			}
+		}
+
+		.nav.nav-account-controls {
+			@include box-shadow($boxShadow);
 		}
 
 		.nav.nav-add-controls {
