@@ -11,6 +11,14 @@
 							"articleId": "feedCarousel.xml",
 							"groupId": "${groupId}"
 						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"portletSetupShowBorders": "false",
+							"articleId": "lorem.html",
+							"groupId": "${groupId}"
+						}
 					}
 				],
 				[
@@ -22,6 +30,13 @@
 						"portletPreferences": {
 							"displayStyle": "title-list",
 							"portletSetupTitle_en_US": "Recent Posts",
+							"portletSetupUseCustomTitle": "true"
+						}
+					},
+					{
+						"portletId": "148",
+						"portletPreferences": {
+							"portletSetupTitle_en_US": "Tags",
 							"portletSetupUseCustomTitle": "true"
 						}
 					},
