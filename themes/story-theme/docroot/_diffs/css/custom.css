@@ -8,11 +8,11 @@
 
 /* Colors */
 
-$bgDark: #37414E;
+$bgDark: #2C3E50;
 $bgDarker: #2E3641;
 $bgDarkest: #232A32;
 $bgLighter: #3F4A59;
-$bgLightest: #4A5668;
+$bgLightest: #34495E;
 $border: 2px solid #E0E0E0;
 $boxShadow: -1px 5px 5px rgba(0, 0, 0, 0.2);
 $darkBorder: 4px solid rgba(255, 255, 255, 0.1);
@@ -886,6 +886,7 @@ html {
 			input[type="text"] {
 				@include box-sizing(border-box);
 				border-width: 0;
+				color: #AAA;
 				height: 36px;
 				margin: 0;
 				padding: 6px;
