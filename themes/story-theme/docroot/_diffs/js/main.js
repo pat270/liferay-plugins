@@ -6,7 +6,35 @@ AUI().ready(
 	*/
 
 	function(A) {
-		A.one(".portlet-search input[type=\"text\"]").set("placeholder", "Search ... ");
+		var portletSearchInput = A.one('.portlet-search input[type="text"]');
+
+		if (portletSearchInput) {
+			portletSearchInput.set('value', 'Search ...');
+
+			portletSearchInput.on(
+				'focus',
+				function(event) {
+					var currentTarget = event.currentTarget;
+					var value = currentTarget.get('value');
+
+					if (value === 'Search ...' || value === '') {
+						currentTarget.set('value', '');
+					}
+				}
+			);
+
+			portletSearchInput.on (
+				'blur',
+				function(event) {
+					var currentTarget = event.currentTarget;
+					var value = currentTarget.get('value');
+
+					if (value === '') {
+						portletSearchInput.set('value', 'Search ...');
+					}
+				}
+			);
+		}
 	}
 );
 

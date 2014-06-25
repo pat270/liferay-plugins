@@ -1,18 +1,33 @@
-#set ($article_id = $reserved-article-id.getData())
-#set ($content_id = "carousel-${article_id}")
+#set ($content_id = "carousel-${reserved-article-id.getData()}")
 
 <div id="$content_id">
 	<div class="carousel-item">
-		<div class="feedContent"><a href="" class="feedLink"></a><img src="$Placeholder_Image.getData()" alt="" class="feedImage"></div>
+		<div class="feed-content">
+			<a href="" class="feed-link"></a>
+
+			<img src="$placeholder_image.getData()" alt="" class="feed-image">
+		</div>
 	</div>
 	<div class="carousel-item">
-		<div class="feedContent"><a href="" class="feedLink"></a><img src="$Placeholder_Image.getData()" alt="" class="feedImage"></div>
+		<div class="feed-content">
+			<a href="" class="feed-link"></a>
+
+			<img src="$placeholder_image.getData()" alt="" class="feed-image">
+		</div>
 	</div>
 	<div class="carousel-item">
-		<div class="feedContent"><a href="" class="feedLink"></a><img src="$Placeholder_Image.getData()" alt="" class="feedImage"></div>
+		<div class="feed-content">
+			<a href="" class="feed-link"></a>
+
+			<img src="$placeholder_image.getData()" alt="" class="feed-image">
+		</div>
 	</div>
 	<div class="carousel-item">
-		<div class="feedContent"><a href="" class="feedLink"></a><img src="$Placeholder_Image.getData()" alt="" class="feedImage"></div>
+		<div class="feed-content">
+			<a href="" class="feed-link"></a>
+
+			<img src="$placeholder_image.getData()" alt="" class="feed-image">
+		</div>
 	</div>
 </div>
 
@@ -20,153 +35,145 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
 
-    google.load("feeds", "1");
+	google.load("feeds", "1");
 
-    function initialize() {
-        var feed = new google.feeds.Feed("$Name.getData()");
+	function initialize() {
+		var feed = new google.feeds.Feed("$Name.getData()");
 
-        feed.load(function(result) {
-        
-            if (!result.error) {
-            
-                YUI().use(
-                    'node',
-                    function (Y) {
-                        
-                        var container = Y.all('#${content_id} .carousel-item');
-                        var i = 0;
-                        
-                        container.each(function (eachNode){
-                            var entry = result.feed.entries[i];
-                            
-                            // Parse rsss content for img and article url
-                            var content = Y.Node.create(entry.content);
-                            var img = content.one('img').get('src');
-                            
-                            eachNode.one('.feedImage').set('src',img);
-                            eachNode.one('.feedLink').set('href', entry.link);
-                            eachNode.one('.feedLink').setContent(entry.title);
-                            i++;
-                        });
-                    }
-                );
-            }   
-        });
-    }
-    google.setOnLoadCallback(initialize);
-    
-    YUI().use(
-        'aui-carousel',
-        function (Y) {
-            new Y.Carousel(
-                {
-                    contentBox: '#${content_id}',
-                    height: 400,
-                    intervalTime: 4,
-                    animationTime: 0.75,
-                    width: '100%'
-                }
-            ).render(); 
-        }
-    );
-    
+		feed.load(function(result) {
+			if (!result.error) {
+				YUI().use(
+					'node',
+					function (Y) {
+
+						var container = Y.all('#${content_id} .carousel-item');
+
+						container.each(function (eachNode, index){
+							var entry = result.feed.entries[index];
+
+							// Parse rsss content for img and article url
+							var content = Y.Node.create(entry.content);
+							var img = content.one('img').get('src');
+
+							eachNode.one('.feed-image').set('src',img);
+							eachNode.one('.feed-link').set('href', entry.link);
+							eachNode.one('.feed-link').setContent(entry.title);
+						});
+					}
+				);
+			}
+		});
+	}
+
+	google.setOnLoadCallback(initialize);
+
+	YUI().use(
+		'aui-carousel',
+		function (Y) {
+			new Y.Carousel(
+				{
+					animationTime: 0.75,
+					contentBox: '#${content_id}',
+					height: 400,
+					intervalTime: 4,
+					width: '100%'
+				}
+			).render(); 
+		}
+	);
 </script>
 
 <style type="text/css">
+	.carousel {
+		border: 4px solid #232A32;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		margin: auto;
+		width: 100%;
+	}
 
-    .carousel {
-        border: 4px solid #232A32;
-        margin: auto;
-        width: 100%;
-        
-        -webkit-border-radius: 4px;
-        border-radius: 4px;
-        
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-    }
+	#${content_id} .carousel-item {
+		background: #000;
+		height: 100%;
+		width: 100%;
+	}
 
-    #${content_id} .carousel-item {
-        background: #000;
-        height: 100%;
-        width: 100%;
-    }
-    
-    #${content_id} menu {
-        background: none;
-        bottom: auto;
-    }
-    
-    #${content_id} a.carousel-menu-item {
-        display: none;
-    }
-    
-    #${content_id} a.carousel-menu-index {
-        background: #232A32;
-        display: block;
-        
-        height: 15px;
-        width: 15px;
-        
-        -webkit-border-radius: 2px;
-        border-radius: 2px;
-    }
-    
-    #${content_id} a.carousel-menu-active.carousel-menu-active {
-        background-color: #1ABC9C;
-    }
-    
-    #${content_id} .feedImage {
-        width: 107.5%;
-        max-width: 150%;
-        position: absolute;
-        left: 0%;
-        
-        -webkit-transition: left 5s linear;
-        -moz-transition: left 5s linear;
-        -ms-transition: left 5s linear;
-        -o-transition: left 5s linear;
-        transition: left 5s linear;
-    }
-    
-    #${content_id} .carousel-item-active .feedImage,
-    #${content_id} .carousel-item-transition .feedImage{
-        left: -7.5%;
-    }
-    
-    #${content_id} .feedContent {
-        overflow: hidden;
-        position: relative;
-        
-        height: 100%;
-        width: 100%;
-    }
-    
-    #${content_id} a.feedLink {
-        background-color: rgba(35,42,50,0.8);
-        border-radius: 10px 10px;
-        color: #DDD;
-        font-family: 'Bitter', serif;
-        font-size: 20pt;
-        left: 7.5%;
-        opacity: inherit;
-        padding: 10px;
-        position: absolute;
-        top: 70%;
-        width: 75%;
-        z-index: 1;
-        
-        -webkit-transition: left 5s linear;
-        -moz-transition: left 5s linear;
-        -ms-transition: left 5s linear;
-        -o-transition: left 5s linear;
-        transition: left 5s linear;
-    }
-    
-    #${content_id} .carousel-item-active a.feedLink,
-    #${content_id} .carousel-item-transition a.feedLink {
-        left: 15%;
-    }
+	#${content_id} menu {
+		background: none;
+		bottom: auto;
+	}
+
+	#${content_id} a.carousel-menu-item {
+		display: none;
+	}
+
+	#${content_id} a.carousel-menu-index {
+		background: #232A32;
+		-moz-border-radius: 2px;
+		-webkit-border-radius: 2px;
+		border-radius: 2px;
+		display: block;
+		height: 15px;
+		width: 15px;
+	}
+
+	#${content_id} a.carousel-menu-active.carousel-menu-active {
+		background-color: #1ABC9C;
+	}
+
+	#${content_id} .feed-image {
+		left: 0%;
+		max-width: 150%;
+		position: absolute;
+		-moz-transition: left 5s linear;
+		-ms-transition: left 5s linear;
+		-o-transition: left 5s linear;
+		-webkit-transition: left 5s linear;
+		transition: left 5s linear;
+		width: 107.5%;
+	}
+
+	#${content_id} .carousel-item-active .feed-image,
+	#${content_id} .carousel-item-transition .feed-image{
+		left: -7.5%;
+	}
+
+	#${content_id} .feed-content {
+		height: 100%;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+	}
+
+	#${content_id} a.feed-link {
+		background-color: rgba(35, 42, 50, 0.8);
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		color: #DDD;
+		font-family: 'Bitter', serif;
+		font-size: 20pt;
+		left: 7.5%;
+		opacity: inherit;
+		padding: 10px;
+		position: absolute;
+		top: 70%;
+		-moz-transition: left 5s linear;
+		-ms-transition: left 5s linear;
+		-o-transition: left 5s linear;
+		-webkit-transition: left 5s linear;
+		transition: left 5s linear;
+		width: 75%;
+		z-index: 1;
+	}
+	
+	#${content_id} .carousel-item-active a.feed-link,
+	#${content_id} .carousel-item-transition a.feed-link {
+		left: 15%;
+	}
 
 </style>

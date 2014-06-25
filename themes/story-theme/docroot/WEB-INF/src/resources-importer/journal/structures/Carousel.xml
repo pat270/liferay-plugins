@@ -14,7 +14,7 @@
 			</entry>
 		</meta-data>
 	</dynamic-element>
-	<dynamic-element dataType="image" fieldNamespace="wcm" indexType="keyword" name="Placeholder_Image" readOnly="false" repeatable="false" required="false" showLabel="true" type="wcm-image" width="">
+	<dynamic-element dataType="image" fieldNamespace="wcm" indexType="keyword" name="placeholder_image" readOnly="false" repeatable="false" required="false" showLabel="true" type="wcm-image" width="">
 		<meta-data locale="en_US">
 			<entry name="label">
 				<![CDATA[Placeholder Image]]>

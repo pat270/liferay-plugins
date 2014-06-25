@@ -4,7 +4,7 @@
 	<dynamic-element dataType="string" indexType="keyword" name="Name" type="text">
 			<dynamic-content><![CDATA[http://www.theverge.com/rss/index.xml]]></dynamic-content>
 	</dynamic-element>
-	<dynamic-element indexType="keyword" name="Placeholder_Image" type="wcm-image">
+	<dynamic-element indexType="keyword" name="placeholder_image" type="wcm-image">
 			<dynamic-content><![CDATA[]]></dynamic-content>
 	</dynamic-element>
 </root>
