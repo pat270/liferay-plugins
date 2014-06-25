@@ -93,8 +93,11 @@ html {
 
 			> li {
 				float: left;
+				height: $topBarH;
+				line-height: $topBarH;
+				padding: 0 10px;
 
-				/* Keep right two menus from going off screen */
+				/* Keep last menu from going off screen */
 				&:last-child ul {
 					left: auto;
 					right: 0;
@@ -110,12 +113,6 @@ html {
 					margin: 0;
 					width: 100%;
 				}
-			}
-
-			> li {
-				height: $topBarH;
-				line-height: $topBarH;
-				padding: 0 10px;
 			}
 
 			li:hover {
@@ -142,6 +139,14 @@ html {
 	background-color: #FFF;
 	margin: 100px auto 40px;
 	max-width: 1145px;
+
+	#main-content {
+		@include box-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+
+		> .row-fluid {
+			background-color: #FFF;
+		}
+	}
 }
 
 #footer {
@@ -152,14 +157,6 @@ html {
 #heading { 
 	color: #FFF;
 	text-shadow: #000 1px 1px 2px;
-}
-
-#content #main-content {
-	@include box-shadow(0 0 10px rgba(0, 0, 0, 0.2));
-
-	> .row-fluid {
-		background-color: #FFF;
-	}
 }
 
 #sign-in {
@@ -246,7 +243,7 @@ html {
 
 		display: none;
 
-		li, a {
+		a, li {
 			color: #FFF;
 			text-shadow: none;
 		}
@@ -391,12 +388,30 @@ html {
 		}
 
 		.nav {
-			> li > a {
-				color: #FFF;
-				text-shadow: none;
 
-				&:focus, &:hover {
-					color: $green;
+			> li {
+				&.dropdown {
+					&.active, &.active.open, &.open {
+						> .dropdown-toggle {
+							background-color: $bgLighter;
+							color: $green;
+						}
+					}
+				}
+
+				> .dropdown-menu {
+					&:after, &:before {
+						display: none;
+					}
+				}
+
+				> a {
+					color: #FFF;
+					text-shadow: none;
+
+					&:focus, &:hover {
+						color: $green;
+					}
 				}
 			}
 
@@ -407,22 +422,6 @@ html {
 				&:hover {
 					background-color: $bgLighter;
 					color: #FFF;
-				}
-			}
-		}
-
-		/* Remove pointy triangle above navbar dropdown */
-		.nav > li > .dropdown-menu {
-			&:after, &:before {
-				display: none;
-			}
-		}
-
-		.nav li.dropdown {
-			&.active, &.active.open, &.open {
-				> .dropdown-toggle {
-					background-color: $bgLighter;
-					color: $green;
 				}
 			}
 		}
@@ -449,8 +448,8 @@ html {
 				padding: 0;
 
 				> a {
-					padding: 0 10px;
 					line-height: $topBarH;
+					padding: 0 10px;
 				}
 			}
 		}
@@ -556,8 +555,9 @@ html {
 }
 
 .portlet-boundary {
-	padding: 15px;
 	margin-bottom: 0;
+	padding: 15px;
+
 	&:last-child {
 		border-bottom: none;
 	}
@@ -794,15 +794,6 @@ html {
 				}
 			}
 
-			&.portlet-boundary {
-				margin: 0;
-				padding: 0;
-			}
-
-			.portlet-content {
-				padding: 0;
-			}
-
 			.asset-abstract {
 				margin-bottom: 10px;
 			}
@@ -813,6 +804,15 @@ html {
 
 			.asset-title {
 				border-bottom: $darkBorderSmall; 
+			}
+
+			&.portlet-boundary {
+				margin: 0;
+				padding: 0;
+			}
+
+			.portlet-content {
+				padding: 0;
 			}
 
 			.portlet-title {
