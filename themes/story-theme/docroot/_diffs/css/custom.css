@@ -81,7 +81,6 @@ html {
 
 	#navigation {
 		float: right;
-		margin-right: 20px;
 
 		.delete-tab {
 			display: none;
@@ -284,6 +283,10 @@ html {
 		&:hover, &:focus {
 			background-color: $bgLighter;
 		}
+	}
+
+	.dockbar.navbar-static-top .collapse {
+		max-height: 8px;
 	}
 
 	.dropdown-menu {
@@ -986,8 +989,13 @@ html {
 					}
 				}
 
-				> ul, &:hover > ul {
+				> ul {
+					display: none;
+				}
+
+				&:hover > ul {
 					@include box-shadow(none);
+					height: auto;
 
 					display: block;
 					float: none;
@@ -1011,7 +1019,7 @@ html {
 			float: right;
 
 			.nav {
-				margin: 12px 0 0;
+				margin: 8px 0 0;
 
 				> li {
 					height: auto;
