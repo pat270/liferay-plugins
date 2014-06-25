@@ -568,6 +568,10 @@ html {
 	border-width: 1px;
 }
 
+.portlet-journal-content img {
+	padding: 10px;
+}
+
 .portlet-layout {
 	margin-top: 0;
 }
