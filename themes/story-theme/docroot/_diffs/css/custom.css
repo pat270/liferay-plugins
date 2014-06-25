@@ -975,6 +975,7 @@ html {
 				float: none;
 				height: auto;
 				padding: 0;
+				width: 180px;
 
 				&:hover {
 					background-color: $bgLighter;
@@ -1026,6 +1027,7 @@ html {
 
 				> li {
 					height: auto;
+					width: 180px;
 				}
 			}
 
