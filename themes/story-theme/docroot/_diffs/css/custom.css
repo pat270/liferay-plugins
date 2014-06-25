@@ -92,11 +92,10 @@ html {
 			margin: 0 25px 10px;
 
 			> li {
-				float: right;
+				float: left;
 
 				/* Keep right two menus from going off screen */
-				&:first-child ul,
-				&:first-child + li ul {
+				&:last-child ul {
 					left: auto;
 					right: 0;
 				}
@@ -539,6 +538,10 @@ html {
 		margin: 0 15px 20px;
 	}
 
+	.portlet-content {
+		padding: 12px 0 10px;
+	}
+
 	.subscribe {
 		padding: 0 15px;
 	}
@@ -566,10 +569,6 @@ html {
 
 .portlet-journal .journal-article-header-edit {
 	border-width: 1px;
-}
-
-.portlet-journal-content img {
-	padding: 10px;
 }
 
 .portlet-layout {
