@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -23,10 +23,16 @@ import com.liferay.portal.kernel.lar.BaseStagedModelDataHandler;
 import com.liferay.portal.kernel.lar.ExportImportPathUtil;
 import com.liferay.portal.kernel.lar.PortletDataContext;
 import com.liferay.portal.kernel.lar.StagedModelDataHandlerUtil;
+import com.liferay.portal.kernel.util.LocaleUtil;
+import com.liferay.portal.kernel.util.LocalizationUtil;
 import com.liferay.portal.kernel.util.MapUtil;
 import com.liferay.portal.kernel.xml.Element;
+import com.liferay.portal.model.Group;
+import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.ServiceContext;
 
+import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -84,6 +90,8 @@ public class CalendarStagedModelDataHandler
 			PortletDataContext portletDataContext, Calendar calendar)
 		throws Exception {
 
+		prepareLanguagesForImport(calendar);
+
 		long userId = portletDataContext.getUserId(calendar.getUserUuid());
 
 		StagedModelDataHandlerUtil.importReferenceStagedModels(
@@ -96,6 +104,9 @@ public class CalendarStagedModelDataHandler
 		long calendarResourceId = MapUtil.getLong(
 			calendarResourceIds, calendar.getCalendarResourceId(),
 			calendar.getCalendarResourceId());
+
+		Map<Locale, String> calendarNameMap = getCalendarNameMap(
+			portletDataContext, calendar);
 
 		ServiceContext serviceContext = portletDataContext.createServiceContext(
 			calendar);
@@ -112,7 +123,7 @@ public class CalendarStagedModelDataHandler
 
 				importedCalendar = CalendarLocalServiceUtil.addCalendar(
 					userId, portletDataContext.getScopeGroupId(),
-					calendarResourceId, calendar.getNameMap(),
+					calendarResourceId, calendarNameMap,
 					calendar.getDescriptionMap(), calendar.getColor(),
 					calendar.isDefaultCalendar(), calendar.isEnableComments(),
 					calendar.isEnableRatings(), serviceContext);
@@ -128,13 +139,54 @@ public class CalendarStagedModelDataHandler
 		else {
 			importedCalendar = CalendarLocalServiceUtil.addCalendar(
 				userId, portletDataContext.getScopeGroupId(),
-				calendarResourceId, calendar.getNameMap(),
+				calendarResourceId, calendarNameMap,
 				calendar.getDescriptionMap(), calendar.getColor(),
 				calendar.isDefaultCalendar(), calendar.isEnableComments(),
 				calendar.isEnableRatings(), serviceContext);
 		}
 
 		portletDataContext.importClassedModel(calendar, importedCalendar);
+	}
+
+	protected Map<Locale, String> getCalendarNameMap(
+			PortletDataContext portletDataContext, Calendar calendar)
+		throws Exception {
+
+		String calendarName = calendar.getName(LocaleUtil.getDefault());
+
+		Group sourceGroup = GroupLocalServiceUtil.fetchGroup(
+			portletDataContext.getSourceGroupId());
+
+		if ((sourceGroup == null) ||
+			!calendarName.equals(sourceGroup.getName())) {
+
+			return calendar.getNameMap();
+		}
+
+		Map<Locale, String> calendarNameMap = new HashMap<Locale, String>();
+
+		Group scopeGroup = GroupLocalServiceUtil.getGroup(
+			portletDataContext.getScopeGroupId());
+
+		calendarNameMap.put(LocaleUtil.getDefault(), scopeGroup.getName());
+
+		return calendarNameMap;
+	}
+
+	protected void prepareLanguagesForImport(Calendar calendar)
+		throws PortalException {
+
+		Locale defaultLocale = LocaleUtil.fromLanguageId(
+			calendar.getDefaultLanguageId());
+
+		Locale[] availableLocales = LocaleUtil.fromLanguageIds(
+			calendar.getAvailableLanguageIds());
+
+		Locale defaultImportLocale = LocalizationUtil.getDefaultImportLocale(
+			Calendar.class.getName(), calendar.getPrimaryKey(), defaultLocale,
+			availableLocales);
+
+		calendar.prepareLocalizedFieldsForImport(defaultImportLocale);
 	}
 
 }

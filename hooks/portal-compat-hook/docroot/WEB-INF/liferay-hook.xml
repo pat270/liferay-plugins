@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hook PUBLIC "-//Liferay//DTD Hook 6.2.0//EN" "http://www.liferay.com/dtd/liferay-hook_6_2_0.dtd">
+
+<hook>
+	<portal-properties>portal.properties</portal-properties>
+	<custom-jsp-dir>/META-INF/custom_jsps</custom-jsp-dir>
+	<service>
+		<service-type>com.liferay.portlet.expando.service.ExpandoValueLocalService</service-type>
+		<service-impl>com.liferay.compat.hook.service.impl.CompatExpandoValueLocalServiceImpl</service-impl>
+	</service>
+</hook>
