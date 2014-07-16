@@ -23,8 +23,13 @@
 			}
 		}
 
+		#navigation .navbar-inner {
+			display: none;
+		}
+
 		#navigation.open .navbar-inner {
 			background: #009AE5;
+			display: block;
 		}
 
 		.dockbar .navbar-inner .container .nav-collapse .nav-add-controls ul.dropdown-menu {
