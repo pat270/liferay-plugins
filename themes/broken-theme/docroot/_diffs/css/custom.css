@@ -166,10 +166,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 				> li {
 					background-color: $dockbarGradientStart;
 
-					@include respond-to(phone, tablet) {
-						background: transparent;
-					}
-
 					@include background-image(linear-gradient($dockbarGradientStart 0%, $dockbarGradientStart 47%, $dockbarGradientEnd 100%));
 				}
 			}
