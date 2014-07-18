@@ -39,14 +39,14 @@ $dockbarOpenGradientStart: #0EA6F9;
 
 	#poweredByModalWindow {
 		iframe {
+			border-width: 1px 0 0 0;
 			height: 100%;
 			width: 100%;
-			border-width: 1px 0 0 0;
 		}
 
 		.modal-body {
-			overflow: hidden;
 			margin: 15px;
+			overflow: hidden;
 			padding: 0;
 		}
 
