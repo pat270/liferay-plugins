@@ -33,53 +33,60 @@ AUI().ready(
 		var poweredBy = A.one('.powered-by a');
 
 		if (poweredBy) {
-			A.Node.create('<div id="poweredByModal"></div>').appendTo('#wrapper');
 			var content = '<iframe src="' + poweredBy.get('href') + '" </iframe>';
+			var poweredByModal = new A.Modal({
+				bodyContent: content,
+				centered: true,
+				height: 768,
+				id: 'poweredByModalWindow',
+				width: 1024
+			});
 
 			poweredBy.on('click', function(event) {
 				event.preventDefault();
 
-				var poweredByModal = new A.Modal({
-					bodyContent: content,
-					centered: true,
-					height: 768,
-					id: 'poweredByModalWindow',
-					render: '#poweredByModal',
-					width: 1024
-				});
+				if (!poweredByModal.get('rendered')) {
+					poweredByModal.render('#wrapper');
+				} else {
+					poweredByModal.show();
+				}
+
 			});
 		}
 
-		var signInPortlet = A.one('.portlet-login');
+		if (siteBreadcrumbs && signIn) {
+			var signInModal = new A.Modal({
+				centered: true,
+				height: 400,
+				id: 'breadcrumbSignInWindow',
+				width: 600,
+			});
 
-		if (siteBreadcrumbs && signIn && !(signInPortlet)) {
-			A.Node.create('<div id="breadcrumbSignIn"></div>').appendTo('#wrapper');
+			var successHandler = function () {
+				var response = A.Node.create(this.get('responseData'));
+				var content = response.one('.portlet-login .portlet-content').getHTML();
+
+				signInModal.set('bodyContent', content);
+			};
+
+			A.io.request(
+				themeDisplay.getPortalURL() + '/c/portal/login',
+				{
+					on: {
+						success: successHandler
+					}
+				}
+			);
 
 			siteBreadcrumbs.delegate('click', function (event) {
 				event.preventDefault();
 
-				var successHandler = function () {
-					var response = A.Node.create(this.get('responseData'));
-					var content = response.one('.portlet-login .portlet-content').getHTML();
+				if (!signInModal.get('rendered')) {
+					signInModal.render('#wrapper');
+				} else {
+					signInModal.show();
+				}
 
-					new A.Modal({
-						bodyContent: content,
-						centered: true,
-						height: 400,
-						id: 'breadcrumbSignInWindow',
-						render: '#breadcrumbSignIn',
-						width: 600
-					});
-				};
-
-				A.io.request(
-					'http://localhost:8080/c/portal/login',
-					{
-						on: {
-							success: successHandler
-						}
-					}
-				);
 			}, 'a');
 		}
 	}
