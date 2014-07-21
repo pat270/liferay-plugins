@@ -1,3 +1,4 @@
+@import "compass";
 @import "mixins";
 
 @import url(custom_common.css);
@@ -24,6 +25,34 @@ $dockbarOpenGradientStart: #0EA6F9;
 
 	#wrapper {
 		position: relative;
+	}
+
+	#breadcrumbSignInWindow {
+		input {
+			height: 30px;
+		}
+
+		.modal-header {
+			border-width: 0;
+		}
+	}
+
+	#poweredByModalWindow {
+		iframe {
+			border-width: 1px 0 0 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		.modal-body {
+			margin: 15px;
+			overflow: hidden;
+			padding: 0;
+		}
+
+		.modal-header {
+			border-width: 0;
+		}
 	}
 
 	.site-title {
@@ -104,7 +133,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 
 				> li {
 					> a {
-						margin: 0 5px 0 0;
+						margin: 0;
 
 						&:hover {
 							background-color: #2FA4F5;
@@ -164,10 +193,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 			.nav {
 				> li {
 					background-color: $dockbarGradientStart;
-
-					@include respond-to(phone, tablet) {
-						background: transparent;
-					}
 
 					@include background-image(linear-gradient($dockbarGradientStart 0%, $dockbarGradientStart 47%, $dockbarGradientEnd 100%));
 				}
@@ -314,10 +339,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 				&.active > a {
 					background-color: $dockbarGradientStart;
 				}
-			}
-
-			* {
-				display: none;
 			}
 
 			> li > a {
@@ -543,7 +564,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 	/* ---------- Hudcrumbs ---------- */
 
 	.lfr-hudcrumbs {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		z-index: 300;
 

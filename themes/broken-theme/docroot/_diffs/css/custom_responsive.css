@@ -16,6 +16,7 @@
 
 			.site-title {
 				font-size: 26px;
+				z-index: 360;
 
 				img {
 					width: 35px;
@@ -23,8 +24,13 @@
 			}
 		}
 
+		#navigation .navbar-inner {
+			display: none;
+		}
+
 		#navigation.open .navbar-inner {
 			background: #009AE5;
+			display: block;
 		}
 
 		.dockbar .navbar-inner .container .nav-collapse .nav-add-controls ul.dropdown-menu {
@@ -42,6 +48,8 @@
 		}
 
 		.dockbar-split .dockbar, .dockbar {
+			z-index: 350;
+
 			.info-items {
 				height: auto;
 				position: static;
