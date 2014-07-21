@@ -1,0 +1,11 @@
+
+<div class="entry-content">
+    <div class="text-only-content">
+        <p>$HTML_Text.getData()</p>
+    </div>
+    <div class="entry-date"> 
+    	#set ($Date3553_DateObj = $dateUtil.newDate($getterUtil.getLong($Date3553.getData())))
+    	
+    	$dateUtil.getDate($Date3553_DateObj, "dd MMM yyyy", $locale)
+	</div>
+</div>

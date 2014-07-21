@@ -1,0 +1,8 @@
+<div class="entry-image">
+    <p><img alt="Image" src="$Image.getData()" /></p>
+</div>
+<div class="entry-date">
+    <p>#set ($Date1719_DateObj = $dateUtil.newDate($getterUtil.getLong($Date1719.getData())))
+    
+    $dateUtil.getDate($Date1719_DateObj, "dd MMM yyyy", $locale)</p>
+</div>
