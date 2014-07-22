@@ -7,14 +7,6 @@
 					{
 					"portletId": "56",
 						"portletPreferences": {
-							"articleId": "Please_Work.xml",
-							"groupId": "${groupId}",
-							"portletSetupShowBorders": "false"
-						}
-					},
-					{
-					"portletId": "56",
-						"portletPreferences": {
 							"articleId": "I Have a Dream.xml",
 							"groupId": "${groupId}",
 							"portletSetupShowBorders": "false"
@@ -37,4 +29,3 @@
 		}
 	]
 }
-
