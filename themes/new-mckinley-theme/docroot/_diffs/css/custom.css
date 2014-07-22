@@ -423,23 +423,31 @@
 		}
 	}
 
-	.portlet-layout:nth-child(2) {
+	.footer-nav {
 		background-color: #333;
 		padding: 20px 0;
 
-		a, a.selected {
+		a, a.selected, .title-list li span {
 			color: #C3C3C3;
+			font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 			font-weight: normal;
 			text-decoration: none;
 		}
-
-		a:hover, span:hover, {
+		a:hover, img:hover, li:hover, .title-list li span:hover {
 			color: #FFF;
 			text-decoration: none;
 		}
-
+		h1 span {
+			font-size: 1.2rem;
+		}
 		img {
 			display: none;
+		}
+		.title-list li a {
+			display: block;
+		}
+		.title-list li a:first-letter {
+			text-transform: uppercase;
 		}
 
 		.portlet-title {
@@ -461,14 +469,44 @@
 					text-decoration: none;
 				}
 			}
+			form input, form select, form select option {
+				border-radius: 8px;
+			}
 
 			ul {
 				list-style-type: none;
+
+				&.breadcrumb {
+					background: none;
+
+					li {
+						text-shadow: none;
+						text-indent: -15px;
+					}
+				}
+
+				span.divider {
+					display: none;
+				}
+			}
+			.asset-content {
+				display: none;
 			}
 
 			.asset-content, .asset-abstract, .asset-title, .title-list {
+				border: none;
+				line-height: 2rem;
 				margin: 0;
 				padding: 0;
+			}
+
+			h3.asset-title a {
+				color: #C3C3C3;
+				font-size: 1.2rem;
+				
+				&:hover {
+					color: #FFF;
+				}
 			}
 
 			.nav-menu ul {

@@ -75,6 +75,27 @@ $theme.include($body_top_include)
 	</div>
 
 	<footer id="footer" role="contentinfo">
+		<div class="footer-nav">
+			<div class="portlet-layout row-fluid">
+				<div class="portlet-column portlet-column-first span4" id="column-2">
+					$theme.runtime("3")
+					$theme.runtime("71_INSTANCE_CM7vQZhfFZ8s")
+					$velocityPortletPreferences.setValue("rootLayoutLevel", "from-level-0")
+					$velocityPortletPreferences.reset()
+				</div>
+
+				<div class="portlet-column span4" id="column-3">
+					$theme.runtime("193_INSTANCE_gF8wxVmQ0gtp")
+					$velocityPortletPreferences.setValue("displayStyle", "title-list")
+
+				</div>
+
+				<div class="portlet-column portlet-column-last span4" id="column-4">
+					$theme.runtime("58")
+					$theme.runtime("141_INSTANCE_5HYlAVLND54S")
+				</div>
+			</div>
+		</div>
 		<div class="site-footer">
 			<p class="powered-by">
 				<a href="http://www.liferay.com" rel="external">#language ("powered-by") Liferay</a>
