@@ -5,7 +5,7 @@
 	<compatibility>
 		<version>6.2.0+</version>
 	</compatibility>
-	<theme id="new-mckinley" name="New Mckinley">
+	<theme id="aa-mckinley" name="AA Mckinley">
 		<settings>
 			<setting configurable="true" key="portlet-setup-show-borders-default" type="checkbox" value="false" />
 			<setting configurable="true" key="site-description" type="textarea" value="This is a site called McKinley Project" />
