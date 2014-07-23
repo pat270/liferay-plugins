@@ -178,16 +178,22 @@
 		max-width: 1050px;
 	}
 
-	.dockbar .navbar-inner {
-		padding: 0;
+	.portlet-dockbar {
+		position: fixed;
+		width: 100%;
+		z-index: 10;
 
-		.container {
-			background-color: #FFF;
-			box-shadow: inset 0 -1px 0 rgba( 0, 0, 0, 0.3 ), 0 1px 3px rgba( 0, 0, 0, 0.2 );
-			padding: 10px 0;
+		.dockbar .navbar-inner {
+			padding: 0;
 
-			.divider-vertical {
-				border: none;
+			.container {
+				background-color: #FFF;
+				box-shadow: inset 0 -1px 0 rgba( 0, 0, 0, 0.3 ), 0 1px 3px rgba( 0, 0, 0, 0.2 );
+				padding: 10px 0;
+
+				.divider-vertical {
+					border: none;
+				}
 			}
 		}
 	}
@@ -207,7 +213,7 @@
 			text-decoration: none;
 		}
 
-		a:hover, span:hover {
+		a:hover {
 			color: #4F4F4F;
 			text-decoration: none;
 		}
@@ -279,7 +285,7 @@
 			background: none;
 			position: absolute;
 			right: 15px;
-			bottom: -20px;
+			bottom: -28px;
 		}
 
 		.carousel-menu-index {

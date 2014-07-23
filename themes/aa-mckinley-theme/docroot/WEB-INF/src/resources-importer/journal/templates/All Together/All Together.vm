@@ -16,14 +16,10 @@
 		width: ${width.getData()}px;
 	}
 
-	#if ($controls.data)
+	#if ($controls.data == "false")
 		#${content_class} menu {
 			display: none;
 		}
-		
-	    #${content_class} menu {
-	        height: 25px;
-	    }
 	#end
 </style>
 
@@ -34,7 +30,7 @@
 				<a href="$item.url-link.data">
 			#end
 
-			<img alt="$item.data" src="$item.image.data" title="$item.data" />
+			<img alt="$item.data" src="$item.image.data" title="$item.data" style="height: 500px" />
 
 			#if ($item.url-link.data != "")
 				</a>
@@ -44,24 +40,24 @@
 </div>
 
 <div class="web-content-body">
-    <span>
-    	<header class="entry-header">
-    		    
-    		<div class="entry-title">
-    			<h2>
-    				$Blog_Title.getData()
-    			</h2>
-    		
-    		<div class="entry-date"> <span class="hide-accessible">Published Date</span>
-    		#set ($Date_DateObj = $dateUtil.newDate($getterUtil.getLong($Date.getData())))
-    		
-    		$dateUtil.getDate($Date_DateObj, "dd MMM yyyy", $locale)
-    		</div><!-- .entry-date -->
-    	</header><!-- .entry-header -->
-    
-    	<div class="entry-content" style="padding-bottom: 60px;">
-    	    $Blog_HTML.getData()
-    	</div><!-- .entry-content -->
+	<span>
+		<header class="entry-header">
+				
+			<div class="entry-title">
+				<h2>
+					$Blog_Title.getData()
+				</h2>
+			
+			<div class="entry-date"> <span class="hide-accessible">Published Date</span>
+			#set ($Date_DateObj = $dateUtil.newDate($getterUtil.getLong($Date.getData())))
+			
+			$dateUtil.getDate($Date_DateObj, "dd MMM yyyy", $locale)
+			</div>
+		</header>
+	
+		<div class="entry-content" style="padding-bottom: 60px;">
+			$Blog_HTML.getData()
+		</div>
 	</span>
 </div>
 

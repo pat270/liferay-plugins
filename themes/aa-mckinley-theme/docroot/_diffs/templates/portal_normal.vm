@@ -80,19 +80,19 @@ $theme.include($body_top_include)
 				<div class="portlet-column portlet-column-first span4" id="column-2">
 					$theme.runtime("3")
 					$theme.runtime("71_INSTANCE_CM7vQZhfFZ8s")
-					$velocityPortletPreferences.setValue("rootLayoutLevel", "from-level-0")
-					$velocityPortletPreferences.reset()
+					$velocityPortletPreferences.setValue("portletSetupShowBorders", "true")
 				</div>
 
 				<div class="portlet-column span4" id="column-3">
 					$theme.runtime("193_INSTANCE_gF8wxVmQ0gtp")
 					$velocityPortletPreferences.setValue("displayStyle", "title-list")
-
+					$velocityPortletPreferences.setValue("portletSetupShowBorders", "true")
 				</div>
 
 				<div class="portlet-column portlet-column-last span4" id="column-4">
 					$theme.runtime("58")
 					$theme.runtime("141_INSTANCE_5HYlAVLND54S")
+					$velocityPortletPreferences.setValue("portletSetupShowBorders", "true")
 				</div>
 			</div>
 		</div>
