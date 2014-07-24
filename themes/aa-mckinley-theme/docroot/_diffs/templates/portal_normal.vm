@@ -8,6 +8,7 @@
 	<title>$the_title - $company_name</title>
 
 	<meta content="initial-scale=1.0, width=device-width" name="viewport" />
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" id="mckinley-raleway-css" href="http://fonts.googleapis.com/css?family=Raleway:400,700,800,900" type="text/css" media="all">
 	<link rel="stylesheet" id="mckinley-open-sans-css" href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,800,700" type="text/css" media="all">
 
@@ -26,9 +27,13 @@ $theme.include($body_top_include)
 
 <div class="container-fluid" id="wrapper">
 	<header id="banner" role="banner">
+		#if (!$is_signed_in)
+			<a data-redirect="$is_login_redirect_required" href="$sign_in_url" id="sign-in" rel="nofollow">$sign_in_text</a>
+		#end
+		
 		<div id="heading">
-			<a class="$logo_css_class" href="$site_default_url" title="#language_format ("go-to-x", [$site_name])">			
-				<h1 class="site-title">			
+			<a class="$logo_css_class" href="$site_default_url" title="#language_format ("go-to-x", [$site_name])">
+				<h1 class="site-title">
 					## <img alt="$logo_description" height="$site_logo_height" src="$site_logo" width="$site_logo_width" />
 
 					#if ($show_site_name)
@@ -49,11 +54,6 @@ $theme.include($body_top_include)
 				</h2>
 			</a>
 		</div>
-
-
-		#if (!$is_signed_in)
-			<a data-redirect="$is_login_redirect_required" href="$sign_in_url" id="sign-in" rel="nofollow">$sign_in_text</a>
-		#end
 
 		#if ($has_navigation || $is_signed_in)
 			#parse ("$full_templates_path/navigation.vm")

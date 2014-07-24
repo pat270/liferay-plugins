@@ -1,7 +1,0 @@
-<div class="standout-container">
-    <span>
-        <div class="entry-content">
-            <p class="standout-post">$HTML_Box.getData()</p>
-        </div>
-    </span>
-</div>
