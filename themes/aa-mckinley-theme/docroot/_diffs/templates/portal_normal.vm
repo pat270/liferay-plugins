@@ -30,7 +30,7 @@ $theme.include($body_top_include)
 		#if (!$is_signed_in)
 			<a data-redirect="$is_login_redirect_required" href="$sign_in_url" id="sign-in" rel="nofollow">$sign_in_text</a>
 		#end
-		
+
 		<div id="heading">
 			<a class="$logo_css_class" href="$site_default_url" title="#language_format ("go-to-x", [$site_name])">
 				<h1 class="site-title">
@@ -96,6 +96,7 @@ $theme.include($body_top_include)
 				</div>
 			</div>
 		</div>
+
 		<div class="site-footer">
 			<p class="powered-by">
 				<a href="http://www.liferay.com" rel="external">#language ("powered-by") Liferay</a>
