@@ -15,10 +15,7 @@
 	</dynamic-element>
 	<dynamic-element name="items" type="text">
 		<dynamic-element name="image" type="document_library">
-			<dynamic-element name="link" type="text">
-				<dynamic-element name="url-location" type="text">
-					<dynamic-content><![CDATA[]]></dynamic-content>
-				</dynamic-element>
+			<dynamic-element name="url-link" type="text">
 				<dynamic-content><![CDATA[]]></dynamic-content>
 			</dynamic-element>
 			<dynamic-content><![CDATA[[$FILE=Bike_Bus.png$]]]></dynamic-content>
@@ -27,10 +24,7 @@
 	</dynamic-element>
 	<dynamic-element name="items" type="text">
 		<dynamic-element name="image" type="document_library">
-			<dynamic-element name="link" type="text">
-				<dynamic-element name="url-location" type="text">
-					<dynamic-content><![CDATA[]]></dynamic-content>
-				</dynamic-element>
+			<dynamic-element name="url-link" type="text">
 				<dynamic-content><![CDATA[]]></dynamic-content>
 			</dynamic-element>
 			<dynamic-content><![CDATA[[$FILE=Blue_Wall.jpg$]]]></dynamic-content>
@@ -39,10 +33,7 @@
 	</dynamic-element>
 	<dynamic-element name="items" type="text">
 		<dynamic-element name="image" type="document_library">
-			<dynamic-element name="link" type="text">
-				<dynamic-element name="url-location" type="text">
-					<dynamic-content><![CDATA[]]></dynamic-content>
-				</dynamic-element>
+			<dynamic-element name="url-link" type="text">
 				<dynamic-content><![CDATA[]]></dynamic-content>
 			</dynamic-element>
 			<dynamic-content><![CDATA[[$FILE=Mt_Mckinley.png$]]]></dynamic-content>
