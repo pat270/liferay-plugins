@@ -1,1 +1,7 @@
 #set ($css_class = "${css_class} dockbar-split")
+
+#set ($nav_css_class = "sort-pages modify-pages")
+
+#if (!$has_navigation)
+	#set ($nav_css_class = $nav_css_class + " hide")
+#end

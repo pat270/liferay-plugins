@@ -12,7 +12,7 @@
 		#heading {
 			bottom: 100%;
 			margin-top: -2em;
-			position: relative;
+			position: absolute;
 
 			.site-title {
 				font-size: 26px;
@@ -42,6 +42,11 @@
 		}
 
 		.dockbar-split .dockbar, .dockbar {
+			float: right;
+			height: auto;
+			position: relative;
+			z-index: 500;
+
 			.info-items {
 				height: auto;
 				position: static;
@@ -68,15 +73,21 @@
 
 					.nav-collapse {
 						> .nav {
-							background: transparent;
+							background: #009AE5;
 							border-width: 0;
+							left: auto;
+							margin: 0;
+							min-width: 160px;
+							position: absolute;
+							right: 0;
+							z-index: 400;
 
 							.nav-item-icon {
 								font-size: 26px;
 							}
 
 							&.nav-add-controls ul.dropdown-menu {
-								background: transparent;
+
 								border-top-width: 0;
 								padding: 0;
 

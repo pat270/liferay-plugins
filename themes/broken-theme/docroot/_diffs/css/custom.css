@@ -1,4 +1,5 @@
 @import "mixins";
+@import "compass";
 
 @import url(custom_common.css);
 @import url(color_schemes/common.css);
@@ -165,10 +166,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 				> li {
 					background-color: $dockbarGradientStart;
 
-					@include respond-to(phone, tablet) {
-						background: transparent;
-					}
-
 					@include background-image(linear-gradient($dockbarGradientStart 0%, $dockbarGradientStart 47%, $dockbarGradientEnd 100%));
 				}
 			}
@@ -194,7 +191,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 					}
 				}
 
-				&.nav-add-controls ul.dropdown-menu {
+				&.nav-add-controls ul.dropdown-menu, &.nav-add-controls {
 					overflow: visible;
 
 					&.nav-add-controls-notice {
@@ -207,11 +204,11 @@ $dockbarOpenGradientStart: #0EA6F9;
 						@include background-image(none);
 
 						> a {
+							background: #45CBF5;
 							line-height: inherit;
 							padding: 6px 8px;
 
 							@include respond-to(phone, tablet) {
-								background: transparent;
 								padding: 9px 15px;
 							}
 
@@ -227,8 +224,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 								background: #80E000;
 
 								@include respond-to(phone, tablet) {
-									background: transparent;
-
 									&:focus, &:hover {
 										background: #2FA4F5;
 									}
@@ -279,9 +274,9 @@ $dockbarOpenGradientStart: #0EA6F9;
 		}
 
 		.brand {
-			padding: 0;
-			padding-right: 20px;
 			margin-left: 0;
+			padding-right: 20px;
+			padding: 0;
 
 			img {
 				height: 40px;
@@ -314,10 +309,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 				&.active > a {
 					background-color: $dockbarGradientStart;
 				}
-			}
-
-			* {
-				display: none;
 			}
 
 			> li > a {

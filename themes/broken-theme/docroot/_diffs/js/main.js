@@ -7,7 +7,7 @@ AUI().ready(
 			navigation.plug(Liferay.NavigationInteraction);
 		}
 
-		var siteBreadcrumb = A.one('#breadcrumbs');
+		var siteBreadcrumbs = A.one('#breadcrumbs');
 
 		if (siteBreadcrumbs) {
 			siteBreadcrumbs.plug(A.Hudcrumbs);

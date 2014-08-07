@@ -1,7 +1,9 @@
 @import "aui/alloy-font-awesome/scss/mixins-alloy";
 @import "aui/alloy-font-awesome/scss/variables";
 @import "compass";
+@import "compass/css3/images";
 @import "compass/css3/user-interface";
+@import "compass/typography/text/ellipsis";
 @import "mixins";
 
 @import url(custom_responsive.css);
@@ -10,7 +12,6 @@
 	body {
 		color: #555;
 		font-weight: 200;
-		line-height: 3em;
 	}
 
 	a {
@@ -938,6 +939,10 @@
 			.user-avatar-image {
 				@include border-radius(50%);
 				@include box-shadow(0 0 0 2px #5594E0);
+				
+			    @include respond-to(phone, tablet) {
+			    	width: 28px;
+			    }
 			}
 		}
 	}
