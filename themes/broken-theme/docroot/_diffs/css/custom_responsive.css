@@ -23,11 +23,28 @@
 			}
 		}
 
-		#navigation.open .navbar-inner {
-			background: #009AE5;
+		#navigation {
+			display: none;
+
+			&.open {
+				display: block;
+
+				.navbar-inner {
+					padding: 10px;
+				}
+
+				.nav-collapse {
+					height: auto;
+					overflow: visible;
+				}
+			}
+
+			.nav {
+				margin: 0;
+			}
 		}
 
-		.dockbar .navbar-inner .container .nav-collapse .nav-add-controls ul.dropdown-menu {
+		.dockbar .navbar-inner .container .nav-collapse .nav-add-controls {
 			background: transparent;
 			padding: 0;
 
@@ -37,6 +54,8 @@
 
 				&.toggle-controls-link {
 					background: transparent;
+					clip: auto;
+					position: relative;
 				}
 			}
 		}
@@ -60,7 +79,9 @@
 					.btn-navbar {
 						background: transparent;
 						border-width: 0;
+						float: left;
 						font-size: 24px;
+						padding: 12px 15px;
 
 						&:hover, &.nav-account-controls-btn.open, &.nav-add-controls-btn.open, &.nav-navigation-btn:focus {
 							background-color: #5BBAE8;
@@ -69,6 +90,10 @@
 						&.nav-navigation-btn.active {
 							background-color: #F5AF45;
 						}
+					}
+
+					.nav-account-controls {
+						padding: 0 5px;
 					}
 
 					.nav-collapse {

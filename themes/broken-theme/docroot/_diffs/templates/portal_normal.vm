@@ -42,7 +42,7 @@ $theme.include($body_top_include)
 		#end
 	</header>
 
-	<div id="content">
+	<section id="content">
 		<h1 class="hide-accessible">$the_title</h1>
 
 		<nav id="breadcrumbs">
@@ -60,7 +60,7 @@ $theme.include($body_top_include)
 
 			$theme.wrapPortlet("portlet.vm", $content_include)
 		#end
-	</div>
+	</section>
 
 	<footer class="site-footer" id="footer" role="contentinfo">
 		<p class="powered-by">

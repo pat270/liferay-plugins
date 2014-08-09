@@ -70,8 +70,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 		.lfr-nav-item {
 			span, a {
 				@include ellipsis;
-
-				max-width: 300px;
 			}
 		}
 	}
@@ -105,7 +103,8 @@ $dockbarOpenGradientStart: #0EA6F9;
 
 				> li {
 					> a {
-						margin: 0 5px 0 0;
+						margin: 5px 0;
+						padding: 6px 10px;
 
 						&:hover {
 							background-color: #2FA4F5;
@@ -191,7 +190,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 					}
 				}
 
-				&.nav-add-controls ul.dropdown-menu, &.nav-add-controls {
+				&.nav-add-controls {
 					overflow: visible;
 
 					&.nav-add-controls-notice {
@@ -534,7 +533,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 	/* ---------- Hudcrumbs ---------- */
 
 	.lfr-hudcrumbs {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		z-index: 300;
 

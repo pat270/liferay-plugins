@@ -288,10 +288,10 @@
 					}
 
 					.user-avatar-image {
-					    position: relative;
-					    top: 2px;
-					    width: 28px;
-				    }
+						position: relative;
+						top: 2px;
+						width: 28px;
+					}
 				}
 
 				.nav-collapse {
@@ -776,7 +776,7 @@
 					@include user-select(none);
 
 					.accordion-toggle {
-						background: #F2F2F2 url(../images/arrows/13_right.png) no-repeat 100% -20px;
+						background: #F2F2F2 url(../images/arrows/13_left.png) no-repeat 100% -20px;
 					}
 				}
 
@@ -936,13 +936,16 @@
 		}
 
 		.container .btn, .nav li.dropdown.user-avatar {
+			.dropdown-menu {
+				right: 0;
+				left: auto;
+			}
 			.user-avatar-image {
 				@include border-radius(50%);
 				@include box-shadow(0 0 0 2px #5594E0);
-				
-			    @include respond-to(phone, tablet) {
-			    	width: 28px;
-			    }
+				@include respond-to(phone, tablet) {
+					width: 28px;
+				}
 			}
 		}
 	}
