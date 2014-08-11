@@ -1,5 +1,8 @@
 AUI().ready(
-	'liferay-hudcrumbs', 'liferay-navigation-interaction', 'liferay-sign-in-modal',
+	'aui-modal',
+	'liferay-hudcrumbs',
+	'liferay-navigation-interaction',
+	'liferay-sign-in-modal',
 	function(A) {
 		var navigation = A.one('#navigation');
 
@@ -25,5 +28,31 @@ AUI().ready(
 		if (signIn && signIn.getData('redirect') !== 'true') {
 			signIn.plug(Liferay.SignInModal);
 		}
+
+		A.one('#showModal').on(
+			'click',
+			function() {
+				var popUpWindow=Liferay.Util.Window.getWindow(
+				{
+					dialog: {
+						centered: true,
+						constrain2view: true,
+						cssClass: 'link-dialog',
+						modal: true,
+						resizable: true
+					}
+				}
+				).plug(
+				A.Plugin.DialogIframe,
+				{
+					autoLoad: true,
+					iframeCssClass: 'dialog-iframe',
+					uri:'http://www.liferay.com/'
+				}).render();
+
+				popUpWindow.show();
+				popUpWindow.titleNode.html("Liferay.com");
+			}
+		);
 	}
 );

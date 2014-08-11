@@ -528,6 +528,18 @@ $dockbarOpenGradientStart: #0EA6F9;
 
 	#footer {
 		text-align: right;
+
+		.btn-modal-link {
+			background: none;
+			border: none;
+			color: #009AE5;
+			font-size: inherit;
+			padding: 0 0 3px 0;
+
+			&:focus, &:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 
 	/* ---------- Hudcrumbs ---------- */

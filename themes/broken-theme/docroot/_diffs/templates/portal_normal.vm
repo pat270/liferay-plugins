@@ -64,7 +64,7 @@ $theme.include($body_top_include)
 
 	<footer class="site-footer" id="footer" role="contentinfo">
 		<p class="powered-by">
-			#language ("powered-by") <a href="http://www.liferay.com" rel="external">Liferay</a>
+			#language ("powered-by") <button id="showModal" class="btn btn-modal-link">Liferay</button>
 		</p>
 	</footer>
 </div>
