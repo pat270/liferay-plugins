@@ -173,7 +173,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 	#navigation {
 		ul {
 			display: block;
-			height: 30px;
+			height: 40px;
 			list-style: none;
 			margin: 0 auto;
 			padding: 5px 0;
@@ -205,6 +205,10 @@ $dockbarOpenGradientStart: #0EA6F9;
 			border-right-width: 0;
 			float: right;
 			position: relative;
+
+			a {
+				padding: 2px 25px;
+			}
 		}
 	}
 
@@ -231,6 +235,10 @@ $dockbarOpenGradientStart: #0EA6F9;
 			min-height: 100%;
 			padding: 10px 10px 0;
 			width: 940px;
+		}
+
+		.portlet-layout {
+			margin-bottom: 10px;
 		}
 	}
 
@@ -306,11 +314,19 @@ $dockbarOpenGradientStart: #0EA6F9;
 		.main-banner {
 			background-repeat: no-repeat;
 			height: 279px;
-			width: 940px;
 		}
 
 		.layout-content {
 			margin-top: 10px;
+
+			> .column {
+				padding-left: 15px;
+				padding-right: 0;
+
+				&:last-child {
+					padding-right: 15px;
+				}
+			}
 		}
 
 		.column-content {
@@ -362,5 +378,10 @@ $dockbarOpenGradientStart: #0EA6F9;
 		&:hover {
 			@include box-shadow(0 1px 1px -1px #000);
 		}
+	}
+
+	.navbar-default {
+		background-color: transparent;
+		border-width: 0;
 	}
 }
