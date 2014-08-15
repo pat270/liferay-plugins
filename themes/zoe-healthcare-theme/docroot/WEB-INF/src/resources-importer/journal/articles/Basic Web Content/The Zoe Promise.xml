@@ -4,14 +4,14 @@
 	<dynamic-element name="content" type="text_area" index-type="keyword" index="0">
 		<dynamic-content language-id="en_US">
 			<![CDATA[
-				<div class="layout-content">
-					<div class="column column-first span4">
+				<div class="layout-content row">
+					<div class="column column-first col-md-4">
 						<div class="column-content column-content-first">
 							<img class="left shadow" height="138" src="[$FILE=220x138.jpg$]" width="220" />
 						</div>
 					</div>
 
-					<div class="column column-last span8">
+					<div class="column column-last col-md-8">
 						<div class="column-content column-content-last">
 							<h4>
 								The Zoe Promise
@@ -26,14 +26,14 @@
 
 				<br /><br />
 
-				<div class="layout-content">
-					<div class="column column-first span4">
+				<div class="layout-content row">
+					<div class="column column-first col-md-4">
 						<div class="column-content column-content-first">
 							<img class="left clear shadow" height="138" src="[$FILE=220x138.jpg$]" width="220" />
 						</div>
 					</div>
 
-					<div class="column column-last span8">
+					<div class="column column-last col-md-8">
 						<div class="column-content column-content-last">
 							<h4>
 								Technology Equipment

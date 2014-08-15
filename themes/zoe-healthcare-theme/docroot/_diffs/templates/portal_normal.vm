@@ -74,8 +74,8 @@ $theme.include($body_top_include)
 
 #if ($theme_settings.display-footer != "false")
 	<footer id="footer" role="contentinfo">
-		<div class="row-fluid" id="footerContent">
-			<div class="span6" id="footerSection1">
+		<div class="row" id="footerContent">
+			<div class="col-md-6" id="footerSection1">
 				#if ($footer_section_1)
 					<section>
 						$footer_section_1
@@ -83,8 +83,8 @@ $theme.include($body_top_include)
 				#end
 			</div>
 
-			<div class="span3" id="footerSection2">
-				#if ($theme_settings.footer-section-2-article-id)
+			<div class="col-md-3" id="footerSection2">
+				#if ($theme_settings.footer-section-2-article-id != '')
 					#if ($footer_section_2)
 						<section>
 							$footer_section_2
@@ -125,7 +125,7 @@ $theme.include($body_top_include)
 				#end
 			</div>
 
-			<div class="span3" id="footerSection3">
+			<div class="col-md-3" id="footerSection3">
 				#if ($footer_section_3)
 					<section>
 						$footer_section_3
