@@ -8,19 +8,19 @@
 					<div class="main-banner"></div>
 
 					<div class="layout-content row">
-						<div class="column column-first col-md-4">
+						<div class="col-sm-4">
 							<div class="column-content column-content-first">
 								<div class="vote"></div>
 							</div>
 						</div>
 
-						<div class="column col-md-4">
+						<div class="col-sm-4">
 							<div class="column-content">
 								<div class="pick-your-state"></div>
 							</div>
 						</div>
 
-						<div class="column column-last col-md-4">
+						<div class="col-sm-4">
 							<div class="column-content column-content-last">
 								<div class="join"></div>
 							</div>

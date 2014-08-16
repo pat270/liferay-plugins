@@ -92,6 +92,13 @@ $dockbarOpenGradientStart: #0EA6F9;
 				text-decoration: underline;
 			}
 		}
+
+		.lfr-icon-actions {
+			a, .btn {
+				background-color: transparent;
+				color: #FFF;
+			}
+		}
 	}
 
 	#heading {
@@ -265,7 +272,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 
 	@each $color-scheme in democrat, republican, independent {
 		body.#{$color-scheme} {
-			background-image: url(../images/color_schemes/#{$color-scheme}/heading.jpg);
 
 			&.dialog-iframe-popup {
 				background-image: none;
@@ -303,6 +309,11 @@ $dockbarOpenGradientStart: #0EA6F9;
 						background-image: url(../images/color_schemes/#{$color-scheme}/twitter.png);
 					}
 				}
+			}
+
+			#wrapper {
+				background-image: url(../images/color_schemes/#{$color-scheme}/heading.jpg);
+				background-repeat: repeat-x;
 			}
 		}
 	}
@@ -373,5 +384,72 @@ $dockbarOpenGradientStart: #0EA6F9;
 	.navbar-default {
 		background-color: transparent;
 		border-width: 0;
+	}
+
+	@media (max-width: 991px) {
+		#content #main-content {
+			width: auto;
+		}
+
+		#heading {
+			width: auto;
+
+			ul.social {
+				display: none;
+			}
+		}
+
+		#navigation {
+			display: block;
+			position: static;
+			width: auto;
+
+			.call-to-action {
+				margin-right: 10px;
+
+				a {
+					margin-top: 0;
+					padding: 2px 10px;
+				}
+			}
+
+			ul {
+				padding-left: 10px;
+				width: auto;
+
+				li a {
+					padding: 7px 15px;
+				}
+			}
+		}
+
+		@each $color-scheme in democrat, republican, independent {
+			body.#{$color-scheme} .home-content {
+				.layout-content.row {
+					display: none;
+				}
+
+				.main-banner {
+					background-position-x: 100%;
+				}
+			}
+		}
+
+		.dockbar .container-fluid > .nav > li {
+			&.dropdown .dropdown-menu {
+				border-top: 2px #DADADA solid;
+				margin-top: 0;
+			}
+
+			> a.site-navigation-btn {
+				display: none;
+			}
+		}
+	}
+
+	@media (max-width: 605px) {
+		.call-to-action {
+			display: none;
+		}
 	}
 }
