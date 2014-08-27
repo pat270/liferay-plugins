@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element name="fa_iconName" type="text" index-type="">
+		<dynamic-content><![CDATA[icon-eye-open]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="fa_iconColor" type="text" index-type="">
+		<dynamic-content><![CDATA[5dff00]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="fa_iconBackgroundColor" type="text" index-type="">
+		<dynamic-content><![CDATA[e9e874]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="featureColumnHeader" type="text" index-type="">
+		<dynamic-content><![CDATA[Loads of Icons]]></dynamic-content>
+	</dynamic-element>
+		<dynamic-element name="featureColumnDescription" type="text_area" index-type="">
+		<dynamic-content><![CDATA[Have you ever had a single moment thought about my responsibilities? Have you ever thought for a single, solitary moment about my responsibilities to my employers?]]></dynamic-content>
+	</dynamic-element>
+</root>
