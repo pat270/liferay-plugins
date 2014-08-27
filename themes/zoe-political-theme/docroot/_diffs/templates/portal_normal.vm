@@ -37,8 +37,18 @@ $theme.include($body_top_include)
 				#end
 			</h1>
 
-			#if ($theme_settings.display-header-social == true && $header_social)
+			#if ($theme_settings.display-header-social && $header_social)
 				$header_social
+			#end
+
+			#if ($theme_settings.display-button)
+				<div class="call-to-action" role="presentation">
+					<a class="btn btn-default" href="$theme_settings.button-url">
+						<span>
+							$theme_settings.button-title
+						</span>
+					</a>
+				</div>
 			#end
 
 			#if (!$is_signed_in)

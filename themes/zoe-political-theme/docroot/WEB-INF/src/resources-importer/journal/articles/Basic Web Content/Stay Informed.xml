@@ -9,7 +9,7 @@
 						Get the latest updates directly to your email.
 					</h3>
 
-					<button class="btn" type="button">Sign Up</button>
+					<button class="btn btn-default" type="button">Sign Up</button>
 				</div>
 			]]>
 		</dynamic-content>
