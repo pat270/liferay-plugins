@@ -19,10 +19,10 @@
 			<dynamic-content><![CDATA[1]]></dynamic-content>
 		</dynamic-element>
 		<dynamic-element name="banner_button_style" type="select">
-			<dynamic-content><![CDATA[btn]]></dynamic-content>
+			<dynamic-content><![CDATA[btn btn-default]]></dynamic-content>
 		</dynamic-element>
 		<dynamic-element name="banner_button_size" type="select">
-			<dynamic-content><![CDATA[btn-large]]></dynamic-content>
+			<dynamic-content><![CDATA[btn-lg]]></dynamic-content>
 		</dynamic-element>
 	</dynamic-element>
 </root>

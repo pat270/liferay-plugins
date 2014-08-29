@@ -8,17 +8,17 @@
 #set ($num_cols = $integer.parseInt($number_of_columns.data))
 
 #if ($num_cols == 4)
-	#set ($span = "span3")
+	#set ($col = "col-md-3")
 #elseif ($num_cols == 3)
-	#set ($span = "span4")
+	#set ($col = "col-md-4")
 #elseif ($num_cols == 2)
-	#set ($span = "span6")
+	#set ($col = "col-md-6")
 #else
-	#set ($span = "")
+	#set ($col = "")
 #end
 
 #if ($num_cols == 1)
-	<div class="media-${content_id} media-row row-fluid">
+	<div class="media-${content_id} media-row row">
 #end
 
 #foreach ($heading in $media_heading.getSiblings())
@@ -54,17 +54,17 @@
 	#end
 
 	#if ($mod == 1 && $num_cols != 1)
-		<div class="media-${content_id} media-row row-fluid">
+		<div class="media-${content_id} media-row row">
 	#end
-		<div class="media $span">
+		<div class="media $col">
 			#if (!$media_icon.data.isEmpty() || !$media_image.data.isEmpty())
-				<div class="media-image $media_icon_alignment.data $media_icon_shape.data" style="$background_color $icon_padding $media_image_size">
+				<div class="media-image $media_icon_alignment.data $media_icon_shape.data" style="$background_color $icon_padding">
 					#if (!$heading.media_icon.data.isEmpty())
-						<i class="$media_icon.data" style="$icon_color $icon_size"></i>
+						<span class="$media_icon.data" style="$icon_color $icon_size"></span>
 					#end
 
 					#if (!$media_image.data.isEmpty())
-						<img src="$media_image.data" />
+						<img src="$media_image.data" style="$icon_width" />
 					#end
 				</div>
 			#end

@@ -4,25 +4,25 @@
 	<dynamic-element name="footer_column_title" type="text">
 		<dynamic-content><![CDATA[Footer Column #1]]></dynamic-content>
 		<dynamic-element name="column_content" type="textarea">
-			<dynamic-content><![CDATA[<ul class="unstyled"><li><a href="#">Link 1</a></li><li><a href="#">Link 2</a></li><li><a href="#">Link 3</a></li><li><a href="#">Link 4</a></li></ul>]]></dynamic-content>
+			<dynamic-content><![CDATA[<ul class="list-unstyled"><li><a href="#">Link 1</a></li><li><a href="#">Link 2</a></li><li><a href="#">Link 3</a></li><li><a href="#">Link 4</a></li></ul>]]></dynamic-content>
 		</dynamic-element>
 	</dynamic-element>
 	<dynamic-element name="footer_column_title" type="text">
 		<dynamic-content><![CDATA[Footer Column #2]]></dynamic-content>
 		<dynamic-element name="column_content" type="textarea">
-			<dynamic-content><![CDATA[<ul class="unstyled"><li><a href="#">Link 1</a></li><li><a href="#">Link 2</a></li><li><a href="#">Link 3</a></li><li><a href="#">Link 4</a></li></ul>]]></dynamic-content>
+			<dynamic-content><![CDATA[<ul class="list-unstyled"><li><a href="#">Link 1</a></li><li><a href="#">Link 2</a></li><li><a href="#">Link 3</a></li><li><a href="#">Link 4</a></li></ul>]]></dynamic-content>
 		</dynamic-element>
 	</dynamic-element>
 	<dynamic-element name="footer_column_title" type="text">
 		<dynamic-content><![CDATA[Footer Column #3]]></dynamic-content>
 		<dynamic-element name="column_content" type="textarea">
-			<dynamic-content><![CDATA[<ul class="unstyled"><li><a href="#">Link 1</a></li><li><a href="#">Link 2</a></li><li><a href="#">Link 3</a></li><li><a href="#">Link 4</a></li></ul>]]></dynamic-content>
+			<dynamic-content><![CDATA[<ul class="list-unstyled"><li><a href="#">Link 1</a></li><li><a href="#">Link 2</a></li><li><a href="#">Link 3</a></li><li><a href="#">Link 4</a></li></ul>]]></dynamic-content>
 		</dynamic-element>
 	</dynamic-element>
 	<dynamic-element name="footer_column_title" type="text">
 		<dynamic-content><![CDATA[Footer Column #4]]></dynamic-content>
 		<dynamic-element name="column_content" type="textarea">
-			<dynamic-content><![CDATA[<ul class="unstyled"><li><a href="#">Link 1</a></li><li><a href="#">Link 2</a></li><li><a href="#">Link 3</a></li><li><a href="#">Link 4</a></li></ul>]]></dynamic-content>
+			<dynamic-content><![CDATA[<ul class="list-unstyled"><li><a href="#">Link 1</a></li><li><a href="#">Link 2</a></li><li><a href="#">Link 3</a></li><li><a href="#">Link 4</a></li></ul>]]></dynamic-content>
 		</dynamic-element>
 	</dynamic-element>
 	<dynamic-element name="secondary_footer_content" type="textarea">

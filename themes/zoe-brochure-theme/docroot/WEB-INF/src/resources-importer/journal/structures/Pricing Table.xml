@@ -186,7 +186,7 @@
 				</meta-data>
 			</dynamic-element>
 			<dynamic-element dataType="string" indexType="keyword" multiple="false" name="size" readOnly="false" repeatable="false" required="false" showLabel="true" type="select" width="">
-				<dynamic-element name="zoe_pricing_table_button_size_large" type="option" value="btn-large">
+				<dynamic-element name="zoe_pricing_table_button_size_large" type="option" value="btn-lg">
 					<meta-data locale="en_US">
 						<entry name="label">
 							<![CDATA[Large]]>
@@ -200,14 +200,14 @@
 						</entry>
 					</meta-data>
 				</dynamic-element>
-				<dynamic-element name="zoe_pricing_table_button_size_small" type="option" value="btn-small">
+				<dynamic-element name="zoe_pricing_table_button_size_small" type="option" value="btn-sm">
 					<meta-data locale="en_US">
 						<entry name="label">
 							<![CDATA[Small]]>
 						</entry>
 					</meta-data>
 				</dynamic-element>
-				<dynamic-element name="zoe_pricing_table_button_size_mini" type="option" value="btn-mini">
+				<dynamic-element name="zoe_pricing_table_button_size_mini" type="option" value="btn-xs">
 					<meta-data locale="en_US">
 						<entry name="label">
 							<![CDATA[Mini]]>

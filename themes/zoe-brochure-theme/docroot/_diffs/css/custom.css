@@ -1,14 +1,11 @@
 @import "compass";
 @import "mixins";
 
-$mainContentSpacing: 20px;
+$main-content-spacing: 20px;
 
 /* ---------- Common color variables ---------- */
 
-$bgColor: #DADADA;
-$textColor: #004461;
-$textShadowColor1: #FFF;
-$textShadowColor2: #333;
+$link-color: #004461;
 
 /* ---------- Set compass defaults ---------- */
 
@@ -24,7 +21,7 @@ $default-box-shadow-v-offset: 1px;
 	background-color: #FFF;
 
 	a {
-		color: $textColor;
+		color: $link-color;
 		text-decoration: none;
 
 		&:hover {
@@ -56,7 +53,7 @@ $default-box-shadow-v-offset: 1px;
 			width: 75%;
 		}
 
-		textarea.wsmall, textarea.input-large {
+		textarea.wsmall, textarea.input-lg {
 			height: 100px;
 			width: 50%;
 		}
@@ -123,14 +120,13 @@ $default-box-shadow-v-offset: 1px;
 			padding: 5px 15px;
 		}
 
-		.navbar-inner {
-			.container .nav-collapse > .nav > li.open > a {
-				color: #FFF;
-			}
 
-			.site-administration-menu li a {
-				color: #FFF;
-			}
+		.container .nav-collapse > .nav > li.open > a {
+			color: #FFF;
+		}
+
+		.site-administration-menu li a {
+			color: #FFF;
 		}
 
 		.page-customization-bar .page-customization-bar-text {
@@ -186,13 +182,13 @@ $default-box-shadow-v-offset: 1px;
 
 	#content {
 		clear: left;
-		padding-left: $mainContentSpacing;
-		padding-right: $mainContentSpacing;
+		padding-left: $main-content-spacing;
+		padding-right: $main-content-spacing;
 	}
 
 	#heading {
 		float: left;
-		margin-left: $mainContentSpacing;
+		margin-left: $main-content-spacing;
 
 		h1.site-title {
 			margin: 0;
@@ -218,6 +214,7 @@ $default-box-shadow-v-offset: 1px;
 
 			> li {
 				background-color: #FFF;
+				display: inline-block;
 
 				&:last-of-type > .dropdown-menu {
 					left: auto;
@@ -265,12 +262,6 @@ $default-box-shadow-v-offset: 1px;
 				}
 			}
 		}
-
-		.navbar-inner {
-			background-color: transparent;
-			border-width: 0;
-			padding: 0;
-		}
 	}
 
 	/* ---------- Hudcrumbs ---------- */
@@ -286,8 +277,8 @@ $default-box-shadow-v-offset: 1px;
 		.breadcrumb {
 			background-color: #081F2C;
 			margin: 0;
-			padding-left: $mainContentSpacing;
-			padding-right: $mainContentSpacing;
+			padding-left: $main-content-spacing;
+			padding-right: $main-content-spacing;
 
 			a {
 				color: #FFF;
@@ -302,7 +293,7 @@ $default-box-shadow-v-offset: 1px;
 
 	/* ---------- Footer ---------- */
 
-	.row-fluid .span2-4 {
+	.row .col-md-2-4 {
 		margin-left: 1%;
 		width: 19%;
 	}
@@ -311,11 +302,11 @@ $default-box-shadow-v-offset: 1px;
 		background-color: #0C486C;
 		border-top: 10px solid #39A0DD;
 		color: #FFF;
-		margin-left: -$mainContentSpacing;
-		margin-right: -$mainContentSpacing;
-		padding: 20px $mainContentSpacing;
+		margin-left: -$main-content-spacing;
+		margin-right: -$main-content-spacing;
+		padding: 20px $main-content-spacing;
 
-		&.row-fluid .span12 {
+		&.row .col-md-12 {
 			margin: 0;
 		}
 
@@ -335,9 +326,9 @@ $default-box-shadow-v-offset: 1px;
 	.zoe-footer-secondary {
 		background-color: #0D2939;
 		color: #FFF;
-		margin-left: -$mainContentSpacing;
-		margin-right: -$mainContentSpacing;
-		padding: 20px $mainContentSpacing;
+		margin-left: -$main-content-spacing;
+		margin-right: -$main-content-spacing;
+		padding: 20px $main-content-spacing;
 
 		a {
 			color: #FFF;
@@ -411,7 +402,7 @@ $default-box-shadow-v-offset: 1px;
 
 	/* ------- Panels -------- */
 
-	.row-fluid .zoe-panel {
+	.row .zoe-panel {
 		margin-bottom: 20px;
 	}
 
@@ -427,6 +418,15 @@ $default-box-shadow-v-offset: 1px;
 			p {
 				color: #FAFAFA;
 			}
+		}
+	}
+
+	.zoe-clickable-panel.col-md-3 {
+		margin-left: 1.6%;
+		width: 23.8%;
+
+		&:first-child {
+			margin-left: 0;
 		}
 	}
 
@@ -453,7 +453,7 @@ $default-box-shadow-v-offset: 1px;
 	/* ------- Panels -------- */
 
 	.journal-content-article {
-		.row-fluid {
+		.row {
 			&:last-child, &:last-of-type, &.last-child {
 				.zoe-panel {
 					margin-bottom: 0;
@@ -493,7 +493,7 @@ $default-box-shadow-v-offset: 1px;
 		}
 	}
 
-	.zoe-panel-post .row-fluid, .zoe-panel-post.row-fluid {
+	.zoe-panel-post .row, .zoe-panel-post.row {
 		@include box-sizing(border-box);
 
 		padding: 0 20px;
@@ -599,9 +599,9 @@ $default-box-shadow-v-offset: 1px;
 	.banner-header .banner, .banner-header.banner {
 		@include box-sizing(content-box);
 
-		margin-left: -$mainContentSpacing;
-		margin-right: -$mainContentSpacing;
-		padding: 50px $mainContentSpacing;
+		margin-left: -$main-content-spacing;
+		margin-right: -$main-content-spacing;
+		padding: 50px $main-content-spacing;
 
 		.banner-message {
 			@include box-sizing(border-box);
@@ -623,8 +623,8 @@ $default-box-shadow-v-offset: 1px;
 	/* ---------- Zoe carousel ---------- */
 
 	.zoe-carousel {
-		margin-left: -$mainContentSpacing;
-		margin-right: -$mainContentSpacing;
+		margin-left: -$main-content-spacing;
+		margin-right: -$main-content-spacing;
 
 		&:hover {
 			a.carousel-menu-next {
@@ -887,9 +887,27 @@ $default-box-shadow-v-offset: 1px;
 		&:last-child, &:last-of-type, &.last-child {
 			padding-bottom: 15px;
 		}
+
+		.media-image {
+			width: 75px;
+		}
 	}
 
 	.zoe-panel-PANEL-HOME-PAGE {
+		margin: 0;
+
+		.zoe-panel {
+			width: 32%;
+
+			&:first-child {
+				margin-right: 2%;
+			}
+
+			&:last-child {
+				margin-left: 2%;
+			}
+		}
+
 		.panel-link {
 			margin-top: 30px;
 		}
@@ -934,10 +952,6 @@ $default-box-shadow-v-offset: 1px;
 				}
 			}
 		}
-
-		.navbar-inner {
-			@include box-shadow(none);
-		}
 	}
 
 	nav.lfr-hudcrumbs .breadcrumb {
@@ -950,6 +964,12 @@ $default-box-shadow-v-offset: 1px;
 
 	.banner, .zoe-panel {
 		@include box-shadow(0 1px 1px #E7E7E7);
+	}
+
+	.btn-inverse {
+		color: #FFF;
+		background-color: #333;
+		border-color: #222;
 	}
 
 	.dockbar-split .dockbar .nav > li > .dropdown-menu {
@@ -1046,7 +1066,7 @@ $default-box-shadow-v-offset: 1px;
 				}
 			}
 
-			&.open .navbar-inner .nav-collapse li a {
+			&.open .nav-collapse li a {
 				color: #333;
 				font-size: 12px;
 				font-weight: bold;
@@ -1057,7 +1077,7 @@ $default-box-shadow-v-offset: 1px;
 			}
 		}
 
-		.dockbar .navbar-inner .container .nav-collapse > .nav > li.dropdown .dropdown-menu {
+		.dockbar .container .nav-collapse > .nav > li.dropdown .dropdown-menu {
 			margin: 0;
 		}
 
@@ -1071,16 +1091,14 @@ $default-box-shadow-v-offset: 1px;
 					color: #333;
 				}
 
-				.navbar-inner .site-administration-menu li a {
+				.site-administration-menu li a {
 					color: #333;
 				}
 			}
 		}
 
 		.navbar-fixed-top, .navbar-static-top {
-			.navbar-inner {
-				@include box-shadow(none);
-			}
+			@include box-shadow(none);
 		}
 	}
 
@@ -1091,7 +1109,7 @@ $default-box-shadow-v-offset: 1px;
 		}
 
 		.journal-content-article {
-			.row-fluid {
+			.row {
 				&:last-child, &:last-of-type, &.last-child {
 					.zoe-panel {
 						margin-bottom: 20px;
@@ -1125,12 +1143,12 @@ $default-box-shadow-v-offset: 1px;
 			margin-right: 0;
 		}
 
-		.row-fluid .span2-4 {
+		.row .col-md-2-4 {
 			margin-left: 0;
 			width: 100%;
 		}
 
-		.row-fluid .zoe-panel {
+		.row .zoe-panel {
 			margin-bottom: 20px;
 
 			&:last-of-type {
@@ -1159,7 +1177,7 @@ $default-box-shadow-v-offset: 1px;
 			}
 		}
 
-		.zoe-panel-post .row-fluid, .zoe-panel-post.row-fluid {
+		.zoe-panel-post .row, .zoe-panel-post.row {
 			padding: 0 20px;
 		}
 	}

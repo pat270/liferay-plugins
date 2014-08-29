@@ -152,7 +152,7 @@
 			</meta-data>
 		</dynamic-element>
 		<dynamic-element dataType="string" indexType="keyword" multiple="false" name="banner_button_size" readOnly="false" repeatable="false" required="false" showLabel="true" type="select" width="">
-			<dynamic-element name="option_banner_button_size_large" type="option" value="btn-large">
+			<dynamic-element name="option_banner_button_size_large" type="option" value="btn-lg">
 				<meta-data locale="en_US">
 					<entry name="label">
 						<![CDATA[Large]]>
@@ -166,14 +166,14 @@
 					</entry>
 				</meta-data>
 			</dynamic-element>
-			<dynamic-element name="option_banner_button_size_small" type="option" value="btn-small">
+			<dynamic-element name="option_banner_button_size_small" type="option" value="btn-sm">
 				<meta-data locale="en_US">
 					<entry name="label">
 						<![CDATA[Small]]>
 					</entry>
 				</meta-data>
 			</dynamic-element>
-			<dynamic-element name="option_banner_button_size_mini" type="option" value="btn-mini">
+			<dynamic-element name="option_banner_button_size_mini" type="option" value="btn-xs">
 				<meta-data locale="en_US">
 					<entry name="label">
 						<![CDATA[Mini]]>
@@ -185,7 +185,7 @@
 					<![CDATA[Banner Button Size]]>
 				</entry>
 				<entry name="predefinedValue">
-					<![CDATA[["btn-large"]]]>
+					<![CDATA[["btn-lg"]]]>
 				</entry>
 				<entry name="tip">
 					<![CDATA[]]>

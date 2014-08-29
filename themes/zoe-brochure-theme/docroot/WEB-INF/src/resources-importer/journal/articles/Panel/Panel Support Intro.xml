@@ -39,7 +39,7 @@
 				<dynamic-content><![CDATA[1]]></dynamic-content>
 			</dynamic-element>
 			<dynamic-element name="button_size" type="select">
-				<dynamic-content><![CDATA[btn-large]]></dynamic-content>
+				<dynamic-content><![CDATA[btn-lg]]></dynamic-content>
 			</dynamic-element>
 			<dynamic-element name="button_style" type="select">
 				<dynamic-content><![CDATA[btn btn-success]]></dynamic-content>

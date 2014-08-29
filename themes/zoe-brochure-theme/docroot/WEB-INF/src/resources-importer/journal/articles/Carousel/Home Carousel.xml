@@ -27,10 +27,10 @@
 				<dynamic-content><![CDATA[1]]></dynamic-content>
 			</dynamic-element>
 			<dynamic-element name="carousel_button_style" type="select">
-				<dynamic-content><![CDATA[btn]]></dynamic-content>
+				<dynamic-content><![CDATA[btn btn-default]]></dynamic-content>
 			</dynamic-element>
 			<dynamic-element name="carousel_button_size" type="select">
-				<dynamic-content><![CDATA[btn-large]]></dynamic-content>
+				<dynamic-content><![CDATA[btn-lg]]></dynamic-content>
 			</dynamic-element>
 		</dynamic-element>
 		<dynamic-element name="carousel_caption_alignment" type="select">
@@ -48,10 +48,10 @@
 				<dynamic-content><![CDATA[]]></dynamic-content>
 			</dynamic-element>
 			<dynamic-element name="carousel_button_style" type="select">
-				<dynamic-content><![CDATA[btn]]></dynamic-content>
+				<dynamic-content><![CDATA[btn btn-default]]></dynamic-content>
 			</dynamic-element>
 			<dynamic-element name="carousel_button_size" type="select">
-				<dynamic-content><![CDATA[btn-large]]></dynamic-content>
+				<dynamic-content><![CDATA[btn-lg]]></dynamic-content>
 			</dynamic-element>
 		</dynamic-element>
 		<dynamic-element name="carousel_caption_alignment" type="select">
@@ -69,10 +69,10 @@
 				<dynamic-content><![CDATA[]]></dynamic-content>
 			</dynamic-element>
 			<dynamic-element name="carousel_button_style" type="select">
-				<dynamic-content><![CDATA[btn]]></dynamic-content>
+				<dynamic-content><![CDATA[btn btn-default]]></dynamic-content>
 			</dynamic-element>
 			<dynamic-element name="carousel_button_size" type="select">
-				<dynamic-content><![CDATA[btn-large]]></dynamic-content>
+				<dynamic-content><![CDATA[btn-lg]]></dynamic-content>
 			</dynamic-element>
 		</dynamic-element>
 		<dynamic-element name="carousel_caption_alignment" type="select">

@@ -6,20 +6,20 @@
 #set ($icon_width = "")
 #set ($integer = 0)
 #set ($num_cols = $integer.parseInt($number_of_columns.data))
-#set ($span = "")
+#set ($col = "")
 
 #if ($num_cols == 5)
-	#set ($span = "span2-4")
+	#set ($col = "col-md-2-4")
 #elseif ($num_cols == 4)
-	#set ($span = "span3")
+	#set ($col = "col-md-3")
 #elseif ($num_cols == 3)
-	#set ($span = "span4")
+	#set ($col = "col-md-4")
 #elseif ($num_cols == 2)
-	#set ($span = "span6")
+	#set ($col = "col-md-6")
 #end
 
 #if ($num_cols == 1)
-	<div class="row-fluid" id="zoeClickablePanel${content_id}">
+	<div class="row" id="zoeClickablePanel${content_id}">
 #end
 
 #foreach ($cur_panel_heading in $clickable_panel_heading.getSiblings())
@@ -52,21 +52,21 @@
 	#end
 
 	#if ($mod == 1 && $num_cols != 1)
-		<div class="row-fluid" id="zoeClickablePanel${content_id}">
+		<div class="row" id="zoeClickablePanel${content_id}">
 	#end
 
 	#if (!$cur_panel_heading.link_url.data.isEmpty())
-		<a class="$span zoe-clickable-panel zoe-panel" href="$cur_panel_heading.link_url.data">
+		<a class="$col zoe-clickable-panel zoe-panel" href="$cur_panel_heading.link_url.data">
 	#else
-		<div class="$span zoe-clickable-panel zoe-panel">
+		<div class="$col zoe-clickable-panel zoe-panel">
 	#end
-		<div class="zoe-panel-image $clickable_panel_icon_shape.data" style="$background_color $icon_padding $icon_width">
+		<div class="zoe-panel-image $clickable_panel_icon_shape.data" style="$background_color $icon_padding">
 			#if (!$clickable_panel_icon.data.isEmpty())
-				<i class="$clickable_panel_icon.data" style="$icon_color $icon_size"></i>
+				<span class="$clickable_panel_icon.data" style="$icon_color $icon_size"></span>
 			#end
 
 			#if (!$clickable_panel_image.data.isEmpty())
-				<img alt="" src="$clickable_panel_icon.data" />
+				<img alt="" src="$clickable_panel_icon.data" style="$icon_width"/>
 			#end
 		</div>
 

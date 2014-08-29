@@ -3,19 +3,19 @@
 #set ($num_cols = $integer.parseInt($number_of_columns.data))
 
 #if ($num_cols == 5)
-	#set ($span = "span2dot4")
+	#set ($col = "col-md-2-4")
 #elseif ($num_cols == 4)
-	#set ($span = "span3")
+	#set ($col = "col-md-3")
 #elseif ($num_cols == 3)
-	#set ($span = "span4")
+	#set ($col = "col-md-4")
 #elseif ($num_cols == 2)
-	#set ($span = "span6")
+	#set ($col = "col-md-6")
 #else
-	#set ($span = "")
+	#set ($col = "")
 #end
 
 #if ($num_cols == 1)
-	<div class="row-fluid" id="zoePricingTable${content_id}">
+	<div class="row" id="zoePricingTable${content_id}">
 #end
 
 #if (!$pricing_table_heading.getSiblings().isEmpty())
@@ -23,10 +23,10 @@
 		#set ($mod = ${velocityCount}%${num_cols})
 
 		#if ($mod == 1 && $num_cols != 1)
-			<div class="row-fluid" id="zoePricingTable${content_id}">
+			<div class="row" id="zoePricingTable${content_id}">
 		#end
 
-		<div class="$span zoe-pricing-table">
+		<div class="$col zoe-pricing-table">
 			<h3>$cur_pricing_table_heading.data</h3>
 
 			<p class="rate">
@@ -35,7 +35,7 @@
 				<span class="units-of-time">/ $cur_pricing_table_heading.units_of_time.data</span>
 			</p>
 
-			<ul class="unstyled">
+			<ul class="list-unstyled">
 				#set ($li_class = "")
 
 				#foreach ($cur_pricing_table_feature in $cur_pricing_table_heading.feature.getSiblings())
