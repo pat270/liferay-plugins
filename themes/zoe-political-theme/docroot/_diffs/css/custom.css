@@ -114,9 +114,9 @@ $dockbarOpenGradientStart: #0EA6F9;
 			float: left;
 			list-style: none;
 			margin: 0;
+			padding-top: 6px;
 			position: absolute;
 			top: 6px;
-			z-index: 401;
 
 			li {
 				display: block;
@@ -130,7 +130,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 					width: 37px;
 
 					&.facebook, &.twitter, &.linkedin {
-						background-position: -3px 5px;
+						background-position: -3px 0;
 					}
 
 					span {
@@ -152,7 +152,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 			top: 84px;
 
 			a {
-				font-size: 1.0em;
+				font-size: 1em;
 				padding: 3px 10px;
 			}
 		}
@@ -372,7 +372,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 		@include box-shadow(rgba(0, 0, 0, 0.5) 1px 1px 15px);
 	}
 
-
 	#content #main-content {
 		@include box-shadow(rgba(0, 0, 0, 0.1) 1px 1px 15px);
 	}
@@ -392,7 +391,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 		border-width: 0;
 	}
 
-	@include respond-to(tablet,phone) {
+	@include respond-to(phone, tablet) {
 		#content #main-content {
 			margin-top: 45px;
 			width: auto;
@@ -407,7 +406,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 			@include box-shadow(rgba(0, 0, 0, 0.3) 1px 1px 15px);
 
 			#sign-in {
-				top: 0px;
+				top: 0;
 			}
 
 			.call-to-action {
@@ -463,8 +462,8 @@ $dockbarOpenGradientStart: #0EA6F9;
 								background-color: #555;
 
 								a {
-									color: #FFF;
 									background-color: transparent;
+									color: #FFF;
 								}
 							}
 
@@ -487,7 +486,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 		}
 
 		body.independent #heading {
-			background-color: #EEEEEE;
+			background-color: #EEE;
 		}
 
 		body.republican #heading {
