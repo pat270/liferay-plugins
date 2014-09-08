@@ -4,16 +4,20 @@
 	<dynamic-element name="fa_iconName" type="text" index-type="">
 		<dynamic-content><![CDATA[icon-home]]></dynamic-content>
 	</dynamic-element>
+
 	<dynamic-element name="fa_iconColor" type="text" index-type="">
 		<dynamic-content><![CDATA[ffffff]]></dynamic-content>
 	</dynamic-element>
+
 	<dynamic-element name="fa_iconBackgroundColor" type="text" index-type="">
 		<dynamic-content><![CDATA[3a3b3e]]></dynamic-content>
 	</dynamic-element>
+
 	<dynamic-element name="featureColumnHeader" type="text" index-type="">
 		<dynamic-content><![CDATA[Editable Home Page]]></dynamic-content>
 	</dynamic-element>
-		<dynamic-element name="featureColumnDescription" type="text_area" index-type="">
+	
+	<dynamic-element name="featureColumnDescription" type="text_area" index-type="">
 		<dynamic-content><![CDATA[I've seen things you people wouldn't believe. Attack ships off the shoulder of Orion. I've seen C beams glitter in the dark near the Tannhauser gate. All those moments.. will be lost in time. Like tears in rain. Time to die..]]></dynamic-content>
 	</dynamic-element>
 </root>

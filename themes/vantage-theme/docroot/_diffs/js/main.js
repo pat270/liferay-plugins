@@ -5,10 +5,9 @@ AUI().ready(
 	loaded.
 	*/
 
-
-
 	function() {
-	}
+	    }
+
 );
 
 Liferay.Portlet.ready(
@@ -22,6 +21,7 @@ Liferay.Portlet.ready(
 
 	function(portletId, node) {
 	}
+
 );
 
 Liferay.on(
@@ -35,141 +35,153 @@ Liferay.on(
 	function() {
 	}
 
-
-	// original #breadcrumbs position in regards to document (not viewport)
-	
-
-	
 );
 
-/*
-YUI().use('node', function(Y) {
+YUI().use('node', function verticalAlignSiteTitle(Y) {
+
 	// help set site-name (in banner area) vertically centered
 	var title = Y.one('#banner h1.site-title .site-name');
-	var height = title.get('offsetHeight');
-	var moveHeight = height * -0.5;
-	moveHeight = moveHeight + "px";
 
-	title.setStyle('marginTop', moveHeight);
+	if (title) {
+		title.setStyle('right', '35px');
+		title.setStyle('top', '50%');
+
+		var height = parseInt(title.getComputedStyle('height'));
+		var moveHeight = height * -0.5;
+
+		moveHeight = moveHeight + 'px';
+
+		title.setStyle('margin-top', moveHeight);
+
+		title.setStyle('visibility', 'visible');
+	}
 })
-*/
 
 /*** sticky nav bar ***/
-/*
-YUI().use('node', function(X) {
+// note: in order to make this function work, we assume a lot of things.. such as the margin of
+// the entire body wrapper having a margin of 0 and its position being static amongst other things.
 
-	var navbarStaticTop = document.querySelector(".aui #breadcrumbs");
-    var navBox = navbarStaticTop.getBoundingClientRect();
-    var docBody = document.body;
-    var docElem = document.documentElement;
-    var scrollTop = window.pageYOffset || docElem.scrollTop || docBody.scrollTop;
-    var clientTop = docElem.clientTop || docBody.clientTop || 0;
-    var navOriginalYDoc = Math.round(navBox.top + scrollTop - clientTop); // nav original y position to document
+YUI().use('node', function stickyNavBar(X) {
 
-    var navComputedStyle = getComputedStyle(navbarStaticTop);
+    function getNavPositionValues() {
+		navWidth = navParentContainer.getComputedStyle('width'); // nav physical width should be its parent's width
+		navHeight = navbar.getComputedStyle('height');
+	    navParentBox = (document.querySelector('#wrapper')).getBoundingClientRect();
+	    bannerBox = (document.querySelector('.aui #banner .site-title')).getBoundingClientRect();
 
-    var navHeight = navbarStaticTop.scrollHeight; // height of nav bar
-    var navOriginalPosition = navComputedStyle.getPropertyValue("position");
-    var navOriginalLeft = navComputedStyle.getPropertyValue("left");
-    var navOriginalTop = navComputedStyle.getPropertyValue("top");
+	    docBody = document.body;
+	    docElem = document.documentElement;
+	    scrollLeft = window.pageXOffset || docElem.scrollLeft || docBody.scrollLeft;
+	    scrollTop = window.pageYOffset || docElem.scrollTop || docBody.scrollTop;
+	    clientLeft = docElem.clientLeft || docBody.clientLeft || 0;
+	    clientTop = docElem.clientTop || docBody.clientTop || 0;
+	    navLeftToDoc = Math.round(navParentBox.left + scrollLeft - clientLeft); // nav unfixed x position to document set to parent's x position
+	    navTopToDoc = Math.round(bannerBox.top + banner.get('scrollHeight') + scrollTop - clientTop); // nav unfixed y position to document is the bottom of banner (navbar is immediately below banner)
+	    
+		return;
+    }
 
-    var mainContent = document.querySelector(".aui #main-content");
-    var mainContentOriginalMarginTop = getComputedStyle(mainContent).getPropertyValue("margin-top");
-
-	X.on('scroll', function(e) {     
-
+	function positionNavBar() {
 		scrollTop = window.pageYOffset || docElem.scrollTop || docBody.scrollTop;
 
-	    if (scrollTop > navOriginalYDoc)
-	    {
-	    	// snap nav bar to top of viewport
-	    	if (navComputedStyle.getPropertyValue("position") != "fixed")
-	    	{
-		    	navbarStaticTop.style['position'] = "fixed";
-		    	navbarStaticTop.style['left'] = "0";
-		    	navbarStaticTop.style['top'] = "0";
+	    if (scrollTop > navTopToDoc) {
+	    	// if nav bar isn't fixed, we set it to 'fixed'
+	    	if (navbar.getComputedStyle('position') != 'fixed') {
+	    		// stick nav bar to top of viewport
+		    	navbar.setStyle('position', 'fixed');
+		    	navbar.setStyle('left', navLeftToDoc + 'px');
+		    	navbar.setStyle('top', '0');
+		    	navbar.setStyle('width', navWidth);
 
-		    	// compensate nav bar space by pushing down all elements by nav bar height
-		    	if (mainContentOriginalMarginTop != "0")
-		    	{
-		    		mainContent.style.marginTop = (parseInt(navHeight) + parseInt(mainContentOriginalMarginTop.replace(/px/, ""))) + "px";
-		    	}
-		    	else 
-		    	{
-		    		mainContent.style.marginTop = navHeight + "px";
-		    	}
+		    	mainContent.setStyle('margin-top', navbar.getComputedStyle('height'));
+	    	}
+	    	// nav bar is already fixed.. just adjust its width and left position
+	    	else {
+	    		navbar.setStyle('left', navLeftToDoc + 'px');
+	    		navbar.setStyle('width', navWidth);
+
+	    		mainContent.setStyle('margin-top', navbar.getComputedStyle('height'));
 	    	}
 	    }
-	    else
-	    {
-	    	if (navbarStaticTop.style['position'] == "fixed")
-	    	{
-	    		navbarStaticTop.style['position'] = navOriginalPosition;
-		    	navbarStaticTop.style['left'] = navOriginalLeft;
-		    	navbarStaticTop.style['top'] = navOriginalTop;
+	    else {
+	    	// if nav bar is fixed, we set it to 'unfixed'
+	    	if (navbar.getComputedStyle('position') == 'fixed') {
+	    		// un-stick nav bar back to its previous position
+	    		navbar.setStyle('position', 'static');
+		    	navbar.setStyle('left', '0');
+		    	navbar.setStyle('top', '0');
+		    	navbar.setStyle('width', navWidth);
 
-		    	if (mainContentOriginalMarginTop != '')
-		    	{	
-		    		mainContent.style.marginTop = mainContentOriginalMarginTop + "px";
-		    	}
-		    	else
-		    	{
-		    		mainContent.style.marginTop = '';
-		    	}
+		    	// un-compensate nav bar space that was used to push down all elements below nav bar
+		    	mainContent.setStyle('margin-top', (parseInt(mainContent.getComputedStyle('margin-top')) - parseInt(navbar.getComputedStyle('height'))) + 'px');
+	    	}
+	    	else {
+	    		navbar.setStyle('left', navLeftToDoc + 'px');
+	    		navbar.setStyle('width', navWidth);
 	    	}
 	    }
+
+	    return;
+	}
+
+	var	banner, bannerBox;
+	var clientLeft, clientTop, docBody, docElem, scrollLeft, scrollTop;
+	var	domElemIsDefined;
+	var	mainContent;
+	var navbar, navBox, navHeight, navLeftToDoc, navParentBox, navParentContainer,  
+	navTopToDoc, navWidth;
+		 
+	navbar = X.one('#navigation');
+	navParentContainer = X.one('#wrapper');
+	banner = X.one('#banner .site-title'); // banner site-title element is immediately above navbar
+	mainContent = X.one('#main-content'); // mainConten is the giant wrapper that wraps everything below navbar
+
+	if (navbar && navParentContainer && banner && mainContent) {
+		domElemIsDefined = true;
+	}
+	else {
+		domElemIsDefined = false;
+	}
+
+	if (domElemIsDefined) {
+		getNavPositionValues();
+		positionNavBar();
+	}
+
+	X.all('.aui .nav-add-controls > li > a, .aui .nav-account-controls > li > a, .aui .navbar-static-top .container > a').on('click', function() {
+		// the click event doesn't wait for dom elements to refresh.. so
+		// wait for dom elements to refresh before getting dom element values
+
+		X.on('domready', function domReadyEvent () {
+			if (domElemIsDefined) {
+				getNavPositionValues();
+				positionNavBar();
+			}
+		});
 	});
-})
-*/
-/*
-YUI().use('node', function(X) {
 
-	var navbarStaticTop = document.querySelector(".aui #breadcrumbs");
-    var navBox = navbarStaticTop.getBoundingClientRect();
-    var docBody = document.body;
-    var docElem = document.documentElement;
-    var scrollTop = window.pageYOffset || docElem.scrollTop || docBody.scrollTop;
-    var clientTop = docElem.clientTop || docBody.clientTop || 0;
-    var navOriginalYDoc = Math.round(navBox.top + scrollTop - clientTop); // nav original y position to document
-
-    var navComputedStyle = getComputedStyle(navbarStaticTop);
-
-    var navHeight = navbarStaticTop.scrollHeight; // height of nav bar
-    var navOriginalPosition = "static";
-    var navOriginalLeft = "0";
-    var navOriginalTop = "0";
-
-    var mainContent = document.querySelector(".aui #main-content");
-    var mainContentOriginalMarginTop = "0";
-
-	X.on('scroll', function(e) {     
-
-		scrollTop = window.pageYOffset || docElem.scrollTop || docBody.scrollTop;
-
-	    if (scrollTop > navOriginalYDoc)
-	    {
-	    	// snap nav bar to top of viewport
-	    	if (mainContent.style.position != "fixed")
-	    	{
-		    	navbarStaticTop.style['position'] = "fixed";
-		    	navbarStaticTop.style['left'] = "0";
-		    	navbarStaticTop.style['top'] = "0";
-
-		    	navbarStaticTop.style.width = "100vw";
-		    	mainContent.style.marginTop = navHeight + "px";
-	    	}
-	    }
-	    else
-	    {
-	    	if (navbarStaticTop.style['position'] == "fixed")
-	    	{
-	    		navbarStaticTop.style['position'] = navOriginalPosition;
-		    	navbarStaticTop.style['left'] = navOriginalLeft;
-		    	navbarStaticTop.style['top'] = navOriginalTop;
-
-		    	mainContent.style.marginTop = 0;
-	    	}
-	    }
+    X.on('resize', function onResizeEvent (event) {
+    	if (domElemIsDefined) {
+    		getNavPositionValues();
+    		positionNavBar();
+    	}
 	});
-})
-*/
+
+    // for some reason, the static top bar's 'add' and 'edit' buttons doesn't register mouse clicks
+    X.on('click', function onClickEvent (event) {
+    	// really, the possibility of clicking on anything that could cause a rearrangment of elements
+    	// should be accounted for (except this function doesn't cover the clicking of a scroll bar..
+    	// how to do that)
+    	
+    	if (domElemIsDefined) {
+    		getNavPositionValues();
+    		positionNavBar();
+    	}
+    });
+
+	X.on('scroll', function onScrollEvent (event) {
+		if (domElemIsDefined) {
+			positionNavBar();
+		}
+	});
+});
