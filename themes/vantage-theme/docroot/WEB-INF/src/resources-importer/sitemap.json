@@ -1,0 +1,30 @@
+{
+	"layoutTemplateId": "1_3_1_columns",
+	"privatePages": [
+		{
+			"columns": [
+				[
+					"Main Carousel Instance 1.xml"
+				],
+				[
+					"Feature Column Instance 1.xml"
+				],
+				[
+					"Feature Column Instance 2.xml"
+				],
+				[
+					"Feature Column Instance 3.xml"
+				],
+				[
+					"Headline Widget Instance.xml",
+					{
+						"portletId": "101"
+					}
+				]
+			],
+			"friendlyURL": "/home",
+			"name": "Home",
+			"title": "Home"
+		}
+	]
+}
