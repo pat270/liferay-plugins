@@ -428,7 +428,16 @@ $default-box-shadow-v-offset: 1px;
 		&:first-child {
 			margin-left: 0;
 		}
+
+		&.col-xs-6 {
+			@include respond-to(phone, tablet) {
+				margin-left: 1%;
+				margin-right: 1%;
+				width: 48%;
+			}
+		}
 	}
+
 
 	/* -------- Media -------- */
 
@@ -896,7 +905,7 @@ $default-box-shadow-v-offset: 1px;
 	.zoe-panel-PANEL-HOME-PAGE {
 		margin: 0;
 
-		.zoe-panel {
+		.zoe-panel.col-md-4 {
 			width: 32%;
 
 			&:first-child {
@@ -905,6 +914,14 @@ $default-box-shadow-v-offset: 1px;
 
 			&:last-child {
 				margin-left: 2%;
+			}
+
+			&.col-xs-12 {
+				@include respond-to(phone, tablet) {
+					margin-left: 0;
+					margin-right: 0;
+					width: 100%;
+				}
 			}
 		}
 
@@ -1191,7 +1208,7 @@ $default-box-shadow-v-offset: 1px;
 			}
 		}
 
-		.media {
+		.media.col-md-12 {
 			.media-heading {
 				margin: 20px 0;
 				text-align: center;
