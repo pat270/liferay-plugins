@@ -37,49 +37,53 @@ $dockbarOpenGradientStart: #A7C86C;
 				display: inline-block;
 			}
 		}
+
+		img {
+			height: 100%;
+			margin-bottom: 10px;
+			max-width: 100%;
+		}
 	}
 
 	/* ---------- Dockbar ---------- */
 
 	.dockbar-split .dockbar {
-		.navbar-inner {
-			.nav {
-				background-color: $dockbarGradientEnd;
+		.nav {
+			background-color: $dockbarGradientEnd;
 
-				> li {
-					background-color: transparent;
-				}
+			> li {
+				background-color: transparent;
+			}
 
-				li.dropdown {
-					&.active, &.open, &.open.active {
-						> .dropdown-toggle {
-							background-color: $dockbarOpenGradientEnd;
-						}
-					}
-				}
-
-				&.nav-account-controls > li > a {
-					padding: 6px 15px;
-
-					&:hover {
-						background-color: $dockbarOpenGradientStart;
+			li.dropdown {
+				&.active, &.open, &.open.active {
+					> .dropdown-toggle {
+						background-color: $dockbarOpenGradientEnd;
 					}
 				}
 			}
 
-			.nav-add-controls {
-				background: transparent;
+			&.nav-account-controls > li > a {
+				padding: 6px 15px;
 
-				> li > a {
-					background: #85A056;
+				&:hover {
+					background-color: $dockbarOpenGradientStart;
+				}
+			}
+		}
 
-					&:hover {
-						background: #647840;
-					}
+		.nav-add-controls {
+			background: transparent;
 
-					&.toggle-controls-link {
-						background: #92F545;
-					}
+			> li > a {
+				background: #85A056;
+
+				&:hover {
+					background: #647840;
+				}
+
+				&.toggle-controls-link {
+					background: #92F545;
 				}
 			}
 		}
@@ -96,16 +100,12 @@ $dockbarOpenGradientStart: #A7C86C;
 
 	#loggedInUsername {
 		left: 0;
-
-		&, #signIn {
-			color: #E8E8E8;
-			position: absolute;
-			top: -14px;
-		}
 	}
 
-	#signIn {
-		right: 0;
+	#loggedInUsername, #signIn {
+		color: #E8E8E8;
+		position: absolute;
+		top: -14px;
 	}
 
 	/* ---------- Banner ---------- */
@@ -115,7 +115,7 @@ $dockbarOpenGradientStart: #A7C86C;
 		margin: 0 auto;
 		padding: 22px 0 0;
 		position: relative;
-		width: 960px;
+		max-width: 960px;
 
 		#heading {
 			height: 100px;
@@ -170,39 +170,41 @@ $dockbarOpenGradientStart: #A7C86C;
 
 	/* ---------- Navigation ---------- */
 
-	#navigation {
-		height: 50px;
-		margin-bottom: 45px;
-
-		ul {
-			display: inline-block;
+	@include respond-to(desktop) {
+		#navigation {
 			height: 50px;
-			margin: 0;
+			margin-bottom: 45px;
 
-			li {
-				float: left;
-				list-style: none;
+			ul {
+				display: inline-block;
+				height: 50px;
+				margin: 0;
 
-				&.selected a {
-					background: url(../images/custom/selected-bg.png) repeat-x 0 0;
+				li {
+					float: left;
+					list-style: none;
+
+					&.selected a {
+						background: url(../images/custom/selected-bg.png) repeat-x 0 0;
+					}
+				}
+
+				.lfr-nav-hover {
+					background-color: rgba(150, 181, 98, 0.3);
 				}
 			}
 
-			.lfr-nav-hover {
-				background-color: rgba(150, 181, 98, 0.3);
-			}
-		}
+			a {
+				display: block;
 
-		a {
-			display: block;
-
-			&:link, &:visited {
-				color: #FFF;
-				font-size: 12px;
-				line-height: 14px;
-				padding: 20px 15px 16px 15px;
-				text-decoration: none;
-				text-transform: uppercase;
+				&:link, &:visited {
+					color: #FFF;
+					font-size: 12px;
+					line-height: 14px;
+					padding: 20px 15px 16px 15px;
+					text-decoration: none;
+					text-transform: uppercase;
+				}
 			}
 		}
 	}
@@ -257,12 +259,13 @@ $dockbarOpenGradientStart: #A7C86C;
 	}
 
 	h4, h5, h6 {
+		font-weight: bold;
 		line-height: 1;
 	}
 
 	#main-content {
 		margin: 0 auto;
-		width: 960px;
+		max-width: 960px;
 	}
 
 	h1.underlined {
@@ -377,10 +380,7 @@ $dockbarOpenGradientStart: #A7C86C;
 			display: inline-block;
 			font-family: Georgia, "Times New Roman", Times, serif;
 			font-size: 18px;
-			position: absolute;
-			right: 20px;
-			top: 25%;
-			width: 267px;
+			margin-left: 10px;
 
 			&:after, &:before {
 				background-image: url(../images/custom/quotemarks.png);
@@ -479,14 +479,12 @@ $dockbarOpenGradientStart: #A7C86C;
 	/* ---------- Extras ---------- */
 
 	.dockbar-split .dockbar {
-		.navbar-inner {
-			.nav li.dropdown.open > .dropdown-toggle {
-				@include background-image(linear-gradient($dockbarOpenGradientStart, $dockbarOpenGradientEnd));
-			}
+		.nav li.dropdown.open > .dropdown-toggle {
+			@include background-image(linear-gradient($dockbarOpenGradientStart, $dockbarOpenGradientEnd));
+		}
 
-			.nav-account-controls {
-				@include background-image(linear-gradient($dockbarGradientStart 0%, $dockbarGradientStart 10%, $dockbarGradientEnd 100%));
-			}
+		.nav-account-controls {
+			@include background-image(linear-gradient($dockbarGradientStart 0%, $dockbarGradientStart 10%, $dockbarGradientEnd 100%));
 		}
 	}
 
@@ -518,6 +516,12 @@ $dockbarOpenGradientStart: #A7C86C;
 		@include box-shadow(#888 2px 2px 4px);
 	}
 
+	.breadcrumb {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 960px;
+	}
+
 	input[type="reset"], input[type="reset"]:hover, .portlet-navigation .nav-menu h2 {
 		@include background-image(linear-gradient(left top, #343434, #242424));
 	}
@@ -531,6 +535,84 @@ $dockbarOpenGradientStart: #A7C86C;
 
 		.description {
 			@include text-shadow(1px 1px #FFF);
+		}
+	}
+
+	/* ---------- Responsive ---------- */
+
+	@include respond-to(phone, tablet) {
+		#banner {
+			background-image: none;
+			width: auto;
+
+			#heading {
+				height: auto;
+			}
+
+			.page-search {
+				margin: 2px 0 15px;
+				position: static;
+			}
+		}
+
+		#footer #footerContent {
+			width: auto;
+		}
+
+		#main-content {
+			width: auto;
+		}
+
+		#navigation {
+			margin: -25px -15px;
+
+			ul {
+				background-color: #292929;
+				list-style: none;
+				padding: 10px 0;
+
+				li {
+					&.selected {
+						background-color: #B2CF7D;
+					}
+
+					a {
+						color: #FFF;
+						font-size: 14px;
+					}
+				}
+			}
+		}
+
+		.breadcrumb {
+			background-color: transparent;
+			margin-top: 10px 0;
+			width: auto;
+		}
+
+		.dockbar-split .dockbar {
+			.nav-add-controls > li > a {
+				background-color: transparent;
+			}
+
+			.nav {
+				background-color: transparent;
+			}
+
+			.container-fluid > .nav > li.info-items {
+				width: 99%;
+			}
+		}
+
+		.logo {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 150px;
+		}
+
+		.web-form-portlet.make-appointment {
+			width: auto;
 		}
 	}
 }
