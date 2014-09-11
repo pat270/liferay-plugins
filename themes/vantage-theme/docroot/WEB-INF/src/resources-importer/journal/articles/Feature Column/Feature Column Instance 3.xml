@@ -5,10 +5,10 @@
 		<dynamic-content><![CDATA[icon-hand-right]]></dynamic-content>
 	</dynamic-element>
 	<dynamic-element name="fa_iconColor" type="text" index-type="">
-		<dynamic-content><![CDATA[ff1919]]></dynamic-content>
+		<dynamic-content><![CDATA[FF1919]]></dynamic-content>
 	</dynamic-element>
 	<dynamic-element name="fa_iconBackgroundColor" type="text" index-type="">
-		<dynamic-content><![CDATA[9966ff]]></dynamic-content>
+		<dynamic-content><![CDATA[9966FF]]></dynamic-content>
 	</dynamic-element>
 	<dynamic-element name="featureColumnHeader" type="text" index-type="">
 		<dynamic-content><![CDATA[Saves You Time]]></dynamic-content>

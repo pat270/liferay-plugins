@@ -2,9 +2,9 @@
 
 <root available-locales="en_US" default-locale="en_US">
 	<dynamic-element name="Image1530" type="wcm-image" index-type="">
-		<dynamic-content><![CDATA[[$FILE=tumblr_n5e6mau0Jx1st5lhmo1_1280_resized.jpg$]]]></dynamic-content>
+		<dynamic-content><![CDATA[[$FILE=Image1.jpg$]]]></dynamic-content>
 	</dynamic-element>
 	<dynamic-element name="Image1762" type="wcm-image" index-type="">
-		<dynamic-content><![CDATA[[$FILE=tumblr_na0k8dFafa1st5lhmo1_1280_resized.jpg$]]]></dynamic-content>
+		<dynamic-content><![CDATA[[$FILE=Image2.jpg$]]]></dynamic-content>
 	</dynamic-element>
 </root>

@@ -37,31 +37,18 @@ Liferay.on(
 
 );
 
-YUI().use('node', function verticalAlignSiteTitle(Y) {
-
-	// help set site-name (in banner area) vertically centered
-	var title = Y.one('#banner h1.site-title .site-name');
-
-	if (title) {
-		title.setStyle('right', '35px');
-		title.setStyle('top', '50%');
-
-		var height = parseInt(title.getComputedStyle('height'));
-		var moveHeight = height * -0.5;
-
-		moveHeight = moveHeight + 'px';
-
-		title.setStyle('margin-top', moveHeight);
-
-		title.setStyle('visibility', 'visible');
-	}
-})
-
 /*** sticky nav bar ***/
 // note: in order to make this function work, we assume a lot of things.. such as the margin of
 // the entire body wrapper having a margin of 0 and its position being static amongst other things.
 
-YUI().use('node', function stickyNavBar(X) {
+YUI().use('node', 'event-hover', 'transition', function (X) {
+
+	var	banner, bannerBox;
+	var clientLeft, clientTop, docBody, docElem, scrollLeft, scrollTop;
+	var	domElemIsDefined;
+	var	mainContent;
+	var navbar, navBox, navHeight, navLeftToDoc, navParentBox, navParentContainer,  
+	navTopToDoc, navWidth;
 
     function getNavPositionValues() {
 		navWidth = navParentContainer.getComputedStyle('width'); // nav physical width should be its parent's width
@@ -123,13 +110,6 @@ YUI().use('node', function stickyNavBar(X) {
 
 	    return;
 	}
-
-	var	banner, bannerBox;
-	var clientLeft, clientTop, docBody, docElem, scrollLeft, scrollTop;
-	var	domElemIsDefined;
-	var	mainContent;
-	var navbar, navBox, navHeight, navLeftToDoc, navParentBox, navParentContainer,  
-	navTopToDoc, navWidth;
 		 
 	navbar = X.one('#navigation');
 	navParentContainer = X.one('#wrapper');
@@ -159,6 +139,34 @@ YUI().use('node', function stickyNavBar(X) {
 			}
 		});
 	});
+
+	formatMainCarousel();
+
+	function formatMainCarousel() {
+
+		var carousel = X.one('.component.carousel .mainCarousel');
+
+		if (carousel) {
+			var bodyWidth = X.one('body').getComputedStyle('width');
+
+			carousel.setStyle('width', '100%');
+			carousel.setStyle('height', (parseInt(bodyWidth) * .35) + 'px');
+		}
+	}
+
+	X.on('resize', function onResizeEvent (event) {
+    	formatMainCarousel();
+	});
+
+	var onHover = function (event) {
+		event.currentTarget.addClass('open');
+	}
+
+	var offHover = function (event) {
+		event.currentTarget.removeClass('open');
+	}
+
+	X.on('hover', onHover, '#navigation ul > li', offHover);
 
     X.on('resize', function onResizeEvent (event) {
     	if (domElemIsDefined) {

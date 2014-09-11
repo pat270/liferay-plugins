@@ -1,808 +1,1111 @@
-/* This file allows you to override default styles in one central location for easier upgrade and maintenance. */
-
 @import "compass";
-@import "mixins";
 
+$bodyBackgroundColor: #FCFCFC;
 $darkGrayTextColor: #444;
+$darkGrayTitleText: #3B3B3B;
 $hoverBluishColor: #00BCFF;
-$navbarButtonColor: #EFEFEF;
-$navbarStaticTopColor: #222;
-$themeMenuColor: #3A3B3E;
+$linksColor: #248CC8;
+$linkHoverColor: #F47E3C;
+$navbarBarColor: #3A3B3E;
+$navbarTextColor: #E2E2E2;
+$portletNavButtonColor: #EFEFEF;
+$staticTopBarColor: #222;
 
 .aui {
-
-	/**************/
-	/*** global ***/
-	/**************/
-
-	/* wrapper for the entire page */
-
-	#wrapper {
-
-		color: $darkGrayTextColor;
-		font-family: sans-serif;
-		line-height: 22px;
-		min-height: 100vh;
-		overflow-x: hidden;
-		padding: 0;
-
-		/* area for portlets (so excludes header and footer areas) */
-
-		#content {
-
-			/*** specific column styles ***/
-
-			.portlet-column.span12 {	
-				.portlet-boundary {
-					margin-bottom: 35px;
-
-					/* portlet title */
-
-					.portlet-topper {
-
-						h1 {
-							font-size: 26px;
-							font-weight: bold;
-							letter-spacing: 1px;
-							text-align: center;
-						}
-					}
-
-					/* portlet content */
-
-					.portlet-content {
-
-						text-align: center;
-
-						.navbar .navbar-inner {
-							background-color: transparent;
-							background-image: none;
-							border-width: 0;
-
-							@include box-shadow(none);
-
-							ul {
-								a {
-									background-color: $navbarButtonColor;
-
-									@include border-radius(10px);
-
-									margin-right: 10px;
-
-									@include transition(all 0.4s ease);
-								}
-
-								a:hover {
-
-									background-color: $hoverBluishColor;
-									text-shadow: none;
-								}
-							}
-						}
-					}
-				}
-			}
-
-			.portlet-column.span6 {
-				.portlet-boundary {
-					margin-bottom: 35px;
-
-					/* portlet title */
-
-					.portlet-topper {
-
-						h1 {
-							font-size: 26px;
-							font-weight: bold;
-							letter-spacing: 1px;
-							text-align: center;
-						}
-					}
-
-					/* portlet content */
-
-					.portlet-content {
-
-						text-align: center;
-
-						.navbar .navbar-inner {
-							background-color: transparent;
-							background-image: none;
-							border-width: 0;
-
-							@include box-shadow(none);
-
-							ul {
-								a {
-									background-color: $navbarButtonColor;
-
-									@include border-radius(10px);
-
-									margin-right: 10px;
-
-									@include transition(all 0.4s ease);
-								}
-
-								a:hover {
-
-									background-color: $hoverBluishColor;
-									text-shadow: none;
-								}
-							}
-						}
-					}
-				}
-			}
-
-			.portlet-column.span4 {
-				.portlet-boundary {
-					margin-bottom: 35px;
-
-					/* portlet title */
-
-					.portlet-topper {
-
-						h1 {
-							font-size: 26px;
-							font-weight: bold;
-							letter-spacing: 1px;
-							text-align: center;
-						}
-					}
-
-					/* portlet content */
-
-					.portlet-content {
-
-						text-align: center;
-
-						.navbar .navbar-inner {
-							background-color: transparent;
-							background-image: none;
-							border-width: 0;
-
-							@include box-shadow(none);
-
-							ul {
-								a {
-									background-color: $navbarButtonColor;
-
-									@include border-radius(10px);
-
-									margin-right: 10px;
-
-									@include transition(all 0.4s ease);
-								}
-
-								a:hover {
-
-									background-color: $hoverBluishColor;
-									text-shadow: none;
-								}
-							}
-						}
-					}
-				}
-			}
-
-			.portlet-column.span3 {
-				.portlet-boundary {
-					margin-bottom: 35px;
-
-					/* portlet title */
-
-					.portlet-topper {
-
-						h1 {
-							font-size: 26px;
-							font-weight: bold;
-							letter-spacing: 1px;
-							text-align: center;
-						}
-					}
-
-					/* portlet content */
-
-					.portlet-content {
-
-						text-align: center;
-
-						.navbar .navbar-inner {
-							background-color: transparent;
-							background-image: none;
-							border-width: 0;
-
-							@include box-shadow(none);
-
-							ul {
-								a {
-									background-color: $navbarButtonColor;
-
-									@include border-radius(10px);
-
-									margin-right: 10px;
-
-									@include transition(all 0.4s ease);
-								}
-
-								a:hover {
-
-									background-color: $hoverBluishColor;
-									text-shadow: none;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	/****************************/
-	/*** accounts control bar ***/
-	/****************************/
-
-	.navbar-static-top {
-
-		/* very top navbar inner portion */
-
-		> .navbar-inner {
-
-			padding-left: 0;
-			padding-right: 0;
-
-			/* very top navbar container */
-
-			> .container {
-
-				background-color: $navbarStaticTopColor;
-
-				/*** group of links to the left in top static navbar ***/
-
-				.nav-add-controls {
-
-					> li {
-						> a {
-							height: 20px;
-							padding: 10px 24px; /* side padding = 15px (originally) + 9px (accomodate for losing dividers) = 24px */
-							
-							@include transition(all 0.4s ease);
-
-							i,
-							span {
-								color: #E2E2E2;
-								font-size: 13px;
-								font-weight: bold;
-								text-decoration: none;
-								text-shadow: none;
-							}
-						}
-
-						> a:focus {
-							background-color: $navbarStaticTopColor; /* items only change color when hovered over, not when it received focus here */
-							background-image: none;
-							border-width: 0;
-							outline: none; /* turn off blue outline of item that gets focus */
-						}
-
-						> a:hover {
-							background-color: $hoverBluishColor;
-						}
-					}
-				}
-
-				/*** group of links to the right in top static navbar ***/
-
-				.nav-account-controls {
-
-					/* drop down menu */
-
-					> li {
-
-						&.dockbar-item {
-							&.open {
-								> a {
-									background-color: $hoverBluishColor;
-									background-image: none;
-								}
-
-								.dropdown-menu {
-									height: auto;
-									opacity: 1;
-
-									> li {
-										> a {
-											background-image: none;
-
-											@include transition(all 0.4s ease);
-										}
-
-										> a:hover {
-
-											background-color: $hoverBluishColor;
-										}
-
-										> ul {
-											> li {
-												background-image: none;
-
-												@include transition(all 0.4s ease);
-											}
-
-											> li:hover {
-
-												background-color: $hoverBluishColor;
-											}
-										}
-									}
-								}
-							}
-
-							/* not open */
-
+	body {
+		background-color: $bodyBackgroundColor;
+
+		.navbar-static-top {
+			> .navbar-inner {
+				padding-left: 0;
+				padding-right: 0;
+
+				> .container {
+					background-color: $staticTopBarColor;
+
+					.nav-add-controls {
+						> li {
 							> a {
-							}
-
-							> a:hover {
-
-								background-color: $hoverBluishColor;
-							}
-
-							.dropdown-menu {
-
-								background-color: $navbarStaticTopColor;
-								display: block;
-								height: 0;
-								opacity: 0;
-								overflow: hidden;
-								padding: 5px 0;
+								height: 20px;
+								padding: 10px 24px;
 								
-								@include transition(opacity 0.4s ease);
-							}
-						}
+								@include transition(all 0.4s ease);
 
-						/* dividers between account controls bar items */
+								i,
+								span {
+									color: $navbarTextColor;
+									font-size: 13px;
+									font-weight: bold;
+									text-decoration: none;
 
-						&.divider-vertical {
-
-							background-color: transparent; /* text background-color will be whatever navbar is */
-							border-color: transparent;
-							border-width: 0;
-							margin: 0;
-						}
-
-						> a.dropdown-toggle {
-							height: 20px;
-							padding: 10px 24px; /* side padding = 15px (originally) + 9px (accomodate for losing dividers) = 24px */
-
-							@include transition(all 0.4s ease);
-						}
-
-						/* first tier links when they are clicked on */
-
-						> a:focus {
-
-							background-color: $navbarStaticTopColor; /* items only change color when hovered over, not when it received focus here */
-							background-image: none;
-							border-width: 0;
-							outline: none; /* turn off blue outline of item that gets focus */
-						}
-
-						.dropdown-menu > .active {
-
-							a {
-								background-color: $hoverBluishColor;
-								background-image: none;
-							}
-
-							a:focus {
-								background-color: $hoverBluishColor;
-								background-image: none;
-							}
-
-							a:hover {
-								background-color: $hoverBluishColor;
-								background-image: none;
-							}
-						}
-					}
-
-					i,
-					span {
-						color: #D54E21;
-						font-size: 12px;
-						font-weight: normal;
-						text-decoration: none;
-						text-shadow: none;
-					}
-				}
-			}
-		}
-	} /* end of .navbar-static-top */
-	
-	/*******************/
-	/*** banner area ***/
-	/*******************/
-
-	#banner {
-		#heading {
-			> .site-title {
-				padding: 45px 35px;
-				position: relative;
-
-				.site-name {
-					color: #4B4B4B;
-					font-size: 12px;
-					font-style: italic;
-					font-weight: normal;
-					position: absolute;
-					visibility: hidden; /* will set visibility to "visible" in js file after js formats it correctly */
-				}
-			}
-
-			/* "welcome" label in banner */
-
-			> .page-title {
-
-				display: none;
-			}
-		}
-
-	/********************************************/
-	/*** site nav bar (within banner in html) ***/
-	/********************************************/
-
-		/* the entire nav bar entity */
-
-		#navigation {
-
-			z-index: 1000;
-
-			/* nav bar ul strip */
-
-			> ul {
-
-				background-color: $themeMenuColor;
-				border-width: 0;
-				margin: 0;
-				padding: 0;
-
-				/* list item */
-
-				> li {
-
-					display: inline-block;
-
-					/* each item's clickable area */
-
-					> a {
-
-						@include box-sizing(border-box);
-
-						color: #E2E2E2;
-						display: block;
-						font-size: 13px;
-						font-weight: bold;
-						padding: 20px 35px;
-						text-decoration: none;
-						text-shadow: none;
-
-						@include transition(all 0.4s ease);
-
-						vertical-align: baseline;
-					}
-
-					> a:hover {
-
-						background-color: $hoverBluishColor;
-					}
-				}
-			}
-		}
-	}
-
-	/*******************/
-	/*** breadcrumbs ***/
-	/*******************/
-
-	#breadcrumbs {
-		display: none;
-	}
-
-	/**************/
-	/*** footer ***/
-	/**************/
-
-	#footer {
-		background-color: $themeMenuColor;
-		padding: 30px;
-		text-align: center;
-		
-		> p.powered-by {
-			color: #AAA;
-			font-size: 11.5px;
-			margin-bottom: 0;
-			margin-top: 25px;
-
-			a {
-				color: #DDD;
-			}
-		}
-	}
-
-	/***********************/
-	/*** asset publisher ***/
-	/***********************/
-
-	.portlet-asset-publisher {
-		.portlet-content-container {
-			overflow-x: scroll;
-
-			/* the inner container for the asset publisher portlet */
-
-			.portlet-body {
-
-				height: 100%;
-				margin-bottom: 35px;
-				white-space: nowrap;
-				width: 100%;
-
-				.add-asset-selector {
-
-					/* inner navbar */
-
-					.navbar > .navbar-inner {
-
-						background-color: transparent;
-						background-image: none;
-						border: 0; /* rid the rendered bar for no-bar look */
-
-						@include box-shadow(none);
-
-						ul.nav {
-							float: none;
-							margin-right: 0;
-
-							li {
-
-								/* navbar item link*/
-
-								a {
-
-									background-color: $navbarButtonColor;
-
-									@include border-radius(10px);
-									@include transition(all 0.4s ease);
+									@include text-shadow(none);
 								}
 
-								a:hover {
-
-									background-color: $hoverBluishColor;
+								&:focus {
+									background-color: $staticTopBarColor;
 									background-image: none;
-									text-shadow: none;
+									border-width: 0;
+									outline: none;
 								}
 
-								/* icon-file in navbar items */
-
-								.icon-file {
-
-									color: $darkGrayTextColor;
-									line-height: 1em;
+								&:hover {
+									background-color: $hoverBluishColor;
 								}
+							}
+						}
+					}
 
-								/* text in navbar item*/
-
-								.nav-item-label {
-
-									color: $darkGrayTextColor;
-									font-weight: normal;
-									line-height: 1em;
-								}
-
-								&.dropdown.open {
-									> .dropdown-toggle {
-										background-color: $hoverBluishColor !important;
-										text-shadow: none;
+					.nav-account-controls {
+						> li {
+							&.dockbar-item {
+								&.open {
+									> a {
+										background-color: $hoverBluishColor;
+										background-image: none;
 									}
 
 									.dropdown-menu {
-										border-width: 0;
+										height: auto;
+										opacity: 1;
 
-										@include box-shadow(none);
+										> li {
+											> a {
+												background-image: none;
+
+												@include transition(all 0.4s ease);
+
+												&:hover {
+													background-color: $hoverBluishColor;
+												}
+											}
+
+											> ul {
+												> li > a {
+													background-image: none;
+
+													@include transition(all 0.4s ease);
+
+													&:hover {
+														background-color: $hoverBluishColor;
+													}
+												}
+											}
+										}
+									}
+								}
+
+								> a:hover {
+									background-color: $hoverBluishColor;
+								}
+
+								.dropdown-menu {
+									background-color: $staticTopBarColor;
+									display: block;
+									height: 0;
+									opacity: 0;
+									overflow: hidden;
+									padding: 5px 0;
+									
+									@include transition(opacity 0.4s ease);
+								}
+							}
+
+							&.divider-vertical {
+								background-color: transparent;
+								border-color: transparent;
+								border-width: 0;
+								margin: 0;
+							}
+
+							> a {
+								&.dropdown-toggle {
+									height: 20px;
+									padding: 10px 24px; /* side padding = 15px (originally) + 9px (accomodate for losing dividers) = 24px */
+
+									@include transition(all 0.4s ease);
+								}
+
+								&:focus {
+									background-color: $staticTopBarColor; /* items only change color when hovered over, not when it received focus here */
+									background-image: none;
+									border-width: 0;
+									outline: none; /* turn off blue outline of item that gets focus */
+								}
+							}
+
+							.dropdown-menu > .active {
+								a {
+									background-color: $hoverBluishColor;
+									background-image: none;
+
+									&:focus {
+										background-color: $hoverBluishColor;
+										background-image: none;
+									}
+
+									&:hover {
+										background-color: $hoverBluishColor;
+										background-image: none;
+									}
+								}
+							}
+						}
+
+						i,
+						span {
+							color: #D54E21;
+							font-size: 12px;
+							font-weight: normal;
+							text-decoration: none;
+
+							@include text-shadow(none);
+						}
+					}
+				}
+			}
+		}
+
+		#wrapper {
+			color: $darkGrayTextColor;
+			font-family: sans-serif;
+			font-size: 13px;
+			line-height: 1.5em;
+			min-height: 100%;
+			overflow-x: hidden;
+			padding: 0;
+
+			#banner {
+				#heading {
+					> .site-title {
+						padding: 45px 35px;
+
+						.site-name {
+							color: #4B4B4B;
+							font-size: 24px;
+							font-weight: normal;
+							vertical-align: middle;
+						}
+					}
+
+					> .page-title {
+						display: none;
+					}
+				}
+
+				#navigation {
+					z-index: 1000;
+
+					> ul {
+						background-color: $navbarBarColor;
+						border-width: 0;
+						margin: 0;
+						padding: 0;
+
+						> li {
+							display: inline-block;
+							margin-left: -4px;
+							
+							> a {
+								@include box-sizing(border-box);
+
+								color: $navbarTextColor;
+								display: block;
+								font-size: 13px;
+								font-weight: bold;
+								padding: 20px 35px;
+								text-decoration: none;
+
+								@include text-shadow(none);
+								@include transition(all 0.4s ease);
+
+								vertical-align: baseline;
+
+								&:hover {
+									background-color: $hoverBluishColor;
+								}
+							}
+
+							&.open
+							{
+								> a {
+									background-color: $hoverBluishColor;
+								}
+
+								> ul.child-menu {
+									opacity: 1;
+
+									> li > a {
+										display: block;
+
+										&:hover {
+											background-color: $hoverBluishColor;
+										}
+									}
+								}
+							}
+
+							ul.child-menu {
+								opacity: 0;
+								margin-left: 0;
+								position: absolute;
+
+								@include transition(all 0.4s ease);
+
+								z-index: 99999;
+
+								> li {
+									list-style: none;
+
+									> a {
+										background-color: #343538;
+										@include box-sizing(border-box);
+										color: $navbarTextColor;
+										display: none;
+										padding: 15px 20px;
+										font-size: 13px;
+										font-weight: bold;
+										text-decoration: none;
+
+										@include text-shadow(none);
+										@include transition(all 0.4s ease);
+
+										width: 200px;
+
+										&:hover {
+											background-color: $hoverBluishColor;
+										}
 									}
 								}
 							}
 						}
 					}
 				}
+			}
+
+			#content {
+				#breadcrumbs {
+					display: none;
+				}
 				
-				.asset-abstract:first-of-type {
-					margin: 20px 0;
-				}
+				.portlet-column.span6,
+				.portlet-column.span8,
+				.portlet-column.span12 {
+					.portlet-boundary {
+						margin-bottom: 35px;
 
-				/* each blog entry container */
+						.portlet {
+							padding: 35px;
+							.portlet-topper {
+								margin-bottom: 20px;
 
-				.asset-abstract {
+								h1 {
+									color: $darkGrayTitleText;
+									font-size: 20px;
+									font-weight: 500;
+									line-height: 1.35em;
+									margin: 0;
+									text-align: left;
 
-					border: 1px solid #DDD;
+									img {
+										display: none;
+									}
+								}
+							}
 
-					@include border-radius(15px);
-					@include box-sizing(border-box);
-					
-					display: inline-block;
-					margin: 20px 10px;
-					overflow: hidden;
-					padding: 0 20px 0 10px;
-					text-align: left;
-					text-overflow: ellipsis;
-					vertical-align: top;
-					width: 300px; /* each entry takes up about a third of window width */
-					white-space: normal;					
+							.portlet-content {
+								padding: 0;
+								text-align: left;
 
-					/* blog entry title link */
+								.portlet-body {
+									a,
+									i.icon-cog {
+										color: $linksColor;
 
-					.asset-title {
+										&:hover {
+											color: $linkHoverColor;
+											text-decoration: none;
+										}
 
-						line-height: normal;
+										&:active,
+										&:link,
+										&:visited {
+											text-decoration: none;
+										}
 
-						> a {
+										span {
+											text-decoration: none;
+										}
+									}
 
-						color: #3B3B3B;
-						font-size: 17px;
-						text-decoration: none;
+									.navbar .navbar-inner {
+										background-color: transparent;
+										background-image: none;
+										border-width: 0;
+
+										@include box-shadow(none);
+
+										ul {
+											a {
+												background-color: $portletNavButtonColor;
+
+												@include border-radius(10px);
+
+												margin-right: 10px;
+
+												@include transition(all 0.4s ease);
+
+												&:hover {
+													background-color: $hoverBluishColor;
+													color: $navbarTextColor;
+
+													@include text-shadow(none);
+
+													span {
+														color: auto;
+													}
+												}
+											}
+										}
+									}
+
+									.control-group {
+										> .lfr-search-keywords {
+											border: 1px solid #ccc;
+
+											@include box-sizing(border-box);
+
+											border-radius: 3px;
+											color: #666;
+											font-family: Arial, "Lucida Grande", sans-serif;
+											font-size: 100%;
+											line-height: normal;
+											padding: 3px;
+											word-wrap: break-word;
+
+											&:focus {
+												border-color: #6699FF;
+												@include box-shadow(0 0 1px #6699FF);
+											}
+										}
+
+										> .lfr-search-button {
+											display: none;
+										}
+									}
+								}
+							}
+						}
+
+						&.portlet-boundary_101_.portlet-asset-publisher {
+							.portlet-body {
+								height: 100%;
+								margin-bottom: 35px;
+								overflow-x: scroll;
+								white-space: nowrap;
+								width: 100%;
+
+								.add-asset-selector {
+									.navbar > .navbar-inner {
+										background-color: transparent;
+										background-image: none;
+										border: 0;
+
+										@include box-shadow(none);
+
+										ul.nav {
+											float: none;
+											margin-right: 0;
+
+											li {
+												a {
+													background-color: $portletNavButtonColor;
+
+													@include border-radius(10px);
+													@include transition(all 0.4s ease);
+
+													&:hover {
+														background-color: $hoverBluishColor;
+														background-image: none;
+														color: $navbarTextColor;
+
+														@include text-shadow(none);
+
+														i,
+														span {
+															color: auto;
+														}
+													}
+												}
+
+												.icon-file {
+													line-height: 1em;
+												}
+
+												.nav-item-label {
+													font-weight: normal;
+													line-height: 1em;
+												}
+
+												&.dropdown.open {
+													> .dropdown-toggle {
+														background-color: $hoverBluishColor !important;
+														color: $navbarTextColor !important;
+
+														@include text-shadow(none);
+													}
+
+													.dropdown-menu {
+														border-width: 0;
+
+														@include box-shadow(none);
+													}
+												}
+											}
+										}
+									}
+								}
+								
+								.asset-abstract:first-of-type {
+									margin: 20px 0;
+								}
+
+								.asset-abstract {
+									border: 1px solid #DDD;
+
+									@include border-radius(15px);
+									@include box-sizing(border-box);
+									
+									display: inline-block;
+									margin: 20px 10px 60px 10px;
+									overflow: hidden;
+									padding: 0 20px 0 10px;
+									text-align: left;
+									text-overflow: ellipsis;
+									vertical-align: top;
+									width: 300px;
+									white-space: normal;
+
+									.asset-title {
+										line-height: normal;
+
+										> a {
+										color: $darkGrayTitleText;
+										font-size: 17px;
+										text-decoration: none;
+										}
+									}
+
+									.asset-content {
+										margin-left: 21px;
+
+										.asset-summary {
+											color: #5E5E5E;
+											font-size: 13px;
+										}
+									}
+								}
+							}
+						}
+
+						.journal-content-article {
+							.component.carousel {
+								margin-bottom: 0;
+
+								.mainCarousel {
+									.mainCarouselImage {
+										background-repeat: no-repeat;
+
+										@include background-size(cover);
+
+										height: 100%;
+										left: 0;
+										top: 0;
+										width: 100%;
+									}
+
+									> menu {
+										background: transparent;
+										margin: 0 10px 0 0;
+
+										.carousel-menu-pause {
+											display: none;
+										}
+
+										.carousel-menu-prev {
+											display: none;
+										}
+
+										.carousel-menu-index {
+											border: 2px solid black;
+
+											@include border-radius(8px);
+
+											height: 8px;
+											width: 8px;
+										}
+
+										.carousel-menu-next {
+											display: none;
+										}
+									}
+								}
+							}
+
+							.featureColumnWrapper {
+								@include box-sizing(border-box);
+
+								min-height: 1em;
+								padding: 0 15px;
+								width: 100%;
+
+								> .faIconBackground {
+									background-color: $navbarBarColor;
+
+									@include border-radius(50%);
+
+									display: block;
+									height: 50px;
+									line-height: 50px;
+									margin: 0 auto;
+									text-align: center;
+									width: 50px;
+
+									> .icon-home {
+										color: #FFF;
+									}
+								}
+
+								> .featureColumnHeader {
+									clear: both;
+									color: $darkGrayTitleText;
+									display: block;
+									font-size: 17px;
+									font-weight: bold;
+									margin: 10px 0 0.8em 0;
+									text-align: center;
+								}
+
+								> .featureColumnDescription {
+									color: #5E5E5E;
+									display: block;
+									font-size: 13px;
+									margin: 0 0 10px 0;
+									padding: 0 20px;
+									resize: none;
+									text-align: center;
+								}
+							}
+
+							.hlWidgetWrapper {
+								background-color: #F6F6F6;
+								border-bottom: 1px solid #DDD;
+								border-top:	1px solid #DDD;
+								padding: 25px;
+								text-align: center;		
+
+								.hlWidgetTitle {
+									clear: both;
+									color: $darkGrayTextColor;
+									font-size: 26px;
+									font-weight: 500;
+									letter-spacing: 1px;
+									line-height: 36px;
+									margin: 0;
+									padding: 20px 0 0 0;
+									text-align: center;
+									text-transform: uppercase;
+								}
+
+								.hlWidgetSeparationLine {
+									border-top: 1px solid #EEE;
+									height: 1px;
+									margin: 20px 60px;
+									position: relative;
+								}
+
+								.hlWidgetSubText {
+									clear: both;
+									color: #666;
+									font-size: 14px;
+									font-weight: 200;
+									margin: 0;
+									padding: 0 0 20px 0;
+								}
+							}
+
+							.simpleParagraphWrapper {
+								padding: 35px;
+								text-align: left;
+
+								.simpleParagraphTitleContainer {
+										margin-bottom: 20px;
+
+										> h1 {
+											color: $darkGrayTitleText;
+											font-size: 20px;
+											font-weight: 500;
+											line-height: 1.35em;
+											margin: 0;
+											vertical-align: baseline;
+										}
+								}
+									
+								.simpleParagraphBodyContainer > p {
+									color: #666;
+									margin: 0;
+								}
+							}
+						}
+
+						.icons-container {
+							padding-left: 35px;
+
+							span {
+								color: $linksColor;
+
+								&:hover {
+									> a > span {
+										color: $linkHoverColor;
+										text-decoration: none;
+									}
+								}
+
+								&:active,
+								&:link,
+								&:visited {
+									> a > span {
+										color: auto;
+										text-decoration: none;
+									}
+								}
+							}
 						}
 					}
+				}
 
-					.asset-content {
+				.portlet-column.span3,
+				.portlet-column.span4 {
+					.portlet-boundary {
+						margin-bottom: 0;
 
-						margin-left: 21px;
+						.portlet {
+							padding: 35px;
 
-						.asset-summary {
-							color: #5E5E5E;
-							font-size: 13px;
+							.portlet-topper
+							{
+								margin-bottom: 15px;
+
+								h1 {
+									color: $darkGrayTitleText;
+									font-size: 15px;
+									font-weight: bold;
+									line-height: normal;
+									margin: 0;
+									text-align: left;
+
+									img {
+										display: none;
+									}
+								}
+							}
+
+							.portlet-content {
+								color: $linksColor;
+								line-height: normal;
+								text-align: left;
+								padding: 0;
+
+								.portlet-body {
+									a,
+									i.icon-cog {
+										color: $linksColor;
+
+										&:hover {
+											color: $linkHoverColor;
+											text-decoration: none;
+										}
+
+										&:active,
+										&:link,
+										&:visited {
+											text-decoration: none;
+										}
+
+										span {
+											text-decoration: none;
+										}
+									}
+
+									.navbar .navbar-inner {
+										background-color: transparent;
+										background-image: none;
+										border-width: 0;
+
+										@include box-shadow(none);
+
+										ul {
+											a {
+												background-color: $portletNavButtonColor;
+
+												@include border-radius(10px);
+
+												margin-right: 10px;
+
+												@include transition(all 0.4s ease);
+
+												&:hover {
+													background-color: $hoverBluishColor;
+													color: $navbarTextColor;
+
+													@include text-shadow(none);
+
+													span {
+														color: auto;
+													}
+												}
+											}
+										}
+									}
+
+									.control-group {
+										> .lfr-search-keywords {
+											border: 1px solid #ccc;
+
+											@include box-sizing(border-box);
+
+											border-radius: 3px;
+											color: #666;
+											font-family: Arial, "Lucida Grande", sans-serif;
+											font-size: 100%;
+											line-height: normal;
+											padding: 3px;
+											word-wrap: break-word;
+
+											&:focus {
+												border-color: #6699FF;
+												@include box-shadow(0 0 1px #6699FF);
+											}
+										}
+
+										> .lfr-search-button {
+											display: none;
+										}
+									}
+								}
+							}
+						}
+
+						&.portlet-boundary_101_.portlet-asset-publisher {
+							.portlet-body {
+								height: 100%;
+								margin-bottom: 35px;
+								overflow-x: scroll;
+								white-space: nowrap;
+								width: 100%;
+
+								.add-asset-selector {
+									.navbar > .navbar-inner {
+										background-color: transparent;
+										background-image: none;
+										border: 0;
+
+										@include box-shadow(none);
+
+										ul.nav {
+											float: none;
+											margin-right: 0;
+
+											li {
+												a {
+													background-color: $portletNavButtonColor;
+
+													@include border-radius(10px);
+													@include transition(all 0.4s ease);
+
+													&:hover {
+														background-color: $hoverBluishColor;
+														background-image: none;
+														color: $navbarTextColor;
+
+														@include text-shadow(none);
+
+														i,
+														span {
+															color: auto;
+														}
+													}
+												}
+
+												.icon-file {
+													line-height: 1em;
+												}
+
+												.nav-item-label {
+													font-weight: normal;
+													line-height: 1em;
+												}
+
+												&.dropdown.open {
+													> .dropdown-toggle {
+														background-color: $hoverBluishColor !important;
+														color: $navbarTextColor !important;
+
+														@include text-shadow(none);
+													}
+
+													.dropdown-menu {
+														border-width: 0;
+
+														@include box-shadow(none);
+													}
+												}
+											}
+										}
+									}
+								}
+								
+								.asset-abstract:first-of-type {
+									margin: 20px 0;
+								}
+
+								.asset-abstract {
+									border: 1px solid #DDD;
+
+									@include border-radius(15px);
+									@include box-sizing(border-box);
+									
+									display: inline-block;
+									margin: 20px 10px 60px 10px;
+									overflow: hidden;
+									padding: 0 20px 0 10px;
+									text-align: left;
+									text-overflow: ellipsis;
+									vertical-align: top;
+									width: 300px;
+									white-space: normal;
+
+									.asset-title {
+										line-height: normal;
+
+										> a {
+										color: $darkGrayTitleText;
+										font-size: 17px;
+										text-decoration: none;
+										}
+									}
+
+									.asset-content {
+										margin-left: 21px;
+
+										.asset-summary {
+											color: #5E5E5E;
+											font-size: 13px;
+										}
+									}
+								}
+							}
+						}
+
+						.journal-content-article {
+							.component.carousel {
+								margin-bottom: 0;
+
+								.mainCarousel {
+									.mainCarouselImage {
+										background-repeat: no-repeat;
+
+										@include background-size(cover);
+
+										height: 100%;
+										left: 0;
+										top: 0;
+										width: 100%;
+									}
+
+									> menu {
+										background: transparent;
+										margin: 0 10px 0 0;
+
+										.carousel-menu-pause {
+											display: none;
+										}
+
+										.carousel-menu-prev {
+											display: none;
+										}
+
+										.carousel-menu-index {
+											border: 2px solid black;
+
+											@include border-radius(8px);
+
+											height: 8px;
+											width: 8px;
+										}
+
+										.carousel-menu-next {
+											display: none;
+										}
+									}
+								}
+							}
+
+							.featureColumnWrapper {
+								@include box-sizing(border-box);
+
+								min-height: 1em;
+								padding: 0 15px;
+								width: 100%;
+
+								> .faIconBackground {
+									background-color: $navbarBarColor;
+
+									@include border-radius(50%);
+
+									display: block;
+									height: 50px;
+									line-height: 50px;
+									margin: 0 auto;
+									text-align: center;
+									width: 50px;
+
+									> .icon-home {
+										color: #FFF;
+									}
+								}
+
+								> .featureColumnHeader {
+									clear: both;
+									color: $darkGrayTitleText;
+									display: block;
+									font-size: 17px;
+									font-weight: bold;
+									margin: 10px 0 0.8em 0;
+									text-align: center;
+								}
+
+								> .featureColumnDescription {
+									color: #5E5E5E;
+									display: block;
+									font-size: 13px;
+									margin: 0 0 10px 0;
+									padding: 0 20px;
+									resize: none;
+									text-align: center;
+								}
+							}
+
+							.hlWidgetWrapper {
+								background-color: #F6F6F6;
+								border-bottom: 1px solid #DDD;
+								border-top:	1px solid #DDD;
+								padding: 25px;
+								text-align: center;		
+
+								.hlWidgetTitle {
+									clear: both;
+									color: $darkGrayTextColor;
+									font-size: 26px;
+									font-weight: 500;
+									letter-spacing: 1px;
+									line-height: 36px;
+									margin: 0;
+									padding: 20px 0 0 0;
+									text-align: center;
+									text-transform: uppercase;
+								}
+
+								.hlWidgetSeparationLine {
+									border-top: 1px solid #EEE;
+									height: 1px;
+									margin: 20px 60px;
+									position: relative;
+								}
+
+								.hlWidgetSubText {
+									clear: both;
+									color: #666;
+									font-size: 14px;
+									font-weight: 200;
+									margin: 0;
+									padding: 0 0 20px 0;
+								}
+							}
+
+							.simpleParagraphWrapper {
+								padding: 35px;
+								text-align: left;
+
+								.simpleParagraphTitleContainer {
+										margin-bottom: 20px;
+
+										> h1 {
+											color: $darkGrayTitleText;
+											font-size: 20px;
+											font-weight: 500;
+											line-height: 1.35em;
+											margin: 0;
+											vertical-align: baseline;
+										}
+								}
+									
+								.simpleParagraphBodyContainer > p {
+									color: #666;
+									margin: 0;
+								}
+							}
+						}
+
+						.icons-container {
+							padding-left: 35px;
+
+							span {
+								color: $linksColor;
+
+								&:hover {
+									> a > span {
+										color: $linkHoverColor;
+										text-decoration: none;
+									}
+								}
+
+								&:active,
+								&:link,
+								&:visited {
+									> a > span {
+										color: auto;
+										text-decoration: none;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			#footer {
+				background-color: $navbarBarColor;
+				padding: 30px;
+				text-align: center;
+				
+				> p.powered-by {
+					color: #AAA;
+					font-size: 11.5px;
+					margin-bottom: 0;
+					margin-top: 25px;
+
+					a {
+						color: #DDD;
+
+						&:active,
+						&:hover,
+						&:link,
+						&:visited {
+							text-decoration: none;
 						}
 					}
 				}
 			}
 		}
-	} /* end of #banner */
-
-	/*****************/
-	/*** templates ***/
-	/*****************/
-
-	/*** Main Carousel Template ***/
-
-	.component.carousel {
-		margin-bottom: 0;
-
-		.mainCarousel {
-			height: 35vw;
-			width: 100%;
-
-			.mainCarouselImage {
-				background-repeat: no-repeat;
-
-				@include background-size(cover);
-
-				height: 100%;
-				left: 0;
-				top: 0;
-				width: 100%;
-			}
-
-			> menu {
-				background: transparent;
-				margin: 0 10px 0 0;
-
-				.carousel-menu-pause {
-					display: none;
-				}
-
-				.carousel-menu-prev {
-					display: none;
-				}
-
-				.carousel-menu-index {
-					border: 2px solid black;
-
-					@include border-radius(8px);
-
-					height: 8px;
-					width: 8px;
-				}
-
-				.carousel-menu-next {
-					display: none;
-				}
-			}
-		}
 	}
-
-	/*** Feature Column Template ***/
-
-	.featureColumnWrapper {
-		@include box-sizing(border-box);
-
-		min-height: 1em;
-		padding: 0 15px;
-		width: 100%;
-
-		> .faIconBackground {
-			background-color: $themeMenuColor;
-
-			@include border-radius(50%);
-
-			display: block;
-			height: 50px;
-			line-height: 50px;
-			margin: 0 auto;
-			text-align: center;
-			width: 50px;
-
-			> .icon-home {
-				color: #FFF;
-			}
-		}
-
-		> .featureColumnHeader {
-			clear: both;
-			color: #3B3B3B;
-			display: block;
-			font-size: 17px;
-			font-weight: bold;
-			margin: 10px 0 .8em 0;
-			text-align: center;
-		}
-
-		> .featureColumnDescription {
-			color: #5E5E5E;
-			display: block;
-			font-size: 13px;
-			margin: 0 0 10px 0;
-			padding: 0 20px;
-			resize: none;
-			text-align: center;
-		}
-	}
-
-	/*** Headline Widget Template ***/
-
-	.hlWidgetWrapper {
-		
-		background-color: #F6F6F6;
-		border-bottom: 1px solid #DDD;
-		border-top:	1px solid #DDD;
-		padding: 25px;
-		text-align: center;		
-
-		.hlWidgetTitle {
-			clear: both;
-			color: $darkGrayTextColor;
-			font-size: 26px;
-			font-weight: 500;
-			letter-spacing: 1px;
-			line-height: 36px;
-			margin: 0;
-			padding: 20px 0 0 0;
-			text-align: center;
-			text-transform: uppercase;
-		}
-
-		.hlWidgetSeparationLine {
-			border-top: 1px solid #EEE;
-			height: 1px;
-			margin: 20px 60px;
-			position: relative;
-		}
-
-		.hlWidgetSubText {
-			clear: both;
-			color: #666;
-			font-size: 14px;
-			font-weight: 200;
-			margin: 0;
-			padding: 0 0 20px 0;
-		}
-	}
-} /* end of .aui */
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element name="titleText" type="text" index-type="">
+		<dynamic-content><![CDATA[About]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="bodyText" type="textarea" index-type="">
+		<dynamic-content><![CDATA[This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.]]></dynamic-content>
+	</dynamic-element>
+</root>
