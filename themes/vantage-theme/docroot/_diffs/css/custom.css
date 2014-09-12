@@ -719,6 +719,7 @@ $staticTopBarColor: #222;
 
 													@include border-radius(3px);
 
+													color: $linksColor;
 													display: block;
 													float:right;
 													
@@ -737,7 +738,7 @@ $staticTopBarColor: #222;
 													&:hover {
 														background-color: $hoverBluishColor;
 														color: $navbarTextColor;
-														cursor: default;
+														cursor: pointer;
 														text-decoration: none;
 													}
 												}
@@ -1391,10 +1392,52 @@ $staticTopBarColor: #222;
 				}
 			}
 		}
+
+		#vantageScrollTopButton {
+			background-color: #888;
+			border-radius: 4px;
+			bottom: 20px;
+
+			@include box-sizing(border-box);
+
+			color: $linksColor;
+			font-size: 60px;
+			font-weight: bold;
+			height: 48px;
+			line-height: 72px;
+
+			@include opacity(0.7);
+
+			position: fixed;
+			right: 20px;
+
+			@include scale(0, 0);
+
+			text-align: center;
+
+			@include transition(transform 0.2s ease, color 0.4s ease, background-color 0.4s ease);
+
+			width: 48px;
+
+			&:hover {
+				background-color: $hoverBluishColor;
+				color: $navbarTextColor;
+				cursor: pointer;
+				text-decoration: none;
+			}
+		}
 	}
 }
 
 .sticky {
 	position: fixed;
 	top: 0;
+}
+
+.scrollTopButtonAppear {
+	-webkit-transform: scale(1, 1) !important;
+	-moz-transform: scale(1, 1) !important;
+	-ms-transform: scale(1, 1) !important;
+	-o-transform: scale(1, 1) !important;
+	transform: scale(1, 1) !important;
 }

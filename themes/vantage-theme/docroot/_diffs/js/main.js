@@ -37,15 +37,16 @@ Liferay.on(
 
 );
 
-YUI().use('node', 'event-hover', function (X) {
+YUI().use('anim', 'node', 'event-hover', function (X) {
 
 	var wrapper = X.one('#wrapper');
 	var banner = X.one('#heading');
 	var mainContent = X.one('#main-content');
 	var navbar = X.one('#navigation');
+	var scrollTopButton = X.Node.create('<a id="vantageScrollTopButton">^</a>');
 
 	var updateNavbar = function () {
-		if (banner) {
+		if (banner && navbar && mainContent) {
 			var stickPoint = banner.getY() + parseInt(banner.getComputedStyle('height'));
 
 			if (window.scrollY > stickPoint) {
@@ -57,6 +58,35 @@ YUI().use('node', 'event-hover', function (X) {
 				navbar.removeClass('sticky');
 				navbar.setStyle('width', '100%');
 				mainContent.setStyle('margin-top', 0);
+			}
+		}
+	}
+
+	var setUpScrollTopButton = function () {
+		if (scrollTopButton) {
+			X.one('body').append(scrollTopButton);
+			scrollTopButton.on('click', function () {
+				var scrollToTop = new X.Anim({
+				  duration: 0.5,
+				  node: 'win',
+				  easing: 'easeBoth',
+				  to: {
+				    scroll: [0, 0]
+				  }
+				});
+
+				scrollToTop.run();
+			});
+		}
+	}
+
+	var updateScrollTopButton = function () {
+		if (navbar) {
+			if (navbar.hasClass('sticky')) {
+				scrollTopButton.addClass('scrollTopButtonAppear');
+			}
+			else {
+				scrollTopButton.removeClass('scrollTopButtonAppear');
 			}
 		}
 	}
@@ -119,6 +149,8 @@ YUI().use('node', 'event-hover', function (X) {
 	}
 
 	updateNavbar();
+	setUpScrollTopButton();
+	updateScrollTopButton();
 	formatMainCarousel();
 	formatVantageCarousel();
 	setNavbarDelegate();
@@ -126,9 +158,11 @@ YUI().use('node', 'event-hover', function (X) {
 	X.on('resize', function onResizeEvent (event) {
     	formatMainCarousel();
     	updateNavbar();
+    	updateScrollTopButton();
 	});
 
 	X.on('scroll', function() {
 		updateNavbar();
+		updateScrollTopButton();
 	})
 });
