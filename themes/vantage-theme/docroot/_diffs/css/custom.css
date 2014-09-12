@@ -1,0 +1,1459 @@
+@import "compass";
+
+$bodyBackgroundColor: #FCFCFC;
+$darkGrayTextColor: #444;
+$darkGrayTitleText: #3B3B3B;
+$hoverBluishColor: #00BCFF;
+$linkHoverColor: #F47E3C;
+$linksColor: #248CC8;
+$navbarBarColor: #3A3B3E;
+$navbarTextColor: #E2E2E2;
+$portletNavButtonColor: #EFEFEF;
+$staticTopBarColor: #222;
+
+@mixin user-select($select) {
+	-webkit-user-select: $select;
+	-moz-user-select: $select;
+	-ms-user-select: $select;
+	-o-user-select: $select;
+	user-select: $select;
+}
+
+.aui {
+	body {
+		background-color: $bodyBackgroundColor;
+		font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-size: 13px;
+		line-height: 1.5em;
+
+		.navbar-static-top > .navbar-inner {
+			padding-left: 0;
+			padding-right: 0;
+
+			> .container {
+				background-color: $staticTopBarColor;
+
+				.nav-add-controls > li > a {
+					height: 20px;
+					padding: 10px 24px;
+					
+					@include transition(all 0.4s ease);
+
+					i,
+					span {
+						color: $navbarTextColor;
+						font-size: 13px;
+						font-weight: bold;
+						text-decoration: none;
+
+						@include text-shadow(none);
+					}
+
+					&:focus {
+						background-color: $staticTopBarColor;
+						background-image: none;
+						border-width: 0;
+						outline: none;
+					}
+
+					&:hover {
+						background-color: $hoverBluishColor;
+					}
+				}
+
+				.nav-account-controls {
+					> li {
+						&.dockbar-item {
+							&.open {
+								> a {
+									background-color: $hoverBluishColor;
+									background-image: none;
+
+									i,
+									span {
+										color: $navbarTextColor;
+									}
+								}
+
+								.dropdown-menu {
+									height: auto;
+									opacity: 1;
+
+									> li {
+										> a {
+											background-image: none;
+
+											@include transition(all 0.4s ease);
+
+											&:focus,
+											&:hover {
+												background-color: $hoverBluishColor;
+
+												i,
+												span {
+													color: $navbarTextColor;
+												}
+											}
+										}
+
+										> ul {
+											> li > a {
+												background-image: none;
+
+												@include transition(all 0.4s ease);
+
+												&:focus,
+												&:hover {
+													background-color: $hoverBluishColor;
+
+													i,
+													span {
+														color: $navbarTextColor;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+
+							> a:hover {
+								background-color: $hoverBluishColor;
+
+								i,
+								span {
+									color: $navbarTextColor;
+								}
+							}
+
+							.dropdown-menu {
+								background-color: $staticTopBarColor;
+								display: block;
+								height: 0;
+								opacity: 0;
+								overflow: hidden;
+								padding: 5px 0;
+								
+								@include transition(opacity 0.4s ease);
+							}
+						}
+
+						&.divider-vertical {
+							background-color: transparent;
+							border-color: transparent;
+							border-width: 0;
+							margin: 0;
+						}
+
+						> a {
+							&.dropdown-toggle {
+								height: 20px;
+								padding: 10px 24px;
+
+								@include transition(all 0.4s ease);
+							}
+
+							&:focus,
+							&:hover {
+								background-color: $staticTopBarColor;
+								background-image: none;
+								border-width: 0;
+								outline: none;
+							}
+						}
+
+						.dropdown-menu > .active a {
+							background-color: $hoverBluishColor;
+							background-image: none;
+
+							i,
+							span {
+								color: $navbarTextColor;
+							}
+
+							&:focus,
+							&:hover {
+								background-color: $hoverBluishColor;
+								background-image: none;
+							}
+						}
+					}
+
+					i,
+					span {
+						color: #D54E21;
+						font-size: 12px;
+						font-weight: normal;
+						text-decoration: none;
+
+						@include text-shadow(none);
+						@include transition(color 0.4s ease);
+					}
+				}
+			}
+		}
+
+		#wrapper {
+			color: $darkGrayTextColor;
+			min-height: 100%;
+			overflow-x: hidden;
+			padding: 0;
+
+			#banner {
+				#heading {
+					> .site-title {
+						padding: 45px 35px;
+
+						.site-name {
+							color: #4B4B4B;
+							font-size: 24px;
+							font-weight: normal;
+							vertical-align: middle;
+						}
+					}
+
+					> .page-title {
+						display: none;
+					}
+				}
+
+				#navigation {
+					z-index: 1000;
+
+					> ul {
+						background-color: $navbarBarColor;
+						border-width: 0;
+						margin: 0;
+						padding: 0;
+
+						> li {
+							display: inline-block;
+							margin-left: -4px;
+							
+							> a {
+								@include box-sizing(border-box);
+
+								color: $navbarTextColor;
+								display: block;
+								font-size: 13px;
+								font-weight: bold;
+								padding: 20px 35px;
+								text-decoration: none;
+
+								@include text-shadow(none);
+								@include transition(all 0.4s ease);
+
+								vertical-align: baseline;
+
+								&:hover {
+									background-color: $hoverBluishColor;
+								}
+							}
+
+							&.open
+							{
+								> a {
+									background-color: $hoverBluishColor;
+								}
+
+								> ul.child-menu {
+									opacity: 1;
+
+									> li > a {
+										display: block;
+
+										&:focus,
+										&:hover {
+											background-color: $hoverBluishColor;
+										}
+									}
+								}
+							}
+
+							ul.child-menu {
+								margin-left: 0;
+								opacity: 0;
+								position: absolute;
+
+								@include transition(all 0.4s ease);
+
+								z-index: 99999;
+
+								> li {
+									list-style: none;
+
+									> a {
+										background-color: #343538;
+
+										@include box-sizing(border-box);
+
+										color: $navbarTextColor;
+										display: none;
+										padding: 15px 20px;
+										font-size: 13px;
+										font-weight: bold;
+										text-decoration: none;
+
+										@include text-shadow(none);
+										@include transition(all 0.4s ease);
+
+										width: 200px;
+
+										&:focus,
+										&:hover {
+											background-color: $hoverBluishColor;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			#content {
+				#breadcrumbs {
+					display: none;
+				}
+				
+				.portlet-column.span6,
+				.portlet-column.span8,
+				.portlet-column.span12 {
+					.portlet-boundary {
+						margin-bottom: 35px;
+
+						.portlet {
+							padding: 35px;
+
+							.portlet-topper {
+								margin-bottom: 20px;
+
+								h1 {
+									color: $darkGrayTitleText;
+									font-size: 20px;
+									font-weight: 500;
+									line-height: 1.35em;
+									margin: 0;
+									text-align: left;
+
+									img {
+										display: none;
+									}
+								}
+							}
+
+							.portlet-content {
+								padding: 0;
+								text-align: left;
+
+								.portlet-body {
+									a,
+									i.icon-cog {
+										color: $linksColor;
+
+										&:focus,
+										&:hover {
+											color: $linkHoverColor;
+											text-decoration: none;
+										}
+
+										&:active,
+										&:link,
+										&:visited {
+											text-decoration: none;
+										}
+
+										span {
+											text-decoration: none;
+										}
+									}
+
+									.navbar .navbar-inner {
+										background-color: transparent;
+										background-image: none;
+										border-width: 0;
+
+										@include box-shadow(none);
+
+										ul {
+											overflow: visible;
+
+											a {
+												background-color: $portletNavButtonColor;
+
+												@include border-radius(10px);
+
+												margin-right: 10px;
+
+												@include transition(all 0.4s ease);
+
+												&:focus,
+												&:hover {
+													background-color: $hoverBluishColor;
+													color: $navbarTextColor;
+
+													@include text-shadow(none);
+
+													span {
+														color: inherit;
+													}
+												}
+											}
+										}
+									}
+
+									.control-group {
+										> .lfr-search-keywords {
+											border: 1px solid #CCC;
+
+											@include box-sizing(border-box);
+
+											@include border-radius(3px);
+											color: #666;
+											font-family: Arial, "Lucida Grande", sans-serif;
+											font-size: 100%;
+											line-height: normal;
+											padding: 3px;
+											word-wrap: break-word;
+
+											&:focus,
+											&:hover {
+												border-color: #69F;
+												@include box-shadow(0 0 1px #69F);
+											}
+										}
+
+										> .lfr-search-button {
+											display: none;
+										}
+									}
+								}
+							}
+						}
+
+						&.portlet-boundary_101_.portlet-asset-publisher .portlet-body {
+							height: 100%;
+							margin-bottom: 35px;
+							overflow-x: scroll;
+							white-space: nowrap;
+							width: 100%;
+
+							.add-asset-selector .navbar > .navbar-inner {
+								background-color: transparent;
+								background-image: none;
+								border-width: 0;
+
+								@include box-shadow(none);
+
+								ul.nav {
+									float: none;
+									margin-right: 0;
+
+									li {
+										a {
+											background-color: $portletNavButtonColor;
+
+											@include border-radius(10px);
+											@include transition(all 0.4s ease);
+
+											&:focus,
+											&:hover {
+												background-color: $hoverBluishColor;
+												background-image: none;
+												color: $navbarTextColor;
+
+												@include text-shadow(none);
+
+												i,
+												span {
+													color: inherit;
+												}
+											}
+										}
+
+										.icon-file {
+											line-height: 1em;
+										}
+
+										.nav-item-label {
+											font-weight: normal;
+											line-height: 1em;
+										}
+
+										&.dropdown.open {
+											> .dropdown-toggle {
+												background-color: $hoverBluishColor !important;
+												color: $navbarTextColor !important;
+
+												@include text-shadow(none);
+											}
+
+											.dropdown-menu {
+												background-color: $bodyBackgroundColor;
+												border-width: 0;
+
+												@include box-shadow(none);
+											}
+										}
+									}
+								}
+							}
+							
+							.asset-abstract:first-of-type {
+								margin: 20px 0;
+							}
+
+							.asset-abstract {
+								border: 1px solid #DDD;
+
+								@include border-radius(15px);
+								@include box-sizing(border-box);
+								
+								display: inline-block;
+								height: 200px;
+								margin: 20px 10px 40px 10px;
+								overflow: hidden;
+								padding: 0 20px 0 10px;
+								text-align: left;
+								text-overflow: ellipsis;
+								vertical-align: top;
+								white-space: normal;
+								width: 300px;
+
+								.asset-title {
+									line-height: normal;
+
+									> a {
+									color: $darkGrayTitleText;
+									font-size: 17px;
+									text-decoration: none;
+									}
+								}
+
+								.asset-content {
+									margin-left: 21px;
+
+									.asset-summary {
+										color: #5E5E5E;
+										font-size: 13px;
+									}
+								}
+							}
+						}
+
+						&.portlet-boundary_56_ {
+							margin-bottom: 35px;
+
+							.journal-content-article {
+								.component.carousel {
+									margin-bottom: 0;
+
+									.mainCarousel {
+										.mainCarouselImage {
+											background-repeat: no-repeat;
+
+											@include background-size(cover);
+
+											height: 100%;
+											left: 0;
+											top: 0;
+											width: 100%;
+										}
+
+										> menu {
+											background: transparent;
+											margin: 0 10px 0 0;
+
+											.carousel-menu-pause {
+												display: none;
+											}
+
+											.carousel-menu-prev {
+												display: none;
+											}
+
+											.carousel-menu-index {
+												border: 2px solid black;
+
+												@include border-radius(8px);
+
+												height: 8px;
+												width: 8px;
+											}
+
+											.carousel-menu-next {
+												display: none;
+											}
+										}
+									}
+								}
+
+								.featureColumnWrapper {
+									@include box-sizing(border-box);
+
+									min-height: 1em;
+									padding: 0 15px;
+									width: 100%;
+
+									> .faIconBackground {
+										background-color: $navbarBarColor;
+
+										@include border-radius(50%);
+
+										display: block;
+										height: 50px;
+										line-height: 50px;
+										margin: 0 auto;
+										text-align: center;
+										width: 50px;
+
+										> .icon-home {
+											color: #FFF;
+										}
+									}
+
+									> .featureColumnHeader {
+										clear: both;
+										color: $darkGrayTitleText;
+										display: block;
+										font-size: 17px;
+										font-weight: bold;
+										margin: 10px 0 0.8em 0;
+										text-align: center;
+									}
+
+									> .featureColumnDescription {
+										color: #5E5E5E;
+										display: block;
+										font-size: 13px;
+										margin: 0 0 10px 0;
+										padding: 0 20px;
+										resize: none;
+										text-align: center;
+									}
+								}
+
+								.hlWidgetWrapper {
+									background-color: #F6F6F6;
+									border-bottom: 1px solid #DDD;
+									border-top:	1px solid #DDD;
+									padding: 25px;
+									text-align: center;
+
+									.hlWidgetTitle {
+										clear: both;
+										color: $darkGrayTextColor;
+										font-size: 26px;
+										font-weight: 500;
+										letter-spacing: 1px;
+										line-height: 36px;
+										margin: 0;
+										padding: 20px 0 0 0;
+										text-align: center;
+										text-transform: uppercase;
+									}
+
+									.hlWidgetSeparationLine {
+										border-top: 1px solid #EEE;
+										height: 1px;
+										margin: 20px 60px;
+										position: relative;
+									}
+
+									.hlWidgetSubText {
+										clear: both;
+										color: #666;
+										font-size: 14px;
+										font-weight: 200;
+										margin: 0;
+										padding: 0 0 20px 0;
+									}
+								}
+
+								.simpleParagraphWrapper {
+									padding: 35px;
+									text-align: left;
+
+									.simpleParagraphTitleContainer {
+											margin-bottom: 20px;
+
+											> h1 {
+												color: $darkGrayTitleText;
+												font-size: 20px;
+												font-weight: 500;
+												line-height: 1.35em;
+												margin: 0;
+												vertical-align: baseline;
+											}
+									}
+
+									.simpleParagraphBodyContainer > p {
+										color: #666;
+										margin: 0;
+									}
+								}
+
+								#thumbnailCarouselWrapper {
+									#leftPanelWrapper {
+										
+										@include box-sizing(border-box);
+
+										float: left;
+										min-height: 1em;
+										padding: 0 15px 0 15px;
+										width: 66.585%;
+
+										> .widgetTitle {
+											color: $darkGrayTextColor;
+											font-size: 1.5em;
+											font-weight: 500;
+											line-height: normal;
+											margin: 0 0 1em 0;
+
+											> .vantageCarouselTitle {
+												color: $darkGrayTitleText;
+												font-size: 14px;
+												font-weight: bold;
+												line-height: 1em;
+												text-transform: uppercase;
+												
+												> .vantageCarouselTitleText {
+													display: inline-block;
+													padding-right: 15px;
+												}
+
+												> .scrollButton {
+													background-color: $portletNavButtonColor;
+
+													@include border-radius(3px);
+
+													color: $linksColor;
+													display: block;
+													float: right;
+													
+													height: 17px;
+													margin-left: 2px;
+													overflow: hidden;
+													
+													text-align: center;
+													@include text-shadow(0 1px 0 #F9F9F9);
+
+													@include transition(all 0.4s ease);
+													@include user-select(none);
+
+													width: 17px;
+
+													&:focus,
+													&:hover {
+														background-color: $hoverBluishColor;
+														color: $navbarTextColor;
+														cursor: pointer;
+														text-decoration: none;
+													}
+												}
+											}
+										}
+
+										> .vantageCarouselWrapper {
+											overflow-x: hidden;
+											overflow-y: hidden;
+
+											#vantageCarousel {
+												left: 0;
+												height: 200px;
+												overflow: auto;
+												position: relative;
+												
+												@include transition(all 0.45s ease);
+
+												width: 99999px;
+												zoom: 1;
+
+												> .thumbnailWrapper {
+													display: block;
+													float: left;
+													margin: 0 15px 0 0;
+													overflow-x: hidden;
+													width: 242px;
+
+													> .imageLinkWrapper {
+														background-color: #E8E8E8;
+														height: 162px;
+
+														@include transition(all 0.4s ease);
+
+														width: 100%;
+
+														&:focus,
+														&:hover {
+															background-color: #248CC8;
+															cursor: pointer;
+															opacity: 0.7;
+														}
+													}
+
+													> .titleLinkWrapper {
+														color: #474747;
+														font-size: 15px;
+														font-weight: 500;
+														line-height: normal;
+														margin: 10px 0 0 0;
+														text-align: center;
+
+														.thumbnailTitle {
+															color: $darkGrayTextColor;
+															text-decoration: none;
+
+															&:focus,
+															&:hover {
+																cursor: pointer;
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+
+									#rightPanelWrapper {
+										@include box-sizing(border-box);
+
+										float: left;
+										padding: 0 15px;
+										width: 33.415%;
+									}
+								}
+							}
+						}
+
+						.icons-container {
+							padding-left: 35px;
+
+							span {
+								color: $linksColor;
+
+								&:focus > a > span,
+								&:hover > a > span {
+									color: $linkHoverColor;
+									text-decoration: none;
+								}
+
+								&:active,
+								&:link,
+								&:visited {
+									> a > span {
+										color: inherit;
+										text-decoration: none;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				.portlet-column.span3,
+				.portlet-column.span4 {
+					.portlet-boundary {
+						margin-bottom: 0;
+
+						.portlet {
+							padding: 35px;
+
+							.portlet-topper {
+								margin-bottom: 15px;
+
+								h1 {
+									color: $darkGrayTitleText;
+									font-size: 15px;
+									font-weight: bold;
+									line-height: normal;
+									margin: 0;
+									text-align: left;
+
+									img {
+										display: none;
+									}
+								}
+							}
+
+							.portlet-content {
+								color: $linksColor;
+								line-height: normal;
+								text-align: left;
+								padding: 0;
+
+								.portlet-body {
+									a,
+									i.icon-cog {
+										color: $linksColor;
+
+										&:focus,
+										&:hover {
+											color: $linkHoverColor;
+											text-decoration: none;
+										}
+
+										&:active,
+										&:link,
+										&:visited {
+											text-decoration: none;
+										}
+
+										span {
+											text-decoration: none;
+										}
+									}
+
+									.navbar .navbar-inner {
+										background-color: transparent;
+										background-image: none;
+										border-width: 0;
+
+										@include box-shadow(none);
+
+										ul {
+											a {
+												background-color: $portletNavButtonColor;
+
+												@include border-radius(10px);
+
+												margin-right: 10px;
+
+												@include transition(all 0.4s ease);
+
+												&:focus,
+												&:hover {
+													background-color: $hoverBluishColor;
+													color: $navbarTextColor;
+
+													@include text-shadow(none);
+
+													span {
+														color: inherit;
+													}
+												}
+											}
+										}
+									}
+
+									.control-group {
+										> .lfr-search-keywords {
+											border: 1px solid #ccc;
+
+											@include box-sizing(border-box);
+
+											border-radius: 3px;
+											color: #666;
+											font-family: Arial, "Lucida Grande", sans-serif;
+											font-size: 100%;
+											line-height: normal;
+											padding: 3px;
+											word-wrap: break-word;
+
+											&:focus,
+											&:hover {
+												border-color: #69F;
+												@include box-shadow(0 0 1px #69F);
+											}
+										}
+
+										> .lfr-search-button {
+											display: none;
+										}
+									}
+								}
+							}
+						}
+
+						&.portlet-boundary_101_.portlet-asset-publisher .portlet-body {
+							height: 100%;
+							margin-bottom: 35px;
+							overflow-x: scroll;
+							white-space: nowrap;
+							width: 100%;
+
+							.add-asset-selector .navbar > .navbar-inner {
+								background-color: transparent;
+								background-image: none;
+								border: 0;
+
+								@include box-shadow(none);
+
+								ul.nav {
+									float: none;
+									margin-right: 0;
+
+									li {
+										a {
+											background-color: $portletNavButtonColor;
+
+											@include border-radius(10px);
+											@include transition(all 0.4s ease);
+
+											&:focus,
+											&:hover {
+												background-color: $hoverBluishColor;
+												background-image: none;
+												color: $navbarTextColor;
+
+												@include text-shadow(none);
+
+												i,
+												span {
+													color: inherit;
+												}
+											}
+										}
+
+										.icon-file {
+											line-height: 1em;
+										}
+
+										.nav-item-label {
+											font-weight: normal;
+											line-height: 1em;
+										}
+
+										&.dropdown.open {
+											> .dropdown-toggle {
+												background-color: $hoverBluishColor !important;
+												color: $navbarTextColor !important;
+
+												@include text-shadow(none);
+											}
+
+											.dropdown-menu {
+												background-color: $bodyBackgroundColor;
+												border-width: 0;
+
+												@include box-shadow(none);
+											}
+										}
+									}
+								}
+							}
+							
+							.asset-abstract:first-of-type {
+								margin: 20px 0;
+							}
+
+							.asset-abstract {
+								border: 1px solid #DDD;
+
+								@include border-radius(15px);
+								@include box-sizing(border-box);
+								
+								display: inline-block;
+								height: 200px;
+								margin: 20px 10px 40px 10px;
+								overflow: hidden;
+								padding: 0 20px 0 10px;
+								text-align: left;
+								text-overflow: ellipsis;
+								vertical-align: top;
+								white-space: normal;
+								width: 300px;
+
+								.asset-title {
+									line-height: normal;
+
+									> a {
+									color: $darkGrayTitleText;
+									font-size: 17px;
+									text-decoration: none;
+									}
+								}
+
+								.asset-content {
+									margin-left: 21px;
+
+									.asset-summary {
+										color: #5E5E5E;
+										font-size: 13px;
+									}
+								}
+							}
+						}
+
+						&.portlet-boundary_56_ {
+							margin-bottom: 35px;
+
+							.journal-content-article {
+								.component.carousel {
+									margin-bottom: 0;
+
+									.mainCarousel {
+										.mainCarouselImage {
+											background-repeat: no-repeat;
+
+											@include background-size(cover);
+
+											height: 100%;
+											left: 0;
+											top: 0;
+											width: 100%;
+										}
+
+										> menu {
+											background: transparent;
+											margin: 0 10px 0 0;
+
+											.carousel-menu-pause {
+												display: none;
+											}
+
+											.carousel-menu-prev {
+												display: none;
+											}
+
+											.carousel-menu-index {
+												border: 2px solid black;
+
+												@include border-radius(8px);
+
+												height: 8px;
+												width: 8px;
+											}
+
+											.carousel-menu-next {
+												display: none;
+											}
+										}
+									}
+								}
+
+								.featureColumnWrapper {
+									@include box-sizing(border-box);
+
+									min-height: 1em;
+									padding: 0 15px;
+									width: 100%;
+
+									> .faIconBackground {
+										background-color: $navbarBarColor;
+
+										@include border-radius(50%);
+
+										display: block;
+										height: 50px;
+										line-height: 50px;
+										margin: 0 auto;
+										text-align: center;
+										width: 50px;
+
+										> .icon-home {
+											color: #FFF;
+										}
+									}
+
+									> .featureColumnHeader {
+										clear: both;
+										color: $darkGrayTitleText;
+										display: block;
+										font-size: 17px;
+										font-weight: bold;
+										margin: 10px 0 0.8em 0;
+										text-align: center;
+									}
+
+									> .featureColumnDescription {
+										color: #5E5E5E;
+										display: block;
+										font-size: 13px;
+										margin: 0 0 10px 0;
+										padding: 0 20px;
+										resize: none;
+										text-align: center;
+									}
+								}
+
+								.hlWidgetWrapper {
+									background-color: #F6F6F6;
+									border-bottom: 1px solid #DDD;
+									border-top:	1px solid #DDD;
+									padding: 25px;
+									text-align: center;
+
+									.hlWidgetTitle {
+										clear: both;
+										color: $darkGrayTextColor;
+										font-size: 26px;
+										font-weight: 500;
+										letter-spacing: 1px;
+										line-height: 36px;
+										margin: 0;
+										padding: 20px 0 0 0;
+										text-align: center;
+										text-transform: uppercase;
+									}
+
+									.hlWidgetSeparationLine {
+										border-top: 1px solid #EEE;
+										height: 1px;
+										margin: 20px 60px;
+										position: relative;
+									}
+
+									.hlWidgetSubText {
+										clear: both;
+										color: #666;
+										font-size: 14px;
+										font-weight: 200;
+										margin: 0;
+										padding: 0 0 20px 0;
+									}
+								}
+
+								.simpleParagraphWrapper {
+									padding: 35px;
+									text-align: left;
+
+									.simpleParagraphTitleContainer {
+											margin-bottom: 20px;
+
+											> h1 {
+												color: $darkGrayTitleText;
+												font-size: 20px;
+												font-weight: 500;
+												line-height: 1.35em;
+												margin: 0;
+												vertical-align: baseline;
+											}
+									}
+
+									.simpleParagraphBodyContainer > p {
+										color: #666;
+										margin: 0;
+									}
+								}
+
+								#thumbnailCarouselWrapper {
+									#leftPanelWrapper {
+
+										@include box-sizing(border-box);
+
+										float: none;
+										min-height: 1em;
+										padding: 0 15px 0 15px;
+										width: 100%;
+
+										> .widgetTitle {
+											color: $darkGrayTextColor;
+											font-size: 1.5em;
+											font-weight: 500;
+											line-height: normal;
+											margin: 0 0 1em 0;
+
+											> .vantageCarouselTitle {
+												color: $darkGrayTitleText;
+												font-size: 14px;
+												font-weight: bold;
+												line-height: 1em;
+												text-transform: uppercase;
+												
+												> .vantageCarouselTitleText {
+													display: inline-block;
+													padding-right: 15px;
+												}
+
+												> .scrollButton {
+													background-color: $portletNavButtonColor;
+
+													@include border-radius(3px);
+
+													display: block;
+													float:right;
+													
+													height: 17px;
+													margin-left: 2px;
+													overflow: hidden;
+													
+													text-align: center;
+
+													@include transition(all 0.4s ease);
+													@include user-select(none);
+
+													width: 17px;
+
+													&:focus,
+													&:hover {
+														background-color: $hoverBluishColor;
+														color: $navbarTextColor;
+														cursor: default;
+													}
+												}
+											}
+										}
+
+										> .vantageCarouselWrapper {
+											overflow-x: hidden;
+											overflow-y: hidden;
+
+											#vantageCarousel {
+												left: 0;
+												height: 200px;
+												overflow: auto;
+												position: relative;
+												
+												@include transition(all 0.45s ease);
+
+												width: 99999px;
+												zoom: 1;
+
+												> .thumbnailWrapper {
+													display: block;
+													float: left;
+													margin: 0 15px 0 0;
+													overflow-x: hidden;
+													width: 242px;
+
+													> .imageLinkWrapper {
+														background-color: #E8E8E8;
+														height: 162px;
+														width: 100%;
+
+														@include transition(all 0.4s ease);
+
+														&:focus,
+														&:hover {
+															background-color: #248CC8;
+															cursor: pointer;
+															opacity: 0.7;
+														}
+													}
+
+													> .titleLinkWrapper {
+														color: #474747;
+														font-size: 15px;
+														font-weight: 500;
+														line-height: normal;
+														margin: 10px 0 0 0;
+														text-align: center;
+
+														.thumbnailTitle {
+															color: $darkGrayTextColor;
+															text-decoration: none;
+
+															&:focus,
+															&:hover {
+																cursor: pointer;
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+
+									#rightPanelWrapper {
+										@include box-sizing(border-box);
+
+										float: none;
+										padding: 0 15px;
+										text-align: center;
+										width: 100%;
+									}
+								}
+							}
+						}
+
+						.icons-container {
+							padding-left: 35px;
+
+							span {
+								color: $linksColor;
+
+								&:focus > a > span,
+								&:hover > a > span {
+									color: $linkHoverColor;
+									text-decoration: none;
+								}
+
+								&:active,
+								&:link,
+								&:visited {
+									> a > span {
+										color: inherit;
+										text-decoration: none;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			#footer {
+				background-color: $navbarBarColor;
+				padding: 30px;
+				text-align: center;
+				
+				> p.powered-by {
+					color: #AAA;
+					font-size: 11.5px;
+					margin-bottom: 0;
+					margin-top: 25px;
+
+					a {
+						color: #DDD;
+
+						&:active,
+						&:focus,
+						&:hover,
+						&:link,
+						&:visited {
+							text-decoration: none;
+						}
+					}
+				}
+			}
+		}
+
+		#vantageScrollTopButton {
+			background-color: #888;
+			border-radius: 4px;
+			bottom: 20px;
+
+			@include box-sizing(border-box);
+
+			color: $linksColor;
+			font-size: 30px;
+			font-weight: bold;
+			height: 48px;
+			line-height: 48px;
+
+			@include opacity(0.7);
+
+			position: fixed;
+			right: 20px;
+
+			@include scale(0, 0);
+
+			text-align: center;
+
+			@include transition(transform 0.2s ease, color 0.4s ease, background-color 0.4s ease);
+
+			width: 48px;
+
+			&:focus,
+			&:hover {
+				background-color: $hoverBluishColor;
+				color: $navbarTextColor;
+				cursor: pointer;
+				text-decoration: none;
+			}
+
+			&.scrollTopButtonAppear {
+				@include scale(1, 1);
+			}
+		}
+
+
+	}
+}
+
+.sticky {
+	position: fixed;
+	top: 0;
+}
+

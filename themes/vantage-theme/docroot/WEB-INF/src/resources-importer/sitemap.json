@@ -1,0 +1,108 @@
+{
+	"layoutTemplateId": "1_3_1_columns",
+	"privatePages": [
+		{
+			"columns": [
+				[
+					"Main Carousel Instance 1.xml"
+				],
+				[
+					"Feature Column Instance 1.xml"
+				],
+				[
+					"Feature Column Instance 2.xml"
+				],
+				[
+					"Feature Column Instance 3.xml"
+				],
+				[
+					"Headline Widget Instance.xml",
+					"Vantage Carousel Instance 1.xml"
+				]
+			],
+			"friendlyURL": "/home",
+			"name": "Home",
+			"title": "Home"
+		},
+		{
+			"columns": [
+				[
+					"Simple Paragraph Instance 1.xml",
+					{
+						"portletId": "107"
+					}
+				],
+				[
+					{
+						"portletId": "77"
+					},
+					{
+						"portletId": "116"
+					},
+					{
+						"portletId": "64"
+					},
+					{
+						"portletId": "84"
+					}
+				]
+			],
+			"friendlyURL": "/about",
+			"layoutTemplateId": "2_columns_iii",
+			"name": "About",
+			"title": "About"
+		},
+		{
+			"columns": [
+				[
+					"Simple Paragraph Instance 2.xml"
+				],
+				[
+					{
+						"portletId": "77"
+					},
+					{
+						"portletId": "116"
+					},
+					{
+						"portletId": "64"
+					},
+					{
+						"portletId": "84"
+					}
+				]
+			],
+			"friendlyURL": "/parent-page",
+			"layouts": [
+				{
+					"columns": [
+						[
+							"Simple Paragraph Instance 3.xml"
+						],
+						[
+							{
+								"portletId": "77"
+							},
+							{
+								"portletId": "116"
+							},
+							{
+								"portletId": "64"
+							},
+							{
+								"portletId": "84"
+							}
+						]
+					],
+					"friendlyURL": "/sub-page",
+					"layoutTemplateId": "2_columns_iii",
+					"name": "Sub Page",
+					"title": "Sub Page"
+				}
+			],
+			"layoutTemplateId": "2_columns_iii",
+			"name": "Parent Page",
+			"title": "Parent Page"
+		},
+	]
+}

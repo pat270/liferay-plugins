@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element name="hlWidgetHeader" type="text" index-type="">
+		<dynamic-content><![CDATA[All Your Base Are Belong To Us]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="hlWidgetSubHeader" type="text" index-type="">
+		<dynamic-content><![CDATA[meow meow meow and a meow meow meow woof]]></dynamic-content>
+	</dynamic-element>
+</root>
