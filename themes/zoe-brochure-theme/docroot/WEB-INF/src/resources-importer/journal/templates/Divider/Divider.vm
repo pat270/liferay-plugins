@@ -1,0 +1,14 @@
+#set ($content_id = $reserved-article-id.getData())
+#set ($divider_icon_size = "")
+
+#if (!$zoe_divider_icon.size.data.isEmpty())
+	#set ($divider_icon_size = "font-size: ${zoe_divider_icon.size.data};")
+#end
+
+<div class="col-md-12 zoe-divider" id="zoeDivider${content_id}">
+	<hr class="left" />
+
+	<span class="${zoe_divider_icon.data}" style="$divider_icon_size"></span>
+
+	<hr class="right" />
+</div>
