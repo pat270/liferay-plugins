@@ -4,35 +4,27 @@
 	<dynamic-element name="widgetTitle" type="text" index-type="">
 		<dynamic-content><![CDATA[Latest Posts]]></dynamic-content>
 	</dynamic-element>
-
 	<dynamic-element name="postTitle1" type="text" index-type="">
 		<dynamic-content><![CDATA[Worth A Thousand Words]]></dynamic-content>
 	</dynamic-element>
-
 	<dynamic-element name="postTitle2" type="text" index-type="">
 		<dynamic-content><![CDATA[Elements]]></dynamic-content>
 	</dynamic-element>
-
 	<dynamic-element name="postTitle3" type="text" index-type="">
 		<dynamic-content><![CDATA[More Tags]]></dynamic-content>
 	</dynamic-element>
-
 	<dynamic-element name="postTitle4" type="text" index-type="">
 		<dynamic-content><![CDATA[HTML]]></dynamic-content>
 	</dynamic-element>
-
 	<dynamic-element name="postTitle5" type="text" index-type="">
 		<dynamic-content><![CDATA[Links]]></dynamic-content>
 	</dynamic-element>
-
 	<dynamic-element name="postTitle6" type="text" index-type="">
 		<dynamic-content><![CDATA[Category Hierarchy]]></dynamic-content>
 	</dynamic-element>
-
 	<dynamic-element name="postTitle7" type="text" index-type="">
 		<dynamic-content><![CDATA[Hello World!]]></dynamic-content>
 	</dynamic-element>
-
 	<dynamic-element name="sideDescription" type="text_area" index-type="">
 		<dynamic-content><![CDATA[Is a man not entitled to the sweat of his brow? 'No!' says the man in Washington, 'It belongs to the poor.' 'No!' says the man in the Vatican, 'It belongs to God.' 'No!' says the man in Moscow, 'It belongs to everyone.' I rejected those answers.]]></dynamic-content>
 	</dynamic-element>

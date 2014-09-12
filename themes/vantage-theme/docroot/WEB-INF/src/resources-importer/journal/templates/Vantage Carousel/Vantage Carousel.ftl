@@ -65,31 +65,3 @@
 		<p class="description">${sideDescription.getData()}</p>
 	</div>
 </div>
-
-<script>
-
-YUI().use('node', function (X) {
-	var carousel = X.one('#vantageCarousel');
-	var currentXScroll = 0;
-	var maxXscroll = 6 * 257;
-	var thumbnailWidth = 257;
-
-	X.one('#scrollRightButton').on('click', function (event) {
-		currentXScroll += thumbnailWidth;
-		if (currentXScroll > maxXscroll) {
-			currentXScroll -= thumbnailWidth;
-		}
-
-		carousel.setStyle('left', -1 * currentXScroll);
-	});
-	X.one('#scrollLeftButton').on('click', function (event) {
-		currentXScroll -= thumbnailWidth;
-		if (currentXScroll < 0) {
-			currentXScroll += thumbnailWidth;
-		}
-
-		carousel.setStyle('left', -1 * currentXScroll);
-	});
-});
-
-</script>

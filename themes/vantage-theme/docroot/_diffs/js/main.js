@@ -61,8 +61,7 @@ YUI().use('node', 'event-hover', function (X) {
 		}
 	}
 
-	var formatMainCarousel = function() {
-
+	var formatMainCarousel = function () {
 		var carousel = X.one('.component.carousel .mainCarousel');
 
 		if (carousel) {
@@ -71,6 +70,34 @@ YUI().use('node', 'event-hover', function (X) {
 			carousel.setStyles({
 				width: '100%',
 				height: ((parseInt(bodyWidth) * .35) + 'px')
+			});
+		}
+	}
+
+	var formatVantageCarousel = function () {
+		var carousel = X.one('#vantageCarousel');
+		var currentXScroll = 0;
+		var thumbnailWidth = 257;
+		var maxXscroll = 6 * thumbnailWidth;
+		var scrollRightButton = X.one('#scrollRightButton');
+		var scrollLeftButton = X.one('#scrollLeftButton');
+
+		if (carousel && scrollRightButton && scrollLeftButton) {
+			scrollRightButton.on('click', function (event) {
+				currentXScroll += thumbnailWidth;
+				if (currentXScroll > maxXscroll) {
+					currentXScroll = maxXscroll;
+				}
+
+				carousel.setStyle('left', -1 * currentXScroll);
+			});
+			scrollLeftButton.on('click', function (event) {
+				currentXScroll -= thumbnailWidth;
+				if (currentXScroll < 0) {
+					currentXScroll = 0;
+				}
+
+				carousel.setStyle('left', -1 * currentXScroll);
 			});
 		}
 	}
@@ -93,6 +120,7 @@ YUI().use('node', 'event-hover', function (X) {
 
 	updateNavbar();
 	formatMainCarousel();
+	formatVantageCarousel();
 	setNavbarDelegate();
 
 	X.on('resize', function onResizeEvent (event) {

@@ -13,7 +13,7 @@
 	<dynamic-element name="featureColumnHeader" type="text" index-type="">
 		<dynamic-content><![CDATA[Loads of Icons]]></dynamic-content>
 	</dynamic-element>
-		<dynamic-element name="featureColumnDescription" type="text_area" index-type="">
+	<dynamic-element name="featureColumnDescription" type="text_area" index-type="">
 		<dynamic-content><![CDATA[Have you ever had a single moment thought about my responsibilities? Have you ever thought for a single, solitary moment about my responsibilities to my employers?]]></dynamic-content>
 	</dynamic-element>
 </root>
