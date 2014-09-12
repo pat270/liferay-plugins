@@ -4,8 +4,8 @@ $bodyBackgroundColor: #FCFCFC;
 $darkGrayTextColor: #444;
 $darkGrayTitleText: #3B3B3B;
 $hoverBluishColor: #00BCFF;
-$linksColor: #248CC8;
 $linkHoverColor: #F47E3C;
+$linksColor: #248CC8;
 $navbarBarColor: #3A3B3E;
 $navbarTextColor: #E2E2E2;
 $portletNavButtonColor: #EFEFEF;
@@ -85,6 +85,7 @@ $staticTopBarColor: #222;
 
 											@include transition(all 0.4s ease);
 
+											&:focus,
 											&:hover {
 												background-color: $hoverBluishColor;
 
@@ -101,6 +102,7 @@ $staticTopBarColor: #222;
 
 												@include transition(all 0.4s ease);
 
+												&:focus,
 												&:hover {
 													background-color: $hoverBluishColor;
 
@@ -151,7 +153,8 @@ $staticTopBarColor: #222;
 								@include transition(all 0.4s ease);
 							}
 
-							&:focus {
+							&:focus,
+							&:hover {
 								background-color: $staticTopBarColor;
 								background-image: none;
 								border-width: 0;
@@ -168,11 +171,7 @@ $staticTopBarColor: #222;
 								color: $navbarTextColor;
 							}
 
-							&:focus {
-								background-color: $hoverBluishColor;
-								background-image: none;
-							}
-
+							&:focus,
 							&:hover {
 								background-color: $hoverBluishColor;
 								background-image: none;
@@ -263,6 +262,7 @@ $staticTopBarColor: #222;
 									> li > a {
 										display: block;
 
+										&:focus,
 										&:hover {
 											background-color: $hoverBluishColor;
 										}
@@ -271,8 +271,8 @@ $staticTopBarColor: #222;
 							}
 
 							ul.child-menu {
-								opacity: 0;
 								margin-left: 0;
+								opacity: 0;
 								position: absolute;
 
 								@include transition(all 0.4s ease);
@@ -284,7 +284,9 @@ $staticTopBarColor: #222;
 
 									> a {
 										background-color: #343538;
+
 										@include box-sizing(border-box);
+
 										color: $navbarTextColor;
 										display: none;
 										padding: 15px 20px;
@@ -297,6 +299,7 @@ $staticTopBarColor: #222;
 
 										width: 200px;
 
+										&:focus,
 										&:hover {
 											background-color: $hoverBluishColor;
 										}
@@ -321,6 +324,7 @@ $staticTopBarColor: #222;
 
 						.portlet {
 							padding: 35px;
+
 							.portlet-topper {
 								margin-bottom: 20px;
 
@@ -347,6 +351,7 @@ $staticTopBarColor: #222;
 									i.icon-cog {
 										color: $linksColor;
 
+										&:focus,
 										&:hover {
 											color: $linkHoverColor;
 											text-decoration: none;
@@ -382,6 +387,7 @@ $staticTopBarColor: #222;
 
 												@include transition(all 0.4s ease);
 
+												&:focus,
 												&:hover {
 													background-color: $hoverBluishColor;
 													color: $navbarTextColor;
@@ -398,11 +404,11 @@ $staticTopBarColor: #222;
 
 									.control-group {
 										> .lfr-search-keywords {
-											border: 1px solid #ccc;
+											border: 1px solid #CCC;
 
 											@include box-sizing(border-box);
 
-											border-radius: 3px;
+											@include border-radius(3px);
 											color: #666;
 											font-family: Arial, "Lucida Grande", sans-serif;
 											font-size: 100%;
@@ -410,9 +416,10 @@ $staticTopBarColor: #222;
 											padding: 3px;
 											word-wrap: break-word;
 
-											&:focus {
-												border-color: #6699FF;
-												@include box-shadow(0 0 1px #6699FF);
+											&:focus,
+											&:hover {
+												border-color: #69F;
+												@include box-shadow(0 0 1px #69F);
 											}
 										}
 
@@ -434,7 +441,7 @@ $staticTopBarColor: #222;
 							.add-asset-selector .navbar > .navbar-inner {
 								background-color: transparent;
 								background-image: none;
-								border: 0;
+								border-width: 0;
 
 								@include box-shadow(none);
 
@@ -449,6 +456,7 @@ $staticTopBarColor: #222;
 											@include border-radius(10px);
 											@include transition(all 0.4s ease);
 
+											&:focus,
 											&:hover {
 												background-color: $hoverBluishColor;
 												background-image: none;
@@ -509,8 +517,8 @@ $staticTopBarColor: #222;
 								text-align: left;
 								text-overflow: ellipsis;
 								vertical-align: top;
-								width: 300px;
 								white-space: normal;
+								width: 300px;
 
 								.asset-title {
 									line-height: normal;
@@ -721,20 +729,21 @@ $staticTopBarColor: #222;
 
 													color: $linksColor;
 													display: block;
-													float:right;
+													float: right;
 													
 													height: 17px;
 													margin-left: 2px;
 													overflow: hidden;
 													
 													text-align: center;
-													text-shadow: 0 1px 0 #f9f9f9;
+													@include text-shadow(0 1px 0 #F9F9F9);
 
 													@include transition(all 0.4s ease);
 													@include user-select(none);
 
 													width: 17px;
 
+													&:focus,
 													&:hover {
 														background-color: $hoverBluishColor;
 														color: $navbarTextColor;
@@ -774,7 +783,8 @@ $staticTopBarColor: #222;
 														@include transition(all 0.4s ease);
 
 														width: 100%;
-														
+
+														&:focus,
 														&:hover {
 															background-color: #248CC8;
 															cursor: pointer;
@@ -794,6 +804,7 @@ $staticTopBarColor: #222;
 															color: $darkGrayTextColor;
 															text-decoration: none;
 
+															&:focus,
 															&:hover {
 																cursor: pointer;
 															}
@@ -805,7 +816,6 @@ $staticTopBarColor: #222;
 									}
 
 									#rightPanelWrapper {
-
 										@include box-sizing(border-box);
 
 										float: left;
@@ -822,11 +832,10 @@ $staticTopBarColor: #222;
 							span {
 								color: $linksColor;
 
-								&:hover {
-									> a > span {
-										color: $linkHoverColor;
-										text-decoration: none;
-									}
+								&:focus > a > span,
+								&:hover > a > span {
+									color: $linkHoverColor;
+									text-decoration: none;
 								}
 
 								&:active,
@@ -850,8 +859,7 @@ $staticTopBarColor: #222;
 						.portlet {
 							padding: 35px;
 
-							.portlet-topper
-							{
+							.portlet-topper {
 								margin-bottom: 15px;
 
 								h1 {
@@ -879,6 +887,7 @@ $staticTopBarColor: #222;
 									i.icon-cog {
 										color: $linksColor;
 
+										&:focus,
 										&:hover {
 											color: $linkHoverColor;
 											text-decoration: none;
@@ -912,6 +921,7 @@ $staticTopBarColor: #222;
 
 												@include transition(all 0.4s ease);
 
+												&:focus,
 												&:hover {
 													background-color: $hoverBluishColor;
 													color: $navbarTextColor;
@@ -940,9 +950,10 @@ $staticTopBarColor: #222;
 											padding: 3px;
 											word-wrap: break-word;
 
-											&:focus {
-												border-color: #6699FF;
-												@include box-shadow(0 0 1px #6699FF);
+											&:focus,
+											&:hover {
+												border-color: #69F;
+												@include box-shadow(0 0 1px #69F);
 											}
 										}
 
@@ -979,6 +990,7 @@ $staticTopBarColor: #222;
 											@include border-radius(10px);
 											@include transition(all 0.4s ease);
 
+											&:focus,
 											&:hover {
 												background-color: $hoverBluishColor;
 												background-image: none;
@@ -1032,15 +1044,15 @@ $staticTopBarColor: #222;
 								@include box-sizing(border-box);
 								
 								display: inline-block;
-								margin: 20px 10px 40px 10px;
 								height: 200px;
+								margin: 20px 10px 40px 10px;
 								overflow: hidden;
 								padding: 0 20px 0 10px;
 								text-align: left;
 								text-overflow: ellipsis;
 								vertical-align: top;
-								width: 300px;
 								white-space: normal;
+								width: 300px;
 
 								.asset-title {
 									line-height: normal;
@@ -1263,6 +1275,7 @@ $staticTopBarColor: #222;
 
 													width: 17px;
 
+													&:focus,
 													&:hover {
 														background-color: $hoverBluishColor;
 														color: $navbarTextColor;
@@ -1300,7 +1313,8 @@ $staticTopBarColor: #222;
 														width: 100%;
 
 														@include transition(all 0.4s ease);
-														
+
+														&:focus,
 														&:hover {
 															background-color: #248CC8;
 															cursor: pointer;
@@ -1320,6 +1334,7 @@ $staticTopBarColor: #222;
 															color: $darkGrayTextColor;
 															text-decoration: none;
 
+															&:focus,
 															&:hover {
 																cursor: pointer;
 															}
@@ -1331,7 +1346,6 @@ $staticTopBarColor: #222;
 									}
 
 									#rightPanelWrapper {
-
 										@include box-sizing(border-box);
 
 										float: none;
@@ -1349,6 +1363,7 @@ $staticTopBarColor: #222;
 							span {
 								color: $linksColor;
 
+								&:focus > a > span,
 								&:hover > a > span {
 									color: $linkHoverColor;
 									text-decoration: none;
@@ -1383,6 +1398,7 @@ $staticTopBarColor: #222;
 						color: #DDD;
 
 						&:active,
+						&:focus,
 						&:hover,
 						&:link,
 						&:visited {
@@ -1401,10 +1417,10 @@ $staticTopBarColor: #222;
 			@include box-sizing(border-box);
 
 			color: $linksColor;
-			font-size: 60px;
+			font-size: 30px;
 			font-weight: bold;
 			height: 48px;
-			line-height: 72px;
+			line-height: 48px;
 
 			@include opacity(0.7);
 
@@ -1419,13 +1435,20 @@ $staticTopBarColor: #222;
 
 			width: 48px;
 
+			&:focus,
 			&:hover {
 				background-color: $hoverBluishColor;
 				color: $navbarTextColor;
 				cursor: pointer;
 				text-decoration: none;
 			}
+
+			&.scrollTopButtonAppear {
+				@include scale(1, 1);
+			}
 		}
+
+
 	}
 }
 
@@ -1434,10 +1457,3 @@ $staticTopBarColor: #222;
 	top: 0;
 }
 
-.scrollTopButtonAppear {
-	-webkit-transform: scale(1, 1) !important;
-	-moz-transform: scale(1, 1) !important;
-	-ms-transform: scale(1, 1) !important;
-	-o-transform: scale(1, 1) !important;
-	transform: scale(1, 1) !important;
-}

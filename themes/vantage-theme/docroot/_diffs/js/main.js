@@ -37,22 +37,21 @@ Liferay.on(
 
 );
 
-YUI().use('anim', 'node', 'event-hover', function (X) {
-
-	var wrapper = X.one('#wrapper');
-	var banner = X.one('#heading');
-	var mainContent = X.one('#main-content');
-	var navbar = X.one('#navigation');
-	var scrollTopButton = X.Node.create('<a id="vantageScrollTopButton">^</a>');
+YUI().use('anim', 'node', 'event-hover', function (Y) {
+	var banner = Y.one('#heading');
+	var mainContent = Y.one('#main-content');
+	var navbar = Y.one('#navigation');
+	var scrollTopButton = Y.Node.create('<a id="vantageScrollTopButton"><span class="icon-chevron-up"></span></a>');
+	var wrapper = Y.one('#wrapper');
 
 	var updateNavbar = function () {
 		if (banner && navbar && mainContent) {
-			var stickPoint = banner.getY() + parseInt(banner.getComputedStyle('height'));
+			var stickPoint = banner.getY() + banner.get('offsetHeight');
 
 			if (window.scrollY > stickPoint) {
 				navbar.addClass('sticky');
-				navbar.setStyle('width', wrapper.getComputedStyle('width'));
-				mainContent.setStyle('margin-top', navbar.getComputedStyle('height'));
+				navbar.setStyle('width', wrapper.get('offsetWidth'));
+				mainContent.setStyle('margin-top', navbar.get('offsetHeight'));
 			}
 			else {
 				navbar.removeClass('sticky');
@@ -60,25 +59,31 @@ YUI().use('anim', 'node', 'event-hover', function (X) {
 				mainContent.setStyle('margin-top', 0);
 			}
 		}
-	}
+	};
 
-	var setUpScrollTopButton = function () {
+	var setScrollTopButton = function() {
 		if (scrollTopButton) {
-			X.one('body').append(scrollTopButton);
-			scrollTopButton.on('click', function () {
-				var scrollToTop = new X.Anim({
-				  duration: 0.5,
-				  node: 'win',
-				  easing: 'easeBoth',
-				  to: {
-				    scroll: [0, 0]
-				  }
-				});
+			Y.one('body').append(scrollTopButton);
 
-				scrollToTop.run();
-			});
+			scrollTopButton.on(
+				'click',
+				function() {
+					var scrollToTop = new Y.Anim(
+						{
+							duration: 0.5,
+							node: 'win',
+							easing: 'easeBoth',
+							to: {
+								scroll: [0, 0]
+							}
+						}
+					);
+
+					scrollToTop.run();
+				}
+			);
 		}
-	}
+	};
 
 	var updateScrollTopButton = function () {
 		if (navbar) {
@@ -89,28 +94,30 @@ YUI().use('anim', 'node', 'event-hover', function (X) {
 				scrollTopButton.removeClass('scrollTopButtonAppear');
 			}
 		}
-	}
+	};
 
-	var formatMainCarousel = function () {
-		var carousel = X.one('.component.carousel .mainCarousel');
+	var updateMainCarousel = function () {
+		var carousel = Y.one('.component.carousel .mainCarousel');
 
 		if (carousel) {
-			var bodyWidth = X.one('body').getComputedStyle('width');
+			var bodyWidth = Y.one('body').get('offsetWidth');
 
-			carousel.setStyles({
-				width: '100%',
-				height: ((parseInt(bodyWidth) * .35) + 'px')
-			});
+			carousel.setStyles(
+				{
+					width: '100%',
+					height: ((parseInt(bodyWidth) * .35) + 'px')
+				}
+			);
 		}
-	}
+	};
 
-	var formatVantageCarousel = function () {
-		var carousel = X.one('#vantageCarousel');
+	var setVantageCarousel = function () {
+		var carousel = Y.one('#vantageCarousel');
 		var currentXScroll = 0;
 		var thumbnailWidth = 257;
 		var maxXscroll = 6 * thumbnailWidth;
-		var scrollRightButton = X.one('#scrollRightButton');
-		var scrollLeftButton = X.one('#scrollLeftButton');
+		var scrollRightButton = Y.one('#scrollRightButton');
+		var scrollLeftButton = Y.one('#scrollLeftButton');
 
 		if (carousel && scrollRightButton && scrollLeftButton) {
 			scrollRightButton.on('click', function (event) {
@@ -130,39 +137,39 @@ YUI().use('anim', 'node', 'event-hover', function (X) {
 				carousel.setStyle('left', -1 * currentXScroll);
 			});
 		}
-	}
+	};
 
 	var onHover = function (event) {
 		event.currentTarget.addClass('open');
-	}
+	};
 
 	var offHover = function (event) {
 		event.currentTarget.removeClass('open');
-	}
+	};
 
 	var setNavbarDelegate = function (event) {
-		var ul = X.one('#navigation > ul');
-		
+		var ul = Y.one('#navigation > ul');
+
 		if(ul) {
 			ul.delegate('hover', onHover, offHover, '> li');
 		}
-	}
+	};
 
 	updateNavbar();
-	setUpScrollTopButton();
+	setScrollTopButton();
 	updateScrollTopButton();
-	formatMainCarousel();
-	formatVantageCarousel();
+	updateMainCarousel();
+	setVantageCarousel();
 	setNavbarDelegate();
 
-	X.on('resize', function onResizeEvent (event) {
-    	formatMainCarousel();
-    	updateNavbar();
-    	updateScrollTopButton();
-	});
-
-	X.on('scroll', function() {
+	Y.on('resize', function onResizeEvent (event) {
+		updateMainCarousel();
 		updateNavbar();
 		updateScrollTopButton();
-	})
+	});
+
+	Y.on('scroll', function() {
+		updateNavbar();
+		updateScrollTopButton();
+	});
 });
