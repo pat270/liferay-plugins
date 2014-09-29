@@ -20,6 +20,7 @@ import com.liferay.marketplace.AppVersionException;
 import com.liferay.marketplace.model.App;
 import com.liferay.marketplace.model.Module;
 import com.liferay.marketplace.service.base.AppLocalServiceBaseImpl;
+import com.liferay.marketplace.util.BundleUtil;
 import com.liferay.marketplace.util.comparator.AppTitleComparator;
 import com.liferay.portal.kernel.deploy.DeployManagerUtil;
 import com.liferay.portal.kernel.deploy.auto.context.AutoDeploymentContext;
@@ -30,6 +31,7 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.plugin.PluginPackage;
 import com.liferay.portal.kernel.servlet.ServletContextPool;
 import com.liferay.portal.kernel.util.FileUtil;
+import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ListUtil;
 import com.liferay.portal.kernel.util.PropertiesUtil;
 import com.liferay.portal.kernel.util.ReleaseInfo;
@@ -64,6 +66,7 @@ import javax.servlet.ServletContext;
 
 /**
  * @author Ryan Park
+ * @author Joan Kim
  */
 public class AppLocalServiceImpl extends AppLocalServiceBaseImpl {
 
@@ -283,22 +286,16 @@ public class AppLocalServiceImpl extends AppLocalServiceBaseImpl {
 			while (enu.hasMoreElements()) {
 				ZipEntry zipEntry = enu.nextElement();
 
-				AutoDeploymentContext autoDeploymentContext =
-					new AutoDeploymentContext();
-
 				String fileName = zipEntry.getName();
 
-				if (!fileName.endsWith(".war") &&
+				if (!fileName.endsWith(".jar") &&
+					!fileName.endsWith(".war") &&
 					!fileName.endsWith(".xml") &&
 					!fileName.endsWith(".zip") &&
 					!fileName.equals("liferay-marketplace.properties")) {
 
 					continue;
 				}
-
-				String contextName = getContextName(fileName);
-
-				autoDeploymentContext.setContext(contextName);
 
 				if (_log.isInfoEnabled()) {
 					_log.info(
@@ -326,12 +323,41 @@ public class AppLocalServiceImpl extends AppLocalServiceBaseImpl {
 
 						FileUtil.write(pluginPackageFile, zipInputStream);
 
+						String bundleSymbolicName = StringPool.BLANK;
+						String bundleVersion = StringPool.BLANK;
+						String contextName = StringPool.BLANK;
+
+						if (fileName.endsWith(".jar")) {
+							Properties properties =
+								BundleUtil.getManifestProperties(
+									pluginPackageFile);
+
+							bundleSymbolicName = GetterUtil.getString(
+								properties.getProperty("Bundle-SymbolicName"));
+							bundleVersion = GetterUtil.getString(
+								properties.getProperty("Bundle-Version"));
+							contextName = GetterUtil.getString(
+								properties.getProperty("Web-ContextPath"));
+						}
+						else {
+							contextName = getContextName(fileName);
+						}
+
+						AutoDeploymentContext autoDeploymentContext =
+							new AutoDeploymentContext();
+
+						autoDeploymentContext.setContext(contextName);
 						autoDeploymentContext.setFile(pluginPackageFile);
 
 						DeployManagerUtil.deploy(autoDeploymentContext);
 
-						moduleLocalService.addModule(
-							app.getUserId(), app.getAppId(), contextName);
+						if (Validator.isNotNull(contextName) ||
+							Validator.isNotNull(bundleSymbolicName)) {
+
+							moduleLocalService.addModule(
+								app.getUserId(), app.getAppId(),
+								bundleSymbolicName, bundleVersion, contextName);
+						}
 					}
 				}
 				finally {
@@ -399,6 +425,15 @@ public class AppLocalServiceImpl extends AppLocalServiceBaseImpl {
 
 		for (Module module : modules) {
 			moduleLocalService.deleteModule(module.getModuleId());
+
+			if (Validator.isNotNull(module.getBundleSymbolicName()) &&
+				Validator.isNotNull(module.getBundleVersion())) {
+
+				BundleUtil.uninstallBundle(
+					module.getBundleSymbolicName(), module.getBundleVersion());
+
+				continue;
+			}
 
 			if (hasDependentApp(module)) {
 				continue;
@@ -495,6 +530,10 @@ public class AppLocalServiceImpl extends AppLocalServiceBaseImpl {
 	}
 
 	protected String getContextName(String fileName) {
+		if (fileName.endsWith(".jar")) {
+			return StringPool.BLANK;
+		}
+
 		String context = fileName;
 
 		while (context.contains(StringPool.DASH)) {

@@ -460,24 +460,13 @@ public class SolrIndexSearcher extends BaseIndexSearcher {
 					continue;
 				}
 
-				String sortFieldName = sort.getFieldName();
-
-				if (DocumentImpl.isSortableTextField(sortFieldName)) {
-					sortFieldName = DocumentImpl.getSortableFieldName(
-						sortFieldName);
-				}
+				String sortFieldName =
+					com.liferay.compat.portal.kernel.search.DocumentImpl.
+						getSortFieldName(sort, "score");
 
 				ORDER order = ORDER.asc;
 
-				if (Validator.isNull(sortFieldName) ||
-					!sortFieldName.endsWith("sortable")) {
-
-					sortFieldName = "score";
-
-					order = ORDER.desc;
-				}
-
-				if (sort.isReverse()) {
+				if (sort.isReverse() || sortFieldName.equals("score")) {
 					order = ORDER.desc;
 				}
 
