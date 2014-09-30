@@ -1,0 +1,29 @@
+<h4>$careers_location.data <small>$careers_department.data</small></h4>
+
+#if (!$careers_summary.getSiblings().isEmpty())
+	#foreach ($cur_careers_summary in $careers_summary.getSiblings())
+		<h5>$cur_careers_summary.data <small>$cur_careers_summary.careers_summary_subheading.data</small></h5>
+	#end
+#end
+
+<p>$careers_description.data</p>
+
+#if (!$careers_attribute_heading.getSiblings().isEmpty())
+	#foreach ($cur_careers_attribute_heading in $careers_attribute_heading.getSiblings())
+		#if (!$cur_careers_attribute_heading.data.isEmpty())
+			<h5>$cur_careers_attribute_heading.data</h5>
+		#end
+
+		#if (!$cur_careers_attribute_heading.career_attribute.getSiblings().isEmpty())
+			<ul>
+				#foreach ($cur_career_attribute in $cur_careers_attribute_heading.career_attribute.getSiblings())
+					<li>$cur_career_attribute.data</li>
+				#end
+			</ul>
+		#end
+	#end
+#end
+
+#if (!$careers_contact.data.isEmpty())
+	<a class="btn btn-success" href="mailto:${careers_contact.data}">$careers_contact.data</a>
+#end

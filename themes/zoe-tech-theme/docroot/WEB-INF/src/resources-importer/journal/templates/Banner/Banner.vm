@@ -1,0 +1,143 @@
+#set ($content_id = $reserved-article-id.data)
+
+#set ($background_color = "")
+#set ($background_image = "")
+#set ($background_minimum_height = "")
+#set ($background_padding = "")
+#set ($button_alignment = "")
+#set ($button_font_size = "")
+#set ($message_color = "")
+#set ($message_font_size = "")
+#set ($message_font_weight = "")
+#set ($secondary_message_color = "")
+#set ($secondary_message_font_size = "")
+#set ($secondary_message_font_weight = "")
+#set ($secondary_message_margins = "")
+#set ($text_align = "")
+
+#if (!$banner_background_color.data.isEmpty())
+	#set ($background_color = "background-color:${banner_background_color.data};")
+#end
+
+#if (!$banner_background_image.data.isEmpty())
+	#set ($background_image = "background:url(${banner_background_image.data}) no-repeat;")
+#end
+
+#if ($banner_background_minimum_height.data != "null")
+	#set ($background_minimum_height = "min-height:${banner_background_minimum_height.data}px;")
+#end
+
+#if (!$banner_background_padding.data.isEmpty())
+	#set ($background_padding = "padding:${banner_background_padding.data};")
+#end
+
+#if (!$banner_button_text.banner_button_alignment.data.isEmpty())
+	#if ($banner_button_text.banner_button_alignment.data == "center")
+		#set ($button_alignment = "display: table-row;")
+	#end
+#end
+
+#if (!$banner_message_text_alignment.data.isEmpty())
+	#set ($text_align = "text-align:${banner_message_text_alignment.data};")
+#end
+
+#if (!$banner_message_color.data.isEmpty())
+	#set ($message_color = "color:${banner_message_color.data};")
+#end
+
+#if ($banner_message_font_size.data != "null")
+	#set ($message_font_size = "font-size:${banner_message_font_size.data}px;")
+#end
+
+#if (!$banner_message_font_weight.data.isEmpty())
+	#set ($message_font_weight = "font-weight:${banner_message_font_weight.data};")
+#end
+
+#if (!$banner_secondary_message_color.data.isEmpty())
+	#set ($secondary_message_color = "color:${banner_secondary_message_color.data};")
+#end
+
+#if ($banner_secondary_message_font_size.data != "null")
+	#set ($secondary_message_font_size = "font-size:${banner_secondary_message_font_size.data}px;")
+#end
+
+#if (!$banner_secondary_message_font_weight.data.isEmpty())
+	#set ($secondary_message_font_weight = "font-weight:${banner_secondary_message_font_weight.data};")
+#end
+
+#if (!$banner_secondary_message_margins.data.isEmpty())
+	#set ($secondary_message_margins = "margin:${banner_secondary_message_margins.data};")
+#end
+
+#if (!$banner_button_text.font_size.data.isEmpty())
+	#set ($button_font_size = "font-size:${banner_button_text.font_size.data}px;")
+#end
+
+<style type="text/css">
+	#zoe-banner-${content_id} {
+		${background_color}
+		${background_image}
+		${background_minimum_height}
+		${background_padding}
+	}
+
+	#zoe-banner-${content_id} .banner-message {
+		${text_align}
+	}
+
+	#zoe-banner-${content_id} .banner-message h2 {
+		${message_color}
+		${message_font_size}
+		${message_font_weight}
+		margin: 0;
+	}
+
+	#zoe-banner-${content_id} .banner-message-secondary {
+		${secondary_message_color}
+		${secondary_message_font_size}
+		${secondary_message_font_weight}
+		${secondary_message_margins}
+	}
+
+	#zoe-banner-${content_id} .banner-button {
+		${button_alignment}
+	}
+
+	#zoe-banner-${content_id} .banner-link {
+		${button_font_size}
+	}
+
+	@media (max-width: 767px) {
+		#zoe-banner-${content_id} {
+			padding: 10px;
+		}
+
+		#zoe-banner-${content_id} .banner-button {
+			display: table-row;
+		}
+
+		#zoe-banner-${content_id} .banner-message h2 {
+			font-size: 31.5px;
+		}
+
+		#zoe-banner-${content_id} .banner-message-secondary {
+			margin: 10px 0;
+		}
+	}
+</style>
+
+<div class="zoe-banner" id="zoe-banner-${content_id}">
+	<div class="banner-message">
+		<h2>$banner_message.data</h2>
+
+		#if (!$banner_secondary_message.data.isEmpty())
+			<p class="banner-message-secondary">$banner_secondary_message.data</p>
+		#end
+	</div>
+
+	#if (!$banner_button_text.data.isEmpty())
+		<div class="banner-button">
+			<a class="banner-link $banner_button_text.banner_button_style.data $banner_button_text.banner_button_size.data" href="$banner_button_text.banner_button_link.data">$banner_button_text.data</a>
+		</div>
+	#end
+</div>
