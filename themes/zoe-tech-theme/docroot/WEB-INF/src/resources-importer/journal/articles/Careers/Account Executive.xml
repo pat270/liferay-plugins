@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+
+<root>
+	<dynamic-element name="careers_department" type="text">
+		<dynamic-content><![CDATA[Marketing]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_location" type="text">
+		<dynamic-content><![CDATA[Tokyo, Japan]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_summary" type="text">
+		<dynamic-element name="careers_summary_subheading" type="text">
+			<dynamic-content><![CDATA[]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Full Time]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_summary" type="text">
+		<dynamic-element name="careers_summary_subheading" type="text">
+			<dynamic-content><![CDATA[Based on previous experience + Commission]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Salary]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_description" type="textarea">
+		<dynamic-content><![CDATA[Liferay is seeking an aggressive, high-energy software sales professional capable of identifying and closing enterprise software sales opportunities, both through partners and direct sales.<br><br> This position reports to the Liferay Japan President and Representative Director.]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_attribute_heading" type="text">
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Build and manage a sales pipeline with the goal of meeting and exceeding assigned sales quota.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[“Hands-on” development of new sales opportunities through cold-calling, lead follow up, and partner, channel and personal relationships.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Recruit and manage reselling partners.  Train and the mentor them on selling Liferay, and help them drive sales opportunities to contract closure.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Drive direct-sales opportunities to closure, and establish strong, long-lasting relationships which will yield on-going successes in accounts.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Work with other members of Liferay’s global sales organization on multi-national sales opportunities.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Work as a team player. Candidate must be able to work effectively with Liferay Japan team members, and “wear multiple hats” when it becomes necessary.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Travel within assigned territory is required.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Major Objectives]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_attribute_heading" type="text">
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Japanese native, or capable of speaking Japanese at a native level, with a clear understanding of the Japanese business culture.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[At least 10 years experience in software sales with responsibility for meeting an individual sales quota.  Can be in the capacity of a reseller or vendor.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[A proven track record of successfully selling enterprise-level software solution sales (e.g. Content Management, ERP, CRM, eBusiness and/or eCommerce applications), both in a direct and indirect selling model.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Demonstrated ability to execute each phase of the sales cycle, from lead generation (cold calling, leveraging of channels and contacts, to lead qualification and sales close.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Experience in managing Japanese systems integration providers who provide selling, service, and support for products.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Experience in closing large software deals.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Excellent presentation skills to executives & individual contributors.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Excellent written and verbal communication skills.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[English fluency.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[University degree.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Preferred Qualifications]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_contact" type="text">
+		<dynamic-content><![CDATA[hr@liferay.com]]></dynamic-content>
+	</dynamic-element>
+</root>

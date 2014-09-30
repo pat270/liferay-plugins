@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<root>
+	<dynamic-element name="banner_message" type="textarea">
+		<dynamic-content><![CDATA[What are you waiting for?]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_message_font_size" type="ddm-integer">
+		<dynamic-content><![CDATA[36]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_message_color" type="text">
+		<dynamic-content><![CDATA[#333]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_message_font_weight" type="select">
+		<dynamic-content><![CDATA[300]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_secondary_message" type="textarea">
+		<dynamic-content><![CDATA[Paulo vituperatoribus mea no, propriae incorrupte in vel. Sed at agam ludus. Vis nihil everti assueverit ad. Eum in admodum detraxit, qui ut illum dicit scripta. Quo illum quaeque discere ne, mentitum comprehensam ad nam. At deseruisse dissentiet his.<br><br>In quo choro accusamus. Possim doctus periculis no nec. Audire omnesque an vix. Qui utroque dissentiunt in.]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_secondary_message_margins" type="text">
+		<dynamic-content><![CDATA[60px 20px 40px]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_secondary_message_font_size" type="ddm-integer">
+		<dynamic-content><![CDATA[18]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_secondary_message_color" type="text">
+		<dynamic-content><![CDATA[#333]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_secondary_message_font_weight" type="select">
+		<dynamic-content><![CDATA[100]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_message_text_alignment" type="select">
+		<dynamic-content><![CDATA[center]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_background_color" type="text">
+		<dynamic-content><![CDATA[#F6F6F6]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_background_image" type="ddm-documentlibrary">
+		<dynamic-content><![CDATA[]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_background_minimum_height" type="ddm-integer">
+		<dynamic-content><![CDATA[]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_background_padding" type="text">
+		<dynamic-content><![CDATA[40px 40px 90px]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_button_text" type="text">
+		<dynamic-element name="font_size" type="ddm-integer">
+			<dynamic-content><![CDATA[18]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="banner_button_link" type="text">
+			<dynamic-content><![CDATA[1]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="banner_button_style" type="select">
+			<dynamic-content><![CDATA[btn btn-success]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="banner_button_size" type="select">
+			<dynamic-content><![CDATA[btn-large]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="banner_button_alignment" type="select">
+			<dynamic-content><![CDATA[center]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[START YOUR FREE TRIAL]]></dynamic-content>
+	</dynamic-element>
+</root>

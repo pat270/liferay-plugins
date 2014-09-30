@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<root>
+	<dynamic-element name="banner_message" type="textarea">
+		<dynamic-content><![CDATA[Careers]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_message_font_size" type="ddm-integer">
+		<dynamic-content><![CDATA[72]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_message_color" type="text">
+		<dynamic-content><![CDATA[#FFF]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_message_font_weight" type="select">
+		<dynamic-content><![CDATA[300]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_secondary_message" type="textarea">
+		<dynamic-content><![CDATA[Munere facete hendrerit nam ea. Ridens necessitatibus ea nam. Ex vis alia semper commodo, populo aperiri efficiendi vix ut. Facer integre ne per, impedit intellegam referrentur ut mel.]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_secondary_message_color" type="text">
+		<dynamic-content><![CDATA[#FFF]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_secondary_message_font_size" type="ddm-integer">
+		<dynamic-content><![CDATA[18]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_secondary_message_font_weight" type="select">
+		<dynamic-content><![CDATA[100]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_secondary_message_margins" type="text">
+		<dynamic-content><![CDATA[20px 40px]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_message_text_alignment" type="select">
+		<dynamic-content><![CDATA[center]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_background_color" type="text">
+		<dynamic-content><![CDATA[]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_background_image" type="ddm-documentlibrary">
+		<dynamic-content><![CDATA[[$FILE=careers_masthead.jpg$]]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_background_minimum_height" type="ddm-integer">
+		<dynamic-content><![CDATA[280]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_background_padding" type="text">
+		<dynamic-content><![CDATA[40px]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="banner_button_text" type="text">
+		<dynamic-element name="font_size" type="ddm-integer">
+			<dynamic-content><![CDATA[18]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="banner_button_link" type="text">
+			<dynamic-content><![CDATA[1]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="banner_button_style" type="select">
+			<dynamic-content><![CDATA[btn btn-success]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="banner_button_size" type="select">
+			<dynamic-content><![CDATA[btn-large]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="banner_button_alignment" type="select">
+			<dynamic-content><![CDATA[center]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[]]></dynamic-content>
+	</dynamic-element>
+</root>

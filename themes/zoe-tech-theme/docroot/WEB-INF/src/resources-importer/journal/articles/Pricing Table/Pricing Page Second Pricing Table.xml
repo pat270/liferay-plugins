@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+
+<root>
+	<dynamic-element name="number_of_columns" type="select">
+		<dynamic-content><![CDATA[4]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="pricing_table_background_color" type="text">
+		<dynamic-content><![CDATA[#F6F6F6]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="pricing_table_background_padding" type="text">
+		<dynamic-content><![CDATA[0 50px 20px]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="connect_tables" type="checkbox">
+		<dynamic-content><![CDATA[true]]></dynamic-content>
+	</dynamic-element>
+
+	<dynamic-element name="pricing_table_heading" type="text">
+		<dynamic-element name="currency_symbol" type="text">
+			<dynamic-content><![CDATA[$]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="price" type="ddm-integer">
+			<dynamic-content><![CDATA[]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="units_of_time" type="text">
+			<dynamic-content><![CDATA[month]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[Cras justo odio]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[Dapibus ac facilisis in]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[Egestas eget quam]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[Fusce dapibus]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[No pri enim albucius]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[Laudem eruditi laoreet]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[Fusce dapibus]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[No pri enim albucius]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="button_text" type="text">
+			<dynamic-element name="link" type="text">
+				<dynamic-content><![CDATA[1]]></dynamic-content>
+			</dynamic-element>
+			<dynamic-element name="style" type="select">
+				<dynamic-content><![CDATA[btn]]></dynamic-content>
+			</dynamic-element>
+			<dynamic-element name="size" type="select">
+				<dynamic-content><![CDATA[btn-large]]></dynamic-content>
+			</dynamic-element>
+			<dynamic-content><![CDATA[]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Services]]></dynamic-content>
+	</dynamic-element>
+
+	<dynamic-element name="pricing_table_heading" type="text">
+		<dynamic-element name="currency_symbol" type="text">
+			<dynamic-content><![CDATA[$]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="price" type="ddm-integer">
+			<dynamic-content><![CDATA[]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="units_of_time" type="text">
+			<dynamic-content><![CDATA[mo]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[N/A]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[N/A]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[N/A]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[N/A]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[N/A]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[N/A]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[20]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[0]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="button_text" type="text">
+			<dynamic-element name="link" type="text">
+				<dynamic-content><![CDATA[1]]></dynamic-content>
+			</dynamic-element>
+			<dynamic-element name="style" type="select">
+				<dynamic-content><![CDATA[btn]]></dynamic-content>
+			</dynamic-element>
+			<dynamic-element name="size" type="select">
+				<dynamic-content><![CDATA[btn-large]]></dynamic-content>
+			</dynamic-element>
+			<dynamic-content><![CDATA[]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Basic]]></dynamic-content>
+	</dynamic-element>
+
+	<dynamic-element name="pricing_table_heading" type="text">
+		<dynamic-element name="currency_symbol" type="text">
+			<dynamic-content><![CDATA[$]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="price" type="ddm-integer">
+			<dynamic-content><![CDATA[]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="units_of_time" type="text">
+			<dynamic-content><![CDATA[mo]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[<i class="icon-ok"></i>]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[<i class="icon-ok"></i>]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[N/A]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[N/A]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[9am - 5pm pst]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[N/A]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[100]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[2]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="button_text" type="text">
+			<dynamic-element name="link" type="text">
+				<dynamic-content><![CDATA[1]]></dynamic-content>
+			</dynamic-element>
+			<dynamic-element name="style" type="select">
+				<dynamic-content><![CDATA[btn]]></dynamic-content>
+			</dynamic-element>
+			<dynamic-element name="size" type="select">
+				<dynamic-content><![CDATA[btn-large]]></dynamic-content>
+			</dynamic-element>
+			<dynamic-content><![CDATA[]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Personal]]></dynamic-content>
+	</dynamic-element>
+
+	<dynamic-element name="pricing_table_heading" type="text">
+		<dynamic-element name="currency_symbol" type="text">
+			<dynamic-content><![CDATA[$]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="price" type="ddm-integer">
+			<dynamic-content><![CDATA[]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="units_of_time" type="text">
+			<dynamic-content><![CDATA[mo]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[<i class="icon-ok"></i>]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[<i class="icon-ok"></i>]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[<i class="icon-ok"></i>]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[<i class="icon-ok"></i>]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[24/7]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[N/A]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[Unlimited]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="feature" type="text">
+			<dynamic-content><![CDATA[5]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="button_text" type="text">
+			<dynamic-element name="link" type="text">
+				<dynamic-content><![CDATA[1]]></dynamic-content>
+			</dynamic-element>
+			<dynamic-element name="style" type="select">
+				<dynamic-content><![CDATA[btn]]></dynamic-content>
+			</dynamic-element>
+			<dynamic-element name="size" type="select">
+				<dynamic-content><![CDATA[btn-large]]></dynamic-content>
+			</dynamic-element>
+			<dynamic-content><![CDATA[]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Pro]]></dynamic-content>
+	</dynamic-element>
+</root>

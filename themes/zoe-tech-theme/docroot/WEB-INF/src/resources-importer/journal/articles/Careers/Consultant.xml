@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+
+<root>
+	<dynamic-element name="careers_department" type="text">
+		<dynamic-content><![CDATA[Consulting]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_location" type="text">
+		<dynamic-content><![CDATA[Diamond Bar, CA]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_summary" type="text">
+		<dynamic-element name="careers_summary_subheading" type="text">
+			<dynamic-content><![CDATA[]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Full Time]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_summary" type="text">
+		<dynamic-element name="careers_summary_subheading" type="text">
+			<dynamic-content><![CDATA[Based on previous experience]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Salary]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_description" type="textarea">
+		<dynamic-content><![CDATA[What if there were a hybrid job that pushed you to learn cutting-edge technologies, gave you opportunities to provide innovative solutions to clients like Cisco, Sesame Street, AutoZone, and Volkswagen, pushed you to fix the most complex technical problems, and equipped you to train the growing population of Liferay users? Well, enter stage left a new position we just opened. Our new Consultant position is a cross between consulting, technical support, and training. We're looking for people who love open source, enjoy wearing multiple hats, and want to grow with a company that's bursting at the seams. Apply now and tell us why you'd like to join the Liferay family.]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_attribute_heading" type="text">
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Provide technical leadership and guidance in the installation, configuration, and implementation of Liferay's Java-based technologies]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Amaze clients by planning, designing, building, and delivering innovative solutions out of the box or through customizations]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Maintain the confidence of both customers and colleagues in Liferay products and technologies]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Deliver projects quickly, cost-effectively, and with the highest quality]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Communicate. Efficiently.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Conduct engaging Liferay trainings for key customers]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Fix product defects to ensure successful deployment of client projects]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Travel 50-75% of the time to customer sites to provide face-to-face technical solutions or trainings]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Major Objectives]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_attribute_heading" type="text">
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Love for cutting-edge technology]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Bachelor's Degree in Computer Science or Computer Engineering, or equivalent level of demonstrated knowledge required]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Experience in writing enterprise strength Java / J2EE code]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Advanced understanding and experience in Java and OO design]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Enjoy teaching people complex topics]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Expert knowledge of databases (MySQL, Oracle)]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Experience with Websphere, Weblogic, JBOSS AS, or Tomcat]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Solid knowledge of Windows and Linux OS, Servlets/JSP, Spring and Hibernate, application performance and performance tuning]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Prior experience with Liferay or other portal solutions a plus]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Demonstrates expert analytical and problem-solving skills coupled with very strong motivation to identify and resolve customer issues]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Preferred Qualifications]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_contact" type="text">
+		<dynamic-content><![CDATA[hr@liferay.com]]></dynamic-content>
+	</dynamic-element>
+</root>

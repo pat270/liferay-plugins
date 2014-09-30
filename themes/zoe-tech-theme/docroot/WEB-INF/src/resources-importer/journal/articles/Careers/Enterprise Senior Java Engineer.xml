@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+
+<root>
+	<dynamic-element name="careers_department" type="text">
+		<dynamic-content><![CDATA[Software Engineering]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_location" type="text">
+		<dynamic-content><![CDATA[Budapest]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_summary" type="text">
+		<dynamic-element name="careers_summary_subheading" type="text">
+			<dynamic-content><![CDATA[]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Full Time]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_description" type="textarea">
+		<dynamic-content><![CDATA[We are full of lovers of technology, developing from our heart and always searching to find ways to incorporate new ideas into our product. Join our team!<br><br> Liferay Hungary is looking for a Senior Java Developer with strong Java knowledge, good problem solving skills and fluent English to join our international product maintenance and release team in Budapest.]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_attribute_heading" type="text">
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[At least 3 years of Java development experience]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Very good problem solving skills]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[SQL knowledge (at least one database server)]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Proficiency in web technologies and related software's]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Fluency in English]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Individual problem solving skills]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Good team player]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Requirements]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_attribute_heading" type="text">
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Reproduce, isolate and fix complex software malfunctions in various products]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[At least 10 years experience in software sales with responsibility for meeting an individual sales quota. Can be in the capacity of a reseller or vendor.]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Finding shortcuts to resolve issues in an effective way]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Acquire and apply new technologies]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Develop new tools to help patch management, development]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Work with the release engineering team to improve the quality and the robustness of the product build systems]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[Responsibilities]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_attribute_heading" type="text">
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Diverse and challenging work]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Support for high profile enterprise projects]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[A friendly and international team that guarantees fun on the job]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Continuous improvement]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Competitive salary]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-element name="career_attribute" type="text">
+			<dynamic-content><![CDATA[Opportunity to travel]]></dynamic-content>
+		</dynamic-element>
+		<dynamic-content><![CDATA[What we offer]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element name="careers_contact" type="text">
+		<dynamic-content><![CDATA[hr-hu@liferay.com]]></dynamic-content>
+	</dynamic-element>
+</root>
