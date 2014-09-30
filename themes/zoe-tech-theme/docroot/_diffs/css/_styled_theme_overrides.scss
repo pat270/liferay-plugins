@@ -1,0 +1,267 @@
+$body-bg-color: #F6F6F6;
+
+.aui {
+	&.dialog-iframe-root-node {
+		&, body {
+			background-color: #FFF;
+			.columns-max {
+				background-color: #FFF;
+			}
+		}
+
+		body {
+			background-image: none;
+			padding-top: 0;
+		}
+	}
+
+	/* Dockbar */
+
+	.nav-account-controls .sign-in {
+		display: none;
+	}
+
+	/* Configuration Popup Styles */
+
+	.columns-max {
+		background-color: $body-bg-color;
+		padding: 20px;
+	}
+
+	.portlet-journal .journal-article-container .lfr-ddm-container {
+		textarea {
+			@include box-sizing(border-box);
+
+			height: 150px;
+			width: 100%;
+		}
+
+		.field-wrapper {
+			margin: 7px 0 0 5px;
+		}
+	}
+
+	/* Liferay Portal Style Overrides */
+
+	form#hrefFm {
+		margin: 0;
+	}
+
+	.navbar .nav > li > .dropdown-menu {
+		&:after {
+			border-width: 0;
+		}
+
+		&:before {
+			border-width: 0;
+		}
+	}
+
+	.dropdown-menu {
+		@include border-radius(0);
+		@include box-shadow(none);
+
+		border-width: 0;
+		margin-top: 0;
+	}
+
+	.lfr-hudcrumbs {
+		display: none;
+	}
+
+	.portlet-asset-publisher, .portlet-blogs {
+		.header-back-to {
+			display: none;
+		}
+	}
+
+	.portlet-content {
+		padding: 0;
+	}
+
+	.portlet-nested-portlets > .portlet-borderless-container > .portlet-borderless-bar {
+		margin-top: -25px;
+	}
+
+	.portlet-topper-toolbar .caret.lfr-icon-menu-arrow {
+		display: none;
+	}
+
+	/* Login Portlet */
+
+	.portlet-login {
+		background-color: #F6F6F6;
+
+		label {
+			font-weight: 100;
+		}
+
+		.portlet-body {
+			margin: 0 auto;
+			max-width: 400px;
+			padding: 20px 10px 60px;
+
+			.navigation {
+				background-color: transparent;
+				border-top-color: #EAEAEA;
+				border-bottom: 1px solid #EAEAEA;
+				padding: 15px 0;
+				position: relative;
+
+				&:after {
+					border-bottom: 1px solid #FFF;
+					bottom: -2px;
+					content: "";
+					position: absolute;
+					width: 100%;
+				}
+
+				&:before {
+					content: "";
+					border-top: 1px solid #FFF;
+					position: absolute;
+					top: 0;
+					width: 100%;
+				}
+
+				ul {
+					margin-bottom: 0;
+
+					li {
+						margin-right: 4em;
+
+						&:first-child + li + li {
+							margin-right: 0;
+						}
+
+						a {
+							color: #333;
+							font-size: 16px;
+							font-weight: 100;
+
+							&:focus, &:hover {
+								text-decoration: none;
+							}
+
+							img {
+								display: none;
+							}
+						}
+					}
+				}
+			}
+
+			form {
+				background-color: #FFF;
+				margin-bottom: 40px;
+				padding: 40px;
+
+				&.sign-in-form:before {
+					color: #4A4A4A;
+					content: "Sign In";
+					font-size: 42px;
+					font-weight: 100;
+					padding: 20px 0;
+				}
+
+				button[type="submit"] {
+					background-color: #B3D929;
+					font-size: 23px;
+					padding: 20px;
+					width: 100%;
+				}
+
+				fieldset {
+					margin-top: 40px;
+				}
+
+				input[type="text"], input[type="password"] {
+					font-size: 18px;
+					font-weight: 100;
+					padding: 15px 4%;
+					width: 90%;
+				}
+
+				select {
+					width: 100%;
+				}
+
+				.alert {
+					margin-bottom: 0;
+					margin-top: 20px;
+				}
+			}
+		}
+
+		.portlet-borderless-bar {
+			display: none;
+		}
+
+		.portlet-topper {
+			display: none;
+		}
+	}
+
+	/* Portlet Search */
+
+	.portlet-nested-portlets .span4 .portlet-boundary.portlet-search {
+		padding-bottom: 30px;
+	}
+
+	.portlet-search {
+		form {
+			margin-bottom: 0;
+			position: relative;
+		}
+
+		input[type="text"] {
+			@include box-sizing(border-box);
+
+			height: auto;
+			width: 100%;
+		}
+
+		input[type="image"] {
+			position: absolute;
+			right: 5px;
+			top: 5px;
+		}
+
+		select {
+			width: 100%;
+		}
+
+		table thead {
+			display: none;
+		}
+
+		#_3_clearSearch {
+			display: none;
+		}
+
+		#_3_search {
+			margin-left: -30px;
+			position: absolute;
+			right: auto;
+			top: 5px;
+		}
+
+		.lfr-search-container {
+			margin-top: 0;
+		}
+
+		.search-layout {
+			.result .asset-entry .asset-entry-title a img {
+				display: none;
+			}
+
+			.search-facet:first-child {
+				border-top-color: transparent;
+			}
+		}
+
+		.table td {
+			border-top-width: 0;
+		}
+	}
+}

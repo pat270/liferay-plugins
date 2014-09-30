@@ -1,22 +1,78 @@
 {
-	"layoutTemplateId": "1_3_1_columns",
+	"layoutTemplateId": "1_column",
 	"privatePages": [
 		{
 			"columns": [
 				[
-					"Main Carousel.xml"
-				],
-				[
-					"Our Goal.xml"
-				],
-				[
-					"Exceptional Support.xml"
-				],
-				[
-					"The Experience.xml"
-				],
-				[
-					"What Our Clients Are Saying.xml"
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Home Main Carousel.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Banner Home Page.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Panel Home Page.xml",
+							"groupId": "${groupId}",
+							"portletSetupCss": {
+								"advancedData": {
+									"customCSSClassName": "our-features-panel"
+								}
+							},
+							"portletSetupShowBorders": "true",
+							"portletSetupTitle_en_US": "Our Features",
+							"portletSetupUseCustomTitle": "true"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Panel Home Page Getting Started.xml",
+							"groupId": "${groupId}",
+							"portletSetupCss": {
+								"advancedData": {
+									"customCSSClassName": "getting-started-panel"
+								}
+							},
+							"portletSetupShowBorders": "false",
+							"portletSetupTitle_en_US": "Getting Started",
+							"portletSetupUseCustomTitle": "false"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Home Testimonials Carousel.xml",
+							"groupId": "${groupId}",
+							"portletSetupCss": {
+								"advancedData": {
+									"customCSSClassName": "home-testimonials-carousel"
+								}
+							},
+							"portletSetupShowBorders": "true",
+							"portletSetupTitle_en_US": "Client Testimonials",
+							"portletSetupUseCustomTitle": "true"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Footer.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false"
+						}
+					}
 				]
 			],
 			"friendlyURL": "/home",
@@ -24,38 +80,164 @@
 			"title": "Home"
 		},
 		{
-			"friendlyURL": "/clients",
-			"name": "Clients",
-			"title": "Clients"
+			"columns" : [
+				[
+					{
+						"portletId": "118",
+						"portletPreferences": {
+							"portletSetupShowBorders": "false",
+							"columns": [
+								[
+									{
+										"portletId": "3",
+										"portletPreferences": {
+											"portletSetupShowBorders": "false"
+										}
+									}
+								],
+								[
+									{
+										"portletId": "101",
+										"portletPreferences": {
+											"delta": "4",
+											"displayStyle": "full-content",
+											"enableRelatedAssets": "false",
+											"enableSocialBookmarks": "false",
+											"paginationType": "regular",
+											"portletSetupShowBorders": "false",
+											"portletSetupTitle_en_US": "<-- Set Asset Type to Blogs Entry in config",
+											"portletSetupUseCustomTitle": "true",
+											"showContextLink": "false",
+											"showMetadataDescriptions": "false"
+										}
+									}
+								]
+							],
+							"layoutTemplateId": "2_columns_ii"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Footer.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false"
+						}
+					}
+				]
+			],
+			"friendlyURL": "/blogs",
+			"name": "Blogs",
+			"title": "Blogs"
 		},
 		{
-			"friendlyURL": "/partners",
-			"name": "Partners",
-			"title": "Partners"
-		},
-		{
+			"columns" : [
+				[
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Careers Page Main.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false"
+						}
+					},
+					{
+						"portletId": "118",
+						"portletPreferences": {
+							"portletSetupShowBorders": "false",
+							"columns": [
+								[
+									{
+										"portletId": "101",
+										"portletPreferences": {
+											"delta": "4",
+											"displayStyle": "full-content",
+											"enableRelatedAssets": "false",
+											"enableSocialBookmarks": "false",
+											"paginationType": "regular",
+											"portletSetupShowBorders": "false",
+											"portletSetupTitle_en_US": "<-- Set Asset Type to Web Content Article/Careers in config",
+											"portletSetupUseCustomTitle": "true",
+											"showContextLink": "false",
+											"showMetadataDescriptions": "false"
+										}
+									}
+								],
+								[
+									{
+										"portletId": "3",
+										"portletPreferences": {
+											"portletSetupShowBorders": "false"
+										}
+									}
+								]
+							],
+							"layoutTemplateId": "2_columns_iii"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Footer.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false"
+						}
+					}
+				]
+			],
 			"friendlyURL": "/careers",
 			"name": "Careers",
 			"title": "Careers"
 		},
 		{
-			"columns": [
+			"columns" : [
 				[
-					"Main Content.xml"
-				],
-				[
-					"Why Zoe.xml"
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Pricing Page Main.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Pricing Page First Pricing Table.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Pricing Page Second Pricing Table.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Pricing Page Secondary Message.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Footer.xml",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "false"
+						}
+					}
 				]
 			],
-			"friendlyURL": "/about-us",
-			"layoutTemplateId": "2_columns_iii",
-			"name": "About Us",
-			"title": "About Us"
-		},
-		{
-			"friendlyURL": "/contact-us",
-			"name": "Contact Us",
-			"title": "Contact Us"
+			"friendlyURL": "/pricing",
+			"layoutTemplateId": "1_column",
+			"name": "Pricing",
+			"title": "Pricing"
 		}
 	]
 }
