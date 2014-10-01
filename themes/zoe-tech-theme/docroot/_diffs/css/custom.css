@@ -741,9 +741,82 @@ $default-font-size: 16px;
 	}
 
 	@include respond-to(phone, tablet) {
+		#_145_navSiteNavigationNavbarBtn {
+			float: left;
+		}
+
+		#_145_navAddControlsNavbarBtn {
+			float: right;
+		}
+
+		#_145_navAccountControlsNavbarBtn {
+			float: right;
+
+			img {
+				width: 20px;
+			}
+		}
+
 		#navigation {
+			display: none;
 			left: 0;
 			right: 0;
+			width: 100%;
+
+			&.open {
+				display: block;
+
+				.nav-collapse {
+					&, &.collapse {
+						height: auto;
+					}
+				}
+			}
+
+			.navbar-inner {
+				min-height: 0;
+			}
+		}
+
+		#zoe-tech-HOME-MAIN-CAROUSEL {
+			height: auto;
+
+			.carousel-item {
+				height: auto;
+			}
+
+			.carousel-panel-container {
+				.btn-large {
+					padding-bottom: 10px;
+					padding-top: 10px;
+				}
+			}
+
+			.carousel-panel-center,
+			.carousel-panel-left,
+			.carousel-panel-right {
+				left: 10%;
+				margin-left: 0;
+				width: 80%;
+			}
+
+			.carousel-panel-text {
+				span {
+					font-size: 20px;
+					line-height: 33px;
+				}
+			}
+		}
+
+		#zoe-tech-HOME-TESTIMONIALS-CAROUSEL {
+			.carousel-panel-container {
+				font-size: 14px;
+				line-height: 24px;
+			}
+		}
+
+		.nav-account-controls {
+			width: 100%;
 		}
 
 		.navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
@@ -773,6 +846,33 @@ $default-font-size: 16px;
 					min-width: 230px;
 				}
 			}
+		}
+
+		#zoe-tech-HOME-MAIN-CAROUSEL {
+			.carousel-panel-center, .carousel-panel-left, .carousel-panel-right {
+				top: 10%;
+			}
+		}
+	}
+
+	@media (max-width: 480px) {
+		#zoe-tech-HOME-MAIN-CAROUSEL {
+			.carousel-panel-container {
+				.btn-large {
+					padding: 5px;
+				}
+			}
+
+			.carousel-panel-text {
+				span {
+					font-size: 12px;
+					line-height: 24px;
+				}
+			}
+		}
+
+		.portlet-nested-portlets {
+			padding: 0;
 		}
 	}
 }

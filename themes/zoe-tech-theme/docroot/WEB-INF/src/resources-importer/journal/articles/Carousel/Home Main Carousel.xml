@@ -2,7 +2,7 @@
 
 <root>
 	<dynamic-element name="carousel_height" type="text">
-		<dynamic-content><![CDATA[450px]]></dynamic-content>
+		<dynamic-content><![CDATA[]]></dynamic-content>
 	</dynamic-element>
 	<dynamic-element name="duration" type="select">
 		<dynamic-content><![CDATA[4]]></dynamic-content>
